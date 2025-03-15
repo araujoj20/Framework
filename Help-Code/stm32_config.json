@@ -1,0 +1,22 @@
+{
+    "board": "STM32",
+
+    "timer1": {
+        "name": "TIM1",
+        "prescaler": 0,
+        "period": 4294967295,
+        "dma": {
+            "enabled": true,
+            "channel": "DMA1_Channel1",
+            "request": "DMA_REQUEST_TIM1_UP"
+        }
+    },
+    "timer2": {
+        "name": "TIM2",
+        "prescaler": 0,
+        "period": 4294967295,
+        "slave_mode": "TIM_SLAVEMODE_RESET",
+        "input_trigger": "TIM_TS_ITR0"
+    }
+
+}

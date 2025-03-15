@@ -1,0 +1,20 @@
+{
+    "board": "SAMD21",
+    "timer2": {
+        "name": "TIMER0",
+        "prescaler": 1,
+        "period": 65535,
+        "dma": {
+            "enabled": true,
+            "channel": "DMAC_CHANNEL0",
+            "request": "TIMER0_OVERFLOW"
+        }
+    },
+    "timer1": {
+        "name": "TIMER1",
+        "prescaler": 16,
+        "period": 16777215,
+        "slave_mode": "TIMER_SLAVE_MODE_RESET",
+        "input_trigger": "TIMER_INPUT_TRIGGER_1"
+    }
+}
