@@ -1,0 +1,34 @@
+{
+    "board": "STM32",
+
+    "dmas": {
+        "dma1": {
+            "channel": ["channel1", "channel2", "channel3", "channel4",
+                    "channel5", "channel6", "channel7", "channel8"]
+        },
+        "dma2": {
+            "channel": ["channel1", "channel2", "channel3", "channel4",
+                    "channel5", "channel6", "channel7", "channel8"]
+        }
+    },
+
+    "timers": {
+        "tim14": {
+            "period": 65535,
+            "trigger": ["tim15", "tim2", "tim3", "tim4"]
+        },
+        "tim82": {
+            "period": 65535,
+            "trigger": ["tim142", "tim2", "tim4", "tim5"]
+        },
+        "tim1": {
+            "period": 65535,
+            "trigger": ["tim122", "tim241", "tim456", "tim5742"]
+        },
+        "tim2": {
+            "period": 65535,
+            "trigger": ["tim132", "tim2413", "tim474", "tim524"]
+        }
+
+    }
+}

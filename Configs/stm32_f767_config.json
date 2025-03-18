@@ -1,0 +1,49 @@
+{   
+    "inherits": "stm32_config.json",
+    "board": "STM32F767",
+    "uart": {
+        "instance": "USART3",
+        "baudrate": 115200,
+        "tx_pin": "PD8",
+        "rx_pin": "PD9"
+    },
+
+    "timers": {
+        "tim1": {
+            "period": 65535,
+            "trigger": ["tim5", "tim2", "tim3", "tim4"]
+        },
+        "tim8": {
+            "period": 65535,
+            "trigger": ["tim1", "tim2", "tim4", "tim5"]
+        },
+        "tim2": {
+            "period": 4294967295,
+            "trigger": ["tim1", "tim8", "tim3", "tim4"]
+        },
+        "tim3": {
+            "period": 65535,
+            "trigger": ["tim1", "tim2", "tim5", "tim4"]
+        },
+        "tim4": {
+            "period": 65535,
+            "trigger": ["tim1", "tim2", "tim3", "tim8"]
+        },
+        "tim5": {
+            "period": 4294967295,
+            "trigger": ["tim2", "tim3", "tim4", "tim8"]
+        }
+
+
+        ,
+        "tim9": {
+            "period": 65535,
+            "trigger": ["tim2", "tim3", "tim10_OC", "tim11_OC"]
+        },
+        "tim12": {
+            "period": 65535,
+            "trigger": ["tim4", "tim5", "tim13_OC", "tim14_OC"]
+        }
+    }
+
+}

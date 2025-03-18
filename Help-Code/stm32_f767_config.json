@@ -1,4 +1,5 @@
 {   
+    "inherits": "stm32_config.json",
     "board": "STM32F767",
     "uart": {
         "instance": "USART3",
