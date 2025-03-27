@@ -2,10 +2,10 @@
     "inherits": "stm32_config.json",
     "board": "STM32L552",
     "uart": {
-        "instance": "LPUART1",
-        "baudrate": 209700,
-        "tx_pin": "PG7",
-        "rx_pin": "PG8"
+        "instance": "USART2",
+        "baudrate": 115200,
+        "tx_pin": "PA2",
+        "rx_pin": "PA3"
     },
 
     "timers": {

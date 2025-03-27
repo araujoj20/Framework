@@ -3,7 +3,7 @@
     "board": "STM32L552",
     "uart": {
         "instance": "LPUART1",
-        "baudrate": 209700,
+        "baudrate": 115200,
         "tx_pin": "PG7",
         "rx_pin": "PG8"
     }
