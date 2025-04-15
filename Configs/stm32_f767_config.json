@@ -1,6 +1,7 @@
 {   
     "inherits": "stm32_config.json",
     "board": "STM32F767",
+    "family": "stm32f7xx",
     "uart": {
         "instance": "USART3",
         "baudrate": 115200,

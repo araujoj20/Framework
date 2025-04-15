@@ -1,3 +1,0 @@
-"./Results/LPC55S69_No_Contention_samples.txt" is recognised as an observation file.
-Estimated capacity: 0.0 (out of possible  8.000 bits)
-It is impossible to calculate zero information leakage.

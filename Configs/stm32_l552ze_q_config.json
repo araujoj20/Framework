@@ -1,6 +1,7 @@
 {
     "inherits": "stm32_config.json",
     "board": "STM32L552",
+    "family": "stm32l5xx",
     "uart": {
         "instance": "LPUART1",
         "baudrate": 115200,
