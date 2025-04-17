@@ -1,13 +1,208 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <string.h>
 #include "cJSON.h"
 
-#define VENDOR_JSON_FILE(vendor) "Configs/" vendor "_config.json"
-#define BOARD_JSON_FILE(board) "Configs/" board "_config.json"
-#define USER_CONFIG_FILE "user_config.json"
+#define CONFIG_FILE "user_config.json"
+// Structs
+typedef struct TriggerNode {
+    char *name;
+    struct TriggerNode *next;
+} TriggerNode;
 
-// Função para carregar JSON de um arquivo
+typedef struct TimerNode {
+    char *name;
+    uint32_t period;
+    TriggerNode *triggers;
+    struct TimerNode *next;
+} TimerNode;
+
+typedef struct ChannelNode {
+    char *name;
+    struct ChannelNode *next;
+} ChannelNode;
+
+typedef struct DmaNode {
+    char *name;
+    ChannelNode *channels;
+    struct DmaNode *next;
+} DmaNode;
+
+
+typedef struct {
+    const char *vendor;
+    const char *board;
+    const char *path_gen;
+    //const char *t_path;
+    //volatile unsigned char flag_log;
+    //volatile unsigned char flag_manual;
+} sInputs;
+
+
+TriggerNode *add_trigger(TriggerNode *head, const char *name){
+    TriggerNode *new_node = malloc(sizeof(TriggerNode));
+    if (!new_node) return NULL;
+    new_node->name = strdup(name);
+    new_node->next = head;
+    return new_node;
+}
+
+TimerNode *add_timer(TimerNode *head, const char *name, uint32_t period, TriggerNode *triggers){
+    TimerNode *new_node = malloc(sizeof(TimerNode));
+    if (!new_node) return NULL;
+    new_node->name = strdup(name);
+    new_node->period = period;
+    new_node->triggers = triggers;
+    new_node->next = head;
+    return new_node;
+}
+
+void free_triggers(TriggerNode *head){
+    while (head) {
+        TriggerNode *tmp = head;
+        head = head->next;
+        free(tmp->name);
+        free(tmp);
+    }
+}
+
+void free_timers(TimerNode *head){
+    while (head) {
+        TimerNode *tmp = head;
+        head = head->next;
+        free(tmp->name);
+        free_triggers(tmp->triggers);
+        free(tmp);
+    }
+}
+
+void print_timers(TimerNode *head){
+    printf("\nTimers configuration:\n");
+    printf("---------------------\n");
+
+    while (head) {
+        printf("%6s (%s) | ", head->name, (head->period == 0xffff) ? "16-bit" : "32-bit");
+
+        TriggerNode *trig = head->triggers;
+        while (trig) {
+            printf("%s", trig->name);
+            if (trig->next) printf(", ");
+            trig = trig->next;
+        }
+        printf("\n");
+        head = head->next;
+    }
+}
+
+TimerNode *parse_timers(cJSON *root){
+    TimerNode *timers = NULL;
+    cJSON *timers_obj = cJSON_GetObjectItem(root, "timers");
+
+    if (!cJSON_IsObject(timers_obj)) return NULL;
+
+    cJSON *timer_entry = NULL;
+    cJSON_ArrayForEach(timer_entry, timers_obj) {
+        const char *timer_name  = timer_entry->string;
+        cJSON *period_obj       = cJSON_GetObjectItem(timer_entry, "period");
+        cJSON *trigger_array    = cJSON_GetObjectItem(timer_entry, "trigger");
+
+        if (!cJSON_IsNumber(period_obj)) continue;
+
+        uint32_t period = (uint32_t)period_obj->valuedouble;
+        TriggerNode *triggers = NULL;
+
+        if (cJSON_IsArray(trigger_array)) {
+            cJSON *trigger_item = NULL;
+            cJSON_ArrayForEach(trigger_item, trigger_array){
+                if (cJSON_IsString(trigger_item)) {
+                    triggers = add_trigger(triggers, trigger_item->valuestring);
+                }
+            }
+        }
+
+        timers = add_timer(timers, timer_name, period, triggers);
+    }
+
+    return timers;
+}
+
+DmaNode *parse_dmas(cJSON *root) {
+    DmaNode *head = NULL, *tail = NULL;
+    cJSON *dmas = cJSON_GetObjectItem(root, "dmas");
+    if (!dmas || !cJSON_IsObject(dmas)) return NULL;
+
+    cJSON *dma;
+    cJSON_ArrayForEach(dma, dmas) {
+        DmaNode *new_dma = calloc(1, sizeof(DmaNode));
+        new_dma->name = strdup(dma->string);
+        new_dma->channels = NULL;
+        new_dma->next = NULL;
+
+        cJSON *channel_arr = cJSON_GetObjectItem(dma, "channel");
+        if (channel_arr && cJSON_IsArray(channel_arr)) {
+            ChannelNode *ch_tail = NULL;
+            cJSON *ch;
+            cJSON_ArrayForEach(ch, channel_arr) {
+                if (!cJSON_IsString(ch)) continue;
+                ChannelNode *new_ch = calloc(1, sizeof(ChannelNode));
+                new_ch->name = strdup(ch->valuestring);
+                new_ch->next = NULL;
+
+                if (!new_dma->channels) {
+                    new_dma->channels = ch_tail = new_ch;
+                } else {
+                    ch_tail->next = new_ch;
+                    ch_tail = new_ch;
+                }
+            }
+        }
+
+        if (!head) {
+            head = tail = new_dma;
+        } else {
+            tail->next = new_dma;
+            tail = new_dma;
+        }
+    }
+
+    return head;
+}
+
+
+void print_dmas(DmaNode *head) {
+    printf("\n%-10s | Channels\n", "DMA");
+    printf("-------------------------------\n");
+
+    for (DmaNode *curr = head; curr != NULL; curr = curr->next) {
+        printf("%-10s | ", curr->name);
+        for (ChannelNode *ch = curr->channels; ch != NULL; ch = ch->next) {
+            printf("%s ", ch->name);
+        }
+        printf("\n");
+    }
+}
+
+void free_dmas(DmaNode *head) {
+    while (head) {
+        DmaNode *tmp = head;
+        head = head->next;
+
+        free(tmp->name);
+
+        ChannelNode *ch = tmp->channels;
+        while (ch) {
+            ChannelNode *tmp_ch = ch;
+            ch = ch->next;
+            free(tmp_ch->name);
+            free(tmp_ch);
+        }
+
+        free(tmp);
+    }
+}
+
+
 cJSON *load_json(const char *filename) {
     FILE *file = fopen(filename, "r");
     if (!file) {
@@ -29,69 +224,8 @@ cJSON *load_json(const char *filename) {
     return json;
 }
 
-// Combine JSON files (inheritance)
-// cJSON *combine_json(cJSON *base_json, cJSON *board_json) {
-//     if (!base_json || !board_json) return NULL;
+// Main
 
-//     // Copiar as configurações do JSON base
-//     cJSON *combined_json = cJSON_Duplicate(base_json, 1);
-
-//     // Herdar as configurações do arquivo específico da placa
-//     cJSON *inherits = cJSON_GetObjectItem(board_json, "inherits");
-//     if (inherits && cJSON_IsString(inherits)) {
-//         // A chave "inherits" indica o nome do arquivo base
-//         printf("Inheriting configurations from: %s\n", inherits->valuestring);
-//         // Nesse caso, as configurações de "board" substituem ou complementam o que está no arquivo base
-//     }
-
-//     // Adicionar as configurações específicas da placa
-//     cJSON *uart_config = cJSON_GetObjectItem(board_json, "uart");
-//     if (uart_config) {
-//         cJSON_AddItemToObject(combined_json, "uart", cJSON_Duplicate(uart_config, 1));
-//     }
-
-//     return combined_json;
-// }
-
-// Automatic way to combine (not explored)
-/*cJSON *combine_json(cJSON *base_json, cJSON *board_json) {
-    if (!base_json || !board_json) return NULL;
-
-    // Copiar as configurações do JSON base
-    cJSON *combined_json = cJSON_Duplicate(base_json, 1);
-
-    // Verificar se há um campo "inherits" no JSON da placa (board_json)
-    cJSON *inherits = cJSON_GetObjectItem(board_json, "inherits");
-    if (inherits && cJSON_IsString(inherits)) {
-        // A chave "inherits" indica o nome do arquivo base
-        printf("Inheriting configurations from: %s\n", inherits->valuestring);
-        // Aqui você pode carregar o arquivo base indicado e combinar suas configurações automaticamente.
-    }
-
-    // Iterar sobre todas as chaves do JSON específico da placa (board_json)
-    cJSON *board_item = NULL;
-    cJSON_ArrayForEach(board_item, board_json) {
-        // Adicionar ou substituir as chaves do JSON base com as do JSON da placa
-        cJSON *existing_item = cJSON_GetObjectItem(combined_json, board_item->string);
-        if (existing_item) {
-            // Se a chave já existe no base_json, você pode decidir como combinar. Exemplo:
-            if (cJSON_IsObject(board_item)) {
-                // Se for um objeto, você pode fundir os objetos, por exemplo.
-                cJSON_ReplaceItemInObject(combined_json, board_item->string, cJSON_Duplicate(board_item, 1));
-            } else {
-                // Caso contrário, substitui diretamente
-                cJSON_ReplaceItemInObject(combined_json, board_item->string, cJSON_Duplicate(board_item, 1));
-            }
-        } else {
-            // Se não existir, adiciona diretamente
-            cJSON_AddItemToObject(combined_json, board_item->string, cJSON_Duplicate(board_item, 1));
-        }
-    }
-
-    return combined_json;
-}*/
-
-// Se uma chave já existir, ela é substituída pelo valor do board_json
 void merge_json_objects(cJSON *base, cJSON *overlay) {
     cJSON *overlay_item = NULL;
     cJSON_ArrayForEach(overlay_item, overlay) {
@@ -113,8 +247,7 @@ void merge_json_objects(cJSON *base, cJSON *overlay) {
     }
 }
 
-// Combina o JSON base com o JSON da placa usando a mesclagem recursiva
-cJSON *combine_json(cJSON *base_json, cJSON *board_json) {
+cJSON *combine_json(cJSON *base_json, cJSON *board_json){
     if (!base_json || !board_json)
         return NULL;
 
@@ -124,11 +257,24 @@ cJSON *combine_json(cJSON *base_json, cJSON *board_json) {
     return combined_json;
 }
 
-// Função para salvar a configuração do usuário em um arquivo JSON
-void save_user_config(const char *count, const char *trig, 
-    const char *dma, const char *channel, cJSON *uart_config) {
+void get_user_input(const char *prompt, char *buffer, size_t size) {
+    printf("%s", prompt);
+    fgets(buffer, size, stdin);
+    buffer[strcspn(buffer, "\n")] = '\0'; // Remove newline
+}
 
+void save_user_config(cJSON *board, cJSON *family, const char *count, const char *trig, 
+    const char *dma, const char *channel, cJSON *uart_config, const char *path_gen){
+        
     cJSON *user_config = cJSON_CreateObject();
+    
+    if (board) {
+        cJSON_AddItemToObject(user_config, "board", cJSON_Duplicate(board, 1));
+    }
+    if (family) {
+        cJSON_AddItemToObject(user_config, "family", cJSON_Duplicate(family, 1));
+    }
+
     cJSON_AddStringToObject(user_config, "timer_count", count);
     cJSON_AddStringToObject(user_config, "timer_trig", trig);
 
@@ -145,8 +291,15 @@ void save_user_config(const char *count, const char *trig,
     }
 
     // Write User Config JSON file
+
+    // char filename[256];
+    // snprintf(filename, sizeof(filename), "%s_config.json", path_gen);
+    unsigned int len = strlen(path_gen) + strlen(CONFIG_FILE) + 2;  // +2 para '\0' e "/"
+    char filename[len];
+    snprintf(filename, len, "%s/"CONFIG_FILE, path_gen);
+
     char *json_str = cJSON_Print(user_config);
-    FILE *file = fopen(USER_CONFIG_FILE, "w");
+    FILE *file = fopen(filename, "w");
     if (file) {
         fprintf(file, "%s", json_str);
         fclose(file);
@@ -155,129 +308,76 @@ void save_user_config(const char *count, const char *trig,
     cJSON_free(json_str);
     cJSON_Delete(user_config);
 
-    printf("\nConfiguration saved in '%s'\n", USER_CONFIG_FILE);
+    printf("\nConfiguration saved in '%s'\n", filename);
 }
-
-void print_json_busted(cJSON *json, const char * n_obj, const char * search_obj) {
-    cJSON *obj = cJSON_GetObjectItem(json, n_obj);
-    if (!obj) {
-        printf("No %s found!\n", n_obj);
-        return;
-    }
-
-    printf("\n\n%6s | %s            \n", n_obj, search_obj);
-    printf("----------------------------------\n");
-
-    cJSON *arr_obj;
-
-    cJSON_ArrayForEach(arr_obj, obj) {
-
-    
-        if (strstr(n_obj, "timers") != NULL) {
-            cJSON *period_obj = cJSON_GetObjectItem(arr_obj, "period");
-            if (period_obj && cJSON_IsNumber(period_obj)) {
-                printf("%6s (%s) | ", arr_obj->string, (period_obj->valueint == 0xffff) ? "16-bit" : "32-bit");
-            }
-        }
-        else {
-            printf("%6s | ", arr_obj->string);  
-        }
-
-        cJSON *arr_s_obj = cJSON_GetObjectItem(arr_obj, search_obj);
-        if (cJSON_IsArray(arr_s_obj)) {
-            int first = 1;
-            cJSON *s_obj;
-            cJSON_ArrayForEach(s_obj, arr_s_obj) {
-                if (!first) printf(", ");
-                printf("%-5s", s_obj->valuestring);
-                first = 0;
-            }
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
-
-void get_user_input(const char *prompt, char *buffer, size_t size) {
-    printf("%s", prompt);
-    fgets(buffer, size, stdin);
-    buffer[strcspn(buffer, "\n")] = '\0'; // Remove newline
-}
-
-
-
-typedef struct {
-    const char *t_name;
-    const char *t_board;
-    const char *t_path;
-    volatile unsigned char flag_log;
-    volatile unsigned char flag_manual;
-} TestInputs;
 
 int main(int argc, char *argv[]) {
     
-    if (argc < 4) {
-        printf("Usage: %s <test_name> <board_config_path> <test_path> [-flags]\n", argv[0]);
+    if (argc < 2) {
+        printf("Usage: %s  <board_config_path> <vendor_config_path> \n", argv[0]);
         printf(" -manual : choose peripherals\n -log : print logs during execution\n");
         return 1;
     }
-    
-    TestInputs s_test = {argv[1], argv[2], argv[3], 0, 0};
 
-    for (int i = 4; i < argc; i++) {
-        if (strcasecmp(argv[i], "-log") == 0) {
-            s_test.flag_log = 1;
-        } 
-        else if (strcasecmp(argv[i], "-manual") == 0) {
-            s_test.flag_manual = 1;
-        } 
-        else {
-            printf("Warning: Unknown flag %s ignored.\n", argv[i]);
-        }
+    sInputs input = {argv[1], argv[2], argv[3]};
+
+    // for (int i = 4; i < argc; i++) {
+    //     if (strcasecmp(argv[i], "-log") == 0) {
+    //         input.flag_log = 1;
+    //     } 
+    //     else if (strcasecmp(argv[i], "-manual") == 0) {
+    //         input.flag_manual = 1;
+    //     } 
+    //     else {
+    //         printf("Warning: Unknown flag %s ignored.\n", argv[i]);
+    //     }
+    // }
+    
+    cJSON *vendor_json = load_json(input.vendor);
+    if (!vendor_json) {
+        printf("Error loading board %s\n", input.vendor);
+        cJSON_Delete(vendor_json);
+        return 1;
     }
 
-    // Carregar o arquivo base de configuração
-    cJSON *base_json = load_json(VENDOR_JSON_FILE("stm32"));
-    if (!base_json) return 1;
-
-    // char board_config[64];
-    // snprintf(board_config, sizeof(board_config), "Configs/%s_config.json", s_test.t_board);
-    
     // Carregar a configuração específica da placa
-    cJSON *board_json = load_json(s_test.t_board);
+    cJSON *board_json = load_json(input.board);
     if (!board_json) {
-        printf("Error loading board-specific configuration\n");
-        cJSON_Delete(base_json);
+        printf("Error loading board %s\n", input.board);
+        cJSON_Delete(board_json);
         return 1;
     }
 
     // Combines 2 json files
-    cJSON *combined_json = combine_json(base_json, board_json);
+    cJSON *combined_json = combine_json(vendor_json, board_json);
 
-    // Presents JSON combine file (Helps visualization)
-    // char *combined_str = cJSON_Print(combined_json);
-    // printf("Combined Configuration:\n%s\n", combined_str);
-    // cJSON_free(combined_str);
-    
     char timer_trig[20], timer_count[20], dma[10], channel[10];
-    
-    print_json_busted(combined_json, "timers", "trigger");
+
+    TimerNode *timers = parse_timers(combined_json);
+    print_timers(timers);
+
     get_user_input("Timer count     (.:timX): ", timer_count, sizeof(timer_count));
     get_user_input("Timer trigger   (.:timX): ", timer_trig, sizeof(timer_trig));
-    
-    print_json_busted(combined_json, "dmas", "channel");
+
+    DmaNode *dmas = parse_dmas(combined_json);
+    print_dmas(dmas);
     
     get_user_input("DMA             (.:dmaX): ", dma, sizeof(dma));
     get_user_input("DMA channel (.:channelX): ", channel, sizeof(channel));
     
-
     cJSON *uart = cJSON_GetObjectItem(combined_json, "uart");
+    
+    cJSON *board  = cJSON_GetObjectItem(combined_json, "board");
+    cJSON *family = cJSON_GetObjectItem(combined_json, "family");
 
-    save_user_config(timer_count, timer_trig, dma, channel, uart);
+    save_user_config(board, family, timer_count, timer_trig, dma, channel, uart, input.path_gen);
 
-    // Delete Inst
+    
+    // Clean memory
+    free_timers(timers);
+    free_dmas(dmas);
     cJSON_Delete(combined_json);
+    cJSON_Delete(vendor_json);
     cJSON_Delete(board_json);
-    cJSON_Delete(base_json);
     return 0;
 }

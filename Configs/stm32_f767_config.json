@@ -1,12 +1,42 @@
 {   
     "inherits": "stm32_config.json",
-    "board": "STM32F767",
-    "family": "stm32f7xx",
+    
+    "vendor":   "stm32",
+    "board":    "STM32F767",
+    "family":   "stm32f7xx",
+    
+    
+    "build":{
+        
+        "alayer":               "stm32f7xx-hal-driver",
+        "startup_script":       "startup_stm32f767xx.s",
+        "linker_script":        "STM32F767ZITX_FLASH.ld",
+        "startup_script_path":  "cmsis-device-f7/Source/Templates/gcc",
+
+        "includes":{
+            "cachel":           "CMSIS_5/CMSIS/Core/Include/cachel1_armv7.h",
+            "cmsis_compiler":   "CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h",
+            "cmsis_gcc":        "CMSIS_5/CMSIS/Core/Include/cmsis_gcc.h",
+            "cmsis_version":    "CMSIS_5/CMSIS/Core/Include/cmsis_version.h",
+            "core_cm":          "CMSIS_5/CMSIS/Core/Include/core_cm7.h",
+            "mpu_arm":          "CMSIS_5/CMSIS/Core/Include/mpu_armv7.h",
+
+            "family":           "cmsis-device-f7/Include/stm32f7xx.h",
+            "board":            "cmsis-device-f7/Include/stm32f767xx.h",
+            "system":           "cmsis-device-f7/Include/system_stm32f7xx.h"
+        }
+    },
+
+    "openocd":{
+        "interface":        "stlink",
+        "target":           "stm32f7x"
+    },
+    
     "uart": {
         "instance": "USART3",
         "baudrate": 115200,
-        "tx_pin": "PD8",
-        "rx_pin": "PD9"
+        "tx_pin":   "PD8",
+        "rx_pin":   "PD9"
     },
 
     "timers": {

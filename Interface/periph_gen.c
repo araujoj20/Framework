@@ -50,36 +50,29 @@ const char* verify_board_temp(const char *board_fam){
     return NULL;
 }
 
-void generate_uart_config(const char *filename, const char *file_path) {
-
+cJSON *load_json(const char *filename) {
     FILE *file = fopen(filename, "r");
     if (!file) {
-        printf("Failed to open file %s for reading.\n", filename);
-        return;
+        printf("Error opening file: %s\n", filename);
+        return NULL;
     }
 
     fseek(file, 0, SEEK_END);
-    long file_size = ftell(file);
+    long length = ftell(file);
     fseek(file, 0, SEEK_SET);
 
-    char *json_string = (char *)malloc(file_size + 1);
-    if (!json_string) {
-        printf("Memory allocation failed.\n");
-        fclose(file);
-        return;
-    }
+    char *data = (char *)malloc(length + 1);
+    fread(data, 1, length, file);
+    data[length] = '\0';
+    fclose(file);
 
-    fread(json_string, 1, file_size, file);
-    json_string[file_size] = '\0'; 
+    cJSON *json = cJSON_Parse(data);
+    free(data);
+    return json;
+}
 
-    fclose(file); 
+void generate_uart_config(cJSON *root, const char *file_path) {
 
-    cJSON *root = cJSON_Parse(json_string);
-    if (root == NULL) {
-        printf("Failed to parse JSON.\n");
-        free(json_string);
-        return;
-    }
 
     // cJSON *uart = cJSON_GetObjectItem(root, "uart");
     // if (!cJSON_IsObject(uart)) {
@@ -163,8 +156,6 @@ void generate_uart_config(const char *filename, const char *file_path) {
         printf("Failed to open file %s for writing.\n", output_filename);
     }
 
-    cJSON_Delete(root);
-    free(json_string);
 }
 
 
@@ -175,6 +166,16 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    generate_uart_config(argv[1], argv[2]);
+    cJSON *root = load_json(argv[1]);
+    if (!root) {
+        printf("Error loading board %s\n", argv[1]);
+        cJSON_Delete(root);
+        return 1;
+    }
+
+    generate_uart_config(root, argv[2]);
+    
+    cJSON_Delete(root);
+
     return 0;
 }

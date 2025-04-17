@@ -1,12 +1,41 @@
 {
     "inherits": "stm32_config.json",
-    "board": "STM32F407",
-    "family": "stm32f4xx",
+
+    "vendor":   "stm32",
+    "board":    "STM32F407",
+    "family":   "stm32f4xx",
+    
+    
+    "build":{
+
+        "alayer":               "stm32f4xx-hal-driver",
+        "startup_script":       "startup_stm32f407xx.s",
+        "linker_script":        "STM32F407VGTX_FLASH.ld",
+        "startup_script_path":  "cmsis-device-f7/Source/Templates/gcc",
+
+        "includes":{
+            "cmsis_compiler":   "CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h",
+            "cmsis_gcc":        "CMSIS_5/CMSIS/Core/Include/cmsis_gcc.h",
+            "cmsis_version":    "CMSIS_5/CMSIS/Core/Include/cmsis_version.h",
+            "core_cm":          "CMSIS_5/CMSIS/Core/Include/core_cm4.h",
+            "mpu_arm":          "CMSIS_5/CMSIS/Core/Include/mpu_armv7.h",
+
+            "family":           "cmsis-device-f4/Include/stm32f4xx.h",
+            "board":            "cmsis-device-f4/Include/stm32f407xx.h",
+            "system":           "cmsis-device-f4/Include/system_stm32f4xx.h"
+        }
+    },
+
+    "openocd":{
+        "interface":        "stlink",
+        "target":           "stm32f4x"
+    },
+
     "uart": {
         "instance": "USART2",
         "baudrate": 115200,
-        "tx_pin": "PA2",
-        "rx_pin": "PA3"
+        "tx_pin":   "PA2",
+        "rx_pin":   "PA3"
     },
 
     "timers": {
