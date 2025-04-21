@@ -11,7 +11,7 @@
         "alayer":               "stm32f4xx-hal-driver",
         "startup_script":       "startup_stm32f407xx.s",
         "linker_script":        "STM32F407VGTX_FLASH.ld",
-        "startup_script_path":  "cmsis-device-f7/Source/Templates/gcc",
+        "startup_script_path":  "cmsis-device-f4/Source/Templates/gcc",
 
         "includes":{
             "cmsis_compiler":   "CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h",

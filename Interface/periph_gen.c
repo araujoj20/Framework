@@ -11,6 +11,8 @@
     #define UART_GPIO_ALTERNATE "GPIO_AF7_USART2"
 #elif defined(STM32L552)
     #define UART_GPIO_ALTERNATE "GPIO_AF8_LPUART1"
+#elif defined(STM32U575)
+    #define UART_GPIO_ALTERNATE "GPIO_AF7_USART1"
 #else
     #error "Unknown board configuration"
 #endif

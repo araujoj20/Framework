@@ -1,7 +1,45 @@
 {
     "inherits": "stm32_config.json",
-    "board": "STM32U575",
-    "family": "stm32u5xx",
+    
+    "vendor":   "stm32",
+    "board":    "STM32U575",
+    "family":   "stm32u5xx",
+
+    
+    "build":{
+        
+        "alayer":               "stm32u5xx-hal-driver",
+        "startup_script":       "startup_stm32u575xx.s",
+        "linker_script":        "STM32U575ZITXQ_FLASH.ld",
+        "startup_script_path":  "cmsis-device-u5/Source/Templates/gcc",
+
+        "includes":{
+            "cmsis_compiler":   "CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h",
+            "cmsis_gcc":        "CMSIS_5/CMSIS/Core/Include/cmsis_gcc.h",
+            "cmsis_version":    "CMSIS_5/CMSIS/Core/Include/cmsis_version.h",
+            "core_cm":          "CMSIS_5/CMSIS/Core/Include/core_cm33.h",
+            "mpu_arm":          "CMSIS_5/CMSIS/Core/Include/mpu_armv8.h",
+            "mbl":              "CMSIS_5/CMSIS/Core/Include/core_armv8mbl.h",
+            "mml":              "CMSIS_5/CMSIS/Core/Include/core_armv8mml.h",
+            "1mml":             "CMSIS_5/CMSIS/Core/Include/core_armv81mml.h",
+            "pac":              "CMSIS_5/CMSIS/Core/Include/pac_armv81.h",
+            "pmu":              "CMSIS_5/CMSIS/Core/Include/pmu_armv8.h",
+            "tz":               "CMSIS_5/CMSIS/Core/Include/tz_context.h",
+
+            "family":           "cmsis-device-u5/Include/stm32u5xx.h",
+            "board":            "cmsis-device-u5/Include/stm32u575xx.h",
+            "system":           "cmsis-device-u5/Include/system_stm32u5xx.h",
+            "partition":        "cmsis-device-u5/Include/partition_stm32u5xx.h"
+
+        }
+    },
+
+    "openocd":{
+        "interface":        "stlink",
+        "target":           "stm32u5x"
+    },
+
+
     "uart": {
         "instance": "USART1",
         "baudrate": 115200,

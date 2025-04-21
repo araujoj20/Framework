@@ -1,3 +1,0 @@
-/home/araujoj20/Documents/GitHub/Framework/Test/stm32/f7_new/Build/CMakeFiles/f7_new.dir
-/home/araujoj20/Documents/GitHub/Framework/Test/stm32/f7_new/Build/CMakeFiles/edit_cache.dir
-/home/araujoj20/Documents/GitHub/Framework/Test/stm32/f7_new/Build/CMakeFiles/rebuild_cache.dir

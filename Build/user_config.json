@@ -1,6 +1,6 @@
 {
-	"board":	"STM32F767",
-	"family":	"stm32f7xx",
+	"board":	"STM32F407",
+	"family":	"stm32f4xx",
 	"timer_count":	"",
 	"timer_trig":	"",
 	"dma":	{
@@ -9,9 +9,9 @@
 		}
 	},
 	"uart":	{
-		"instance":	"USART3",
+		"instance":	"USART2",
 		"baudrate":	115200,
-		"tx_pin":	"PD8",
-		"rx_pin":	"PD9"
+		"tx_pin":	"PA2",
+		"rx_pin":	"PA3"
 	}
 }
