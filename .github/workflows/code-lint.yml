@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - dev
+      - dev  # ou a branch que você preferir
   pull_request:
     branches:
       - main
@@ -49,4 +49,4 @@ jobs:
 
       - name: Lint C code with clang-tidy
         run: |
-          find . -name "*.c" -o -name "*.h" | xargs clang-tidy -checks=* -warnings-as-errors=*
+          find . -name "*.c" -o -name "*.h" | xargs clang-tidy -checks=* -warnings-as-errors=* -- -p ./compile_commands.json

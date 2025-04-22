@@ -1,0 +1,18 @@
+[
+  {
+    "directory": ".",
+    "file": "/Interface/interface.c",
+    "command": "gcc -I./cJSON -c Interface/interface.c -o Build/interface.o"
+  }
+  ,
+  {
+    "directory": ".",
+    "file": "/Interface/periph_gen.c",
+    "command": "gcc -I./cJSON -DSTM32F767 -c Interface/periph_gen.c -o Build/periph_gen.o"
+  },
+  {
+    "directory": ".",
+    "file": "/cJSON/cJSON.c",
+    "command": "gcc -I./cJSON -c cJSON/cJSON.c -o Build/cJSON.o"
+  }
+]
