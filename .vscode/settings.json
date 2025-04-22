@@ -3,6 +3,7 @@
         "string.h": "c",
         "cjson.h": "c",
         "secure_interface.h": "c",
-        "secure_nsc.h": "c"
+        "secure_nsc.h": "c",
+        "stm32l5xx_hal.h": "c"
     }
 }

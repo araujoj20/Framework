@@ -1,3 +1,21 @@
 [submodule "cJSON"]
 	path = cJSON
 	url = https://github.com/DaveGamble/cJSON.git
+[submodule "Generator/stm32/drivers/CMSIS_5"]
+	path = Generator/stm32/drivers/CMSIS_5
+	url = https://github.com/ARM-software/CMSIS_5.git
+[submodule "Generator/stm32/drivers/cmsis-device-f4"]
+	path = Generator/stm32/drivers/cmsis-device-f4
+	url = https://github.com/STMicroelectronics/cmsis_device_f4.git
+[submodule "Generator/stm32/drivers/cmsis-device-f7"]
+	path = Generator/stm32/drivers/cmsis-device-f7
+	url = https://github.com/STMicroelectronics/cmsis_device_f7.git
+[submodule "Generator/stm32/drivers/cmsis-device-l5"]
+	path = Generator/stm32/drivers/cmsis-device-l5
+	url = https://github.com/STMicroelectronics/cmsis_device_l5.git
+[submodule "Generator/stm32/drivers/cmsis-device-u5"]
+	path = Generator/stm32/drivers/cmsis-device-u5
+	url = https://github.com/STMicroelectronics/cmsis_device_u5.git
+[submodule "Runner/openocd"]
+	path = Runner/openocd
+	url = https://github.com/openocd-org/openocd.git

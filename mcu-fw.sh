@@ -5,6 +5,28 @@ usage(){
     exit 1
 }
 
+copy_drivers() {
+    local include_path="$1"
+    local dest_path="$2"
+
+    include_path=$(realpath "$include_path")
+
+    # Extract folder name after "drivers/"
+    parent_dir=$(echo "$include_path" | sed -n 's|.*/drivers/\([^/]*\)/.*Include.*|\1|p')
+
+    # Include folder not found
+    if [[ -z "$parent_dir" ]]; then
+        echo "Fail obtaining Include Folder: $include_path"
+        return
+    fi
+
+    mkdir -p "$dest_path/$parent_dir/Include"
+
+    cp -r "$include_path/"* "$dest_path/$parent_dir/Include"
+
+}
+
+
 if [ "$#" -lt 3 ]; then
     usage
 fi
@@ -70,7 +92,8 @@ alayer=$(               jq -r '.build.alayer'               "$board_config_path"
 startup_script=$(       jq -r '.build.startup_script'       "$board_config_path")
 startup_script_path=$(  jq -r '.build.startup_script_path'  "$board_config_path")
 linker_script=$(        jq -r '.build.linker_script'        "$board_config_path")
-inc_extra=$(            jq -r '.build.includes[]'           "$board_config_path")
+drivers=$(              jq -r '.build.drivers[]'            "$board_config_path")
+#inc_extra=$(            jq -r '.build.includes[]'           "$board_config_path")
 ocd_interface=$(        jq -r '.openocd.interface'          "$board_config_path")
 ocd_target=$(           jq -r '.openocd.target'             "$board_config_path")
 
@@ -104,21 +127,27 @@ if [[ " ${steps[@]} " =~ " all " || " ${steps[@]} " =~ " generator " ]]; then
     mkdir -p "$test_path/$test_name/Core/Src"
 
     cp  $build/*.h                                  "$test_path/$test_name/Core/Inc"
+    cp  $build/*.c                                  "$test_path/$test_name/Core/Src"
 
+    cp  $generator/$vendor/aux_files/*.h            "$test_path/$test_name/Core/Inc"
     cp  $generator/$vendor/aux_files/*.c            "$test_path/$test_name/Core/Src"
-    cp  $generator/$vendor/aux_files/$family/*.c    "$test_path/$test_name/Core/Src"
     cp  $generator/$vendor/aux_files/$family/*.h    "$test_path/$test_name/Core/Inc"
+    cp  $generator/$vendor/aux_files/$family/*.c    "$test_path/$test_name/Core/Src"
 
-    mkdir -p "$test_path/$test_name/$alayer"
-    cp -r   "$generator/$vendor/alayer/$alayer/Src" "$test_path/$test_name/$alayer/"
-    cp -r   "$generator/$vendor/alayer/$alayer/Inc" "$test_path/$test_name/$alayer/"
+    mkdir -p "$test_path/$test_name/Drivers/$alayer"
+    cp -r   "$generator/$vendor/alayer/$alayer/Inc" "$test_path/$test_name/Drivers/$alayer/"
+    cp -r   "$generator/$vendor/alayer/$alayer/Src" "$test_path/$test_name/Drivers/$alayer/"
 
-    cp      "$generator/$vendor/inc/$startup_script_path/$startup_script"   "$test_path/$test_name"
+    cp      "$generator/$vendor/drivers/$startup_script_path/$startup_script"   "$test_path/$test_name"
     cp      "$generator/$vendor/lscript/$linker_script"   "$test_path/$test_name"
 
-    mkdir -p "$test_path/$test_name/Includes"
-    for inc_add in $inc_extra; do
-        cp "$generator/$vendor/inc/$inc_add" "$test_path/$test_name/Includes"
+#    mkdir -p "$test_path/$test_name/Includes"
+#    for inc_add in $inc_extra; do
+#        cp "$generator/$vendor/drivers/$inc_add" "$test_path/$test_name/Includes"
+#    done
+
+    for drivers_path in $drivers; do
+        copy_drivers "$generator/$vendor/drivers/$drivers_path" "$test_path/$test_name/Drivers"
     done
 
     cp $runner/cmake/$vendor/CMakeLists.txt         "$test_path/$test_name"

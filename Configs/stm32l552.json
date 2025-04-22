@@ -1,0 +1,68 @@
+{
+    "inherits": "stm32.json",
+    
+    "vendor":   "stm32",
+    "board":    "STM32L552",
+    "family":   "stm32l5xx",
+
+    "build":{
+
+        "alayer":               "stm32l5xx-hal-driver",
+        "startup_script":       "startup_stm32l552xx.s",
+        "linker_script":        "STM32L552ZETXQ_FLASH.ld",
+        "startup_script_path":  "cmsis-device-l5/Source/Templates/gcc",
+
+        "drivers":{
+            "cmsis_5":           "CMSIS_5/CMSIS/Core/Include/",
+            "cmsis-device":      "cmsis-device-l5/Include/"
+        }
+    },
+
+    "openocd":{
+        "interface":        "stlink",
+        "target":           "stm32l5x"
+    },
+
+    "uart": {
+        "instance": "LPUART1",
+        "baudrate": 115200,
+        "tx_pin": "PG7",
+        "rx_pin": "PG8"
+    },
+
+    
+    "timers": {
+        "tim1": {
+            "period": 65535,
+            "trigger": ["tim15", "tim2", "tim3", "tim4"]
+        },
+        "tim8": {
+            "period": 65535,
+            "trigger": ["tim1", "tim2", "tim4", "tim5"]
+        },
+        "tim2": {
+            "period": 4294967295,
+            "trigger": ["tim1", "tim8", "tim3", "tim4"]
+        },
+        "tim3": {
+            "period": 65535,
+            "trigger": ["tim1", "tim2", "tim15", "tim4"]
+        },
+        "tim4": {
+            "period": 65535,
+            "trigger": ["tim1", "tim2", "tim3", "tim8"]
+        },
+        "tim5": {
+            "period": 4294967295,
+            "trigger": ["tim2", "tim3", "tim4", "tim8"]
+        }
+
+        
+        ,
+        "tim15": {
+            "period": 65535,
+            "trigger": ["tim1", "tim3", "tim16_OC1", "tim17_OC1"]
+        }
+
+    }
+}

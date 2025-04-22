@@ -1,3 +1,0 @@
-/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_busted/Build/CMakeFiles/l5_busted.dir
-/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_busted/Build/CMakeFiles/edit_cache.dir
-/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_busted/Build/CMakeFiles/rebuild_cache.dir
