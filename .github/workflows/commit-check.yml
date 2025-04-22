@@ -1,0 +1,25 @@
+name: Check Commits with Gitlint
+
+on:
+  push:
+    branches:
+      - main
+      - dev  # ou a branch que você estiver usando
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint-commits:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Install Gitlint
+        run: |
+          python -m pip install gitlint
+
+      - name: Run Gitlint
+        run: gitlint

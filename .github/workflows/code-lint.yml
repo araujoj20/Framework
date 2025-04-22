@@ -1,0 +1,52 @@
+name: Lint Code
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      # Lint JSON files
+      - name: Install jq (JSON linter)
+        run: sudo apt-get install jq
+
+      - name: Lint JSON files
+        run: |
+          find . -name "*.json" -exec jq empty {} \; || exit 1
+
+      # Lint Python files
+      - name: Install Python linters
+        run: |
+          python -m pip install --upgrade pip
+          pip install pylint
+
+      - name: Lint Python code
+        run: |
+          find . -name "*.py" -exec pylint {} \;
+
+      # Lint C files using cppcheck
+      - name: Install cppcheck
+        run: sudo apt-get install cppcheck
+
+      - name: Lint C code with cppcheck
+        run: |
+          cppcheck --enable=all --inconclusive --max-configs=10000 .
+
+      # Optional: Lint C code with clang-tidy if needed
+      - name: Install clang-tidy
+        run: sudo apt-get install clang-tidy
+
+      - name: Lint C code with clang-tidy
+        run: |
+          find . -name "*.c" -o -name "*.h" | xargs clang-tidy -checks=* -warnings-as-errors=*
