@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - dev  # ou a branch que você preferir
   pull_request:
     branches:
       - main
@@ -15,10 +14,10 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Lint JSON files
-      - name: Install jq (JSON linter)
+      - name: Install JSON linters
         run: sudo apt-get install jq
 
       - name: Lint JSON files
@@ -43,7 +42,7 @@ jobs:
         run: |
           cppcheck --enable=all --inconclusive --max-configs=10000 .
 
-      # Optional: Lint C code with clang-tidy if needed
+      # Lint C code with clang-tidy (todo: now working for now)
       - name: Install clang-tidy
         run: sudo apt-get install clang-tidy
 

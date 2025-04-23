@@ -1,6 +1,9 @@
 [submodule "cJSON"]
 	path = cJSON
 	url = https://github.com/DaveGamble/cJSON.git
+[submodule "Runner/openocd"]
+	path = Runner/openocd
+	url = https://github.com/openocd-org/openocd.git
 [submodule "Generator/stm32/drivers/CMSIS_5"]
 	path = Generator/stm32/drivers/CMSIS_5
 	url = https://github.com/ARM-software/CMSIS_5.git
@@ -16,6 +19,15 @@
 [submodule "Generator/stm32/drivers/cmsis-device-u5"]
 	path = Generator/stm32/drivers/cmsis-device-u5
 	url = https://github.com/STMicroelectronics/cmsis_device_u5.git
-[submodule "Runner/openocd"]
-	path = Runner/openocd
-	url = https://github.com/openocd-org/openocd.git
+[submodule "Generator/stm32/alayer/stm32f4xx-hal-driver"]
+	path = Generator/stm32/alayer/stm32f4xx-hal-driver
+	url = https://github.com/STMicroelectronics/stm32f4xx-hal-driver
+[submodule "Generator/stm32/alayer/stm32f7xx-hal-driver"]
+	path = Generator/stm32/alayer/stm32f7xx-hal-driver
+	url = https://github.com/STMicroelectronics/stm32f7xx-hal-driver
+[submodule "Generator/stm32/alayer/stm32l5xx-hal-driver"]
+	path = Generator/stm32/alayer/stm32l5xx-hal-driver
+	url = https://github.com/STMicroelectronics/stm32l5xx-hal-driver
+[submodule "Generator/stm32/alayer/stm32u5xx-hal-driver"]
+	path = Generator/stm32/alayer/stm32u5xx-hal-driver
+	url = https://github.com/STMicroelectronics/stm32u5xx-hal-driver
