@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug Interface with args",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/Build/interface",
+        "args": [
+            "${workspaceFolder}/Configs/stm32.json",
+            "${workspaceFolder}/Configs/stm32f767.json",
+            "${workspaceFolder}/Build/"
+        ],
+        "stopAtEntry": false,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "miDebuggerPath": "/usr/bin/gdb",
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          }
+        ]
+      }
+    ]
+  }
+  

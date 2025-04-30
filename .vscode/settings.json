@@ -4,6 +4,11 @@
         "cjson.h": "c",
         "secure_interface.h": "c",
         "secure_nsc.h": "c",
-        "stm32l5xx_hal.h": "c"
-    }
+        "stm32l5xx_hal.h": "c",
+        "main.h": "c",
+        "stm32f7xx_clock.h": "c",
+        "stm32f7xx_hal.h": "c",
+        "stm32f4xx_hal.h": "c"
+    },
+    "C_Cpp.default.compilerPath": "/usr/bin/gcc"
 }

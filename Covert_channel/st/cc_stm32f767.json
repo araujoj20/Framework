@@ -1,0 +1,37 @@
+{
+	"inherits": "stm32.json",
+    
+    "vendor":   "st",
+    "board":    "STM32F767",
+    "family":   "stm32f7xx",
+    
+    "build":{
+        
+        "alayer":               "stm32f7xx-hal-driver",
+        "startup_script":       "startup_stm32f767xx.s",
+        "linker_script":        "STM32F767ZITX_FLASH.ld",
+        "startup_script_path":  "cmsis-device-f7/Source/Templates/gcc",
+
+        "drivers":{
+            "cmsis_5":           "CMSIS_5/CMSIS/Core/Include/",
+            "cmsis-device":      "cmsis-device-f7/Include/"
+        }
+    },
+
+    "openocd":{
+        "interface":        "stlink",
+        "target":           "stm32f7x"
+    },
+
+    "uart": {
+        "instance": "USART3",
+        "baudrate": 115200,
+        "tx_pin":   "PD8",
+        "rx_pin":   "PD9"
+    },
+
+	"dma":	{
+		"name":	    "DMA2",
+		"stream":	"Stream1"
+	}
+}

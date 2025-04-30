@@ -1,7 +1,7 @@
 {   
     "inherits": "stm32.json",
     
-    "vendor":   "stm32",
+    "vendor":   "st",
     "board":    "STM32F767",
     "family":   "stm32f7xx",
     
