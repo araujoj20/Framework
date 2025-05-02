@@ -1,0 +1,5 @@
+"Test/stm32//f7_cc/Results/STM32F767_contention_samples.txt" is recognised as an observation file.
+Estimated capacity: 6.0815 (out of possible  8.000 bits)
+  Between 6.0815 and 6.0815 with 95% confidence
+  With 95% confidence, if leakage (w/o correction) < 2.7926, we may consider no information is leaked.
+There is a leak.

@@ -1,7 +1,9 @@
 import sys
+import re
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt 
+from io import StringIO
 from   matplotlib.colors import LinearSegmentedColormap
 from   matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
@@ -174,10 +176,10 @@ def pruned_matrix_isolate_paths():
                     cmap=my_cmap_r)
     
     plt.show()
-    
-def ch_matrix(board):
-    path_in = f"./results_ch_matrix/{board}_ch_matrix.txt"
-    path_out = f"./results_ch_matrix/{board}_ch_matrix.png"
+
+def ch_matrix(board, r_file_path):
+    path_in = r_file_path
+    path_out = f"{test_path}/{board}_ch_matrix.png"
     data = np.loadtxt(path_in, delimiter="|")
     size = int(len(data[0]))
     
@@ -213,283 +215,29 @@ def ch_matrix(board):
 
     plt.savefig(path_out, dpi=500)
     plt.show()
-    
-def ch_matrix_4_ST():
-    
-    data1 = np.loadtxt("./results_ch_matrix/STM32L552_ch_matrix.txt", delimiter="|")
-    data2 = np.loadtxt("./results_ch_matrix/STM32L073_ch_matrix.txt", delimiter="|")
-    data3 = np.loadtxt("./results_ch_matrix/STM32L412_ch_matrix.txt", delimiter="|")
-    data4 = np.loadtxt("./results_ch_matrix/STM32F767_ch_matrix.txt", delimiter="|")
-    size1 = int(len(data1[0]))
-    size2 = int(len(data2[0]))
-    size3 = int(len(data3[0]))
-    size4 = int(len(data4[0]))
-    
-    my_cmap, my_cmap_r = define_pallette("black", "#E2DEDE")
 
-    y1 = np.zeros(size1)
-    y2 = np.zeros(size2)
-    y3 = np.zeros(size3)
-    y4 = np.zeros(size4)
-    # delete 10 in 10 elements in y
-    step = 40
-    for i in range(1, size1, step):
-        y1[i] = data1[0][i]
-    
-    for i in range(1, size2, int(step)):
-        y2[i] = data2[0][i]
-        
-    for i in range(1, size3, int(step)):
-        y3[i] = data3[0][i]
-    
-    for i in range(1, size4, int(step)):
-        y4[i] = data4[0][i]
-        
-    
-    y1 = y1[y1 != 0]
-    y1 = y1.astype(int)
-    # insert dummy value, because heatmeap ignores first value
-    y1 = np.insert(y1, 0, 0)
-    
-    y2 = y2[y2 != 0]
-    y2 = y2.astype(int)
-    # insert dummy value, because heatmeap ignores first value
-    y2 = np.insert(y2, 0, 0)
-    
-    y3 = y3[y3 != 0]
-    y3 = y3.astype(int)
-    # insert dummy value, because heatmeap ignores first value
-    y3 = np.insert(y3, 0, 0)
-    
-    y4 = y4[y4 != 0 ]
-    y4 = y4.astype(int)
-    # insert dummy value, because heatmeap ignores first value
-    y4 = np.insert(y4, 0, 0)
-    
-    # delete first row
-    data1 = np.delete(data1, 0, 0) # delete axis = x, row = 0
-     # delete first column
-    data1 = np.delete(data1, 0, 1) # delete axis = y, column = 0
-    
-    # delete first row
-    data2 = np.delete(data2, 0, 0) # delete axis = x, row = 0
-     # delete first column
-    data2 = np.delete(data2, 0, 1) # delete axis = y, column = 0
-    
-    # delete first row
-    data3 = np.delete(data3, 0, 0) # delete axis = x, row = 0
-     # delete first column
-    data3 = np.delete(data3, 0, 1) # delete axis = y, column = 0
-    
-    # delete first row
-    data4 = np.delete(data4, 0, 0) # delete axis = x, row = 0
-     # delete first column
-    data4 = np.delete(data4, 0, 1) # delete axis = y, column = 0
-    
-    
-    fig = plt.figure(constrained_layout=True)
-    fig.set_size_inches(12, 8)
-    axs = fig.subplots(nrows=2, ncols=2)
-    
-    ax =  sns.heatmap( 
-                np.transpose(data1), 
-                cbar=True,
-                xticklabels=20,
-                vmin=0,
-                vmax=1,
-                ax=axs[0][0],
-                cmap="rocket") 
-    ax.yaxis.set_major_locator(MultipleLocator(step))
-    ax.set_yticklabels(y1)
-    ax.invert_yaxis()
-    ax.set_title("STM32L552", fontsize=18)
-    # ax.set_title("Board " + str(0*2+0+1), fontsize=18)
 
-    ax =  sns.heatmap( 
-                np.transpose(data2), 
-                cbar=True,
-                xticklabels=20,
-                vmin=0,
-                vmax=1,
-                ax=axs[0][1],
-                cmap="rocket") 
-    ax.yaxis.set_major_locator(MultipleLocator(step))
-    ax.set_yticklabels(y2)
-    ax.invert_yaxis()
-    ax.set_title("STM32L073", fontsize=18)
-    # ax.set_title("Board " + str(0*2+1+1), fontsize=18)
-    
-    ax =  sns.heatmap( 
-                np.transpose(data3), 
-                cbar=True,
-                xticklabels=20,
-                vmin=0,
-                vmax=1,
-                ax=axs[1][0],
-                cmap="rocket") 
-    ax.yaxis.set_major_locator(MultipleLocator(step))
-    ax.set_yticklabels(y3)
-    ax.invert_yaxis()
-    ax.set_title("STM32L412", fontsize=18)
-    # ax.set_title("Board " + str(1*2+0+1), fontsize=18)
-    
-    ax =  sns.heatmap( 
-                np.transpose(data4), 
-                cbar=True,
-                xticklabels=20,
-                vmin=0,
-                vmax=1,
-                ax=axs[1][1],
-                cmap="rocket") 
-    ax.yaxis.set_major_locator(MultipleLocator(step))
-    ax.set_yticklabels(y4)
-    ax.invert_yaxis()
-    ax.set_title("STM32F767", fontsize=18)
-    # ax.set_title("Board " + str(1*2+1+1), fontsize=18)
+def clean_ch_matrix(path):
+    with open(path, "r") as f:
+        lines = f.readlines()
 
-    plt.savefig('./results_ch_matrix/ST_ch_matrix.png', dpi=500)
-    plt.show()
+    if len(lines) < 3:
+        raise ValueError("Ficheiro tem menos de 3 linhas")
 
-def ch_matrix_4_MC():
-    
-    data1 = np.loadtxt("./results_ch_matrix/PIC18_ch_matrix.txt", delimiter="|")
-    data2 = np.loadtxt("./results_ch_matrix/SAMD21_ch_matrix.txt", delimiter="|")
-    data3 = np.loadtxt("./results_ch_matrix/SAML11_ch_matrix.txt", delimiter="|")
-    data4 = np.loadtxt("./results_ch_matrix/SAME54_ch_matrix.txt", delimiter="|")
-    size1 = int(len(data1[0]))
-    size2 = int(len(data2[0]))
-    size3 = int(len(data3[0]))
-    size4 = int(len(data4[0]))
-    
-    my_cmap, my_cmap_r = define_pallette("black", "#E2DEDE")
+    lines = lines[2:-5]
 
-    y1 = np.zeros(size1)
-    y2 = np.zeros(size2)
-    y3 = np.zeros(size3)
-    y4 = np.zeros(size4)
-    # delete 10 in 10 elements in y
-    step = 40
-    for i in range(1, size1, step):
-        y1[i] = data1[0][i]
-    
-    for i in range(1, size2, int(step)):
-        y2[i] = data2[0][i]
-        
-    for i in range(1, size3, int(step)):
-        y3[i] = data3[0][i]
-    
-    for i in range(1, size4, int(step)):
-        y4[i] = data4[0][i]
-        
-    
-    y1 = y1[y1 != 0]
-    y1 = y1.astype(int)
-    # insert dummy value, because heatmeap ignores first value
-    y1 = np.insert(y1, 0, 0)
-    
-    y2 = y2[y2 != 0]
-    y2 = y2.astype(int)
-    # insert dummy value, because heatmeap ignores first value
-    y2 = np.insert(y2, 0, 0)
-    
-    y3 = y3[y3 != 0]
-    y3 = y3.astype(int)
-    # insert dummy value, because heatmeap ignores first value
-    y3 = np.insert(y3, 0, 0)
-    
-    y4 = y4[y4 != 0 ]
-    y4 = y4.astype(int)
-    # insert dummy value, because heatmeap ignores first value
-    y4 = np.insert(y4, 0, 0)
-    
-    # delete first row
-    data1 = np.delete(data1, 0, 0) # delete axis = x, row = 0
-     # delete first column
-    data1 = np.delete(data1, 0, 1) # delete axis = y, column = 0
-    
-    # delete first row
-    data2 = np.delete(data2, 0, 0) # delete axis = x, row = 0
-     # delete first column
-    data2 = np.delete(data2, 0, 1) # delete axis = y, column = 0
-    
-    # delete first row
-    data3 = np.delete(data3, 0, 0) # delete axis = x, row = 0
-     # delete first column
-    data3 = np.delete(data3, 0, 1) # delete axis = y, column = 0
-    
-    # delete first row
-    data4 = np.delete(data4, 0, 0) # delete axis = x, row = 0
-     # delete first column
-    data4 = np.delete(data4, 0, 1) # delete axis = y, column = 0
-    
-    
-    fig = plt.figure(constrained_layout=True)
-    fig.set_size_inches(12, 8)
-    axs = fig.subplots(nrows=2, ncols=2)
-    
-    ax =  sns.heatmap( 
-                np.transpose(data1), 
-                cbar=True,
-                xticklabels=20,
-                vmin=0,
-                vmax=1,
-                ax=axs[0][0],
-                cmap="rocket") 
-    ax.yaxis.set_major_locator(MultipleLocator(step))
-    ax.set_yticklabels(y1)
-    ax.invert_yaxis()
-    ax.set_title("PIC18", fontsize=18)
-    # ax.set_title("Board " + str(0*2+0+1), fontsize=18)
+    lines[0] = re.sub(r'^.*?\|', '0|', lines[0])
 
-    ax =  sns.heatmap( 
-                np.transpose(data2), 
-                cbar=True,
-                xticklabels=20,
-                vmin=0,
-                vmax=1,
-                ax=axs[0][1],
-                cmap="rocket") 
-    ax.yaxis.set_major_locator(MultipleLocator(step))
-    ax.set_yticklabels(y2)
-    ax.invert_yaxis()
-    ax.set_title("SAMD21", fontsize=18)
-    # ax.set_title("Board " + str(0*2+1+1), fontsize=18)
-    
-    ax =  sns.heatmap( 
-                np.transpose(data3), 
-                cbar=True,
-                xticklabels=20,
-                vmin=0,
-                vmax=1,
-                ax=axs[1][0],
-                cmap="rocket") 
-    ax.yaxis.set_major_locator(MultipleLocator(step))
-    ax.set_yticklabels(y3)
-    ax.invert_yaxis()
-    ax.set_title("SAML11", fontsize=18)
-    # ax.set_title("Board " + str(1*2+0+1), fontsize=18)
-    
-    ax =  sns.heatmap( 
-                np.transpose(data4), 
-                cbar=True,
-                xticklabels=20,
-                vmin=0,
-                vmax=1,
-                ax=axs[1][1],
-                cmap="rocket") 
-    ax.yaxis.set_major_locator(MultipleLocator(step))
-    ax.set_yticklabels(y4)
-    ax.invert_yaxis()
-    ax.set_title("SAME54", fontsize=18)
-    # ax.set_title("Board " + str(1*2+1+1), fontsize=18)
+    return lines
 
-    plt.savefig('./results_ch_matrix/MC_ch_matrix.png', dpi=500)
-    plt.show()
-    
-if len(sys.argv) < 2:
+if len(sys.argv) < 3:
     print("Insufficient command-line arguments!")
-    print("Usage: python heatmap.py [trace | pruned_matrix | pruned_matrix_paths | ch_matrix]")
+    print("Usage: python heatmap.py [trace | pruned_matrix | pruned_matrix_paths | ch_matrix] [test_path]")
 else:
+
+    board_in  = sys.argv[2]
+    test_path = sys.argv[3]
+
     if sys.argv[1] == "trace":
         trace()
         # N_ACTIONS = int(sys.argv[2])
@@ -507,17 +255,10 @@ else:
             print("vendor = ST || MC || SL || NXP || GD")
         else:
             if sys.argv[1] == "ch_matrix":
-                # ch_matrix()
-                if sys.argv[2] == "ST":
-                    ch_matrix_4_ST()
-                elif sys.argv[2] == "MC": 
-                    ch_matrix_4_MC() 
-                elif sys.argv[2] == "GD":
-                    ch_matrix("GD32VF103") 
-                elif sys.argv[2] == "NXP":
-                    ch_matrix("LPC55S69") 
-                elif sys.argv[2] == "SL":
-                    ch_matrix("EFM32GG") 
-                else:
-                    ch_matrix(sys.argv[2])
-                    #print("Vendor not supported!")
+                
+                c_ch_matrix = clean_ch_matrix(f"{test_path}/{board_in}_ch_matrix.txt")                
+                content = "".join(c_ch_matrix)
+                file_buffer = StringIO(content)
+                ch_matrix(board_in, file_buffer)
+                exit
+                #print("Vendor not supported!")

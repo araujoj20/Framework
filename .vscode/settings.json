@@ -8,7 +8,12 @@
         "main.h": "c",
         "stm32f7xx_clock.h": "c",
         "stm32f7xx_hal.h": "c",
-        "stm32f4xx_hal.h": "c"
+        "stm32f4xx_hal.h": "c",
+        "covert_channel.h": "c",
+        "*.j2": "c",
+        "array": "c",
+        "string_view": "c",
+        "initializer_list": "c"
     },
     "C_Cpp.default.compilerPath": "/usr/bin/gcc"
 }

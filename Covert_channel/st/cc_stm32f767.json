@@ -33,5 +33,11 @@
 	"dma":	{
 		"name":	    "DMA2",
 		"stream":	"Stream1"
-	}
+	},
+
+    "mem_map":  {
+        "contention":   "0x20020000",
+        "no_contention":"0x20000000"
+    }
+
 }

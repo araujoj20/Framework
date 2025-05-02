@@ -1,0 +1,5 @@
+"Test/stm32//l5_cc_final/Results/STM32L552_contention_samples.txt" is recognised as an observation file.
+Estimated capacity: 0.0 (out of possible  8.000 bits)
+  Between 0.0 and 0.0027 with 95% confidence
+  With 95% confidence, if leakage (w/o correction) < 29.3348, we may consider no information is leaked.
+No leak detected.

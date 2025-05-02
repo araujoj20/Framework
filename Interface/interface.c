@@ -139,7 +139,7 @@ DmaNode *parse_dmas(cJSON *root) {
         new_dma->channels = NULL;
         new_dma->next = NULL;
 
-        cJSON *channel_arr = cJSON_GetObjectItem(dma, "channel");
+        cJSON *channel_arr = cJSON_GetObjectItem(dma, "stream");
         if (channel_arr && cJSON_IsArray(channel_arr)) {
             ChannelNode *ch_tail = NULL;
             cJSON *ch;
@@ -171,7 +171,7 @@ DmaNode *parse_dmas(cJSON *root) {
 
 
 void print_dmas(DmaNode *head) {
-    printf("\n%-10s | Channels\n", "DMA");
+    printf("\n%-10s | Streams\n", "DMA");
     printf("-------------------------------\n");
 
     for (DmaNode *curr = head; curr != NULL; curr = curr->next) {
@@ -264,7 +264,7 @@ void get_user_input(const char *prompt, char *buffer, size_t size) {
 }
 
 void save_user_config(cJSON *board, cJSON *family, const char *count, const char *trig, 
-    const char *dma, const char *channel, cJSON *uart_config, const char *path_gen){
+    const char *dma, const char *stream, cJSON *uart_config, const char *path_gen){
         
     cJSON *user_config = cJSON_CreateObject();
     
@@ -280,11 +280,11 @@ void save_user_config(cJSON *board, cJSON *family, const char *count, const char
 
     // Create DMA object
     cJSON *dma_obj = cJSON_CreateObject();
-    cJSON *dma_channel = cJSON_CreateObject();
-    cJSON_AddStringToObject(dma_channel, "channel", channel);
-    cJSON_AddItemToObject(dma_obj, dma, dma_channel);
 
+    cJSON_AddStringToObject(dma_obj, "name", dma);
+    cJSON_AddStringToObject(dma_obj, "stream", stream);
     cJSON_AddItemToObject(user_config, "dma", dma_obj);
+
 
     if (uart_config) {
         cJSON_AddItemToObject(user_config, "uart", cJSON_Duplicate(uart_config, 1));
@@ -351,7 +351,7 @@ int main(int argc, char *argv[]) {
     // Combines 2 json files
     cJSON *combined_json = combine_json(vendor_json, board_json);
 
-    char timer_trig[20], timer_count[20], dma[10], channel[10];
+    char timer_trig[20], timer_count[20], dma[10], stream[10];
 
     TimerNode *timers = parse_timers(combined_json);
     print_timers(timers);
@@ -363,14 +363,14 @@ int main(int argc, char *argv[]) {
     print_dmas(dmas);
     
     get_user_input("DMA             (.:dmaX): ", dma, sizeof(dma));
-    get_user_input("DMA channel (.:channelX): ", channel, sizeof(channel));
+    get_user_input("DMA stream (.:stream): ", stream, sizeof(stream));
     
     cJSON *uart = cJSON_GetObjectItem(combined_json, "uart");
     
     cJSON *board  = cJSON_GetObjectItem(combined_json, "board");
     cJSON *family = cJSON_GetObjectItem(combined_json, "family");
 
-    save_user_config(board, family, timer_count, timer_trig, dma, channel, uart, input.path_gen);
+    save_user_config(board, family, timer_count, timer_trig, dma, stream, uart, input.path_gen);
 
     
     // Clean memory

@@ -1,0 +1,16 @@
+{
+	"board":	"STM32F767",
+	"family":	"stm32f7xx",
+	"timer_count":	"",
+	"timer_trig":	"",
+	"dma":	{
+		"stream":	"Stream1",
+		"name":		"DMA1"
+	},
+	"uart":	{
+		"instance":	"USART3",
+		"baudrate":	115200,
+		"tx_pin":	"PD8",
+		"rx_pin":	"PD9"
+	}
+}

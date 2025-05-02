@@ -7,7 +7,6 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 
-#include "stm32f4xx_clock.h"
 #include "main.h"
 
 void SystemClock_Config(void);

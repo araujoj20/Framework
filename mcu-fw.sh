@@ -153,11 +153,30 @@ covert_channel(){
     
     gcc -g3 $interface/dma_gen.c    -o $build/dma_gen       "$fw_dir/cJSON/cJSON.c"     -I"$fw_dir/cJSON" -D "COVERT_CHANNEL"
 
-    "$build/dma_gen" "$2" "$build"
+    "$build/dma_gen" "$user_config" "$build"
+    
+    python3 "$cc_folder_path/$vendor/cc_jinga_sh.py"        "$user_config"
 
     generator
+
+    cc_file_dir=$(dirname "$user_config")
+
+    cp  $cc_file_dir/*.h                                  "$test_path/$test_name/Core/Inc"
+    cp  $cc_file_dir/*.c                                  "$test_path/$test_name/Core/Src"
+
     compile_test
     flash
+
+    python3 "$fw_dir/read_serial.py"
+    sed '0,/Measuring Covert Channel/d' uart_output.txt > tmp.txt && mv tmp.txt uart_output.txt 
+
+    mkdir -p "$test_path/$test_name/Results"
+    cp "$fw_dir/uart_output.txt" "$test_path/$test_name/Results/"$board"_contention_samples.txt"
+
+    "$cc_folder_path/tools/capacity.sh" $board "$test_path/$test_name"
+
+    python3 "$cc_folder_path/tools/heatmap.py" ch_matrix $board "$test_path/$test_name/Results"
+
 }
 
 # Verificação de parâmetros de entrada
@@ -165,9 +184,9 @@ if [ "$#" -lt 3 ]; then
     usage
 fi
 
-test_name=$1
-board_config_path=$2
-test_path=$3
+test_name="$1"
+board_config_path="$2"
+test_path="$3"
 shift 3  # Remove 3 parâmetros
 
 # Definir os paths que dependem dos parâmetros passados
@@ -178,6 +197,7 @@ build="$fw_dir/Build"
 interface="$fw_dir/Interface"
 generator="$fw_dir/Generator"
 runner="$fw_dir/Runner"
+cc_folder_path="$fw_dir/Covert_channel"
 
 # Variáveis do board_config.json
 inherits=$(             jq -r '.inherits'                   "$board_config_path")
@@ -220,6 +240,7 @@ while [[ $# -gt 0 ]]; do
             all
             ;;
         --covert_channel)
+            user_config="$cc_folder_path/$vendor/cc_${board,,}.json"
             covert_channel
             ;;
         *)
