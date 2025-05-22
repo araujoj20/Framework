@@ -6,8 +6,8 @@
 extern DMA_HandleTypeDef hdma;
 
 #define __HAL_RCC_DMAMUX_CLK_ENABLE 
-#define __HAL_RCC_DMA_CLK_ENABLE __HAL_RCC_DMA1_CLK_ENABLE
-#define DMA_INSTANCE DMA1_Channel1
+#define __HAL_RCC_DMA_CLK_ENABLE __HAL_RCC__CLK_ENABLE
+#define DMA_INSTANCE _
 #define DMA_DIRECTION  DMA_MEMORY_TO_MEMORY
 #define DMA_PERIPH_INC DMA_PINC_DISABLE
 #define DMA_MEM_INC DMA_MINC_DISABLE
@@ -16,7 +16,7 @@ extern DMA_HandleTypeDef hdma;
 #define DMA_MODE DMA_NORMAL
 #define DMA_PRIORITY DMA_PRIORITY_LOW
 #define DMA_CHANNEL_ATTR DMA_CHANNEL_NPRIV
-#define DMA_IRQ DMA1_Channel1_IRQn
+#define DMA_IRQ __IRQn
 
 void DMA_Init(void);
 

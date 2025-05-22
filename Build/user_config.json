@@ -1,16 +1,16 @@
 {
-	"board":	"STM32F767",
-	"family":	"stm32f7xx",
+	"board":	"STM32L552",
+	"family":	"stm32l5xx",
 	"timer_count":	"",
 	"timer_trig":	"",
 	"dma":	{
-		"stream":	"Stream1",
-		"name":		"DMA1"
+		"name":	"",
+		"stream":	""
 	},
 	"uart":	{
-		"instance":	"USART3",
+		"instance":	"LPUART1",
 		"baudrate":	115200,
-		"tx_pin":	"PD8",
-		"rx_pin":	"PD9"
+		"tx_pin":	"PG7",
+		"rx_pin":	"PG8"
 	}
 }

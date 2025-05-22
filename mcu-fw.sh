@@ -120,6 +120,8 @@ compile_test(){
 
 # Flash
 flash(){
+    echo -e "\n${YELLOW}@Step${RESET}${BLUE}(--flash)${RESET}: Flash Board"
+
     OPENOCD_CFG_PATH="/usr/share/openocd/scripts"
     ELF_NAME="$test_name.elf"
 
@@ -133,6 +135,14 @@ flash(){
     -c "exit"
 }
 
+# Flash
+uart(){
+    echo -e "\n${YELLOW}@Step${RESET}${BLUE}(--uart)${RESET}: Reading Serial Port"
+
+    python3 "$fw_dir/read_serial.py"
+
+}
+
 # Covert Channel
 all(){
     echo -e "\n${YELLOW}@Step${RESET}${BLUE}(--all)${RESET}: Executing all commands"
@@ -143,6 +153,7 @@ all(){
     generator
     compile_test
     flash
+
 }
 
 # Covert Channel
@@ -235,6 +246,9 @@ while [[ $# -gt 0 ]]; do
             ;;
         --flash)
             flash
+            ;;
+        --uart)
+            uart
             ;;
         --all)
             all

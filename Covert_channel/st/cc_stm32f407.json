@@ -31,7 +31,7 @@
     },
 
     "dma":	{
-		"name":	    "DMA2",
+		"name":	    "DMA1",
 		"stream":	"Stream1"
 	}
 }

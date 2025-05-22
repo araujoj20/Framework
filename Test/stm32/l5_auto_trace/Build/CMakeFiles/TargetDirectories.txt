@@ -1,0 +1,3 @@
+/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_auto_trace/Build/CMakeFiles/l5_auto_trace.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_auto_trace/Build/CMakeFiles/edit_cache.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_auto_trace/Build/CMakeFiles/rebuild_cache.dir
