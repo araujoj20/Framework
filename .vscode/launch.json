@@ -1,30 +1,54 @@
 {
     "version": "0.2.0",
-    "configurations": [
-      {
-        "name": "Debug Interface with args",
-        "type": "cppdbg",
-        "request": "launch",
-        "program": "${workspaceFolder}/Build/interface",
-        "args": [
-            "${workspaceFolder}/Configs/stm32.json",
-            "${workspaceFolder}/Configs/stm32f767.json",
-            "${workspaceFolder}/Build/"
-        ],
-        "stopAtEntry": false,
-        "cwd": "${workspaceFolder}",
-        "environment": [],
-        "externalConsole": false,
-        "MIMode": "gdb",
-        "miDebuggerPath": "/usr/bin/gdb",
-        "setupCommands": [
-          {
-            "description": "Enable pretty-printing for gdb",
-            "text": "-enable-pretty-printing",
-            "ignoreFailures": true
-          }
-        ]
-      }
-    ]
-  }
+    // "configurations": [
+    //   {
+    //     "name": "Debug Interface with args",
+    //     "type": "cppdbg",
+    //     "request": "launch",
+    //     "program": "${workspaceFolder}/Build/interface",
+    //     "args": [
+    //         "${workspaceFolder}/Configs/stm32.json",
+    //         "${workspaceFolder}/Configs/stm32f767.json",
+    //         "${workspaceFolder}/Build/"
+    //     ],
+    //     "stopAtEntry": false,
+    //     "cwd": "${workspaceFolder}",
+    //     "environment": [],
+    //     "externalConsole": false,
+    //     "MIMode": "gdb",
+    //     "miDebuggerPath": "/usr/bin/gdb",
+    //     "setupCommands": [
+    //       {
+    //         "description": "Enable pretty-printing for gdb",
+    //         "text": "-enable-pretty-printing",
+    //         "ignoreFailures": true
+    //       }
+    //     ]
+    //   }
+    // ],
+    
+  "configurations": [
+    {
+      "name": "Debug NonSecure (STM32L5 TrustZone)",
+      "type": "cortex-debug",
+      "request": "launch",
+      "servertype": "openocd",
+      "cwd": "/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_mtime",
+      "executable": "/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_mtime/Build/l5_tz_mtime_NonSecure.elf",
+      "device": "STM32L552ZITx", // ou o teu modelo exato
+      "configFiles": [
+        "interface/stlink.cfg",
+        "target/stm32l5x.cfg"
+      ],
+      "runToEntryPoint": "main",
+      "svdFile": "${workspaceFolder}/path/to/STM32L552.svd", 
+      "preLaunchTask": "",
+      "postLaunchCommands": [
+        "monitor reset halt"
+      ],
+      "showDevDebugOutput": "none"
+    }
+  ]
+}
+
   

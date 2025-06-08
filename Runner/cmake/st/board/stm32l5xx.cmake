@@ -8,8 +8,6 @@ set(CPU_PARAMETERS
 
 set(MCU_FAMILY "stm32l5xx")
 
-set(TRUSTZONE "-DTZBIT")
-
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 

@@ -10,10 +10,12 @@
         "stm32f7xx_hal.h": "c",
         "stm32f4xx_hal.h": "c",
         "covert_channel.h": "c",
-        "*.j2": "c",
+        "*.j2": "jinja-cpp",
         "array": "c",
         "string_view": "c",
-        "initializer_list": "c"
+        "initializer_list": "c",
+        "typeinfo": "c",
+        "ratio": "c"
     },
     "C_Cpp.default.compilerPath": "/usr/bin/gcc"
 }

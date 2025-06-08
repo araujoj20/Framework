@@ -1,0 +1,102 @@
+#include "tim.h"
+#include "main.h"
+
+/* --- TIM Handle declarations --- */
+{%- for timer in timers %}
+TIM_HandleTypeDef h{{ timer.name.lower() }};
+{%- endfor %}
+
+/* --- DMA Handle declarations --- */
+{%- for timer in timers %}
+  {%- if timer.is_trigger %}
+DMA_HandleTypeDef hdma_{{ timer.name.lower() }}_up;
+  {%- endif %}
+{%- endfor %}
+
+/* --- MX_TIMERS Init functions --- */
+
+{%- for timer in timers %}
+void MX_{{ timer.name }}_Init(void)
+{
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  h{{ timer.name.lower() }}.Instance = {{ timer.name }};
+  h{{ timer.name.lower() }}.Init.Prescaler = 0;
+  h{{ timer.name.lower() }}.Init.CounterMode = TIM_COUNTERMODE_UP;
+  h{{ timer.name.lower() }}.Init.Period = {{ timer.period }};
+  h{{ timer.name.lower() }}.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  h{{ timer.name.lower() }}.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&h{{ timer.name.lower() }}) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&h{{ timer.name.lower() }}, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&h{{ timer.name.lower() }}, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+{%- endfor %}
+
+/* --- HAL_TIM_Base_MspInit--- */
+
+void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
+{
+{%- for timer in timers %}
+  if(tim_baseHandle->Instance == {{ timer.name }})
+  {
+    __HAL_RCC_{{ timer.name }}_CLK_ENABLE();
+    {%- if timer.is_trigger %}
+
+    hdma_{{ timer.name.lower() }}_up.Instance = {{ dma.name }}_{{ dma.stream }};
+    hdma_{{ timer.name.lower() }}_up.Init.Request = DMA_REQUEST_{{ timer.name }}_UP;
+    hdma_{{ timer.name.lower() }}_up.Init.Direction = DMA_PERIPH_TO_MEMORY;
+    hdma_{{ timer.name.lower() }}_up.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_{{ timer.name.lower() }}_up.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_{{ timer.name.lower() }}_up.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+    hdma_{{ timer.name.lower() }}_up.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+    hdma_{{ timer.name.lower() }}_up.Init.Mode = DMA_NORMAL;
+    hdma_{{ timer.name.lower() }}_up.Init.Priority = DMA_PRIORITY_LOW;
+    if (HAL_DMA_Init(&hdma_{{ timer.name.lower() }}_up) != HAL_OK)
+    {
+      Error_Handler();
+    }
+
+    if (HAL_DMA_ConfigChannelAttributes(&hdma_{{ timer.name.lower() }}_up, DMA_CHANNEL_NPRIV) != HAL_OK)
+    {
+      Error_Handler();
+    }
+
+    __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_{{ timer.name.lower() }}_up);
+    {%- endif %}
+
+  }
+{%- endfor %}
+}
+
+/* --- HAL_TIM_Base_MspDeInit--- */
+
+void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
+{
+{%- for timer in timers %}
+  if(tim_baseHandle->Instance == {{ timer.name }})
+  {
+    __HAL_RCC_{{ timer.name }}_CLK_DISABLE();
+
+{%- if timer.is_trigger %}
+    HAL_DMA_DeInit(tim_baseHandle->hdma[TIM_DMA_ID_UPDATE]);
+{%- endif %}
+  }
+
+{%- endfor %}
+}
+

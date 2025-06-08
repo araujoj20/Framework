@@ -32,7 +32,8 @@
 
     "dma":	{
 		"name":	    "DMA1",
-		"stream":	"Channel1"
+		"stream":	"Channel1",
+        "direction": "MEMORY_TO_MEMORY"
 	},
 
     "mem_map":  {

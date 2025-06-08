@@ -1,0 +1,8 @@
+/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder/Build/CMakeFiles/edit_cache.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder/Build/CMakeFiles/rebuild_cache.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder/Build/Secure/CMakeFiles/l5_tz_folder_Secure.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder/Build/Secure/CMakeFiles/edit_cache.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder/Build/Secure/CMakeFiles/rebuild_cache.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder/Build/NonSecure/CMakeFiles/l5_tz_folder_NonSecure.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder/Build/NonSecure/CMakeFiles/edit_cache.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder/Build/NonSecure/CMakeFiles/rebuild_cache.dir

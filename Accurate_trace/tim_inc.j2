@@ -1,0 +1,31 @@
+#ifndef __TIM_H__
+#define __TIM_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* --- Includes --- */
+#include "main.h"
+
+/* --- TIM handle declarations --- */
+{%- for timer in timers %}
+extern TIM_HandleTypeDef h{{ timer.name.lower() }};
+{%- endfor %}
+
+{%- for timer in timers %}
+{%- if timer.is_trigger %}
+extern DMA_HandleTypeDef hdma_{{ timer.name.lower() }}_up;
+{%- endif %}
+{%- endfor %}
+
+/* --- MX_TIMx_Init prototypes --- */
+{%- for timer in timers %}
+void MX_{{ timer.name }}_Init(void);
+{%- endfor %}
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __TIM_H__ */

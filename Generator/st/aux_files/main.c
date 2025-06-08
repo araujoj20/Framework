@@ -85,8 +85,8 @@ int main(void)
   UART_Init();
   DMA_Init();
   
-  printf ("\r\n---------------------------\r\n"
-          "%s\r\n", HAL_BOARD_HEADER);
+  // printf ("\r\n---------------------------\r\n"
+  //         "%s\r\n", HAL_BOARD_HEADER);
   
   printf( "\r\nUART: %s\r\n"
               "Baudrate: %s\r\n",

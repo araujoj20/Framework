@@ -1,0 +1,57 @@
+{
+    "inherits": "stm32.json",
+
+    "vendor":   "st",
+    "board":    "STM32L552",
+    "family":   "stm32l5xx",
+
+    "build":{
+
+        "alayer":               "stm32l5xx-hal-driver",
+        "startup_script":       "startup_stm32l552xx.s",
+        "linker_script":        "STM32L552ZETXQ_FLASH.ld",
+        "startup_script_path":  "cmsis-device-l5/Source/Templates/gcc",
+
+        "drivers":{
+            "cmsis_5":           "CMSIS_5/CMSIS/Core/Include/",
+            "cmsis-device":      "cmsis-device-l5/Include/"
+        }
+    },
+
+    "openocd":{
+        "interface":        "stlink",
+        "target":           "stm32l5x"
+    },
+
+    "uart": {
+        "instance": "LPUART1",
+        "baudrate": 115200,
+        "tx_pin":   "PG7",
+        "rx_pin":   "PG8"
+    },
+
+    "trace":{
+        
+        "tim_counter":	{
+            "name":	    "TIM7",
+            "Period":	65535
+	    },
+        
+        "tim_trigger":	{
+            "name":	    "TIM3",
+            "Period":	65535
+	    },
+
+        "dma":	{
+            "name":	    "DMA1",
+            "stream":	"Channel4",
+            "direction":"PERIPHERAL_TO_MEMORY"
+	    }
+    },
+    
+
+    "mem_map":  {
+        "contention":   "0x20018000",
+        "no_contention":"0x20030000"
+    }
+}

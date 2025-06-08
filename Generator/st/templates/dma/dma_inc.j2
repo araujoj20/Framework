@@ -1,0 +1,16 @@
+#ifndef __DMA_H__
+#define __DMA_H__
+
+#include "main.h"
+
+/* DMA memory to memory handles*/
+{%- for dma in dma_list %}
+{%- if dma.direction == "MEMORY_TO_MEMORY" %}
+extern DMA_HandleTypeDef hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream | replace("Channel", "channel") }};
+{%- endif %}
+{%- endfor %}
+
+/* DMA Init*/
+void MX_DMA_Init(void);
+
+#endif /* __DMA_H__ */

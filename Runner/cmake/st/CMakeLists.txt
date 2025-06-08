@@ -3,14 +3,13 @@ cmake_minimum_required(VERSION 3.12)
 # ##############################################################################
 # Edit your MCU information up to the next border
 
-
 #if(DEFINED CMAKE_FILE)
 #    include(${CMAKE_FILE})
 #endif()
 
 project(${PROJECT_NAME})
 
-set(HAL_HEADER ${MCU_FAMILY}_hal.h)
+#set(HAL_HEADER ${MCU_FAMILY}_hal.h)
 
 set(MCU_MODEL "${MCU_MODEL_RAW}xx")
 
@@ -25,7 +24,12 @@ set(CMSIS_5             ${CMAKE_CURRENT_SOURCE_DIR}/Drivers/CMSIS_5)
 set(CMSIS_DEVICE        ${CMAKE_CURRENT_SOURCE_DIR}/Drivers/${CMSIS_DEVICE_FAMILY})
 
 # ##############################################################################
-set(EXECUTABLE ${CMAKE_PROJECT_NAME}) # defines name of elf
+if(ENABLE_TRUSTZONE)
+    set(EXECUTABLE ${CMAKE_PROJECT_NAME}_NonSecure)
+else()
+    set(EXECUTABLE ${CMAKE_PROJECT_NAME})
+endif()
+
 enable_language(C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -42,6 +46,12 @@ set(CUBEMX_INCLUDE_DIRECTORIES
     ${HAL_PATH}/Inc
     ${HAL_PATH}/Inc/Legacy
     )
+
+if(ENABLE_TRUSTZONE)
+    list(APPEND CUBEMX_INCLUDE_DIRECTORIES
+        ${CMAKE_CURRENT_SOURCE_DIR}/../Secure_nsclib
+    )
+endif()
 
 # Sources
 file(GLOB_RECURSE STM32CUBEMX_SOURCES
@@ -67,16 +77,19 @@ add_executable(${EXECUTABLE}
     ${PROJECT_SOURCES}
     ${STARTUP_SCRIPT_PATH})
 
+if(ENABLE_TRUSTZONE)
+    add_compile_definitions(TZEN)
+endif()
+
 # Embedded macros(defines)
 target_compile_definitions(${EXECUTABLE} PRIVATE
     ${MCU_MODEL}
     ${MCU_FAMILY}
     MCU_FAMILY=\"${MCU_FAMILY}\"
-    HAL_BOARD_HEADER=\"${HAL_HEADER}\"
+    #HAL_BOARD_HEADER=\"${HAL_HEADER}\"
     USE_HAL_DRIVER
-    ${TRUSTZONE})
+    )
 
-# Add header directories (AFTER add_executable !!)
 target_include_directories(${EXECUTABLE} PRIVATE
     ${CUBEMX_INCLUDE_DIRECTORIES}
     )
@@ -95,6 +108,11 @@ target_compile_options(${EXECUTABLE} PRIVATE
         -Wsuggest-override>
     $<$<CONFIG:Debug>:-Og -g3 -ggdb>
     $<$<CONFIG:Release>:-Og -g0>)
+
+if(ENABLE_TRUSTZONE)
+    set(SECURE_NSCLIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../Build/Secure/secure_nsclib.o)
+    target_link_libraries(${EXECUTABLE} PRIVATE ${SECURE_NSCLIB_PATH})
+endif()
 
 target_link_options(${EXECUTABLE} PRIVATE
     -T${LINKER_SCRIPT_PATH}

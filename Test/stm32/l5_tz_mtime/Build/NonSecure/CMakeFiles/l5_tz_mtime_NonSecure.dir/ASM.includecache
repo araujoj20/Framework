@@ -1,0 +1,10 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_mtime/NonSecure/startup_stm32l552xx.s
+

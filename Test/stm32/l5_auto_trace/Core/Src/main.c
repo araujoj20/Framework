@@ -26,7 +26,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "secure_interface.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,6 +45,22 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+
+
+#define TO_STRING(name) #name
+#define PRINT_MACRO(x) TO_STRING(x)
+
+#define DEFINE_VICTIM(struct_name, func) \
+    sVictimFunc struct_name = {func, #func, measure_time(func)}
+
+
+typedef struct {
+    void (*func)(void);
+    const char* name;
+    unsigned int time;
+}sVictimFunc;
+
+
 #define BUFFER_SIZE              1000
 //stored in SRAM
 // static uint32_t src_zeros[BUFFER_SIZE]=
@@ -161,8 +176,8 @@ return ch;
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-#define PROFILE 40
-volatile int time1 = 0, time2 = 0, *ptr_cnt = 0x40001400+0x24, result, 
+#define PROFILE 40 // 0x40001400+0x24
+volatile int time1 = 0, time2 = 0, *ptr_cnt = &TIM7->CNT, result, 
               *tim6_cnt = 0x40001000+0x24 ;
 
 static void TransferComplete(DMA_HandleTypeDef *DmaHandle)
@@ -3216,6 +3231,50 @@ void simple_if_else_false(){
 
 }
 
+void light_op(){
+  int s = 0;
+  volatile int x;
+
+  if (s == 0)
+      x = x + 2;
+  else
+      x = (x / 3 * 4) + s;
+}
+
+
+void heavy_op(){
+  int s = 1;
+  volatile int x;
+
+  if (s == 0)
+      x = x + 2;
+  else
+      x = (x / 3 * 4) + s;
+}
+
+char acc_buff[256];
+
+void access_near(){
+  int s = 0;
+  volatile char x;
+
+  if (s == 0)
+      x = acc_buff[7];    // ldrb	r3, [r3, #7]      (16bits)
+  else
+      x = acc_buff[255];  // ldrb.w	r3, [r3, #255]  (32bits)
+}
+
+void access_far(){
+  int s = 1;
+  volatile char x;
+
+  if (s == 0)
+      x = acc_buff[7];
+  else
+      x = acc_buff[255];
+}
+
+
 /* TODO
 
 __attribute__((optimize(0))) void get_sliding_window_trace(){
@@ -3408,22 +3467,22 @@ void accurate_trace(){
   print_accurate_collision_w_instruction(victim_instructions_IF_FALSE);
 }
 
-void accurate_trace_time(char* vict_name, unsigned int vict_time, void (*victim)()){
+void accurate_trace_time(sVictimFunc *s_vict){
   int auto_reload = 1, n_collisions = 2;
   int i = 0, instruction = 0;
-  int clock_size_array[vict_time];
-  clock_size_array[vict_time] = END;
+  int clock_size_array[s_vict->time];
+  clock_size_array[s_vict->time] = END;
 
   // Accurate Trace NS -> Calling IF PATH TRUE --------------------------------
   i = 0, instruction = 0;
   
-  while(i < vict_time){
-    get_accurate_trace(auto_reload, i, n_collisions, victim);  
+  while(i < s_vict->time){
+    get_accurate_trace(auto_reload, i, n_collisions, s_vict->func);  
     process_accurate_collision(i++);
   }
   
   printf("\r\n");
-  printf("Trace %s  \r\n", vict_name);
+  printf("Trace %s  \r\n", s_vict->name);
   print_clock(clock_size_array);
   print_accurate_collision_w_instruction(clock_size_array);
   printf("\r\n");
@@ -3461,7 +3520,8 @@ void test_if_else(){
 __attribute__((optimize(0))) unsigned int measure_time(void (*victim)()){
 	int time1, time2;
 	
-  // TIM7->ARR = 0;
+  TIM7->ARR = 0;
+  TIM7->CNT = 0;
   // TIM3->CNT = 0;
   // TIM3->SR = 0;
   // TIM3->DIER = 0;
@@ -3477,9 +3537,6 @@ __attribute__((optimize(0))) unsigned int measure_time(void (*victim)()){
 
   return time2-time1-9;
 }
-
-#define TO_STRING(name) #name
-#define PRINT_MACRO(x) TO_STRING(x)
 
 /* USER CODE END 0 */
 
@@ -3536,15 +3593,37 @@ int main(void)
 
   printf("HELLO STM\r\n");
 
-  unsigned int vict_time;
+  // DEFINE_VICTIM(s_if_true, simple_if_else_true);
+  // accurate_trace_time(&s_if_true);
+
+  // DEFINE_VICTIM(s_if_false, simple_if_else_false);
+  // accurate_trace_time(&s_if_false);
+
+  // DEFINE_VICTIM(s_light_op, light_op);
+  // accurate_trace_time(&s_light_op);
+
+  // DEFINE_VICTIM(s_heavy_op, heavy_op);
+  // accurate_trace_time(&s_heavy_op);
+
+  printf("Time Measured true  = %d \r\n", measure_time(simple_if_else_true));
+  printf("Time Measured false = %d \r\n", measure_time(simple_if_else_false));
+
+
+  // DEFINE_VICTIM(s_access_near, access_near);
+  // accurate_trace_time(&s_access_near);
+
+  // DEFINE_VICTIM(s_access_far, access_far);
+  // accurate_trace_time(&s_access_far);
+
+  // vict_time = measure_time(vict_func);
+  // printf("Time Measured = %d (%s)\r\n",vict_time, TO_STRING(simple_if_else_true)); 
+  // accurate_trace_time(TO_STRING(vict_func), vict_time, vict_func);
   
-  vict_time = measure_time(simple_if_else_true);
-  printf("Time Measured = %d (%s)\r\n",vict_time, TO_STRING(simple_if_else_true)); 
-  accurate_trace_time(TO_STRING(simple_if_else_true), vict_time, simple_if_else_true);
-  
-  vict_time = measure_time(simple_if_else_false);
-  printf("Time Measured = %d (%s)\r\n",vict_time, TO_STRING(simple_if_else_false)); 
-  accurate_trace_time(TO_STRING(simple_if_else_false), vict_time, simple_if_else_false);
+  // vict_func = simple_if_else_false;
+
+  // vict_time = measure_time(vict_func);
+  // printf("Time Measured = %d (%s)\r\n",vict_time, TO_STRING(simple_if_else_false)); 
+  // accurate_trace_time(TO_STRING(vict_func), vict_time, vict_func);
 
   //accurate_trace();
 

@@ -74,31 +74,44 @@ generator(){
     "$build/uart_gen" "$user_config" "$build"
     "$build/dma_gen"  "$user_config" "$build"
 
+    test_full_path="$test_path/$test_name"
+    suffix=""
 
-    mkdir -p "$test_path/$test_name/Core/Inc"
-    mkdir -p "$test_path/$test_name/Core/Src"
+    if [[ "$tz_flag" == 1 ]]; then
+        mkdir -p "$test_full_path"
+        cp -r "$generator/$vendor/aux_files/$family/Secure"         "$test_full_path"
+        cp -r "$generator/$vendor/aux_files/$family/Secure_nsclib"  "$test_full_path"
+        cp  $runner/cmake/$vendor/tz/CMakeLists.txt                 "$test_full_path"
+        cp  $runner/cmake/$vendor/board/$family.cmake               "$test_full_path"
 
-    cp  $build/*.h                                  "$test_path/$test_name/Core/Inc"
-    cp  $build/*.c                                  "$test_path/$test_name/Core/Src"
+        test_full_path="$test_path/$test_name/NonSecure"
+        suffix="NonSecure/"
+    fi
 
-    cp  $generator/$vendor/aux_files/*.h            "$test_path/$test_name/Core/Inc"
-    cp  $generator/$vendor/aux_files/*.c            "$test_path/$test_name/Core/Src"
-    cp  $generator/$vendor/aux_files/$family/*.h    "$test_path/$test_name/Core/Inc"
-    cp  $generator/$vendor/aux_files/$family/*.c    "$test_path/$test_name/Core/Src"
+    mkdir -p "$test_full_path/Core/Inc"
+    mkdir -p "$test_full_path/Core/Src"
 
-    mkdir -p "$test_path/$test_name/Drivers/$alayer"
-    cp -r   "$generator/$vendor/alayer/$alayer/Inc" "$test_path/$test_name/Drivers/$alayer/"
-    cp -r   "$generator/$vendor/alayer/$alayer/Src" "$test_path/$test_name/Drivers/$alayer/"
+    #cp  $build/*.h      "$test_full_path/Core/Inc"
+    #cp  $build/*.c      "$test_full_path/Core/Src"
 
-    cp      "$generator/$vendor/drivers/$startup_script_path/$startup_script"   "$test_path/$test_name"
-    cp      "$generator/$vendor/lscript/$linker_script"   "$test_path/$test_name"
+    #cp  $generator/$vendor/aux_files/*.h                "$test_full_path/Core/Inc"
+    #cp  $generator/$vendor/aux_files/*.c                "$test_full_path/Core/Src"
+    cp "$generator/$vendor/aux_files/$family/${suffix}Inc/"*.h "$test_full_path/Core/Inc"
+    cp "$generator/$vendor/aux_files/$family/${suffix}Src/"*.c "$test_full_path/Core/Src"
+
+    mkdir -p "$test_full_path/Drivers/$alayer"
+    cp -r    "$generator/$vendor/alayer/$alayer/Inc" "$test_full_path/Drivers/$alayer/"
+    cp -r    "$generator/$vendor/alayer/$alayer/Src" "$test_full_path/Drivers/$alayer/"
+
+    cp      "$generator/$vendor/drivers/$startup_script_path/$startup_script"   "$test_full_path"
+    cp      "$generator/$vendor/lscript/$linker_script"   "$test_full_path"
 
     for drivers_path in $drivers; do
-        copy_drivers "$generator/$vendor/drivers/$drivers_path" "$test_path/$test_name/Drivers"
+        copy_drivers "$generator/$vendor/drivers/$drivers_path" "$test_full_path/Drivers"
     done
 
-    cp $runner/cmake/$vendor/CMakeLists.txt         "$test_path/$test_name"
-    cp $runner/cmake/$vendor/board/$family.cmake    "$test_path/$test_name"
+    cp $runner/cmake/$vendor/CMakeLists.txt         "$test_full_path"
+    cp $runner/cmake/$vendor/board/$family.cmake    "$test_full_path"
 }
 
 # Compile Test
@@ -123,14 +136,24 @@ flash(){
     echo -e "\n${YELLOW}@Step${RESET}${BLUE}(--flash)${RESET}: Flash Board"
 
     OPENOCD_CFG_PATH="/usr/share/openocd/scripts"
-    ELF_NAME="$test_name.elf"
 
-    openocd \
+    if [[ "$tz_flag" == 1 ]]; then
+    flash_elf=(
+        "-c" "flash write_image erase $test_path/$test_name/Build/${test_name}_Secure.elf"
+        "-c" "flash write_image erase $test_path/$test_name/Build/${test_name}_NonSecure.elf"
+    )
+    else
+        flash_elf=(
+            "-c" "flash write_image erase $test_path/$test_name/Build/${test_name}.elf"
+        )
+    fi
+
+openocd \
     -f "$OPENOCD_CFG_PATH/interface/$ocd_interface.cfg" \
     -f "$OPENOCD_CFG_PATH/target/$ocd_target.cfg" \
     -c "init" \
     -c "reset halt" \
-    -c "flash write_image erase $test_path/$test_name/Build/$ELF_NAME" \
+    "${flash_elf[@]}" \
     -c "reset run" \
     -c "exit"
 }
@@ -190,6 +213,18 @@ covert_channel(){
 
 }
 
+tz_test(){
+    echo -e "\n${YELLOW}@Step${RESET}${BLUE}(--all)${RESET}: Executing all commands"
+    
+    rm -rf $build
+    compile_fw
+    interface
+    generator
+    compile_test
+    flash
+
+}
+
 # Verificação de parâmetros de entrada
 if [ "$#" -lt 3 ]; then
     usage
@@ -229,8 +264,11 @@ user_file_given=false
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --user_file=*)
-            user_config="$fw_dir/${1#*=}"  # extrai caminho
+            user_config="$fw_dir/${1#*=}"  # extract path
             user_file_given=true
+            ;;
+        --tz)
+            tz_flag=1
             ;;
         --compile_fw)
             compile_fw

@@ -1,5 +1,5 @@
 /*
- * peripherals.c
+ * dma.c
  *
  *  Created on: April 24, 2025
  *      Author: araujoj20

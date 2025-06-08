@@ -28,15 +28,14 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 
-//#include HAL_BOARD_HEADER // stm32(family)xx_hal.h
-
-#ifdef TZBIT
-#include "secure_nsc.h"
+#ifdef TZEN
+    #include "secure_nsc.h"
 #endif
 
 #include "stdio.h"
 #include "uart.h"
 #include "dma.h"
+#include "tim.h"
 
 #if defined(stm32f7xx)
     #include "stm32f7xx_hal.h"
@@ -47,6 +46,7 @@ extern "C" {
 #elif defined(stm32l5xx)
     #include "stm32l5xx_hal.h"
     #include "stm32l5xx_clock.h"
+    #include "icache.h"
 #elif defined(stm32u5xx)
     #include "stm32u5xx_hal.h"
     #include "stm32u5xx_clock.h"
@@ -56,18 +56,6 @@ extern "C" {
 
 #define TO_STRING(name) #name
 #define PRINT_MACRO(x) TO_STRING(x)
-
-// #if defined(stm32f7xx)
-//     #include "stm32f7xx_hal.h"
-// #elif defined(stm32f4xx)
-//     #include "stm32f4xx_hal.h"
-// #elif defined(stm32l5xx)
-//     #include "stm32l5xx_hal.h"
-// #elif defined(stm32u5xx)
-//     #include "stm32u5xx_hal.h"
-// #else
-//     #error "Unknown MCU family"
-// #endif
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
