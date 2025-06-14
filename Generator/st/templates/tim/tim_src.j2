@@ -1,5 +1,4 @@
 #include "tim.h"
-#include "main.h"
 
 /* --- TIM Handle declarations --- */
 {%- for timer in timers %}
@@ -7,14 +6,11 @@ TIM_HandleTypeDef h{{ timer.name.lower() }};
 {%- endfor %}
 
 /* --- DMA Handle declarations --- */
-{%- for timer in timers %}
-  {%- if timer.is_trigger %}
+{%- for timer in timers if timer.has_dma %}
 DMA_HandleTypeDef hdma_{{ timer.name.lower() }}_up;
-  {%- endif %}
 {%- endfor %}
 
 /* --- MX_TIMERS Init functions --- */
-
 {%- for timer in timers %}
 void MX_{{ timer.name }}_Init(void)
 {
@@ -47,19 +43,18 @@ void MX_{{ timer.name }}_Init(void)
 }
 {%- endfor %}
 
-/* --- HAL_TIM_Base_MspInit--- */
-
+/* --- HAL_TIM_Base_MspInit --- */
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
 {
 {%- for timer in timers %}
   if(tim_baseHandle->Instance == {{ timer.name }})
   {
     __HAL_RCC_{{ timer.name }}_CLK_ENABLE();
-    {%- if timer.is_trigger %}
 
-    hdma_{{ timer.name.lower() }}_up.Instance = {{ dma.name }}_{{ dma.stream }};
+    {%- if timer.has_dma %}
+    hdma_{{ timer.name.lower() }}_up.Instance = {{ timer.dma.name }}_{{ timer.dma.stream }};
     hdma_{{ timer.name.lower() }}_up.Init.Request = DMA_REQUEST_{{ timer.name }}_UP;
-    hdma_{{ timer.name.lower() }}_up.Init.Direction = DMA_PERIPH_TO_MEMORY;
+    hdma_{{ timer.name.lower() }}_up.Init.Direction = DMA_{{ timer.dma.direction }};
     hdma_{{ timer.name.lower() }}_up.Init.PeriphInc = DMA_PINC_DISABLE;
     hdma_{{ timer.name.lower() }}_up.Init.MemInc = DMA_MINC_ENABLE;
     hdma_{{ timer.name.lower() }}_up.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
@@ -78,25 +73,20 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
 
     __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_{{ timer.name.lower() }}_up);
     {%- endif %}
-
   }
 {%- endfor %}
 }
 
-/* --- HAL_TIM_Base_MspDeInit--- */
-
+/* --- HAL_TIM_Base_MspDeInit --- */
 void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
 {
 {%- for timer in timers %}
   if(tim_baseHandle->Instance == {{ timer.name }})
   {
     __HAL_RCC_{{ timer.name }}_CLK_DISABLE();
-
-{%- if timer.is_trigger %}
+    {%- if timer.has_dma %}
     HAL_DMA_DeInit(tim_baseHandle->hdma[TIM_DMA_ID_UPDATE]);
-{%- endif %}
+    {%- endif %}
   }
-
 {%- endfor %}
 }
-

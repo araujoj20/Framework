@@ -1,6 +1,7 @@
 import json
 import sys
 import re
+import os
 from jinja2 import Environment, FileSystemLoader
 
 # Maybe later 
@@ -54,12 +55,13 @@ uart = {
 }
 
 # Render Jinja2 template
-env = Environment(loader=FileSystemLoader("."))
+script_dir = os.path.dirname(os.path.abspath(__file__))
+env = Environment(loader=FileSystemLoader(script_dir))
 
 template_src = env.get_template("uart_src.j2")
-with open("uart.c", "w") as f:
+with open(f"{sys.argv[2]}/Src/uart.c", "w") as f:
     f.write(template_src.render(uart=uart))
 
 template_inc = env.get_template("uart_inc.j2")
-with open("uart.h", "w") as f:
+with open(f"{sys.argv[2]}/Inc/uart.h", "w") as f:
     f.write(template_inc.render(uart=uart))

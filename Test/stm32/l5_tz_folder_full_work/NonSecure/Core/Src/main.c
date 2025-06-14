@@ -65,6 +65,25 @@ void ICache_invalidation(){
 
 	}
 
+
+  extern uint32_t __cacheable_text_start__;  
+extern uint32_t __cacheable_text_end__;
+
+#define REGION_NON_CACHEABLE 0UL  
+#define REGION_CACHEABLE 1UL
+
+void setup_ns_mpu(void) {
+  uint32_t base_cacheable = (uint32_t)&__cacheable_text_start__;
+  ARM_MPU_Disable();
+
+  // REGION 0: Mark entire NS memory as Strongly Ordered Non-cacheable
+  ARM_MPU_SetMemAttr(REGION_NON_CACHEABLE, ARM_MPU_ATTR_DEVICE_nGnRnE);
+  MPU->RNR = REGION_NON_CACHEABLE;
+  MPU->RBAR = 0x8041400;
+  MPU->RLAR = (base_cacheable - 1) | (REGION_NON_CACHEABLE << MPU_RLAR_AttrIndx_Pos) | MPU_RLAR_EN_Msk;
+  ARM_MPU_Enable(MPU_CTRL_PRIVDEFENA_Msk); // No default memory map
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -104,24 +123,52 @@ int main(void)
 	MX_LPUART1_UART_Init();
 	MX_TIM3_Init();
 	MX_TIM7_Init();
-	//MX_ICACHE_Init();
+	MX_ICACHE_Init();
 	/* USER CODE BEGIN 2 */
 	
   //ICache_invalidation();
 
+  // setup_ns_mpu();
 
-  printf("Time func TIM NOVO: %d \r\n", measure_time(if_else_true));
-  printf("Time func: %d \r\n", measure_time(if_else_false));
 
-  DEFINE_VICTIM(s_if_else_true, if_else_true);
-  accurate_trace_time(&s_if_else_true);
+  if_else_false();
+  if_else_true();
+  access_near();
+  access_far();
 
+  #define CACHEABLE_CHECK 1
+
+  #ifdef CACHEABLE_CHECK
+    printf("Time func false: %d \r\n", measure_time(if_else_false));
+    printf("Time func false: %d \r\n", measure_time(if_else_false));
+    printf("Time func false: %d \r\n", measure_time(if_else_false));
+    printf("Time func false: %d \r\n", measure_time(if_else_false));
+    printf("Time func false: %d \r\n", measure_time(if_else_false));
+    printf("Time func false: %d \r\n", measure_time(if_else_false));
+    printf("Time func true : %d \r\n", measure_time(if_else_true));
+    printf("Time func true : %d \r\n", measure_time(if_else_true));
+    printf("Time func true : %d \r\n", measure_time(if_else_true));
+    printf("Time func near : %d \r\n", measure_time(access_near));
+    printf("Time func near : %d \r\n", measure_time(access_near));
+    printf("Time func near : %d \r\n", measure_time(access_near));
+    printf("Time func far  : %d \r\n", measure_time(access_far));
+    printf("Time func far  : %d \r\n", measure_time(access_far));
+    printf("Time func far  : %d \r\n", measure_time(access_far));
+  #endif
+
+  printf("Time func false : %d \r\n", measure_time(if_else_false));
   DEFINE_VICTIM(s_if_else_false, if_else_false);
   accurate_trace_time(&s_if_else_false);
-
+  
+  printf("Time func true : %d \r\n", measure_time(if_else_true));
+  DEFINE_VICTIM(s_if_else_true, if_else_true);
+  accurate_trace_time(&s_if_else_true);
+  
+  printf("Time func near : %d \r\n", measure_time(access_near));
   DEFINE_VICTIM(s_access_near, access_near);
   accurate_trace_time(&s_access_near);
-
+  
+  printf("Time func far  : %d \r\n", measure_time(access_far));
   DEFINE_VICTIM(s_access_far, access_far);
   accurate_trace_time(&s_access_far);
 
@@ -154,6 +201,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
@@ -166,6 +214,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
   /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
@@ -180,7 +229,6 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 }
-
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */

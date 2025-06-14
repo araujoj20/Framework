@@ -102,8 +102,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-jQoIIn"
-      binary: "/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-jQoIIn"
+      source: "/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-nxFlZa"
+      binary: "/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-nxFlZa"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -112,13 +112,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-jQoIIn'
+        Change Dir: '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-nxFlZa'
         
-        Run Build Command(s): /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_9bc63/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_9bc63.dir/build.make CMakeFiles/cmTC_9bc63.dir/build
-        gmake[1]: Entering directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-jQoIIn'
-        Building C object CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj
-        /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-gcc -fdata-sections -ffunction-sections     --specs=nano.specs -Wl,--gc-sections   -v -o CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj -c /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_72364/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_72364.dir/build.make CMakeFiles/cmTC_72364.dir/build
+        gmake[1]: Entering directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-nxFlZa'
+        Building C object CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj
+        /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-gcc -fdata-sections -ffunction-sections     --specs=nano.specs -Wl,--gc-sections   -v -o CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj -c /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         Reading specs from /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/nano.specs
         rename spec link to nano_link
@@ -130,8 +130,8 @@ events:
         Thread model: single
         Supported LTO compression algorithms: zlib
         gcc version 13.3.1 20240614 (GNU Tools for STM32 13.3.rel1.20240926-1715) 
-        COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-v' '-o' 'CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_9bc63.dir/'
-         /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/cc1 -isystem =/include/newlib-nano -quiet -v -iprefix /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/ -isysroot /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../arm-none-eabi -D__USES_INITFINI__ /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_9bc63.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -fdata-sections -ffunction-sections -o /tmp/ccnAAHrw.s
+        COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-v' '-o' 'CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_72364.dir/'
+         /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/cc1 -isystem =/include/newlib-nano -quiet -v -iprefix /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/ -isysroot /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../arm-none-eabi -D__USES_INITFINI__ /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_72364.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -fdata-sections -ffunction-sections -o /tmp/ccFip4Nb.s
         GNU C17 (GNU Tools for STM32 13.3.rel1.20240926-1715) version 13.3.1 20240614 (arm-none-eabi)
         	compiled by GNU C version 7.5.0, GMP version 6.2.1, MPFR version 3.1.6, MPC version 1.0.3, isl version isl-0.15-1-g835ea3a-GMP
         
@@ -149,18 +149,18 @@ events:
          /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include
         End of search list.
         Compiler executable checksum: 886fc8797c2ec62bf06cb75422e2a1cc
-        COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-v' '-o' 'CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_9bc63.dir/'
-         /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj /tmp/ccnAAHrw.s
+        COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-v' '-o' 'CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_72364.dir/'
+         /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj /tmp/ccFip4Nb.s
         GNU assembler version 2.42.0 (arm-none-eabi) using BFD version (GNU Tools for STM32 13.3.rel1.20240926-1715) 2.42.0.20240614
         COMPILER_PATH=/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/
         LIBRARY_PATH=/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../arm-none-eabi/lib/
-        COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-v' '-o' 'CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.'
-        Linking C static library libcmTC_9bc63.a
-        /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -P CMakeFiles/cmTC_9bc63.dir/cmake_clean_target.cmake
-        /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9bc63.dir/link.txt --verbose=1
-        /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ar qc libcmTC_9bc63.a CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj
-        /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ranlib libcmTC_9bc63.a
-        gmake[1]: Leaving directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-jQoIIn'
+        COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-v' '-o' 'CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.'
+        Linking C static library libcmTC_72364.a
+        /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -P CMakeFiles/cmTC_72364.dir/cmake_clean_target.cmake
+        /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_72364.dir/link.txt --verbose=1
+        /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ar qc libcmTC_72364.a CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj
+        /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ranlib libcmTC_72364.a
+        gmake[1]: Leaving directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-nxFlZa'
         
       exitCode: 0
   -
@@ -194,13 +194,13 @@ events:
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(arm-none-eabi-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-jQoIIn']
+        ignore line: [Change Dir: '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-nxFlZa']
         ignore line: []
-        ignore line: [Run Build Command(s): /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_9bc63/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_9bc63.dir/build.make CMakeFiles/cmTC_9bc63.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-jQoIIn']
-        ignore line: [Building C object CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj]
-        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-gcc -fdata-sections -ffunction-sections     --specs=nano.specs -Wl --gc-sections   -v -o CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj -c /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_72364/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_72364.dir/build.make CMakeFiles/cmTC_72364.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-nxFlZa']
+        ignore line: [Building C object CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-gcc -fdata-sections -ffunction-sections     --specs=nano.specs -Wl --gc-sections   -v -o CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj -c /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [Reading specs from /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/nano.specs]
         ignore line: [rename spec link to nano_link]
@@ -212,8 +212,8 @@ events:
         ignore line: [Thread model: single]
         ignore line: [Supported LTO compression algorithms: zlib]
         ignore line: [gcc version 13.3.1 20240614 (GNU Tools for STM32 13.3.rel1.20240926-1715) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-v' '-o' 'CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_9bc63.dir/']
-        ignore line: [ /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/cc1 -isystem =/include/newlib-nano -quiet -v -iprefix /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/ -isysroot /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../arm-none-eabi -D__USES_INITFINI__ /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_9bc63.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -fdata-sections -ffunction-sections -o /tmp/ccnAAHrw.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-v' '-o' 'CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_72364.dir/']
+        ignore line: [ /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/cc1 -isystem =/include/newlib-nano -quiet -v -iprefix /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/ -isysroot /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../arm-none-eabi -D__USES_INITFINI__ /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_72364.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -fdata-sections -ffunction-sections -o /tmp/ccFip4Nb.s]
         ignore line: [GNU C17 (GNU Tools for STM32 13.3.rel1.20240926-1715) version 13.3.1 20240614 (arm-none-eabi)]
         ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.2.1  MPFR version 3.1.6  MPC version 1.0.3  isl version isl-0.15-1-g835ea3a-GMP]
         ignore line: []
@@ -231,18 +231,18 @@ events:
         ignore line: [ /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 886fc8797c2ec62bf06cb75422e2a1cc]
-        ignore line: [COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-v' '-o' 'CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_9bc63.dir/']
-        ignore line: [ /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj /tmp/ccnAAHrw.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-v' '-o' 'CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_72364.dir/']
+        ignore line: [ /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj /tmp/ccFip4Nb.s]
         ignore line: [GNU assembler version 2.42.0 (arm-none-eabi) using BFD version (GNU Tools for STM32 13.3.rel1.20240926-1715) 2.42.0.20240614]
         ignore line: [COMPILER_PATH=/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/]
         ignore line: [LIBRARY_PATH=/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../arm-none-eabi/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-v' '-o' 'CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C static library libcmTC_9bc63.a]
-        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -P CMakeFiles/cmTC_9bc63.dir/cmake_clean_target.cmake]
-        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9bc63.dir/link.txt --verbose=1]
-        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ar qc libcmTC_9bc63.a CMakeFiles/cmTC_9bc63.dir/CMakeCCompilerABI.c.obj]
-        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ranlib libcmTC_9bc63.a]
-        ignore line: [gmake[1]: Leaving directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-jQoIIn']
+        ignore line: [COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-v' '-o' 'CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C static library libcmTC_72364.a]
+        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -P CMakeFiles/cmTC_72364.dir/cmake_clean_target.cmake]
+        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_72364.dir/link.txt --verbose=1]
+        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ar qc libcmTC_72364.a CMakeFiles/cmTC_72364.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ranlib libcmTC_72364.a]
+        ignore line: [gmake[1]: Leaving directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-nxFlZa']
         ignore line: []
         ignore line: []
         implicit libs: []
@@ -260,8 +260,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-RYz83R"
-      binary: "/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-RYz83R"
+      source: "/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-Wap6QU"
+      binary: "/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-Wap6QU"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -270,13 +270,13 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-RYz83R'
+        Change Dir: '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-Wap6QU'
         
-        Run Build Command(s): /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_db386/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_db386.dir/build.make CMakeFiles/cmTC_db386.dir/build
-        gmake[1]: Entering directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-RYz83R'
-        Building CXX object CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj
-        /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-g++ -fdata-sections -ffunction-sections     --specs=nano.specs -Wl,--gc-sections -fno-rtti -fno-exceptions     -fno-threadsafe-statics   -v -o CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj -c /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_bc172/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_bc172.dir/build.make CMakeFiles/cmTC_bc172.dir/build
+        gmake[1]: Entering directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-Wap6QU'
+        Building CXX object CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj
+        /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-g++ -fdata-sections -ffunction-sections     --specs=nano.specs -Wl,--gc-sections -fno-rtti -fno-exceptions     -fno-threadsafe-statics   -v -o CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj -c /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         Reading specs from /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/nano.specs
         rename spec link to nano_link
@@ -288,8 +288,8 @@ events:
         Thread model: single
         Supported LTO compression algorithms: zlib
         gcc version 13.3.1 20240614 (GNU Tools for STM32 13.3.rel1.20240926-1715) 
-        COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-fno-rtti' '-fno-exceptions' '-fno-threadsafe-statics' '-v' '-o' 'CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_db386.dir/'
-         /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/cc1plus -isystem =/include/newlib-nano -quiet -v -iprefix /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/ -isysroot /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../arm-none-eabi -D__USES_INITFINI__ /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_db386.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -fdata-sections -ffunction-sections -fno-rtti -fno-exceptions -fno-threadsafe-statics -o /tmp/ccwIUWOG.s
+        COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-fno-rtti' '-fno-exceptions' '-fno-threadsafe-statics' '-v' '-o' 'CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_bc172.dir/'
+         /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/cc1plus -isystem =/include/newlib-nano -quiet -v -iprefix /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/ -isysroot /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../arm-none-eabi -D__USES_INITFINI__ /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_bc172.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -fdata-sections -ffunction-sections -fno-rtti -fno-exceptions -fno-threadsafe-statics -o /tmp/ccK4heEs.s
         GNU C++17 (GNU Tools for STM32 13.3.rel1.20240926-1715) version 13.3.1 20240614 (arm-none-eabi)
         	compiled by GNU C version 7.5.0, GMP version 6.2.1, MPFR version 3.1.6, MPC version 1.0.3, isl version isl-0.15-1-g835ea3a-GMP
         
@@ -313,18 +313,18 @@ events:
          /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include
         End of search list.
         Compiler executable checksum: 799ebe4e0c1d25309a7a428a946f0718
-        COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-fno-rtti' '-fno-exceptions' '-fno-threadsafe-statics' '-v' '-o' 'CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_db386.dir/'
-         /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccwIUWOG.s
+        COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-fno-rtti' '-fno-exceptions' '-fno-threadsafe-statics' '-v' '-o' 'CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_bc172.dir/'
+         /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccK4heEs.s
         GNU assembler version 2.42.0 (arm-none-eabi) using BFD version (GNU Tools for STM32 13.3.rel1.20240926-1715) 2.42.0.20240614
         COMPILER_PATH=/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/
         LIBRARY_PATH=/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../arm-none-eabi/lib/
-        COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-fno-rtti' '-fno-exceptions' '-fno-threadsafe-statics' '-v' '-o' 'CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.'
-        Linking CXX static library libcmTC_db386.a
-        /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -P CMakeFiles/cmTC_db386.dir/cmake_clean_target.cmake
-        /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_db386.dir/link.txt --verbose=1
-        /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ar qc libcmTC_db386.a CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj
-        /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ranlib libcmTC_db386.a
-        gmake[1]: Leaving directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-RYz83R'
+        COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-fno-rtti' '-fno-exceptions' '-fno-threadsafe-statics' '-v' '-o' 'CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX static library libcmTC_bc172.a
+        /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -P CMakeFiles/cmTC_bc172.dir/cmake_clean_target.cmake
+        /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bc172.dir/link.txt --verbose=1
+        /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ar qc libcmTC_bc172.a CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj
+        /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ranlib libcmTC_bc172.a
+        gmake[1]: Leaving directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-Wap6QU'
         
       exitCode: 0
   -
@@ -364,13 +364,13 @@ events:
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(arm-none-eabi-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-RYz83R']
+        ignore line: [Change Dir: '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-Wap6QU']
         ignore line: []
-        ignore line: [Run Build Command(s): /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_db386/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_db386.dir/build.make CMakeFiles/cmTC_db386.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-RYz83R']
-        ignore line: [Building CXX object CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj]
-        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-g++ -fdata-sections -ffunction-sections     --specs=nano.specs -Wl --gc-sections -fno-rtti -fno-exceptions     -fno-threadsafe-statics   -v -o CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj -c /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_bc172/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_bc172.dir/build.make CMakeFiles/cmTC_bc172.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-Wap6QU']
+        ignore line: [Building CXX object CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-g++ -fdata-sections -ffunction-sections     --specs=nano.specs -Wl --gc-sections -fno-rtti -fno-exceptions     -fno-threadsafe-statics   -v -o CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj -c /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [Reading specs from /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/nano.specs]
         ignore line: [rename spec link to nano_link]
@@ -382,8 +382,8 @@ events:
         ignore line: [Thread model: single]
         ignore line: [Supported LTO compression algorithms: zlib]
         ignore line: [gcc version 13.3.1 20240614 (GNU Tools for STM32 13.3.rel1.20240926-1715) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-fno-rtti' '-fno-exceptions' '-fno-threadsafe-statics' '-v' '-o' 'CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_db386.dir/']
-        ignore line: [ /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/cc1plus -isystem =/include/newlib-nano -quiet -v -iprefix /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/ -isysroot /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../arm-none-eabi -D__USES_INITFINI__ /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_db386.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -fdata-sections -ffunction-sections -fno-rtti -fno-exceptions -fno-threadsafe-statics -o /tmp/ccwIUWOG.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-fno-rtti' '-fno-exceptions' '-fno-threadsafe-statics' '-v' '-o' 'CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_bc172.dir/']
+        ignore line: [ /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/cc1plus -isystem =/include/newlib-nano -quiet -v -iprefix /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/ -isysroot /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../arm-none-eabi -D__USES_INITFINI__ /home/araujoj20/st/stm32cubeclt_1.18.0/CMake/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_bc172.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -fdata-sections -ffunction-sections -fno-rtti -fno-exceptions -fno-threadsafe-statics -o /tmp/ccK4heEs.s]
         ignore line: [GNU C++17 (GNU Tools for STM32 13.3.rel1.20240926-1715) version 13.3.1 20240614 (arm-none-eabi)]
         ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.2.1  MPFR version 3.1.6  MPC version 1.0.3  isl version isl-0.15-1-g835ea3a-GMP]
         ignore line: []
@@ -407,18 +407,18 @@ events:
         ignore line: [ /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 799ebe4e0c1d25309a7a428a946f0718]
-        ignore line: [COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-fno-rtti' '-fno-exceptions' '-fno-threadsafe-statics' '-v' '-o' 'CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_db386.dir/']
-        ignore line: [ /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccwIUWOG.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-fno-rtti' '-fno-exceptions' '-fno-threadsafe-statics' '-v' '-o' 'CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_bc172.dir/']
+        ignore line: [ /home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccK4heEs.s]
         ignore line: [GNU assembler version 2.42.0 (arm-none-eabi) using BFD version (GNU Tools for STM32 13.3.rel1.20240926-1715) 2.42.0.20240614]
         ignore line: [COMPILER_PATH=/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/]
         ignore line: [LIBRARY_PATH=/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/:/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/../arm-none-eabi/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-fno-rtti' '-fno-exceptions' '-fno-threadsafe-statics' '-v' '-o' 'CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX static library libcmTC_db386.a]
-        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -P CMakeFiles/cmTC_db386.dir/cmake_clean_target.cmake]
-        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_db386.dir/link.txt --verbose=1]
-        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ar qc libcmTC_db386.a CMakeFiles/cmTC_db386.dir/CMakeCXXCompilerABI.cpp.obj]
-        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ranlib libcmTC_db386.a]
-        ignore line: [gmake[1]: Leaving directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-RYz83R']
+        ignore line: [COLLECT_GCC_OPTIONS='-fdata-sections' '-ffunction-sections' '-specs=nano.specs' '-fno-rtti' '-fno-exceptions' '-fno-threadsafe-statics' '-v' '-o' 'CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX static library libcmTC_bc172.a]
+        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -P CMakeFiles/cmTC_bc172.dir/cmake_clean_target.cmake]
+        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/CMake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bc172.dir/link.txt --verbose=1]
+        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ar qc libcmTC_bc172.a CMakeFiles/cmTC_bc172.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [/home/araujoj20/st/stm32cubeclt_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-ranlib libcmTC_bc172.a]
+        ignore line: [gmake[1]: Leaving directory '/home/araujoj20/Documents/GitHub/Framework/Test/stm32/l5_tz_folder_full_work/Build/CMakeFiles/CMakeScratch/TryCompile-Wap6QU']
         ignore line: []
         ignore line: []
         implicit libs: []

@@ -5,7 +5,7 @@
     "board":    "STM32L552",
     "family":   "stm32l5xx",
 
-    "build":{
+    "build": {
 
         "alayer":               "stm32l5xx-hal-driver",
         "startup_script":       "startup_stm32l552xx.s",
@@ -18,7 +18,7 @@
         }
     },
 
-    "openocd":{
+    "openocd": {
         "interface":        "stlink",
         "target":           "stm32l5x"
     },
@@ -30,27 +30,33 @@
         "rx_pin":   "PG8"
     },
 
-    "trace":{
-        
-        "tim_counter":	{
-            "name":	    "TIM7",
-            "Period":	65535
-	    },
-        
-        "tim_trigger":	{
-            "name":	    "TIM3",
-            "Period":	65535
-	    },
+    "timers": {
+        "TIM7": {
+            "Period": 65535
+        },
 
-        "dma":	{
-            "name":	    "DMA1",
-            "stream":	"Channel4",
-            "direction":"PERIPHERAL_TO_MEMORY"
+        "TIM8": {
+            "Period": 65535,
+            "dma": {
+                "name": "DMA1",
+                "stream": "Channel4",
+                "direction":"PERIPH_TO_MEMORY"
+            }
 	    }
     },
-    
 
-    "mem_map":  {
+    "trace": {
+        "tim_counter": "TIM7",
+        "tim_trigger": "TIM8"
+    },
+
+    "dma": {
+        "name": "DMA1",
+        "stream": "Channel1",
+        "direction": "MEMORY_TO_MEMORY"
+    },
+    
+    "mem_map": {
         "contention":   "0x20018000",
         "no_contention":"0x20030000"
     }

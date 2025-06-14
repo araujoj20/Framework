@@ -1,11 +1,36 @@
 #include "trace.h"
 
-
 volatile int *ptr_cnt = &TIM7->CNT;
 static uint32_t dst_covert[BUFFER_SIZE] = {0};
 
 
 // ------ TRACE FUNCTIONS --------
+
+#define START_ACCURATE_TRACE() do{\
+    TIM3->ARR = auto_reload; \
+    TIM3->CNT = (auto_reload-1) - clock_to_collide; \
+    TIM3->SR = 0; \
+    TIM3->DIER = 0; \
+    HAL_TIM_Base_Start(&htim7);                                      \
+    HAL_DMA_Start(&hdma_tim3_up, (uint32_t)ptr_cnt, (uint32_t)&dst_covert, n_collisions); \
+    __HAL_DMA_ENABLE(&hdma_tim3_up); \
+    TIM3->DIER = 1<<8; \         
+    __HAL_TIM_ENABLE(&htim3);\    
+    MY_NOP(); /* 1 Clock to wait that tim start counting*/\    
+    MY_NOP(); /* 1 Clock for the counter reach the smallest ARR value = 1*/\    
+    MY_NOP(); /* 1 clock for the interrupt (a.k.a, update event) be generated*/\  
+    MY_NOP(); /* 1 clock dma setup*/\    
+    MY_NOP(); /* 1 clock dma setup*/\   
+    DELAY_6_CLOCKS(); /* delay to ensure the 1st collision happens in the victim 1st clock*/\ 
+  }while(0)
+
+#define END_ACCURATE_TRACE() do{\
+    NOPS_TO_AVOID_COLLISIONS(); \
+    __HAL_TIM_DISABLE(&htim3);\
+    HAL_DMA_Abort(&hdma_tim3_up);\
+    HAL_TIM_Base_Stop(&htim7);\
+    *ptr_cnt = 0;\
+  }while(0)
 
 
 char dma_accurate_collisions_latencies[N_INSTRUCTIONS] = {0};
@@ -90,11 +115,6 @@ void accurate_trace_time(sVictimFunc *s_vict){
 
 __attribute__((optimize(0))) unsigned int measure_time(void (*victim)()){
 	int time1, time2;
-	
-  // TIM7->ARR = 0;
-  // TIM3->CNT = 0;
-  // TIM3->SR = 0;
-  // TIM3->DIER = 0;
 
   HAL_TIM_Base_Start(&htim7);     
   time1 = TIM7->CNT;
@@ -129,6 +149,7 @@ void victim_2_NS(){
       max = num2;
 }
 
+__attribute__((section(".cacheable_text")))
 void if_else_true(){
   int s, b;
   s = 0;
@@ -140,6 +161,7 @@ void if_else_true(){
 
 }
 
+__attribute__((section(".cacheable_text")))
 void if_else_false(){
   int s, b;
   s = 1;
@@ -174,6 +196,7 @@ void heavy_op(){
 
 char acc_buff[256];
 
+__attribute__((section(".cacheable_text")))
 void access_near(){
   int s = 0;
   volatile char x;
@@ -184,6 +207,7 @@ void access_near(){
       x = acc_buff[255];  // ldrb.w	r3, [r3, #255]  (32bits)
 }
 
+__attribute__((section(".cacheable_text")))
 void access_far(){
   int s = 1;
   volatile char x;

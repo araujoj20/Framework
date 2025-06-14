@@ -42,10 +42,13 @@ copy_drivers() {
 # Compile Framework
 compile_fw(){
     echo -e "\n${YELLOW}@Step${RESET}${BLUE}(--fw_compile)${RESET}: Compile framework"
+    
     mkdir -p $build
-    gcc -g3 $interface/interface.c  -o $build/interface     "$fw_dir/cJSON/cJSON.c"     -I"$fw_dir/cJSON" -D "$board"
-    gcc -g3 $interface/uart_gen.c   -o $build/uart_gen      "$fw_dir/cJSON/cJSON.c"     -I"$fw_dir/cJSON" -D "$board"
-    gcc -g3 $interface/dma_gen.c    -o $build/dma_gen       "$fw_dir/cJSON/cJSON.c"     -I"$fw_dir/cJSON" -D "$board"
+    
+    gcc -g3 $interface/interface.c  -o $build/interface     "$fw_dir/cJSON/cJSON.c"     -I"$fw_dir/cJSON" -D "$board"   # 100% vai sofrer alteracoes pq é muito dificil assim
+
+    # gcc -g3 $interface/uart_gen.c   -o $build/uart_gen      "$fw_dir/cJSON/cJSON.c"     -I"$fw_dir/cJSON" -D "$board"
+    # gcc -g3 $interface/dma_gen.c    -o $build/dma_gen       "$fw_dir/cJSON/cJSON.c"     -I"$fw_dir/cJSON" -D "$board"
 
 }
 
@@ -70,9 +73,22 @@ interface(){
 # Generator
 generator(){
     echo -e "\n${YELLOW}@Step${RESET}${BLUE}(--generator)${RESET}: Generate files"
-        
-    "$build/uart_gen" "$user_config" "$build"
-    "$build/dma_gen"  "$user_config" "$build"
+
+    mkdir -p "$build/Inc"
+    mkdir -p "$build/Src"
+
+    python3 "$generator/$vendor/templates/main/main_gen.py"     "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/uart/uart_gen.py"     "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/tim/tim_gen.py"       "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/dma/dma_gen.py"       "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/trace/trace_gen.py"   "$user_config"  "$build"
+
+
+    cp_files
+
+}
+
+cp_files(){
 
     test_full_path="$test_path/$test_name"
     suffix=""
@@ -91,11 +107,11 @@ generator(){
     mkdir -p "$test_full_path/Core/Inc"
     mkdir -p "$test_full_path/Core/Src"
 
-    #cp  $build/*.h      "$test_full_path/Core/Inc"
-    #cp  $build/*.c      "$test_full_path/Core/Src"
+    cp  $build/Inc/*.h      "$test_full_path/Core/Inc"
+    cp  $build/Src/*.c      "$test_full_path/Core/Src"
 
-    #cp  $generator/$vendor/aux_files/*.h                "$test_full_path/Core/Inc"
-    #cp  $generator/$vendor/aux_files/*.c                "$test_full_path/Core/Src"
+    cp  $generator/$vendor/aux_files/*.h                "$test_full_path/Core/Inc" # SEE LATER (NONE .h)
+    cp  $generator/$vendor/aux_files/*.c                "$test_full_path/Core/Src" # SEE LATER (PROBABLY NOT THE BEST)
     cp "$generator/$vendor/aux_files/$family/${suffix}Inc/"*.h "$test_full_path/Core/Inc"
     cp "$generator/$vendor/aux_files/$family/${suffix}Src/"*.c "$test_full_path/Core/Src"
 
@@ -113,6 +129,7 @@ generator(){
     cp $runner/cmake/$vendor/CMakeLists.txt         "$test_full_path"
     cp $runner/cmake/$vendor/board/$family.cmake    "$test_full_path"
 }
+
 
 # Compile Test
 compile_test(){
@@ -138,9 +155,9 @@ flash(){
     OPENOCD_CFG_PATH="/usr/share/openocd/scripts"
 
     if [[ "$tz_flag" == 1 ]]; then
-    flash_elf=(
-        "-c" "flash write_image erase $test_path/$test_name/Build/${test_name}_Secure.elf"
-        "-c" "flash write_image erase $test_path/$test_name/Build/${test_name}_NonSecure.elf"
+        flash_elf=(
+            "-c" "flash write_image erase $test_path/$test_name/Build/${test_name}_Secure.elf"
+            "-c" "flash write_image erase $test_path/$test_name/Build/${test_name}_NonSecure.elf"
     )
     else
         flash_elf=(

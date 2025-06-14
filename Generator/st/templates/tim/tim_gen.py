@@ -1,39 +1,31 @@
 import json
 import sys
+import os
 from jinja2 import Environment, FileSystemLoader
 
-# Loads JSON
 with open(sys.argv[1]) as f:
     config = json.load(f)
 
-trace = config["trace"]
+timers_config = config["timers"]
 
-# 2. Extract counter and trigger timers
 timers = []
-used_names = set()
-for key in ["tim_counter", "tim_trigger"]:
-    timer = trace[key]
-    name = timer["name"]
-    if name in used_names:
-        continue
-    timers.append({
-        "name": name,  # ex: TIM3
-        "period": timer["Period"],
-        "is_trigger": (key == "tim_trigger")
-    })
-    used_names.add(name)
+for name, timer_data in timers_config.items():
+    timer = {
+        "name": name,
+        "period": timer_data["Period"],
+        "has_dma": "dma" in timer_data
+    }
+    if timer["has_dma"]:
+        timer["dma"] = timer_data["dma"]
+    timers.append(timer)
 
-
-dma = trace["dma"]
-
-# 4. Renders Jinja2 template
-env = Environment(loader=FileSystemLoader("."))
-template = env.get_template("tim_src.j2")
+script_dir = os.path.dirname(os.path.abspath(__file__))
+env = Environment(loader=FileSystemLoader(script_dir))
 
 template_src = env.get_template("tim_src.j2")
-with open("tim.c", "w") as f:
-    f.write(template_src.render(timers=timers, dma=dma))
+with open(f"{sys.argv[2]}/Src/tim.c", "w") as f:
+    f.write(template_src.render(timers=timers))
 
 template_inc = env.get_template("tim_inc.j2")
-with open("tim.h", "w") as f:
-    f.write(template_inc.render(timers=timers, dma=dma))
+with open(f"{sys.argv[2]}/Inc/tim.h", "w") as f:
+    f.write(template_inc.render(timers=timers))

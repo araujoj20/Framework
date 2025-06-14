@@ -3223,9 +3223,9 @@ void if_else_true(){
 
 void if_else_false(){
   int s, b;
-  s = 1;
+  s = 0;
 
-  if (s == 0)
+  if (s == 1)
     b = 1;
   else 
     b = 0;

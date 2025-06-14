@@ -5,7 +5,6 @@
 extern "C" {
 #endif
 
-/* --- Includes --- */
 #include "main.h"
 
 /* --- TIM handle declarations --- */
@@ -13,8 +12,9 @@ extern "C" {
 extern TIM_HandleTypeDef h{{ timer.name.lower() }};
 {%- endfor %}
 
+/* --- DMA handle declarations --- */
 {%- for timer in timers %}
-{%- if timer.is_trigger %}
+{%- if timer.has_dma %}
 extern DMA_HandleTypeDef hdma_{{ timer.name.lower() }}_up;
 {%- endif %}
 {%- endfor %}

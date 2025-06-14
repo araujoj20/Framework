@@ -2,7 +2,6 @@
 #define __COVERT_CHANNEL_H__
 
 #include "main.h"
-#include "stm32l5xx_hal.h"
 
 #define TO_STRING(name) #name
 #define PRINT_MACRO(x) TO_STRING(x)
@@ -136,32 +135,6 @@ typedef struct {
       TEN_NOPS();\
       TEN_NOPS();\
 	} while(0)
-
-#define START_ACCURATE_TRACE() do{\
-    TIM3->ARR = auto_reload; \
-    TIM3->CNT = (auto_reload-1) - clock_to_collide; \
-    TIM3->SR = 0; \
-    TIM3->DIER = 0; \
-    HAL_TIM_Base_Start(&htim7);                                      \
-    HAL_DMA_Start(&hdma_tim3_up, (uint32_t)ptr_cnt, (uint32_t)&dst_covert, n_collisions); \
-    __HAL_DMA_ENABLE(&hdma_tim3_up); \
-    TIM3->DIER = 1<<8; \         
-    __HAL_TIM_ENABLE(&htim3);\    
-    MY_NOP(); /* 1 Clock to wait that tim start counting*/\    
-    MY_NOP(); /* 1 Clock for the counter reach the smallest ARR value = 1*/\    
-    MY_NOP(); /* 1 clock for the interrupt (a.k.a, update event) be generated*/\  
-    MY_NOP(); /* 1 clock dma setup*/\    
-    MY_NOP(); /* 1 clock dma setup*/\   
-    DELAY_6_CLOCKS(); /* delay to ensure the 1st collision happens in the victim 1st clock*/\ 
-  }while(0)
-
-#define END_ACCURATE_TRACE() do{\
-    NOPS_TO_AVOID_COLLISIONS(); \
-    __HAL_TIM_DISABLE(&htim3);\
-    HAL_DMA_Abort(&hdma_tim3_up);\
-    HAL_TIM_Base_Stop(&htim7);\
-    *ptr_cnt = 0;\
-  }while(0)
 
 unsigned int measure_time(void (*)(void));
 void accurate_trace_time(sVictimFunc *);
