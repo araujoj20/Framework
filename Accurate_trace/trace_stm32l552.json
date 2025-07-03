@@ -35,19 +35,79 @@
             "Period": 65535
         },
 
-        "TIM8": {
-            "Period": 65535,
+        "TIM2": {
+            "Period": 222,
             "dma": {
                 "name": "DMA1",
                 "stream": "Channel4",
                 "direction":"PERIPH_TO_MEMORY"
             }
-	    }
+        },
+
+        "TIM4": {
+            "Period": 444
+        },
+
+         "TIM4_OW_1": {
+            "Period": 111,
+            "dma": {
+                "name": "DMA1",
+                "stream": "Channel4",
+                "direction":"PERIPH_TO_MEMORY"
+            }
+        },
+
+        "TIM4_OW_2": {
+            "Period": 12345
+        },
+
+        "TIM3": {
+            "Period": 65535
+	    },
+
+        "TIM3_OW_1": {
+            "Period": 1,
+            "dma": {
+                "name": "DMA1",
+                "stream": "Channel4",
+                "direction":"PERIPH_TO_MEMORY"
+            }
+        },
+
+        "TIM3_OW_2": {
+            "Period": 2,
+            "dma": {
+                "name": "DMA1",
+                "stream": "Channel2",
+                "direction":"MEMORY_TO_PERIPH"
+            }
+        },
+
+        "TIM3_OW_3": {
+            "Period": 333
+        }
+    },
+
+    "gadgets": {
+        "counter": [
+            "TIM7",
+            "TIM3"
+        ],
+
+        "trigger": [
+            "TIM2",
+            "TIM3_OW2"
+        ],
+
+        "detect": [
+            "TIM7",
+            "TIM4_OW1"
+        ]
     },
 
     "trace": {
         "tim_counter": "TIM7",
-        "tim_trigger": "TIM8"
+        "tim_trigger": "TIM3"
     },
 
     "dma": {

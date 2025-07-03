@@ -96,7 +96,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_DMA_Init();
   MX_LPUART1_UART_Init();
-  MX_TIM8_Init();
+  MX_TIM3_Init();
   MX_TIM7_Init();
   MX_ICACHE_Init();
   /* USER CODE BEGIN 2 */

@@ -17,11 +17,17 @@ extern TIM_HandleTypeDef h{{ timer.name.lower() }};
 {%- if timer.has_dma %}
 extern DMA_HandleTypeDef hdma_{{ timer.name.lower() }}_up;
 {%- endif %}
+{%- if timer.has_overwrite and timer.overwrite.has_dma %}
+extern DMA_HandleTypeDef hdma_{{ timer.name.lower() }}_up_overwrite;
+{%- endif %}
 {%- endfor %}
 
 /* --- MX_TIMx_Init prototypes --- */
 {%- for timer in timers %}
 void MX_{{ timer.name }}_Init(void);
+{%- if timer.has_overwrite %}
+void MX_{{ timer.name }}_Init_Overwrite(void);
+{%- endif %}
 {%- endfor %}
 
 #ifdef __cplusplus

@@ -6,15 +6,15 @@ static uint32_t dst_covert[BUFFER_SIZE] = {0};
 // ------ TRACE FUNCTIONS --------
 
 #define START_ACCURATE_TRACE() do{\
-    TIM8->ARR = auto_reload; \
-    TIM8->CNT = (auto_reload-1) - clock_to_collide; \
-    TIM8->SR = 0; \
-    TIM8->DIER = 0; \
+    TIM3->ARR = auto_reload; \
+    TIM3->CNT = (auto_reload-1) - clock_to_collide; \
+    TIM3->SR = 0; \
+    TIM3->DIER = 0; \
     HAL_TIM_Base_Start(&htim7);                                      \
-    HAL_DMA_Start(&hdma_tim8_up, (uint32_t)ptr_cnt, (uint32_t)&dst_covert, n_collisions); \
-    __HAL_DMA_ENABLE(&hdma_tim8_up); \
-    TIM8->DIER = 1<<8; \         
-    __HAL_TIM_ENABLE(&htim8);\    
+    HAL_DMA_Start(&hdma_tim3_up, (uint32_t)ptr_cnt, (uint32_t)&dst_covert, n_collisions); \
+    __HAL_DMA_ENABLE(&hdma_tim3_up); \
+    TIM3->DIER = 1<<8; \         
+    __HAL_TIM_ENABLE(&htim3);\    
     MY_NOP(); \
     MY_NOP(); \
     MY_NOP(); \
@@ -25,8 +25,8 @@ static uint32_t dst_covert[BUFFER_SIZE] = {0};
 
 #define END_ACCURATE_TRACE() do{\
     NOPS_TO_AVOID_COLLISIONS(); \
-    __HAL_TIM_DISABLE(&htim8);\
-    HAL_DMA_Abort(&hdma_tim8_up);\
+    __HAL_TIM_DISABLE(&htim3);\
+    HAL_DMA_Abort(&hdma_tim3_up);\
     HAL_TIM_Base_Stop(&htim7);\
     *ptr_cnt = 0;\
   }while(0)

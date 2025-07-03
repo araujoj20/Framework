@@ -84,7 +84,7 @@ generator(){
     python3 "$generator/$vendor/templates/trace/trace_gen.py"   "$user_config"  "$build"
 
 
-    cp_files
+    #cp_files
 
 }
 

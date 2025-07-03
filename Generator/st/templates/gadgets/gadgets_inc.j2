@@ -1,0 +1,15 @@
+#ifndef __GADGETS_DEF_H__
+#define __GADGETS_DEF_H__
+
+{% for gadget_name, timer_list in gadgets.items() %}
+  /* --- {{ gadget_name | capitalize }} Gadget --- */
+  {%- for timer in timer_list %}
+    {%- set base = timer.split('_OW_')[0] %}
+#define {{ gadget_name }}_gadget_{{ base.lower() }}  h{{ base.lower() }}
+    {%- if dma_lookup.get(timer, False) %}
+#define {{ gadget_name }}_gadget_hdma_{{ base.lower() }}_up  hdma_{{ base.lower() }}_up
+    {%- endif %}
+  {%- endfor %}
+{% endfor %}
+
+#endif /* __GADGETS_DEF_H__ */
