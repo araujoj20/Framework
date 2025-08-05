@@ -6,7 +6,14 @@ from jinja2 import Environment, FileSystemLoader
 with open(sys.argv[1]) as f:
     config = json.load(f)
 
+if "trace" not in config:
+    sys.exit(0)
+
 trace_config = config["trace"]
+
+trace_config = config["trace"]
+if "tim_counter" not in trace_config or "tim_trigger" not in trace_config:
+    sys.exit(0)
 
 trace = {
     "tim_counter": trace_config["tim_counter"],

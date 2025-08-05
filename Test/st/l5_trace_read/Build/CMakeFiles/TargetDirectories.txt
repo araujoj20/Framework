@@ -1,0 +1,8 @@
+/home/araujoj20/Documents/GitHub/Framework/Test/st/l5_trace_read/Build/CMakeFiles/edit_cache.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/st/l5_trace_read/Build/CMakeFiles/rebuild_cache.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/st/l5_trace_read/Build/Secure/CMakeFiles/l5_trace_read_Secure.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/st/l5_trace_read/Build/Secure/CMakeFiles/edit_cache.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/st/l5_trace_read/Build/Secure/CMakeFiles/rebuild_cache.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/st/l5_trace_read/Build/NonSecure/CMakeFiles/l5_trace_read_NonSecure.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/st/l5_trace_read/Build/NonSecure/CMakeFiles/edit_cache.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/st/l5_trace_read/Build/NonSecure/CMakeFiles/rebuild_cache.dir

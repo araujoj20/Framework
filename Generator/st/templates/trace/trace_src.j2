@@ -1,6 +1,6 @@
 #include "trace.h"
 
-volatile int *ptr_cnt = &{{ trace.tim_counter }}->CNT;
+volatile uint32_t *ptr_cnt = &{{ trace.tim_counter }}->CNT;
 static uint32_t dst_covert[BUFFER_SIZE] = {0};
 
 // ------ TRACE FUNCTIONS --------

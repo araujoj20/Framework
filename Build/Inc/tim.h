@@ -8,19 +8,25 @@ extern "C" {
 #include "main.h"
 
 /* --- TIM handle declarations --- */
-extern TIM_HandleTypeDef htim7;
+extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef htim22;
+extern TIM_HandleTypeDef htim222;
 extern TIM_HandleTypeDef htim4;
 extern TIM_HandleTypeDef htim3;
 
 /* --- DMA handle declarations --- */
 extern DMA_HandleTypeDef hdma_tim2_up;
+extern DMA_HandleTypeDef hdma_tim22_up;
+extern DMA_HandleTypeDef hdma_tim222_up;
 extern DMA_HandleTypeDef hdma_tim4_up;
 extern DMA_HandleTypeDef hdma_tim3_up;
 
 /* --- MX_TIMx_Init prototypes --- */
-void MX_TIM7_Init(void);
+void MX_TIM1_Init(void);
 void MX_TIM2_Init(void);
+void MX_TIM22_Init(void);
+void MX_TIM222_Init(void);
 void MX_TIM4_Init(void);
 void MX_TIM4_Init_OW_1(void);
 void MX_TIM4_Init_OW_2(void);

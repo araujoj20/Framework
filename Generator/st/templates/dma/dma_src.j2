@@ -3,39 +3,56 @@
 /* DMA handles*/
 {%- for dma in dma_list %}
 {%- if dma.direction == "MEMORY_TO_MEMORY" %}
-DMA_HandleTypeDef hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream | replace("Channel", "channel") }};
+DMA_HandleTypeDef hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream.lower() }};
 {%- endif %}
 {%- endfor %}
 
 void MX_DMA_Init(void)
 {   
     /* DMA controller clock enable */
+    
+    {%- if board == "STM32L552" %}
     __HAL_RCC_DMAMUX1_CLK_ENABLE();
-    __HAL_RCC_{{ dma_list[0].name }}_CLK_ENABLE();
+    {%- endif %}
+    
+    {%- for dma in dma_list | map(attribute='name') | unique %}
+    __HAL_RCC_{{ dma }}_CLK_ENABLE();
+    {%- endfor %}
 
     {%- for dma in dma_list %}
     {%- if dma.direction == "MEMORY_TO_MEMORY" %}
 
     /* Configure DMA request on {{ dma.name }}_{{ dma.stream }} */
-    hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream | replace("Channel", "channel") }}.Instance = {{ dma.name }}_{{ dma.stream }};
-    hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream | replace("Channel", "channel") }}.Init.Request = DMA_REQUEST_MEM2MEM;
-    hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream | replace("Channel", "channel") }}.Init.Direction = DMA_MEMORY_TO_MEMORY;
-    hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream | replace("Channel", "channel") }}.Init.PeriphInc = DMA_PINC_DISABLE;
-    hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream | replace("Channel", "channel") }}.Init.MemInc = DMA_MINC_ENABLE;
-    hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream | replace("Channel", "channel") }}.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
-    hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream | replace("Channel", "channel") }}.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
-    hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream | replace("Channel", "channel") }}.Init.Mode = DMA_NORMAL;
-    hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream | replace("Channel", "channel") }}.Init.Priority = DMA_PRIORITY_LOW;
+    {%- set dma_handle = "hdma_memtomem_" + dma.name.lower() + "_" + dma.stream.lower() %}
+    {{ dma_handle }}.Instance = {{ dma.name }}_{{ dma.stream }};
+    {{ dma_handle }}.Init.Request = DMA_REQUEST_MEM2MEM;
+    {{ dma_handle }}.Init.Direction = DMA_MEMORY_TO_MEMORY;
+    {{ dma_handle }}.Init.PeriphInc = DMA_PINC_DISABLE;
+    {{ dma_handle }}.Init.MemInc = DMA_MINC_ENABLE;
+    {{ dma_handle }}.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+    {{ dma_handle }}.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+    {{ dma_handle }}.Init.Mode = DMA_NORMAL;
+    {{ dma_handle }}.Init.Priority = DMA_PRIORITY_LOW;
+
+    {%- if board == "STM32F407" %}
+    {{ dma_handle }}.Init.Channel = DMA_CHANNEL_0;
+    {{ dma_handle }}.Init.FIFOMode = DMA_FIFOMODE_ENABLE;
+    {{ dma_handle }}.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
+    {{ dma_handle }}.Init.MemBurst = DMA_MBURST_SINGLE;
+    {{ dma_handle }}.Init.PeriphBurst = DMA_PBURST_SINGLE;
+    {%- endif %}
 
     if (HAL_DMA_Init(&hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream | replace("Channel", "channel") }}) != HAL_OK)
     {
         Error_Handler();
     }
-
+    {%- if board == "STM32L552" %}
     if (HAL_DMA_ConfigChannelAttributes(&hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream | replace("Channel", "channel") }}, DMA_CHANNEL_NPRIV) != HAL_OK)
     {
         Error_Handler();
     }
+    {%- endif %}
+    
     {%- endif %}
     {%- endfor %}
 

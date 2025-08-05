@@ -1,0 +1,3 @@
+/home/araujoj20/Documents/GitHub/Framework/Test/st/f4_gen_uart/Build/CMakeFiles/f4_gen_uart.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/st/f4_gen_uart/Build/CMakeFiles/edit_cache.dir
+/home/araujoj20/Documents/GitHub/Framework/Test/st/f4_gen_uart/Build/CMakeFiles/rebuild_cache.dir

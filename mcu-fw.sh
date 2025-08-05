@@ -79,12 +79,12 @@ generator(){
 
     python3 "$generator/$vendor/templates/main/main_gen.py"     "$user_config"  "$build"
     python3 "$generator/$vendor/templates/uart/uart_gen.py"     "$user_config"  "$build"
-    python3 "$generator/$vendor/templates/tim/tim_gen.py"       "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/tim/tim_gen_new.py"       "$user_config"  "$build"
     python3 "$generator/$vendor/templates/dma/dma_gen.py"       "$user_config"  "$build"
     python3 "$generator/$vendor/templates/trace/trace_gen.py"   "$user_config"  "$build"
 
 
-    #cp_files
+    cp_files
 
 }
 
@@ -164,6 +164,14 @@ flash(){
             "-c" "flash write_image erase $test_path/$test_name/Build/${test_name}.elf"
         )
     fi
+
+    -f "/usr/share/openocd/scripts/interface/stlink.cfg" \
+    -f "/usr/share/openocd/scripts/target/stm32f4x.cfg" \
+    -c "init" \
+    -c "reset halt" \
+    -c "Documents/eclipse-rtd/Trace_F4/out/erika3app.elf" \
+    -c "reset run" \
+    -c "exit"
 
 openocd \
     -f "$OPENOCD_CFG_PATH/interface/$ocd_interface.cfg" \
