@@ -33,66 +33,58 @@
     "timers": {
         "TIM1": {
             "Period": 65535,
-            "trigger_source": "TIM2"
+            "trigger_source": "TIM2",
+            "trigger_event": "OC1REF"
         },
 
         "TIM2": {
-            "Period": 222,
-            "dma": "dma1_channel4",
+            "Period": 2,
             "event": "UPDATE_EVENT",
+            "trigger_source": "TIM1",
+            "trigger_event": "UPDATE"
+        },
+
+        "TIM2_OW_1": {
+            "Period": 22,
+            "dma": "dma1_stream1_tim2_up",
+            "trigger_source": "TIM1",
+            "trigger_event": "OC1"
+        },
+
+        "TIM2_OW_2": {
+            "Period": 222,
+            "dma": "dma_tim2_ch3",
             "trigger_source": "TIM1"
         },
-
-        "TIM22": {
-            "Period": 222,
-            "dma": "dma1_stream1_2up",
-            "event": "UPDATE_EVENT",
-            "trigger_source": "TIM1"
+        "TIM2_OW_3": {
+            "Period": 2233,
+            "dma": "dma_tim2_ch3"
         },
-
-        "TIM222": {
-            "Period": 222,
-            "dma": "dma_tim2_up",
-            "event": "UPDATE_EVENT",
-            "trigger_source": "TIM1"
-        },
-
-        "TIM4": {
-            "Period": 444
-        },
-
-        "TIM4_OW_1": {
-            "Period": 111,
-            "dma": "dma1_channel4"
-        },
-
-        "TIM4_OW_2": {
-            "Period": 12345
+        "TIM2_OW_4": {
+            "Period": 2233,
+            "dma": "dma_tim2_ch4"
         },
 
         "TIM3": {
             "Period": 65535
 	    },
-
         "TIM3_OW_1": {
-            "Period": 1,
-            "dma": "dma1_channel4"
-        },
-
-        "TIM3_OW_2": {
-            "Period": 2,
-            "dma": "dma1_channel2"
-        },
-
-        "TIM3_OW_3": {
             "Period": 333
+	    },
+
+        "TIM8": {
+            "Period": 222,
+            "dma": "dma_tim8_ch1",
+            "event": "UPDATE_EVENT",
+            "trigger_source": "TIM1"
         }
+
     },
 
     "dmas": {
-        "dma1_channel1": {
+        "dma1_stream1": {
             "name": "DMA1",
-            "channel": "Channel1",
+            "stream": "Stream1",
             "direction": "MEMORY_TO_MEMORY"
         },
         "dma2_stream5": {
@@ -113,11 +105,22 @@
         "dma1_stream1_tim2_up": {
             "request": "TIM2_UP",
             "name": "DMA1",
-            "stream": "Stream1",
+            "stream": "Stream6",
             "direction": "PERIPH_TO_MEMORY"
         },
-        "dma_tim2_up": {
+        "dma_tim2_ch3": {
             "request": "TIM2_CH3",
+            "direction": "PERIPH_TO_MEMORY"
+        },
+        "dma_tim2_ch4": {
+            "request": "TIM2_CH4",
+            "direction": "PERIPH_TO_MEMORY"
+        },
+        "dma_tim8_ch1": {
+            "request": "TIM8_CH1",
+            "name": "DMA1",
+            "stream": "Stream6",
+            "channel":"Channel7", 
             "direction": "PERIPH_TO_MEMORY"
         }
     },

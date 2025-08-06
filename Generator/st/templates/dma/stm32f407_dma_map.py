@@ -182,9 +182,9 @@ def find_dma_mappings(peripheral_name: str, dma_map: dict):
 
 
 
-results = find_dma_mappings("TIM1_CH1", dma_stm32f407_mapping)
+# results = find_dma_mappings("TIM1_CH1", dma_stm32f407_mapping)
 
-for dma, channel, stream in results:
-    print(f"{dma} {channel} {stream}")
+# for dma, channel, stream in results:
+#     print(f"{dma} {channel} {stream}")
 
-print(dma_stm32f407_mapping["DMA1"]["Channel5"]["Stream3"])    # -> "TIM3_TRIG" ou ["TIM3_CH1","TIM3_TRIG"]
+#print(dma_stm32f407_mapping["DMA1"]["Channel5"]["Stream3"])    # -> "TIM3_TRIG" ou ["TIM3_CH1","TIM3_TRIG"]

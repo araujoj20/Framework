@@ -6,21 +6,13 @@ TIM_HandleTypeDef h{{ t.lower() }};
 {%- endfor %}
 
 /* --- OW Variables --- */
-{%- set ns = namespace(seen=[]) %}
-{%- for t in timers if t.has_ow %}
-  {%- if t.name not in ns.seen %}
-uint8_t {{ t.name }}_OW = 0;
-    {%- set _ = ns.seen.append(t.name) %}
-  {%- endif %}
+{%- for t in timers | selectattr('has_ow') | map(attribute='name') | unique %}
+uint8_t {{ t }}_OW = 0;
 {%- endfor %}
 
 /* --- DMA Handle declarations --- */
-{%- set ns = namespace(seen=[]) %}
-{%- for t in timers if t.has_dma %}
-  {%- if t.name not in ns.seen %}
-DMA_HandleTypeDef hdma_{{ t.name.lower() }}_up;
-    {%- set _ = ns.seen.append(t.name) %}
-  {%- endif %}
+{%- for t in timers | selectattr('has_dma') | map(attribute='request') | unique %}
+DMA_HandleTypeDef hdma_{{ t.lower() }};
 {%- endfor %}
 
 /* --- MX_TIMERS Init functions --- */
@@ -29,7 +21,8 @@ void MX_{{ t.name }}_Init{% if t.ow_id > 0 %}_OW_{{ t.ow_id }}{% endif %}(void)
 {
   {%- if t.has_ow %}
   {{ t.name }}_OW = {{ t.ow_id }};
-  if (__HAL_RCC_TIM{{ t.name }}_IS_CLK_ENABLED()) {
+
+  if (__HAL_RCC_{{ t.name }}_IS_CLK_ENABLED()) {
     HAL_TIM_Base_DeInit(&h{{ t.name.lower() }});
   }
   {%- endif %}
@@ -54,7 +47,7 @@ void MX_{{ t.name }}_Init{% if t.ow_id > 0 %}_OW_{{ t.ow_id }}{% endif %}(void)
     Error_Handler();
   }
 
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_{{ t.trigger_event }};
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&h{{ t.name.lower() }}, &sMasterConfig) != HAL_OK)
   {
@@ -65,44 +58,50 @@ void MX_{{ t.name }}_Init{% if t.ow_id > 0 %}_OW_{{ t.ow_id }}{% endif %}(void)
 
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
 {
-{%- set ns = namespace(seen=[]) %}
-{%- for t in timers %}
-  {%- if t.name not in ns.seen %}
-  if(tim_baseHandle->Instance == {{ t.name }})
+{%- for t in timers | map(attribute='name') | unique %}
+  if(tim_baseHandle->Instance == {{ t }})
   {
-    __HAL_RCC_{{ t.name }}_CLK_ENABLE();
-    {%- for t2 in timers if t2.name == t.name %}
+    __HAL_RCC_{{ t }}_CLK_ENABLE();
+    {%- for t2 in timers if t2.name == t %}
       {%- if t2.ow_id > 0 %}
     if ({{ t2.name }}_OW == {{ t2.ow_id }})
     {
       {%- endif %}
       {%- if t2.has_dma %}
-      hdma_{{ t2.name.lower() }}_up.Instance = {{ t2.dma.name }}_{{ t2.dma.stream }};
-      hdma_{{ t2.name.lower() }}_up.Init.Request = DMA_REQUEST_{{ t2.name }}_UP;
-      hdma_{{ t2.name.lower() }}_up.Init.Direction = DMA_{{ t2.dma.direction }};
-      hdma_{{ t2.name.lower() }}_up.Init.PeriphInc = DMA_PINC_DISABLE;
-      hdma_{{ t2.name.lower() }}_up.Init.MemInc = DMA_MINC_ENABLE;
-      hdma_{{ t2.name.lower() }}_up.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
-      hdma_{{ t2.name.lower() }}_up.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
-      hdma_{{ t2.name.lower() }}_up.Init.Mode = DMA_NORMAL;
-      hdma_{{ t2.name.lower() }}_up.Init.Priority = DMA_PRIORITY_LOW;
-      if (HAL_DMA_Init(&hdma_{{ t2.name.lower() }}_up) != HAL_OK)
-      {
-        Error_Handler();
-      }
-      if (HAL_DMA_ConfigChannelAttributes(&hdma_{{ t2.name.lower() }}_up, DMA_CHANNEL_NPRIV) != HAL_OK)
-      {
-        Error_Handler();
-      }
-      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_{{ t2.name.lower() }}_up);
+      hdma_{{ t2.request.lower() }}.Instance = {{ t2.dma.name }}_{{ t2.dma.stream }};
+      hdma_{{ t2.request.lower() }}.Init.Request = DMA_REQUEST_{{ t2.name }}_UP;
+      hdma_{{ t2.request.lower() }}.Init.Direction = DMA_{{ t2.dma.direction }};
+      hdma_{{ t2.request.lower() }}.Init.PeriphInc = DMA_PINC_DISABLE;
+      hdma_{{ t2.request.lower() }}.Init.MemInc = DMA_MINC_ENABLE;
+      hdma_{{ t2.request.lower() }}.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+      hdma_{{ t2.request.lower() }}.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+      hdma_{{ t2.request.lower() }}.Init.Mode = DMA_NORMAL;
+      hdma_{{ t2.request.lower() }}.Init.Priority = DMA_PRIORITY_LOW;
+      {%- if board == "STM32F407" %}
+      hdma_{{ t2.request.lower() }}.Init.Channel = DMA_{{ t2.dma.channel }};
+      hdma_{{ t2.request.lower() }}.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
       {%- endif %}
+
+      if (HAL_DMA_Init(&hdma_{{ t2.request.lower() }}) != HAL_OK)
+      {
+        Error_Handler();
+      }
+      if (HAL_DMA_ConfigChannelAttributes(&hdma_{{ t2.request.lower() }}, DMA_CHANNEL_NPRIV) != HAL_OK)
+      {
+        Error_Handler();
+      }
+      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_{{ t2.request.lower() }});
+      {%- endif %}
+
+      {%- if t2.has_ch_request %}
+      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_CC{{ t2.ch_request_num }}], hdma_{{ t2.request.lower() }});
+      {%- endif %}
+
       {%- if t2.ow_id > 0 %}
     }
       {%- endif %}
     {%- endfor %}
   }
-  {%- set _ = ns.seen.append(t.name) %}
-  {%- endif %}
 {%- endfor %}
 }
 

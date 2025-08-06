@@ -15,8 +15,6 @@
   
 #define trigger_gadget_tim2  htim2
     
-#define trigger_gadget_hdma_tim2_up  hdma_tim2_up
-    
   
 #define trigger_gadget_tim3_ow2  htim3_ow2
     

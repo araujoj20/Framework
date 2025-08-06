@@ -38,25 +38,8 @@
 
         "TIM2": {
             "Period": 222,
-            "dma": {
-                "name": "DMA1",
-                "channel": "Channel6",
-                "direction":"PERIPH_TO_MEMORY"
-            },
+            "dma":  "dma1_channel7",
             "event": "UPDATE_EVENT"
-        },
-
-        "TIM4": {
-            "Period": 444
-        },
-
-        "TIM4_OW_1": {
-            "Period": 111,
-            "dma": {
-                "name": "DMA1",
-                "channel": "Channel1",
-                "direction":"PERIPH_TO_MEMORY"
-            }
         },
 
         "TIM4_OW_2": {
@@ -69,37 +52,12 @@
 
         "TIM3_OW_1": {
             "Period": 1,
-            "dma": {
-                "name": "DMA1",
-                "channel": "Channel7",
-                "direction":"PERIPH_TO_MEMORY"
-            }
-        },
-
-        "TIM3_OW_2": {
-            "Period": 2,
-            "dma": {
-                "name": "DMA1",
-                "channel": "Channel2",
-                "direction":"MEMORY_TO_PERIPH"
-            }
-        },
-
-        "TIM3_OW_3": {
-            "Period": 333
-        },
-        
-        "TIM7": {
-            "Period": 65535
+            "dma": "dma1_channel4"
         },
 
         "TIM8": {
             "Period": 65535,
-            "dma": {
-                "name": "DMA1",
-                "channel": "Channel4",
-                "direction":"PERIPH_TO_MEMORY"
-            }
+            "dma": "dma1_channel7"
         }
 
     },
@@ -136,6 +94,16 @@
             "name": "DMA2",
             "channel": "Channel3",
             "direction": "MEMORY_TO_MEMORY"
+        },
+        "dma1_channel4": {
+            "name": "DMA1",
+            "channel": "Channel5",
+            "direction": "PERIPH_TO_MEMORY"
+        },
+        "dma1_channel7": {
+            "name": "DMA1",
+            "channel": "Channel7",
+            "direction": "MEMORY_TO_PERIPH"
         }
     },
     

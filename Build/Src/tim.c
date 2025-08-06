@@ -4,21 +4,18 @@
 
 TIM_HandleTypeDef htim1;
 TIM_HandleTypeDef htim2;
-TIM_HandleTypeDef htim22;
-TIM_HandleTypeDef htim222;
-TIM_HandleTypeDef htim4;
 TIM_HandleTypeDef htim3;
+TIM_HandleTypeDef htim8;
 
 /* --- OW Variables --- */
-uint8_t TIM4_OW = 0;
+uint8_t TIM2_OW = 0;
 uint8_t TIM3_OW = 0;
 
 /* --- DMA Handle declarations --- */
 DMA_HandleTypeDef hdma_tim2_up;
-DMA_HandleTypeDef hdma_tim22_up;
-DMA_HandleTypeDef hdma_tim222_up;
-DMA_HandleTypeDef hdma_tim4_up;
-DMA_HandleTypeDef hdma_tim3_up;
+DMA_HandleTypeDef hdma_tim2_ch3;
+DMA_HandleTypeDef hdma_tim2_ch4;
+DMA_HandleTypeDef hdma_tim8_ch1;
 
 /* --- MX_TIMERS Init functions --- */
 
@@ -45,7 +42,7 @@ void MX_TIM1_Init(void)
     Error_Handler();
   }
 
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_OC1REF;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
   {
@@ -55,6 +52,83 @@ void MX_TIM1_Init(void)
 
 void MX_TIM2_Init(void)
 {
+  TIM2_OW = 0;
+
+  if (__HAL_RCC_TIM2_IS_CLK_ENABLED()) {
+    HAL_TIM_Base_DeInit(&htim2);
+  }
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 0;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 2;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+void MX_TIM2_Init_OW_1(void)
+{
+  TIM2_OW = 1;
+
+  if (__HAL_RCC_TIM2_IS_CLK_ENABLED()) {
+    HAL_TIM_Base_DeInit(&htim2);
+  }
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 0;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 22;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_OC1;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+void MX_TIM2_Init_OW_2(void)
+{
+  TIM2_OW = 2;
+
+  if (__HAL_RCC_TIM2_IS_CLK_ENABLED()) {
+    HAL_TIM_Base_DeInit(&htim2);
+  }
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
@@ -84,168 +158,73 @@ void MX_TIM2_Init(void)
   }
 }
 
-void MX_TIM22_Init(void)
+void MX_TIM2_Init_OW_3(void)
 {
+  TIM2_OW = 3;
+
+  if (__HAL_RCC_TIM2_IS_CLK_ENABLED()) {
+    HAL_TIM_Base_DeInit(&htim2);
+  }
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
 
-  htim22.Instance = TIM22;
-  htim22.Init.Prescaler = 0;
-  htim22.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim22.Init.Period = 222;
-  htim22.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim22.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
-  if (HAL_TIM_Base_Init(&htim22) != HAL_OK)
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 0;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 2233;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
   {
     Error_Handler();
   }
 
   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim22, &sClockSourceConfig) != HAL_OK)
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
   {
     Error_Handler();
   }
 
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim22, &sMasterConfig) != HAL_OK)
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
   {
     Error_Handler();
   }
 }
 
-void MX_TIM222_Init(void)
+void MX_TIM2_Init_OW_4(void)
 {
+  TIM2_OW = 4;
+
+  if (__HAL_RCC_TIM2_IS_CLK_ENABLED()) {
+    HAL_TIM_Base_DeInit(&htim2);
+  }
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
 
-  htim222.Instance = TIM222;
-  htim222.Init.Prescaler = 0;
-  htim222.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim222.Init.Period = 222;
-  htim222.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim222.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
-  if (HAL_TIM_Base_Init(&htim222) != HAL_OK)
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 0;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 2233;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
   {
     Error_Handler();
   }
 
   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim222, &sClockSourceConfig) != HAL_OK)
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
   {
     Error_Handler();
   }
 
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim222, &sMasterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
-void MX_TIM4_Init(void)
-{
-  TIM4_OW = 0;
-  if (__HAL_RCC_TIMTIM4_IS_CLK_ENABLED()) {
-    HAL_TIM_Base_DeInit(&htim4);
-  }
-
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  TIM_MasterConfigTypeDef sMasterConfig = {0};
-
-  htim4.Instance = TIM4;
-  htim4.Init.Prescaler = 0;
-  htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 444;
-  htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
-  if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
-void MX_TIM4_Init_OW_1(void)
-{
-  TIM4_OW = 1;
-  if (__HAL_RCC_TIMTIM4_IS_CLK_ENABLED()) {
-    HAL_TIM_Base_DeInit(&htim4);
-  }
-
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  TIM_MasterConfigTypeDef sMasterConfig = {0};
-
-  htim4.Instance = TIM4;
-  htim4.Init.Prescaler = 0;
-  htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 111;
-  htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
-  if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
-void MX_TIM4_Init_OW_2(void)
-{
-  TIM4_OW = 2;
-  if (__HAL_RCC_TIMTIM4_IS_CLK_ENABLED()) {
-    HAL_TIM_Base_DeInit(&htim4);
-  }
-
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  TIM_MasterConfigTypeDef sMasterConfig = {0};
-
-  htim4.Instance = TIM4;
-  htim4.Init.Prescaler = 0;
-  htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 12345;
-  htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
-  if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
   {
     Error_Handler();
   }
@@ -254,7 +233,8 @@ void MX_TIM4_Init_OW_2(void)
 void MX_TIM3_Init(void)
 {
   TIM3_OW = 0;
-  if (__HAL_RCC_TIMTIM3_IS_CLK_ENABLED()) {
+
+  if (__HAL_RCC_TIM3_IS_CLK_ENABLED()) {
     HAL_TIM_Base_DeInit(&htim3);
   }
 
@@ -289,77 +269,8 @@ void MX_TIM3_Init(void)
 void MX_TIM3_Init_OW_1(void)
 {
   TIM3_OW = 1;
-  if (__HAL_RCC_TIMTIM3_IS_CLK_ENABLED()) {
-    HAL_TIM_Base_DeInit(&htim3);
-  }
 
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  TIM_MasterConfigTypeDef sMasterConfig = {0};
-
-  htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 0;
-  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 1;
-  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
-  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
-void MX_TIM3_Init_OW_2(void)
-{
-  TIM3_OW = 2;
-  if (__HAL_RCC_TIMTIM3_IS_CLK_ENABLED()) {
-    HAL_TIM_Base_DeInit(&htim3);
-  }
-
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  TIM_MasterConfigTypeDef sMasterConfig = {0};
-
-  htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 0;
-  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 2;
-  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
-  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
-void MX_TIM3_Init_OW_3(void)
-{
-  TIM3_OW = 3;
-  if (__HAL_RCC_TIMTIM3_IS_CLK_ENABLED()) {
+  if (__HAL_RCC_TIM3_IS_CLK_ENABLED()) {
     HAL_TIM_Base_DeInit(&htim3);
   }
 
@@ -391,6 +302,37 @@ void MX_TIM3_Init_OW_3(void)
   }
 }
 
+void MX_TIM8_Init(void)
+{
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  htim8.Instance = TIM8;
+  htim8.Init.Prescaler = 0;
+  htim8.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim8.Init.Period = 222;
+  htim8.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim8.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim8) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim8, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim8, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
 
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
 {
@@ -401,7 +343,9 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
   if(tim_baseHandle->Instance == TIM2)
   {
     __HAL_RCC_TIM2_CLK_ENABLE();
-      hdma_tim2_up.Instance = DMA1_Channel4;
+    if (TIM2_OW == 1)
+    {
+      hdma_tim2_up.Instance = DMA1_Stream6;
       hdma_tim2_up.Init.Request = DMA_REQUEST_TIM2_UP;
       hdma_tim2_up.Init.Direction = DMA_PERIPH_TO_MEMORY;
       hdma_tim2_up.Init.PeriphInc = DMA_PINC_DISABLE;
@@ -410,6 +354,9 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
       hdma_tim2_up.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
       hdma_tim2_up.Init.Mode = DMA_NORMAL;
       hdma_tim2_up.Init.Priority = DMA_PRIORITY_LOW;
+      hdma_tim2_up.Init.Channel = DMA_CHANNEL_3;
+      hdma_tim2_up.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+
       if (HAL_DMA_Init(&hdma_tim2_up) != HAL_OK)
       {
         Error_Handler();
@@ -419,77 +366,81 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
         Error_Handler();
       }
       __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_tim2_up);
-  }
-  if(tim_baseHandle->Instance == TIM22)
-  {
-    __HAL_RCC_TIM22_CLK_ENABLE();
-      hdma_tim22_up.Instance = DMA1_Stream1;
-      hdma_tim22_up.Init.Request = DMA_REQUEST_TIM22_UP;
-      hdma_tim22_up.Init.Direction = DMA_PERIPH_TO_MEMORY;
-      hdma_tim22_up.Init.PeriphInc = DMA_PINC_DISABLE;
-      hdma_tim22_up.Init.MemInc = DMA_MINC_ENABLE;
-      hdma_tim22_up.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
-      hdma_tim22_up.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
-      hdma_tim22_up.Init.Mode = DMA_NORMAL;
-      hdma_tim22_up.Init.Priority = DMA_PRIORITY_LOW;
-      if (HAL_DMA_Init(&hdma_tim22_up) != HAL_OK)
-      {
-        Error_Handler();
-      }
-      if (HAL_DMA_ConfigChannelAttributes(&hdma_tim22_up, DMA_CHANNEL_NPRIV) != HAL_OK)
-      {
-        Error_Handler();
-      }
-      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_tim22_up);
-  }
-  if(tim_baseHandle->Instance == TIM222)
-  {
-    __HAL_RCC_TIM222_CLK_ENABLE();
-      hdma_tim222_up.Instance = _;
-      hdma_tim222_up.Init.Request = DMA_REQUEST_TIM222_UP;
-      hdma_tim222_up.Init.Direction = DMA_PERIPH_TO_MEMORY;
-      hdma_tim222_up.Init.PeriphInc = DMA_PINC_DISABLE;
-      hdma_tim222_up.Init.MemInc = DMA_MINC_ENABLE;
-      hdma_tim222_up.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
-      hdma_tim222_up.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
-      hdma_tim222_up.Init.Mode = DMA_NORMAL;
-      hdma_tim222_up.Init.Priority = DMA_PRIORITY_LOW;
-      if (HAL_DMA_Init(&hdma_tim222_up) != HAL_OK)
-      {
-        Error_Handler();
-      }
-      if (HAL_DMA_ConfigChannelAttributes(&hdma_tim222_up, DMA_CHANNEL_NPRIV) != HAL_OK)
-      {
-        Error_Handler();
-      }
-      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_tim222_up);
-  }
-  if(tim_baseHandle->Instance == TIM4)
-  {
-    __HAL_RCC_TIM4_CLK_ENABLE();
-    if (TIM4_OW == 1)
-    {
-      hdma_tim4_up.Instance = DMA1_Channel4;
-      hdma_tim4_up.Init.Request = DMA_REQUEST_TIM4_UP;
-      hdma_tim4_up.Init.Direction = DMA_PERIPH_TO_MEMORY;
-      hdma_tim4_up.Init.PeriphInc = DMA_PINC_DISABLE;
-      hdma_tim4_up.Init.MemInc = DMA_MINC_ENABLE;
-      hdma_tim4_up.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
-      hdma_tim4_up.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
-      hdma_tim4_up.Init.Mode = DMA_NORMAL;
-      hdma_tim4_up.Init.Priority = DMA_PRIORITY_LOW;
-      if (HAL_DMA_Init(&hdma_tim4_up) != HAL_OK)
-      {
-        Error_Handler();
-      }
-      if (HAL_DMA_ConfigChannelAttributes(&hdma_tim4_up, DMA_CHANNEL_NPRIV) != HAL_OK)
-      {
-        Error_Handler();
-      }
-      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_tim4_up);
     }
-    if (TIM4_OW == 2)
+    if (TIM2_OW == 2)
     {
+      hdma_tim2_ch3.Instance = DMA1_Stream1;
+      hdma_tim2_ch3.Init.Request = DMA_REQUEST_TIM2_UP;
+      hdma_tim2_ch3.Init.Direction = DMA_PERIPH_TO_MEMORY;
+      hdma_tim2_ch3.Init.PeriphInc = DMA_PINC_DISABLE;
+      hdma_tim2_ch3.Init.MemInc = DMA_MINC_ENABLE;
+      hdma_tim2_ch3.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+      hdma_tim2_ch3.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+      hdma_tim2_ch3.Init.Mode = DMA_NORMAL;
+      hdma_tim2_ch3.Init.Priority = DMA_PRIORITY_LOW;
+      hdma_tim2_ch3.Init.Channel = DMA_CHANNEL_3;
+      hdma_tim2_ch3.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+
+      if (HAL_DMA_Init(&hdma_tim2_ch3) != HAL_OK)
+      {
+        Error_Handler();
+      }
+      if (HAL_DMA_ConfigChannelAttributes(&hdma_tim2_ch3, DMA_CHANNEL_NPRIV) != HAL_OK)
+      {
+        Error_Handler();
+      }
+      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_tim2_ch3);
+      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_CC3], hdma_tim2_ch3);
+    }
+    if (TIM2_OW == 3)
+    {
+      hdma_tim2_ch3.Instance = DMA1_Stream1;
+      hdma_tim2_ch3.Init.Request = DMA_REQUEST_TIM2_UP;
+      hdma_tim2_ch3.Init.Direction = DMA_PERIPH_TO_MEMORY;
+      hdma_tim2_ch3.Init.PeriphInc = DMA_PINC_DISABLE;
+      hdma_tim2_ch3.Init.MemInc = DMA_MINC_ENABLE;
+      hdma_tim2_ch3.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+      hdma_tim2_ch3.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+      hdma_tim2_ch3.Init.Mode = DMA_NORMAL;
+      hdma_tim2_ch3.Init.Priority = DMA_PRIORITY_LOW;
+      hdma_tim2_ch3.Init.Channel = DMA_CHANNEL_3;
+      hdma_tim2_ch3.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+
+      if (HAL_DMA_Init(&hdma_tim2_ch3) != HAL_OK)
+      {
+        Error_Handler();
+      }
+      if (HAL_DMA_ConfigChannelAttributes(&hdma_tim2_ch3, DMA_CHANNEL_NPRIV) != HAL_OK)
+      {
+        Error_Handler();
+      }
+      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_tim2_ch3);
+      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_CC3], hdma_tim2_ch3);
+    }
+    if (TIM2_OW == 4)
+    {
+      hdma_tim2_ch4.Instance = DMA1_Stream7;
+      hdma_tim2_ch4.Init.Request = DMA_REQUEST_TIM2_UP;
+      hdma_tim2_ch4.Init.Direction = DMA_PERIPH_TO_MEMORY;
+      hdma_tim2_ch4.Init.PeriphInc = DMA_PINC_DISABLE;
+      hdma_tim2_ch4.Init.MemInc = DMA_MINC_ENABLE;
+      hdma_tim2_ch4.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+      hdma_tim2_ch4.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+      hdma_tim2_ch4.Init.Mode = DMA_NORMAL;
+      hdma_tim2_ch4.Init.Priority = DMA_PRIORITY_LOW;
+      hdma_tim2_ch4.Init.Channel = DMA_CHANNEL_3;
+      hdma_tim2_ch4.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+
+      if (HAL_DMA_Init(&hdma_tim2_ch4) != HAL_OK)
+      {
+        Error_Handler();
+      }
+      if (HAL_DMA_ConfigChannelAttributes(&hdma_tim2_ch4, DMA_CHANNEL_NPRIV) != HAL_OK)
+      {
+        Error_Handler();
+      }
+      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_tim2_ch4);
+      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_CC4], hdma_tim2_ch4);
     }
   }
   if(tim_baseHandle->Instance == TIM3)
@@ -497,48 +448,32 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
     __HAL_RCC_TIM3_CLK_ENABLE();
     if (TIM3_OW == 1)
     {
-      hdma_tim3_up.Instance = DMA1_Channel4;
-      hdma_tim3_up.Init.Request = DMA_REQUEST_TIM3_UP;
-      hdma_tim3_up.Init.Direction = DMA_PERIPH_TO_MEMORY;
-      hdma_tim3_up.Init.PeriphInc = DMA_PINC_DISABLE;
-      hdma_tim3_up.Init.MemInc = DMA_MINC_ENABLE;
-      hdma_tim3_up.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
-      hdma_tim3_up.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
-      hdma_tim3_up.Init.Mode = DMA_NORMAL;
-      hdma_tim3_up.Init.Priority = DMA_PRIORITY_LOW;
-      if (HAL_DMA_Init(&hdma_tim3_up) != HAL_OK)
-      {
-        Error_Handler();
-      }
-      if (HAL_DMA_ConfigChannelAttributes(&hdma_tim3_up, DMA_CHANNEL_NPRIV) != HAL_OK)
-      {
-        Error_Handler();
-      }
-      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_tim3_up);
     }
-    if (TIM3_OW == 2)
-    {
-      hdma_tim3_up.Instance = DMA1_Channel2;
-      hdma_tim3_up.Init.Request = DMA_REQUEST_TIM3_UP;
-      hdma_tim3_up.Init.Direction = DMA_MEMORY_TO_PERIPH;
-      hdma_tim3_up.Init.PeriphInc = DMA_PINC_DISABLE;
-      hdma_tim3_up.Init.MemInc = DMA_MINC_ENABLE;
-      hdma_tim3_up.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
-      hdma_tim3_up.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
-      hdma_tim3_up.Init.Mode = DMA_NORMAL;
-      hdma_tim3_up.Init.Priority = DMA_PRIORITY_LOW;
-      if (HAL_DMA_Init(&hdma_tim3_up) != HAL_OK)
+  }
+  if(tim_baseHandle->Instance == TIM8)
+  {
+    __HAL_RCC_TIM8_CLK_ENABLE();
+      hdma_tim8_ch1.Instance = DMA2_Stream2;
+      hdma_tim8_ch1.Init.Request = DMA_REQUEST_TIM8_UP;
+      hdma_tim8_ch1.Init.Direction = DMA_PERIPH_TO_MEMORY;
+      hdma_tim8_ch1.Init.PeriphInc = DMA_PINC_DISABLE;
+      hdma_tim8_ch1.Init.MemInc = DMA_MINC_ENABLE;
+      hdma_tim8_ch1.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+      hdma_tim8_ch1.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+      hdma_tim8_ch1.Init.Mode = DMA_NORMAL;
+      hdma_tim8_ch1.Init.Priority = DMA_PRIORITY_LOW;
+      hdma_tim8_ch1.Init.Channel = DMA_CHANNEL_0;
+      hdma_tim8_ch1.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+
+      if (HAL_DMA_Init(&hdma_tim8_ch1) != HAL_OK)
       {
         Error_Handler();
       }
-      if (HAL_DMA_ConfigChannelAttributes(&hdma_tim3_up, DMA_CHANNEL_NPRIV) != HAL_OK)
+      if (HAL_DMA_ConfigChannelAttributes(&hdma_tim8_ch1, DMA_CHANNEL_NPRIV) != HAL_OK)
       {
         Error_Handler();
       }
-      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_tim3_up);
-    }
-    if (TIM3_OW == 3)
-    {
-    }
+      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_UPDATE], hdma_tim8_ch1);
+      __HAL_LINKDMA(tim_baseHandle, hdma[TIM_DMA_ID_CC1], hdma_tim8_ch1);
   }
 }
