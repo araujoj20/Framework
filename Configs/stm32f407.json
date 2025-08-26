@@ -32,37 +32,77 @@
 
     "timers": {
         "tim1": {
+            "type": "advanced",
             "period": 65535,
             "trigger": ["tim5", "tim2", "tim3", "tim4"]
         },
-        "tim8": {
-            "period": 65535,
-            "trigger": ["tim1", "tim2", "tim4", "tim5"]
-        },
+        
         "tim2": {
+            "type": "general",
             "period": 4294967295,
             "trigger": ["tim1", "tim8", "tim3", "tim4"]
         },
         "tim3": {
+            "type": "general",
             "period": 65535,
-            "trigger": ["tim1", "tim2", "tim15", "tim4"]
+            "trigger": ["tim1", "tim2", "tim5", "tim4"]
         },
         "tim4": {
+            "type": "general",
             "period": 65535,
             "trigger": ["tim1", "tim2", "tim3", "tim8"]
         },
         "tim5": {
+            "type": "general",
             "period": 4294967295,
             "trigger": ["tim2", "tim3", "tim4", "tim8"]
-        }
-
+        },
         
-        ,
-        "tim15": {
+        "tim6": {
+            "type": "basic",
+            "period": 65535
+        },
+        "tim7": {
+            "type": "basic",
+            "period": 65535
+        },
+
+        "tim8": {
+            "type": "advanced",
             "period": 65535,
-            "trigger": ["tim1", "tim3", "tim16_OC1", "tim17_OC1"]
+            "trigger": ["tim1", "tim2", "tim4", "tim5"]
+        },
+        
+        "tim9": {
+            "type": "general",
+            "period": 65535,
+            "trigger": ["tim2", "tim3", "tim10_oc", "tim11_oc"]
+        },
+        "tim10": {
+            "type": "general",
+            "period": 65535
+        },
+        "tim11": {
+            "type": "general",
+            "period": 65535
+        },
+        "tim12": {
+            "type": "general",
+            "period": 65535,
+            "trigger": ["tim4", "tim5", "tim13_oc", "tim14_oc"]
+        },
+        "tim13": {
+            "type": "general",
+            "period": 65535
+        },
+        "tim14": {
+            "type": "general",
+            "period": 65535
         }
+    },
 
-
+    "mem_map": {
+        "contention":   "0x20000000",
+        "no_contention":"0x2001C000"
     }
 }

@@ -33,13 +33,15 @@
     "timers": {
         "TIM1": {
             "Period": 65535,
+            "clock_source": "INTERNAL_CLOCK",
             "trigger_source": "TIM2",
-            "trigger_event": "OC1REF"
+            "trigger_event": "OC1REF",
+            "master_slave_mode": "ENABLE"
         },
 
         "TIM2": {
             "Period": 2,
-            "event": "UPDATE_EVENT",
+            "clock_source": "disable",
             "trigger_source": "TIM1",
             "trigger_event": "UPDATE"
         },
@@ -75,7 +77,6 @@
         "TIM8": {
             "Period": 222,
             "dma": "dma_tim8_ch1",
-            "event": "UPDATE_EVENT",
             "trigger_source": "TIM1"
         }
 
@@ -133,18 +134,19 @@
 
         "trigger": [
             "TIM2",
-            "TIM3_OW2"
+            "TIM3_OW1"
         ],
 
         "detect": [
             "TIM7",
-            "TIM4_OW1"
+            "TIM2_OW_4"
         ]
     },
 
     "trace": {
         "tim_counter": "TIM7",
-        "tim_trigger": "TIM3"
+        "tim_trigger": "TIM3",
+        "stage": "read/write"
     }
 
 }

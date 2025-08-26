@@ -9,6 +9,36 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(script_dir, "../../../.."))
 sys.path.insert(0, project_root)
 
+VALID_MASTER_TRIGGERS = [
+    "RESET", 
+    "ENABLE", 
+    "UPDATE", 
+    "OC1", 
+    "OC1REF", 
+    "OC2REF", 
+    "OC3REF", 
+    "OC4REF"
+]
+VALID_MASTER_SLAVE_MODE = [
+    "DISABLE",
+    "ENABLE"
+]
+
+VALID_SLAVE_MODES = [
+    "DISABLE",
+    "EXTERNAL1",
+    "RESET",
+    "GATED",
+    "TRIGGER"
+]
+
+VALID_TIMERS = [f"TIM{i}" for i in range(1, 15)]
+
+VALID_CLOCK_SOURCES = [
+    "INTERNAL",
+    "DISABLE"
+]
+
 from Generator.st.templates.dma.stm32f407_dma_map import dma_stm32f407_mapping, find_dma_mappings
 
 def normalize_dma_gen(dma):
@@ -83,8 +113,8 @@ def resolve_dma_for_f4(dma, request, timer_name):
         "request": request
     }
 
-def resolve_dma_for_l552(dma, request):
-    # Só precisa de channel, sem streams, sem restrições
+def resolve_dma_for_l5(dma, request):
+    # Only needs channel, doesnt have streams and restrictions
     if not dma or "channel" not in dma:
         print(f"ERRO: Para STM32L552, o DMA precisa de 'channel' definido para request '{request}'")
         return None
@@ -102,36 +132,73 @@ def parse_dmas(config):
     dmas = {}
     for dma_name, dma in dmas_raw.items():
         dma = dma.copy()
-        # F4: pode ter request, channel, stream
+        # F4: can have request, channel, stream
         if family == "stm32f4xx" and "request" in dma:
             dma = resolve_dma_for_f4(dma, dma["request"], None)
-        # L552: só channel
+        # L552: only channel
         elif family == "stm32l5xx" and "request" in dma:
-            dma = resolve_dma_for_l552(dma, dma["request"])
+            dma = resolve_dma_for_l5(dma, dma["request"])
         dma = normalize_dma_gen(dma)
         dmas[dma_name] = dma
     return dmas
 
 def parse_channel_from_request(request):
-    # Extrai o número do canal do request tipo TIMx_CHy
+    # Extract the request number of TIMx_CHy type
     m = re.match(r"TIM\d+_CH(\d+)", request)
     if m:
         return int(m.group(1))
     return None
 
-VALID_MASTER_TRIGGERS = [
-    "RESET", "ENABLE", "UPDATE", "OC1", "OC1REF", "OC2REF", "OC3REF", "OC4REF"
-]
-VALID_TIMERS = [f"TIM{i}" for i in range(1, 15)]
 
 def normalize_master_trigger(trigger):
+    """
+    Normalizes the master trigger value.
+    Returns "RESET" (the default value) if the input is missing or invalid.
+    """
     if not trigger:
-        return "RESET"
+        return VALID_MASTER_TRIGGERS[0]
     trig = trigger.upper().replace(" ", "")
     if trig in VALID_MASTER_TRIGGERS:
         return trig
-    print(f"ERRO: MasterOutputTrigger '{trigger}' inválido. Usando 'RESET'.")
-    return "RESET"
+    print(f"ERROR: MasterOutputTrigger '{trigger}' invalid. Using '{VALID_MASTER_TRIGGERS[0]}'")
+    return VALID_MASTER_TRIGGERS[0]
+
+def normalize_master_slave_mode(mode):
+    """
+    Normalizes the master slave mode value.
+    Returns "DISABLE" (the default value) if the input is missing or invalid.
+    """
+    if not mode:
+        return VALID_MASTER_SLAVE_MODE[0]
+    m = mode.upper().replace(" ", "")
+    if m in VALID_MASTER_SLAVE_MODE:
+        return m
+    print(f"ERROR: MasterSlaveMode '{mode}' invalid. Using '{VALID_MASTER_SLAVE_MODE[0]}'")
+    return VALID_MASTER_SLAVE_MODE[0]
+
+def normalize_slave_mode(mode):
+    """
+    Normalizes the slave mode value.
+    Returns "DISABLE" (the default value) if the input is missing or invalid.
+    """
+    if not mode:
+        return VALID_SLAVE_MODES[0]
+    m = mode.upper().replace(" ", "")
+    if m in VALID_SLAVE_MODES:
+        return m
+    print(f"ERROR: SlaveMode '{mode}' invalid. Using '{VALID_SLAVE_MODES[0]}'")
+    return VALID_SLAVE_MODES[0]
+
+def normalize_input_trigger(trigger):
+    """
+    Normalizes the input trigger value.
+    For now, just uppercase and replace spaces with underscores.
+    """
+    if not trigger:
+        return "ITR0"
+    trig = trigger.upper().replace(" ", "_")
+    # You can add more validation or mapping here if needed
+    return trig
 
 def normalize_timer_name(name):
     # Aceita TIMx ou TIMx_OW_y
@@ -140,6 +207,21 @@ def normalize_timer_name(name):
         return name
     print(f"ERRO: Timer '{name}' inválido. Ignorado.")
     return None
+
+def normalize_clock_source(clock_source):
+    """
+    Normalizes the clock source value.
+    Returns "INTERNAL" (the default value) if the input is missing or invalid.
+    """
+    if not clock_source:
+        return VALID_CLOCK_SOURCES[0]
+    src = clock_source.upper().replace(" ", "_")
+    if src == "INTERNAL_CLOCK":
+        return "INTERNAL"
+    if src in VALID_CLOCK_SOURCES:
+        return src
+    print(f"ERROR: ClockSource '{clock_source}' invalid. Using '{VALID_CLOCK_SOURCES[0]}'")
+    return VALID_CLOCK_SOURCES[0]
 
 def parse_timers(config, dmas_dict):
     timers_raw = config.get("timers", {})
@@ -183,7 +265,7 @@ def parse_timers(config, dmas_dict):
             dma_val = resolve_dma_for_f4(dma_val, request, timer_name)
         # L552: resolve simple
         elif family == "stm32l5xx" and dma_val and request:
-            dma_val = resolve_dma_for_l552(dma_val, request)
+            dma_val = resolve_dma_for_l5(dma_val, request)
 
         dma_val = normalize_dma_gen(dma_val)
 
@@ -192,9 +274,31 @@ def parse_timers(config, dmas_dict):
         if not norm_timer_name:
             continue
 
-        # MasterOutputTrigger: pode vir como 'trigger_event' ou 'MasterOutputTrigger'
+        # MasterOutputTrigger: get object 'trigger_event' or 'MasterOutputTrigger'
         trigger_event = val.get("trigger_event") or val.get("MasterOutputTrigger")
         trigger_event = normalize_master_trigger(trigger_event)
+
+        # ClockSource: get object 'clock_source' or 'ClockSource'
+        clock_source = val.get("clock_source") or val.get("ClockSource")
+        clock_source = normalize_clock_source(clock_source)
+
+        # MasterSlaveMode: get object 'master_slave_mode' or 'MasterSlaveMode'
+        master_slave_mode = val.get("master_slave_mode") or val.get("MasterSlaveMode")
+        master_slave_mode = normalize_master_slave_mode(master_slave_mode)
+
+        # SlaveMode: get object 'slave_mode' or 'SlaveMode'
+        slave_mode = val.get("slave_mode") or val.get("SlaveMode")
+        slave_mode = normalize_slave_mode(slave_mode)
+
+        # InputTrigger: get object 'input_trigger' or 'InputTrigger'
+        input_trigger_raw = val.get("input_trigger") or val.get("InputTrigger")
+        input_trigger = normalize_input_trigger(input_trigger_raw)
+
+        # Validation: if slave_mode is set and input_trigger is missing (None or empty), warn and skip slave config
+        if slave_mode != "DISABLE" and (input_trigger_raw is None or str(input_trigger_raw).strip() == ""):
+            print(f"WARNING: Timer '{key}' has slave_mode '{slave_mode}' but no input_trigger. Slave config will not be generated for this timer.")
+            slave_mode = "DISABLE"
+            input_trigger = normalize_input_trigger(None)
 
         timer = {
             "name": norm_timer_name,
@@ -206,7 +310,11 @@ def parse_timers(config, dmas_dict):
             "ow_id": ow_id,
             "has_ch_request": has_ch_request,
             "ch_request_num": ch_request_num,
-            "trigger_event": trigger_event
+            "trigger_event": trigger_event,
+            "clock_source": clock_source,
+            "master_slave_mode": master_slave_mode,
+            "slave_mode": slave_mode,
+            "input_trigger": input_trigger
         }
         all_timers.append(timer)
 
@@ -263,7 +371,7 @@ def render_templates(config, all_timers, gadget_defs, output_dir):
 
 def main():
     if len(sys.argv) < 3:
-        print("Uso: python generate_timers.py config.json output_dir")
+        print("Use: python generate_timers.py config.json output_dir")
         sys.exit(1)
 
     config_file = sys.argv[1]

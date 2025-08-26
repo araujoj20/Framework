@@ -1,4 +1,4 @@
-dma_stm32f407_mapping = {
+dma = {
     "DMA1": {
         "Channel0": {
             "Stream0": "SPI3_RX",
