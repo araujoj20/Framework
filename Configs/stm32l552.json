@@ -32,37 +32,60 @@
 
     
     "timers": {
-        "tim1": {
+        "TIM1": {
+            "type": "advanced",
             "period": 65535,
-            "trigger": ["tim15", "tim2", "tim3", "tim4"]
+            "trigger": ["TIM15", "TIM2", "TIM3", "TIM4"]
         },
-        "tim8": {
-            "period": 65535,
-            "trigger": ["tim1", "tim2", "tim4", "tim5"]
-        },
-        "tim2": {
-            "period": 4294967295,
-            "trigger": ["tim1", "tim8", "tim3", "tim4"]
-        },
-        "tim3": {
-            "period": 65535,
-            "trigger": ["tim1", "tim2", "tim15", "tim4"]
-        },
-        "tim4": {
-            "period": 65535,
-            "trigger": ["tim1", "tim2", "tim3", "tim8"]
-        },
-        "tim5": {
-            "period": 4294967295,
-            "trigger": ["tim2", "tim3", "tim4", "tim8"]
-        }
-
         
-        ,
-        "tim15": {
+        "TIM2": {
+            "type": "general",
+            "period": 4294967295,
+            "trigger": ["TIM1", "TIM8", "TIM3", "TIM4"]
+        },
+        "TIM3": {
+            "type": "general",
             "period": 65535,
-            "trigger": ["tim1", "tim3", "tim16_OC1", "tim17_OC1"]
-        }
+            "trigger": ["TIM1", "TIM2", "TIM15", "TIM4"]
+        },
+        "TIM4": {
+            "type": "general",
+            "period": 65535,
+            "trigger": ["TIM1", "TIM2", "TIM3", "TIM8"]
+        },
+        "TIM5": {
+            "type": "general",
+            "period": 4294967295,
+            "trigger": ["TIM2", "TIM3", "TIM4", "TIM8"]
+        },
+        
+        "TIM6": {
+            "type": "basic",
+            "period": 65535
+        },
+        "TIM7": {
+            "type": "basic",
+            "period": 65535
+        },
 
+        "TIM8": {
+            "type": "advanced",
+            "period": 65535,
+            "trigger": ["TIM1", "TIM2", "TIM4", "TIM5"]
+        },
+    
+        "TIM15": {
+            "type": "general",
+            "period": 65535,
+            "trigger": ["TIM1", "TIM3", "TIM16_OC1", "TIM17_OC1"]
+        },
+        "TIM16": {
+            "type": "general",
+            "period": 65535
+        },
+        "TIM17": {
+            "type": "general",
+            "period": 65535
+        }
     }
 }

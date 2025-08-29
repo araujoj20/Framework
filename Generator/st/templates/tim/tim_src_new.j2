@@ -47,18 +47,12 @@ void MX_{{ t.name }}_Init{% if t.ow_id > 0 %}_OW_{{ t.ow_id }}{% endif %}(void)
     Error_Handler();
   }
   {% endif %}
-  {% if t.slave_mode or t.input_trigger %}
-    {% if t.slave_mode and t.input_trigger %}
   sSlaveConfig.SlaveMode = TIM_SLAVEMODE_{{ t.slave_mode }};
   sSlaveConfig.InputTrigger = TIM_TS_{{ t.input_trigger }};
   if (HAL_TIM_SlaveConfigSynchro(&h{{ t.name.lower() }}, &sSlaveConfig) != HAL_OK)
   {
     Error_Handler();
   }
-    {% elif t.slave_mode and not t.input_trigger %}
-  // WARNING: SlaveMode is set but InputTrigger is missing for {{ t.name }}. This configuration is invalid!
-    {% endif %}
-  {% endif %}
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_{{ t.trigger_event }};
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_{{ t.master_slave_mode }};
   if (HAL_TIMEx_MasterConfigSynchronization(&h{{ t.name.lower() }}, &sMasterConfig) != HAL_OK)

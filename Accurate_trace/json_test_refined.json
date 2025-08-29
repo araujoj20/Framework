@@ -1,0 +1,220 @@
+{
+    "inherits": "stm32.json",
+    "vendor": "st",
+    "board": "STM32F407",
+    "family": "stm32f4xx",
+    "build": {
+        "startup_script": "startup_stm32f407xx.s",
+        "linker_script": "STM32F407VGTX_FLASH.ld",
+        "startup_script_path": "cmsis-device-f4/Source/Templates/gcc",
+        "alayer": "stm32f4xx-hal-driver",
+        "drivers": {
+            "cmsis_5": "CMSIS_5/CMSIS/Core/Include/",
+            "cmsis-device": "cmsis-device-f4/Include/"
+        }
+    },
+    "openocd": {
+        "interface": "stlink",
+        "target": "stm32f4x"
+    },
+    "uart": {
+        "instance": "USART2",
+        "baudrate": 115200,
+        "tx_pin": "PA2",
+        "rx_pin": "PA3"
+    },
+    "timers": {
+        "TIM1": {
+            "Period": 65535,
+            "Prescaler": 0,
+            "clock_source": "INTERNAL_CLOCK",
+            "trigger_source": "ITR1",
+            "trigger_event": "OC1REF",
+            "master_slave_mode": "ENABLE",
+            "slave_mode": "DISABLE"
+        },
+        "TIM1_OW_1": {
+            "trigger_source": "ITR3",
+            "trigger_event": "RESET",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "Period": 65535,
+            "Prescaler": 0
+        },
+        "TIM2": {
+            "Period": 2,
+            "clock_source": "DISABLE",
+            "trigger_source": "ITR0",
+            "trigger_event": "UPDATE",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "Prescaler": 0
+        },
+        "TIM2_OW_1": {
+            "Period": 22,
+            "dma": "dma1_stream1_tim2_up",
+            "trigger_source": "ITR0",
+            "trigger_event": "OC1",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "Prescaler": 0
+        },
+        "TIM2_OW_2": {
+            "Period": 222,
+            "dma": "dma_tim1_ch3",
+            "trigger_source": "ITR0",
+            "trigger_event": "RESET",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "Prescaler": 0
+        },
+        "TIM2_OW_3": {
+            "Period": 2233,
+            "dma": "dma_tim1_ch3",
+            "trigger_event": "RESET",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "trigger_source": "DISABLE",
+            "Prescaler": 0
+        },
+        "TIM2_OW_4": {
+            "Period": 2233,
+            "dma": "dma_tim2_ch4",
+            "trigger_event": "RESET",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "trigger_source": "DISABLE",
+            "Prescaler": 0
+        },
+        "TIM3": {
+            "Period": 65535,
+            "trigger_event": "RESET",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "trigger_source": "DISABLE",
+            "Prescaler": 0
+        },
+        "TIM3_OW_1": {
+            "Period": 333,
+            "trigger_event": "RESET",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "trigger_source": "DISABLE",
+            "Prescaler": 0
+        },
+        "TIM8": {
+            "Period": 222,
+            "dma": "dma_tim8_ch1",
+            "trigger_source": "ITR0",
+            "trigger_event": "RESET",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "Prescaler": 0
+        },
+        "TIM13": {
+            "trigger_event": "RESET",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "trigger_source": "DISABLE",
+            "Period": 65535,
+            "Prescaler": 0
+        },
+        "TIM13_OW_1": {
+            "trigger_event": "RESET",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "trigger_source": "DISABLE",
+            "Period": 65535,
+            "Prescaler": 0
+        },
+        "TIM13_OW_2": {
+            "trigger_event": "RESET",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "trigger_source": "DISABLE",
+            "Period": 65535,
+            "Prescaler": 0
+        },
+        "TIM13_OW_3": {
+            "trigger_event": "RESET",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "trigger_source": "DISABLE",
+            "Period": 65535,
+            "Prescaler": 0
+        }
+    },
+    "dmas": {
+        "dma1_stream1": {
+            "name": "DMA1",
+            "channel": "Channel0",
+            "stream": "Stream1",
+            "direction": "MEMORY_TO_MEMORY"
+        },
+        "dma2_stream5": {
+            "name": "DMA2",
+            "channel": "Channel0",
+            "stream": "Stream5",
+            "direction": "MEMORY_TO_MEMORY"
+        },
+        "dma1_stream1_tim2_up": {
+            "name": "DMA1",
+            "channel": "Channel3",
+            "stream": "Stream6",
+            "direction": "PERIPH_TO_MEMORY",
+            "request": "TIM2_UP"
+        },
+        "dma_tim1_ch3": {
+            "name": "DMA2",
+            "channel": "Channel6",
+            "stream": "Stream6",
+            "direction": "PERIPH_TO_MEMORY",
+            "request": "TIM1_CH3"
+        },
+        "dma_tim2_ch4": {
+            "name": "DMA1",
+            "channel": "Channel3",
+            "stream": "Stream7",
+            "direction": "PERIPH_TO_MEMORY",
+            "request": "TIM2_CH4"
+        },
+        "dma_tim8_ch1": {
+            "name": "DMA2",
+            "channel": "Channel7",
+            "stream": "Stream2",
+            "direction": "PERIPH_TO_MEMORY",
+            "request": "TIM8_CH1"
+        }
+    },
+    "gadgets": {
+        "counter": [
+            "TIM1",
+            "TIM2"
+        ],
+        "trigger": [
+            "TIM2",
+            "TIM3_OW_1"
+        ],
+        "detect": [
+            "TIM1",
+            "TIM2_OW_4"
+        ]
+    },
+    "trace": {
+        "tim_counter": "TIM7",
+        "tim_trigger": "TIM3",
+        "stage": "read/write"
+    }
+}

@@ -39,7 +39,7 @@
         "TIM2": {
             "Period": 222,
             "dma":  "dma1_channel7",
-            "event": "UPDATE_EVENT"
+            "trigger_event": "UPDATE"
         },
 
         "TIM4_OW_2": {
@@ -59,7 +59,34 @@
             "Period": 65535,
             "dma": "dma1_channel7"
         }
+    },
 
+    "dmas": {
+        "dma1_channel1": {
+            "name": "DMA1",
+            "channel": "Channel1",
+            "direction": "MEMORY_TO_MEMORY"
+        },
+        "dma2_channel5": {
+            "name": "DMA2",
+            "channel": "Channel3",
+            "direction": "MEMORY_TO_MEMORY"
+        },
+        "dma1_channel2": {
+            "name": "DMA1",
+            "channel": "Channel1",
+            "direction": "MEMORY_TO_MEMORY"
+        },
+        "dma1_channel4": {
+            "name": "DMA1",
+            "channel": "Channel5",
+            "direction": "PERIPH_TO_MEMORY"
+        },
+        "dma1_channel7": {
+            "name": "DMA1",
+            "channel": "Channel7",
+            "direction": "MEMORY_TO_PERIPH"
+        }
     },
 
     "gadgets": {
@@ -82,29 +109,6 @@
     "trace": {
         "tim_counter": "TIM7",
         "tim_trigger": "TIM8"
-    },
-
-    "dmas": {
-        "dma1_channel1": {
-            "name": "DMA1",
-            "channel": "Channel1",
-            "direction": "MEMORY_TO_MEMORY"
-        },
-        "dma2_channel5": {
-            "name": "DMA2",
-            "channel": "Channel3",
-            "direction": "MEMORY_TO_MEMORY"
-        },
-        "dma1_channel4": {
-            "name": "DMA1",
-            "channel": "Channel5",
-            "direction": "PERIPH_TO_MEMORY"
-        },
-        "dma1_channel7": {
-            "name": "DMA1",
-            "channel": "Channel7",
-            "direction": "MEMORY_TO_PERIPH"
-        }
     },
     
     "mem_map": {

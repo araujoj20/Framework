@@ -31,76 +31,242 @@
     },
 
     "timers": {
-        "tim1": {
+        "TIM1": {
             "type": "advanced",
             "period": 65535,
-            "trigger": ["tim5", "tim2", "tim3", "tim4"]
+            "trigger": ["TIM5", "TIM2", "TIM3", "TIM4"]
         },
         
-        "tim2": {
+        "TIM2": {
             "type": "general",
             "period": 4294967295,
-            "trigger": ["tim1", "tim8", "tim3", "tim4"]
+            "trigger": ["TIM1", "TIM8", "TIM3", "TIM4"]
         },
-        "tim3": {
+        "TIM3": {
             "type": "general",
             "period": 65535,
-            "trigger": ["tim1", "tim2", "tim5", "tim4"]
+            "trigger": ["TIM1", "TIM2", "TIM5", "TIM4"]
         },
-        "tim4": {
+        "TIM4": {
             "type": "general",
             "period": 65535,
-            "trigger": ["tim1", "tim2", "tim3", "tim8"]
+            "trigger": ["TIM1", "TIM2", "TIM3", "TIM8"]
         },
-        "tim5": {
+        "TIM5": {
             "type": "general",
             "period": 4294967295,
-            "trigger": ["tim2", "tim3", "tim4", "tim8"]
+            "trigger": ["TIM2", "TIM3", "TIM4", "TIM8"]
         },
         
-        "tim6": {
+        "TIM6": {
             "type": "basic",
             "period": 65535
         },
-        "tim7": {
+        "TIM7": {
             "type": "basic",
             "period": 65535
         },
 
-        "tim8": {
+        "TIM8": {
             "type": "advanced",
             "period": 65535,
-            "trigger": ["tim1", "tim2", "tim4", "tim5"]
+            "trigger": ["TIM1", "TIM2", "TIM4", "TIM5"]
         },
         
-        "tim9": {
+        "TIM9": {
             "type": "general",
             "period": 65535,
-            "trigger": ["tim2", "tim3", "tim10_oc", "tim11_oc"]
+            "trigger": ["TIM2", "TIM3", "TIM10_OC", "TIM11_OC"]
         },
-        "tim10": {
+        "TIM10": {
             "type": "general",
             "period": 65535
         },
-        "tim11": {
+        "TIM11": {
             "type": "general",
             "period": 65535
         },
-        "tim12": {
+        "TIM12": {
             "type": "general",
             "period": 65535,
-            "trigger": ["tim4", "tim5", "tim13_oc", "tim14_oc"]
+            "trigger": ["TIM4", "TIM5", "TIM13_OC", "TIM14_OC"]
         },
-        "tim13": {
+        "TIM13": {
             "type": "general",
             "period": 65535
         },
-        "tim14": {
+        "TIM14": {
             "type": "general",
             "period": 65535
         }
     },
 
+    "dma_mapping": {
+        "DMA1": {
+            "Channel0": {
+                "Stream0": "SPI3_RX",
+                "Stream1": null,
+                "Stream2": "SPI3_RX",
+                "Stream3": "SPI2_RX",
+                "Stream4": "SPI2_TX",
+                "Stream5": "SPI3_TX",
+                "Stream6": null,
+                "Stream7": "SPI3_TX"
+            },
+            "Channel1": {
+                "Stream0": "I2C1_RX",
+                "Stream1": null,
+                "Stream2": "TIM7_UP",
+                "Stream3": "TIM7_UP",
+                "Stream4": "I2C1_RX",
+                "Stream5": "I2C1_TX",
+                "Stream6": "I2C1_TX",
+                "Stream7": null
+            },
+            "Channel2": {
+                "Stream0": "TIM4_CH1",
+                "Stream1": null,
+                "Stream2": "I2S3_EXT_RX",
+                "Stream3": "TIM4_CH2",
+                "Stream4": "I2S2_EXT_TX",
+                "Stream5": "I2S3_EXT_TX",
+                "Stream6": "TIM4_UP",
+                "Stream7": "TIM4_CH3"
+            },
+            "Channel3": {
+                "Stream0": "I2S3_EXT_RX",
+                "Stream1": ["TIM2_UP", "TIM2_CH3"],
+                "Stream2": "I2C3_RX",
+                "Stream3": "I2S2_EXT_RX",
+                "Stream4": "I2C3_TX",
+                "Stream5": "TIM2_CH1",
+                "Stream6": ["TIM2_CH2", "TIM2_UP"],
+                "Stream7": "TIM2_CH4"
+            },
+            "Channel4": {
+                "Stream0": "UART5_RX",
+                "Stream1": "USART3_RX",
+                "Stream2": "UART4_RX",
+                "Stream3": "USART3_TX",
+                "Stream4": "UART4_TX",
+                "Stream5": "USART2_RX",
+                "Stream6": "USART2_TX",
+                "Stream7": "USART5_TX"
+            },
+            "Channel5": {
+                "Stream0": "UART8_TX",
+                "Stream1": "UART7_TX",
+                "Stream2": ["TIM3_CH4", "TIM3_UP"],
+                "Stream3": ["TIM3_CH1", "TIM3_TRIG"],
+                "Stream4": "TIM3_CH2",
+                "Stream5": "UART8_RX",
+                "Stream6": "TIM3_CH3",
+                "Stream7": null
+            },
+            "Channel6": {
+                "Stream0": ["TIM5_CH3", "TIM5_UP"],
+                "Stream1": ["TIM5_CH4", "TIM5_TRIG"],
+                "Stream2": "TIM5_CH1",
+                "Stream3": ["TIM5_CH4", "TIM5_TRIG"],
+                "Stream4": "TIM5_CH2",
+                "Stream5": null,
+                "Stream6": "TIM5_UP",
+                "Stream7": null
+            },
+            "Channel7": {
+                "Stream0": null,
+                "Stream1": "TIM6_UP",
+                "Stream2": "I2C2_RX",
+                "Stream3": "I2C2_RX",
+                "Stream4": "USART3_TX",
+                "Stream5": "DAC1",
+                "Stream6": "DAC2",
+                "Stream7": "I2C2_TX"
+            }
+        },
+        "DMA2": {
+            "Channel0": {
+                "Stream0": "ADC1",
+                "Stream1": null,
+                "Stream2": ["TIM8_CH1", "TIM8_CH2", "TIM8_CH3"],
+                "Stream3": null,
+                "Stream4": "ADC1",
+                "Stream5": "SAI1_B",
+                "Stream6": ["TIM1_CH1", "TIM1_CH2", "TIM1_CH3"],
+                "Stream7": null
+            },
+            "Channel1": {
+                "Stream0": null,
+                "Stream1": "DCMI",
+                "Stream2": "ADC2",
+                "Stream3": "ADC2",
+                "Stream4": "SAI1_B",
+                "Stream5": null,
+                "Stream6": "SPI6_RX",
+                "Stream7": "DCMI"
+            },
+            "Channel2": {
+                "Stream0": "ADC3",
+                "Stream1": "ADC3",
+                "Stream2": null,
+                "Stream3": "SPI5_RX",
+                "Stream4": "SPI5_TX",
+                "Stream5": "CRYP_OUT",
+                "Stream6": "CRYP_IN",
+                "Stream7": "HASH_IN"
+            },
+            "Channel3": {
+                "Stream0": "SPI1_RX",
+                "Stream1": null,
+                "Stream2": "SPI1_RX",
+                "Stream3": "SPI1_TX",
+                "Stream4": null,
+                "Stream5": "SPI1_TX",
+                "Stream6": null,
+                "Stream7": null
+            },
+            "Channel4": {
+                "Stream0": "SPI4_RX",
+                "Stream1": null,
+                "Stream2": "USART1_RX",
+                "Stream3": "SDIO",
+                "Stream4": null,
+                "Stream5": "USART1_RX",
+                "Stream6": "SDIO",
+                "Stream7": "USART1_TX"
+            },
+            "Channel5": {
+                "Stream0": null,
+                "Stream1": "USART6_RX",
+                "Stream2": "USART6_RX",
+                "Stream3": "SPI4_RX",
+                "Stream4": "SPI4_TX",
+                "Stream5": "USART6_TX",
+                "Stream6": "USART6_TX",
+                "Stream7": null
+            },
+            "Channel6": {
+                "Stream0": "TIM1_TRIG",
+                "Stream1": "TIM1_CH1",
+                "Stream2": "TIM1_CH2",
+                "Stream3": "TIM1_CH1",
+                "Stream4": ["TIM1_CH4", "TIM1_TRIG", "TIM1_COM"],
+                "Stream5": "TIM1_UP",
+                "Stream6": "TIM1_CH3",
+                "Stream7": null
+            },
+            "Channel7": {
+                "Stream0": null,
+                "Stream1": "TIM8_UP",
+                "Stream2": "TIM8_CH1",
+                "Stream3": "TIM8_CH2",
+                "Stream4": "TIM8_CH3",
+                "Stream5": "SPI5_RX",
+                "Stream6": "SPI5_TX",
+                "Stream7": ["TIM8_CH4", "TIM8_TRIG", "TIM8_COM"]
+            }
+        }
+    },
     "mem_map": {
         "contention":   "0x20000000",
         "no_contention":"0x2001C000"

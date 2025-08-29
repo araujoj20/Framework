@@ -19,8 +19,8 @@
     },
 
     "openocd":{
-        "interface":        "stlink",
-        "target":           "stm32f4x"
+        "interface": "stlink",
+        "target":    "stm32f4x"
     },
 
     "uart": {
@@ -31,17 +31,38 @@
     },
 
     "timers": {
+
+        "TIM13": {
+        },
+        "TIM13_OW_1": {
+        },
+        "TIM13_OW_2": {
+        },
+        "TIM13_OW_3": {
+        },
+
         "TIM1": {
             "Period": 65535,
+            "Prescaler": 0,
             "clock_source": "INTERNAL_CLOCK",
             "trigger_source": "TIM2",
             "trigger_event": "OC1REF",
             "master_slave_mode": "ENABLE"
         },
+        "TIM1_OW_1": {
+            "trigger_source": "ITR3"
+        },
+        "TIM1_OW_2": {
+            "slave_mode": "RESET"
+        },
+        "TIM1_OW_3": {
+            "slave_mode": "RESET",
+            "trigger_source": "TIM8"
+        },
 
         "TIM2": {
             "Period": 2,
-            "clock_source": "disable",
+            "clock_source": "DISABLE",
             "trigger_source": "TIM1",
             "trigger_event": "UPDATE"
         },
@@ -55,12 +76,12 @@
 
         "TIM2_OW_2": {
             "Period": 222,
-            "dma": "dma_tim2_ch3",
+            "dma": "dma_tim1_ch3",
             "trigger_source": "TIM1"
         },
         "TIM2_OW_3": {
             "Period": 2233,
-            "dma": "dma_tim2_ch3"
+            "dma": "dma_tim1_ch3"
         },
         "TIM2_OW_4": {
             "Period": 2233,
@@ -109,8 +130,9 @@
             "stream": "Stream6",
             "direction": "PERIPH_TO_MEMORY"
         },
-        "dma_tim2_ch3": {
-            "request": "TIM2_CH3",
+        "dma_tim1_ch3": {
+            "request": "TIM1_CH3",
+            "channel":"Channel6", 
             "direction": "PERIPH_TO_MEMORY"
         },
         "dma_tim2_ch4": {
@@ -119,26 +141,26 @@
         },
         "dma_tim8_ch1": {
             "request": "TIM8_CH1",
-            "name": "DMA1",
-            "stream": "Stream6",
+            "name": "DMA2",
             "channel":"Channel7", 
+            "stream": "Stream2",
             "direction": "PERIPH_TO_MEMORY"
         }
     },
 
     "gadgets": {
         "counter": [
-            "TIM7",
-            "TIM3"
+            "TIM1",
+            "TIM2"
         ],
 
         "trigger": [
             "TIM2",
-            "TIM3_OW1"
+            "TIM3_OW_1"
         ],
 
         "detect": [
-            "TIM7",
+            "TIM1",
             "TIM2_OW_4"
         ]
     },
