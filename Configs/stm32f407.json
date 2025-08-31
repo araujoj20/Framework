@@ -34,28 +34,33 @@
         "TIM1": {
             "type": "advanced",
             "period": 65535,
-            "trigger": ["TIM5", "TIM2", "TIM3", "TIM4"]
+            "channels": 4,
+            "trigger_source": ["TIM5", "TIM2", "TIM3", "TIM4"]
         },
         
         "TIM2": {
             "type": "general",
             "period": 4294967295,
-            "trigger": ["TIM1", "TIM8", "TIM3", "TIM4"]
+            "channels": 4,
+            "trigger_source": ["TIM1", "TIM8", "TIM3", "TIM4"]
         },
         "TIM3": {
             "type": "general",
             "period": 65535,
-            "trigger": ["TIM1", "TIM2", "TIM5", "TIM4"]
+            "channels": 4,
+            "trigger_source": ["TIM1", "TIM2", "TIM5", "TIM4"]
         },
         "TIM4": {
             "type": "general",
             "period": 65535,
-            "trigger": ["TIM1", "TIM2", "TIM3", "TIM8"]
+            "channels": 4,
+            "trigger_source": ["TIM1", "TIM2", "TIM3", "TIM8"]
         },
         "TIM5": {
             "type": "general",
             "period": 4294967295,
-            "trigger": ["TIM2", "TIM3", "TIM4", "TIM8"]
+            "channels": 4,
+            "trigger_source": ["TIM2", "TIM3", "TIM4", "TIM8"]
         },
         
         "TIM6": {
@@ -70,34 +75,47 @@
         "TIM8": {
             "type": "advanced",
             "period": 65535,
-            "trigger": ["TIM1", "TIM2", "TIM4", "TIM5"]
+            "channels": 4,
+            "trigger_source": ["TIM1", "TIM2", "TIM4", "TIM5"]
         },
         
         "TIM9": {
             "type": "general",
             "period": 65535,
-            "trigger": ["TIM2", "TIM3", "TIM10_OC", "TIM11_OC"]
+            "channels": 2,
+            "trigger_source": ["TIM2", "TIM3", "TIM10_OC", "TIM11_OC"],
+            "trigger_output": "none"
         },
         "TIM10": {
             "type": "general",
-            "period": 65535
+            "period": 65535,
+            "channels": 1,
+            "trigger_output": "none"
         },
         "TIM11": {
             "type": "general",
-            "period": 65535
+            "period": 65535,
+            "channels": 1,
+            "trigger_output": "none"
         },
         "TIM12": {
             "type": "general",
             "period": 65535,
-            "trigger": ["TIM4", "TIM5", "TIM13_OC", "TIM14_OC"]
+            "channels": 2,
+            "trigger_source": ["TIM4", "TIM5", "TIM13_OC", "TIM14_OC"],
+            "trigger_output": "none"
         },
         "TIM13": {
             "type": "general",
-            "period": 65535
+            "period": 65535,
+            "channels": 1,
+            "trigger_output": "none"
         },
         "TIM14": {
             "type": "general",
-            "period": 65535
+            "period": 65535,
+            "channels": 1,
+            "trigger_output": "none"
         }
     },
 

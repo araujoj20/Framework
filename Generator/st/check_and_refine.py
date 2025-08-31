@@ -20,7 +20,7 @@ VALID_CLOCK_SOURCES = [
     "INTERNAL_CLOCK",
     "DISABLE"
 ]
-VALID_MASTER_SLAVE_MODE = [
+VALID_MASTER_SLAVE_MODES = [
     "DISABLE",
     "ENABLE"
 ]
@@ -38,25 +38,38 @@ VALID_TRIGGER_SOURCES = [
     "ITR2",
     "ITR3"
 ]
+VALID_INTERRUPT_MODES = [
+    "DISABLE",
+    "ENABLE"
+]
+VALID_IRQHANDLER_MODES = [
+    "DISABLE",
+    "ENABLE"
+]
 
+# Remove irq_handler from generic groups (custom dependency logic below)
 timer_params_str_groups = [
     (["trigger_event", "MasterOutputTrigger"], VALID_MASTER_TRIGGERS),
     (["clock_source", "ClockSource"], VALID_CLOCK_SOURCES),
-    (["master_slave_mode", "MasterSlaveMode"], VALID_MASTER_SLAVE_MODE),
+    (["master_slave_mode", "MasterSlaveMode"], VALID_MASTER_SLAVE_MODES),
     (["slave_mode", "SlaveMode"], VALID_SLAVE_MODES),
+    (["interrupt", "isr"], VALID_INTERRUPT_MODES),
 ]
 
 
 # ---------- ANSI colors for prints ----------
 _YELLOW = "\033[33m"
 _RED = "\033[31m"
+_BLUE = "\033[34m"
 _RESET = "\033[0m"
 
 def warn(msg):
-    print(f"{_YELLOW}[WARN] {msg}{_RESET}")
+    print(f"{_YELLOW}[WARN]  {msg}{_RESET}")
 def error(msg):
     print(f"{_RED}[ERROR] {msg}{_RESET}")
-
+def help(msg):
+    print(f"{_BLUE}[HELP]  {msg}{_RESET}")
+    
 # ---------- Utility functions ----------
 def load_json(path):
     with open(path, "r") as f:
@@ -66,13 +79,14 @@ def save_json(path, data):
     with open(path, "w") as f:
         json.dump(data, f, indent=4)
 
-def normalize_choice(value, allowed, label):
+def normalize_choice(value, allowed, label, timer):
     if not value:
         return allowed[0]
-    v = value.upper().replace(" ", "")
+    v = str(value).upper().replace(" ", "")
     if v in allowed:
         return v
-    warn(f"Invalid {label} '{value}', using '{allowed[0]}'.")
+    error(f"Timer '{timer}',Invalid {label} '{value}'. Using '{allowed[0]}'"
+          f"\n        Allowed {label}: {', '.join(allowed)}.")
     return allowed[0]
 
 def normalize_input_trigger(value):
@@ -218,11 +232,11 @@ def validate_and_expand_dmas(project_dmas, board_dma_mapping, board_family, used
         refined[key] = cfg
     return refined
 
-def normalize_timer_str_groups(t_cfg, groups):
+def normalize_timer_str_groups(t_cfg, groups, timer_key):
     """
     groups: list of ([alias1, alias2], allowed_values_list)
     Keeps whichever alias is present (only one expected). If none exist, creates the first alias with default.
-    Does not rename keys; preserves the original provided by the user.
+    Adds timer context to error messages.
     """
     for names, allowed in groups:
         name_used = None
@@ -235,7 +249,7 @@ def normalize_timer_str_groups(t_cfg, groups):
             values = None
         else:
             values = t_cfg.get(name_used)
-        t_cfg[name_used] = normalize_choice(values, allowed, name_used)
+        t_cfg[name_used] = normalize_choice(values, allowed, name_used, timer_key)
 
 def get_board_timer_specs(board_cfg):
     """
@@ -383,14 +397,14 @@ def order_all_timers(timers_dict):
         ordered[k] = timers_dict[k]
     return ordered
 
-def build_board_trigger_map(board_cfg):
+def build_board_trigger_source_map(board_cfg):
     """
     Returns: { TIMER_NAME : [list of trigger timer names (upper)] }
     """
     mapping = {}
     bt = board_cfg.get("timers", {})
     for name, cfg in bt.items():
-        seq = cfg.get("trigger") or cfg.get("triggers")
+        seq = cfg.get("trigger_source")
         if isinstance(seq, list):
             mapping[name.upper()] = [str(x).upper() for x in seq]
     return mapping
@@ -435,9 +449,7 @@ def normalize_trigger_source(timer_key, cfg, base_name, board_trigger_map, user_
     return False
 
 def process_timers(project_cfg, board_timer_specs, board_trigger_map):
-    """
-    (Updated) Adds slave_mode & trigger_source normalization.
-    """
+
     project_timers = project_cfg.get("timers", {})
     to_delete = []
 
@@ -464,11 +476,34 @@ def process_timers(project_cfg, board_timer_specs, board_trigger_map):
             to_delete.append(key)
             continue
 
-        normalize_timer_str_groups(t_cfg, timer_params_str_groups)
-
         # Determine slave_mode value (after normalization)
         slave_key = "slave_mode" if "slave_mode" in t_cfg else ("SlaveMode" if "SlaveMode" in t_cfg else "slave_mode")
         slave_mode_val = t_cfg.get(slave_key, "DISABLE").upper()
+
+        # Interrupt already normalized (group above). Determine its key & value.
+        interrupt_key = "interrupt" if "interrupt" in t_cfg else ("isr" if "isr" in t_cfg else None)
+        interrupt_val = t_cfg.get(interrupt_key, "DISABLE").upper()
+        irq_key = "irq_handler" if "irq_handler" in t_cfg else ("IRQHandler" if "IRQHandler" in t_cfg else None)
+        irq_val = t_cfg.get(irq_key, "DISABLE").upper()
+
+        if interrupt_val == "ENABLE":
+            if irq_key is None:
+                t_cfg["irq_handler"] = "ENABLE"
+            else:
+                t_cfg[irq_key] = normalize_choice(
+                    t_cfg.get(irq_key),
+                    VALID_IRQHANDLER_MODES,
+                    irq_key,
+                    key
+                )
+        elif interrupt_key is None and irq_val == "ENABLE":
+            warn(f"Timer '{key}': irq_handler 'ENABLE' requires interrupt ENABLE. Forcing interrupt ENABLE.")
+            t_cfg["interrupt"] = "ENABLE"
+        else:
+            if irq_val != "DISABLE":
+                warn(f"Timer '{key}': irq_handler 'ENABLE' requires interrupt ENABLE. Forcing irq_handler DISABLE.")
+                t_cfg[irq_key] = "DISABLE"
+
 
         # Detect if user provided trigger_source / InputTrigger
         user_provided_trig = ("trigger_source" in t_cfg) or ("InputTrigger" in t_cfg)
@@ -488,11 +523,13 @@ def process_timers(project_cfg, board_timer_specs, board_trigger_map):
             to_delete.append(key)
             continue
 
-        # If slave_mode active but trigger_source resolved to DISABLE -> remove (invalid combo)
+        # If slave_mode active but trigger_source resolved to DISABLE -> remove (invalid)
         if slave_mode_val != "DISABLE" and t_cfg.get("trigger_source","DISABLE") == "DISABLE":
             error(f"Timer '{key}': trigger_source DISABLE invalid with slave_mode '{slave_mode_val}'. Timer removed.")
             to_delete.append(key)
             continue
+        
+        normalize_timer_str_groups(t_cfg, timer_params_str_groups, timer_key=key)
 
         # Period
         board_max = board_timer_specs[base]
@@ -511,7 +548,7 @@ def process_timers(project_cfg, board_timer_specs, board_trigger_map):
             max_value=65535,
             timer_key=key
         )
-
+    
     for k in to_delete:
         del project_timers[k]
     new_timers, added = validate_and_order_ow_timers(project_timers, ow_pattern)
@@ -543,7 +580,7 @@ def refine_project(board_cfg_path, project_cfg_path, output_path):
 
     # Board timer specs: extract all timers and their period values
     board_timer_specs = get_board_timer_specs(board_cfg)
-    board_trigger_map = build_board_trigger_map(board_cfg)
+    board_trigger_map = build_board_trigger_source_map(board_cfg)
 
     # 1. Timers
     used_dma_in_timers = process_timers(project_cfg, board_timer_specs, board_trigger_map)
@@ -554,7 +591,7 @@ def refine_project(board_cfg_path, project_cfg_path, output_path):
     # 3. Future steps ...
 
     save_json(output_path, project_cfg)
-    print(f"[INFO] Refined configuration written to: {output_path}")
+    print(f"[INFO]  Refined configuration written to: {output_path}")
 
 def main():
     if len(sys.argv) != 4:

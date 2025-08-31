@@ -31,10 +31,34 @@
             "trigger_source": "ITR1",
             "trigger_event": "OC1REF",
             "master_slave_mode": "ENABLE",
-            "slave_mode": "DISABLE"
+            "slave_mode": "DISABLE",
+            "interrupt": "DISABLE"
         },
         "TIM1_OW_1": {
             "trigger_source": "ITR3",
+            "interrupt": "ENABLE",
+            "IRQHandler": "ENABLE",
+            "trigger_event": "RESET",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "slave_mode": "DISABLE",
+            "Period": 65535,
+            "Prescaler": 0
+        },
+        "TIM1_OW_2": {
+            "slave_mode": "DISABLE",
+            "trigger_source": "ITR1",
+            "trigger_event": "RESET",
+            "clock_source": "INTERNAL",
+            "master_slave_mode": "DISABLE",
+            "interrupt": "DISABLE",
+            "Period": 65535,
+            "Prescaler": 0
+        },
+        "TIM1_OW_3": {
+            "interrupt": "ENABLE",
+            "irq_handler": "DISABLE",
+            "trigger_source": "DISABLE",
             "trigger_event": "RESET",
             "clock_source": "INTERNAL",
             "master_slave_mode": "DISABLE",
@@ -49,6 +73,7 @@
             "trigger_event": "UPDATE",
             "master_slave_mode": "DISABLE",
             "slave_mode": "DISABLE",
+            "interrupt": "DISABLE",
             "Prescaler": 0
         },
         "TIM2_OW_1": {
@@ -59,6 +84,7 @@
             "clock_source": "INTERNAL",
             "master_slave_mode": "DISABLE",
             "slave_mode": "DISABLE",
+            "interrupt": "DISABLE",
             "Prescaler": 0
         },
         "TIM2_OW_2": {
@@ -69,44 +95,49 @@
             "clock_source": "INTERNAL",
             "master_slave_mode": "DISABLE",
             "slave_mode": "DISABLE",
+            "interrupt": "DISABLE",
             "Prescaler": 0
         },
         "TIM2_OW_3": {
             "Period": 2233,
             "dma": "dma_tim1_ch3",
+            "trigger_source": "DISABLE",
             "trigger_event": "RESET",
             "clock_source": "INTERNAL",
             "master_slave_mode": "DISABLE",
             "slave_mode": "DISABLE",
-            "trigger_source": "DISABLE",
+            "interrupt": "DISABLE",
             "Prescaler": 0
         },
         "TIM2_OW_4": {
             "Period": 2233,
             "dma": "dma_tim2_ch4",
+            "trigger_source": "DISABLE",
             "trigger_event": "RESET",
             "clock_source": "INTERNAL",
             "master_slave_mode": "DISABLE",
             "slave_mode": "DISABLE",
-            "trigger_source": "DISABLE",
+            "interrupt": "DISABLE",
             "Prescaler": 0
         },
         "TIM3": {
             "Period": 65535,
+            "trigger_source": "DISABLE",
             "trigger_event": "RESET",
             "clock_source": "INTERNAL",
             "master_slave_mode": "DISABLE",
             "slave_mode": "DISABLE",
-            "trigger_source": "DISABLE",
+            "interrupt": "DISABLE",
             "Prescaler": 0
         },
         "TIM3_OW_1": {
             "Period": 333,
+            "trigger_source": "DISABLE",
             "trigger_event": "RESET",
             "clock_source": "INTERNAL",
             "master_slave_mode": "DISABLE",
             "slave_mode": "DISABLE",
-            "trigger_source": "DISABLE",
+            "interrupt": "DISABLE",
             "Prescaler": 0
         },
         "TIM8": {
@@ -117,41 +148,26 @@
             "clock_source": "INTERNAL",
             "master_slave_mode": "DISABLE",
             "slave_mode": "DISABLE",
+            "interrupt": "DISABLE",
             "Prescaler": 0
         },
         "TIM13": {
+            "trigger_source": "DISABLE",
             "trigger_event": "RESET",
             "clock_source": "INTERNAL",
             "master_slave_mode": "DISABLE",
             "slave_mode": "DISABLE",
-            "trigger_source": "DISABLE",
+            "interrupt": "DISABLE",
             "Period": 65535,
             "Prescaler": 0
         },
         "TIM13_OW_1": {
+            "trigger_source": "DISABLE",
             "trigger_event": "RESET",
             "clock_source": "INTERNAL",
             "master_slave_mode": "DISABLE",
             "slave_mode": "DISABLE",
-            "trigger_source": "DISABLE",
-            "Period": 65535,
-            "Prescaler": 0
-        },
-        "TIM13_OW_2": {
-            "trigger_event": "RESET",
-            "clock_source": "INTERNAL",
-            "master_slave_mode": "DISABLE",
-            "slave_mode": "DISABLE",
-            "trigger_source": "DISABLE",
-            "Period": 65535,
-            "Prescaler": 0
-        },
-        "TIM13_OW_3": {
-            "trigger_event": "RESET",
-            "clock_source": "INTERNAL",
-            "master_slave_mode": "DISABLE",
-            "slave_mode": "DISABLE",
-            "trigger_source": "DISABLE",
+            "interrupt": "DISABLE",
             "Period": 65535,
             "Prescaler": 0
         }

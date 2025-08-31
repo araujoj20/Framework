@@ -36,11 +36,7 @@
         },
         "TIM13_OW_1": {
         },
-        "TIM13_OW_2": {
-        },
-        "TIM13_OW_3": {
-        },
-
+        
         "TIM1": {
             "Period": 65535,
             "Prescaler": 0,
@@ -50,12 +46,20 @@
             "master_slave_mode": "ENABLE"
         },
         "TIM1_OW_1": {
-            "trigger_source": "ITR3"
+            "trigger_source": "ITR3",
+            "interrupt": "ENABLE",
+            "IRQHandler": "ENABLE"
         },
         "TIM1_OW_2": {
-            "slave_mode": "RESET"
+            "slave_mode": "DISABLE",
+            "trigger_source": "TIM2"
         },
         "TIM1_OW_3": {
+            "interrupt": "ENABLE",
+            "irq_handler": "DISABLE"
+        },
+        
+        "TIM1_OW_4": {
             "slave_mode": "RESET",
             "trigger_source": "TIM8"
         },
