@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Outputs & Artifacts</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav>
+  <h1>Framework</h1>
+  <div class="search-box"><input placeholder="Filter nav..." oninput="filterNav(this.value)" /></div>
+  <a href="index.html">Overview</a>
+  <a href="cli.html">CLI (mcu-fw.sh)</a>
+  <a href="pipeline.html">Pipeline</a>
+  <a href="config_layers.html">Config Layers</a>
+  <a class="active" href="outputs.html">Outputs</a>
+  <a href="covert_channel.html">Covert Channel</a>
+  <a href="extensibility.html">Extensibility</a>
+  <a href="roadmap.html">Roadmap</a>
+  <div class="nav-group">
+    <button class="nav-group-toggle" data-label="Generator" onclick="toggleGroup('gen-group')">Generator ▸</button>
+    <div id="gen-group" class="nav-sub">
+      <div class="nav-group inner">
+        <button class="nav-group-toggle" data-label="Check & Refine" onclick="toggleGroup('check-refine-group')">Check & Refine ▸</button>
+        <div id="check-refine-group" class="nav-sub">
+          <a href="#" data-refine="index.html">Overview</a>
+          <a href="#" data-refine="schema.html">JSON Schema</a>
+          <a href="#" data-refine="timers.html">Timers</a>
+          <a href="#" data-refine="dma.html">DMA</a>
+          <a href="#" data-refine="examples.html">Examples</a>
+          <a href="#" data-refine="errors_warnings.html">Errors &amp; Warnings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<main>
+  <h1>Outputs & Artifacts</h1>
+  <p>Deterministic naming and directory layout ensure reproducible builds and clean diffs.</p>
+
+  <h2 id="refined">Refined JSON<a class="anchor-link" href="#refined">¶</a></h2>
+  <ul>
+    <li>Location: <code>Build/refined_*.json</code></li>
+    <li>Sorted keys & arrays for stable diffs.</li>
+  </ul>
+
+  <h2 id="generated">Generated Sources<a class="anchor-link" href="#generated">¶</a></h2>
+  <table>
+    <thead><tr><th>File Pattern</th><th>Origin</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>tim_*.c/h</code></td><td>tim_gen_new.py</td><td>Timer init & ISR glue</td></tr>
+      <tr><td><code>dma_*.c/h</code></td><td>dma_gen.py</td><td>DMA config & handlers</td></tr>
+      <tr><td><code>uart_*.c/h</code></td><td>uart_gen.py</td><td>UART setup & buffers</td></tr>
+      <tr><td><code>trace_*.c/h</code></td><td>trace_gen.py</td><td>Instrumentation helpers</td></tr>
+      <tr><td><code>main.c</code></td><td>main_gen.py</td><td>Entry point & init ordering</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="project">Project Tree<a class="anchor-link" href="#project">¶</a></h2>
+  <pre><code>Test/&lt;test_name&gt;/
+  CMakeLists.txt
+  src/
+    main.c
+    tim_*.c
+    dma_*.c
+    uart_*.c
+    trace_*.c
+  inc/
+    tim_*.h
+    dma_*.h
+    ...
+  Drivers/
+  linker.ld
+  startup_<mcu>.s
+</code></pre>
+
+  <h2 id="build">Build Artifacts<a class="anchor-link" href="#build">¶</a></h2>
+  <ul>
+    <li>ELF binary (or binaries for TrustZone)</li>
+    <li>Map file (if enabled via CMake flags TBD)</li>
+    <li>Object files – intermediate (not committed)</li>
+  </ul>
+
+  <h2 id="runtime">Runtime Logs<a class="anchor-link" href="#runtime">¶</a></h2>
+  <ul>
+    <li><code>uart_output.txt</code> – consolidated serial capture</li>
+    <li>Covert channel: samples directory (timestamped), capacity results, heatmap image</li>
+  </ul>
+
+  <h2 id="naming">Naming Determinism<a class="anchor-link" href="#naming">¶</a></h2>
+  <p>Sorting & canonical file patterns minimize diff noise enabling easier review and regression detection.</p>
+
+  <footer>Outputs reference.</footer>
+</main>
+<script src="nav.js"></script>
+</body>
+</html>

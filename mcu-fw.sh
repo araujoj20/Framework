@@ -11,7 +11,7 @@ usage(){
     echo "Usage: $0 <test_name> <board_config_path> <test_path> [-flags]"
     echo "Flags:"
     echo "  --compile_fw        Compile framework"
-    echo "  --interface         Generate interface"
+    # echo "  --interface         Generate interface"
     echo "  --generator         Generate peripheral files"
     echo "  --compile_test      Compile test files"
     echo "  --flash             Flash the firmware to the device"
@@ -53,20 +53,34 @@ compile_fw(){
 }
 
 # Interface
-interface(){
-    if [ "$user_file_given" = true ]; then
-        echo -e "\n${YELLOW}Skipping interface step (user_config defined manually)${RESET}"
-        return
-    fi
+# interface(){
+#     if [ "$user_file_given" = true ]; then
+#         echo -e "\n${YELLOW}Skipping interface step (user_config defined manually)${RESET}"
+#         return
+#     fi
 
-    echo -e "\n${YELLOW}@Step${RESET}${BLUE}(--interface)${RESET}: interface"
+#     echo -e "\n${YELLOW}@Step${RESET}${BLUE}(--interface)${RESET}: interface"
 
-    board_dir=$(dirname "$board_config_path")
-    vendor_config_path="$board_dir/$inherits"
+#     board_dir=$(dirname "$board_config_path")
+#     vendor_config_path="$board_dir/$inherits"
 
-    "$build/interface" "$vendor_config_path" "$board_config_path" "$build"
+#     "$build/interface" "$vendor_config_path" "$board_config_path" "$build"
 
-    user_config="$build/user_config.json"   # created in interface
+#     user_config="$build/user_config.json"   # created in interface
+# }
+
+#check json file
+check(){
+    echo -e "\n${YELLOW}@Step${RESET}${BLUE}(--check)${RESET}: Checking and refining ${user_config}"
+
+    mkdir -p "$build/Inc"
+    mkdir -p "$build/Src"
+
+    user_cfg_filename=$(basename "$user_config")
+
+    python3 "$generator/$vendor/templates/check_and_refine.py"  "$board_config_path" "$user_config"  "$build/user_cfg_filename"
+
+
 }
 
 
@@ -74,12 +88,14 @@ interface(){
 generator(){
     echo -e "\n${YELLOW}@Step${RESET}${BLUE}(--generator)${RESET}: Generate files"
 
-    mkdir -p "$build/Inc"
-    mkdir -p "$build/Src"
+    # mkdir -p "$build/Inc"
+    # mkdir -p "$build/Src"
+
+    check
 
     python3 "$generator/$vendor/templates/main/main_gen.py"     "$user_config"  "$build"
     python3 "$generator/$vendor/templates/uart/uart_gen.py"     "$user_config"  "$build"
-    python3 "$generator/$vendor/templates/tim/tim_gen_new.py"       "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/tim/tim_gen_new.py"   "$user_config"  "$build"
     python3 "$generator/$vendor/templates/dma/dma_gen.py"       "$user_config"  "$build"
     python3 "$generator/$vendor/templates/trace/trace_gen.py"   "$user_config"  "$build"
 
@@ -238,17 +254,17 @@ covert_channel(){
 
 }
 
-tz_test(){
-    echo -e "\n${YELLOW}@Step${RESET}${BLUE}(--all)${RESET}: Executing all commands"
+# tz_test(){
+#     echo -e "\n${YELLOW}@Step${RESET}${BLUE}(--all)${RESET}: Executing all commands"
     
-    rm -rf $build
-    compile_fw
-    interface
-    generator
-    compile_test
-    flash
+#     rm -rf $build
+#     compile_fw
+#     interface
+#     generator
+#     compile_test
+#     flash
 
-}
+# }
 
 # Verificação de parâmetros de entrada
 if [ "$#" -lt 3 ]; then
@@ -298,8 +314,11 @@ while [[ $# -gt 0 ]]; do
         --compile_fw)
             compile_fw
             ;;
-        --interface)
-            interface
+        # --interface)
+        #     interface
+        #     ;;
+        --check)
+            check
             ;;
         --generator)
             generator

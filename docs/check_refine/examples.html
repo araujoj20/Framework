@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Examples – Check &amp; Refine</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<nav>
+			<h1>Check &amp; Refine</h1>
+			<div class="search-box">
+				<input id="q" placeholder="Filter nav..." oninput="filterNav(this.value)" />
+			</div>
+			<a href="index.html">Overview</a>
+			<a href="schema.html">JSON Schema</a>
+			<a href="timers.html">Timers</a>
+			<a href="dma.html">DMA</a>
+			<a href="errors_warnings.html">Errors &amp; Warnings</a>
+			<a class="active" href="examples.html">Examples</a>
+		</nav>
+		<main>
+			<h1>Before &amp; After Examples</h1>
+			<p>Concrete transformations produced during refinement.</p>
+			<h2>Timer Channel Derivation</h2>
+			<pre>// Raw
+"TIM4": {"request":"tim4_ch3"}
+// Refined
+"TIM4": {"request":"TIM4_CH3","channel":3,"master_output_trigger":"RESET","master_slave_mode":"DISABLE","counter_mode":"UP","auto_reload_preload":"DISABLE"}</pre>
+			<h2>Invalid Channel Removed</h2>
+			<pre>// Raw
+"TIM3": {"request":"TIM3_CH5"}
+// Result: TIM3 removed (channel out of range)</pre>
+			<h2>Slave Mode Dependency Failure</h2>
+			<pre>// Raw
+"TIM2": {"request":"TIM2_CH1","slave_mode":"GATED"}
+// Result: TIM2 removed (missing trigger_source)</pre>
+			<h2>Numeric Clamping</h2>
+			<pre>// Raw
+"TIM2": {"request":"TIM2_CH1","period":100000,"prescaler":70000}
+// Refined (assuming 16-bit period)
+"TIM2": {"request":"TIM2_CH1","channel":1,"period":65535,"prescaler":65535,...}</pre>
+			<h2>DMA Auto-Selection</h2>
+			<pre>// Raw
+"dmas": {"tim2ch1": {"request":"tim2_ch1","direction":"periph_to_memory"}}
+// Refined (example mapping chosen)
+"dmas": {"tim2ch1": {"request":"TIM2_CH1","direction":"PERIPH_TO_MEMORY","dma":1,"stream":0,"channel":3,"name":"tim2ch1"}}</pre>
+			<h2>Pruned Unused DMA</h2>
+			<pre>// Raw
+"dmas": {"orphan": {"request":"tim2_ch2","direction":"periph_to_memory"}}
+// If no timer uses TIM2_CH2 => removed</pre>
+			<h2>Overwrite Ordering</h2>
+			<pre>// Raw
+"TIM2_OW_2": {"request":"TIM2_CH1"}
+"TIM2_OW_1": {"request":"TIM2_CH2"}
+// Refined ordering ensures _OW_1 before _OW_2 (both validated)</pre>
+			<h2>Interrupt Auto Handler</h2>
+			<pre>// Raw
+"TIM3": {"request":"TIM3_CH1","interrupt":true}
+// Refined
+"TIM3": {"request":"TIM3_CH1","channel":1,"interrupt":true,"irq_handler":"TIM3_IRQHandler",...}</pre>
+			<h2>Memory to Memory Constraints</h2>
+			<pre>// Raw
+"dmas": {"copy": {"request":"TIM2_CH1","direction":"memory_to_memory","channel":5}}
+// Result: removed (requires channel 0)</pre>
+			<footer>Examples scaffold.</footer>
+		</main>
+		<script>
+			function filterNav(v) {
+				v = v.toLowerCase();
+				for (const a of document.querySelectorAll('nav a')) {
+					if (a.textContent.toLowerCase().includes(v) || a.getAttribute('href').includes(v)) {
+						a.style.display = 'block';
+					} else {
+						a.style.display = 'none';
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

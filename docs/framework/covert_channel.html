@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Covert Channel Workflow</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav>
+  <h1>Framework</h1>
+  <div class="search-box"><input placeholder="Filter nav..." oninput="filterNav(this.value)" /></div>
+  <a href="index.html">Overview</a>
+  <a href="cli.html">CLI (mcu-fw.sh)</a>
+  <a href="pipeline.html">Pipeline</a>
+  <a href="config_layers.html">Config Layers</a>
+  <a href="outputs.html">Outputs</a>
+  <a class="active" href="covert_channel.html">Covert Channel</a>
+  <a href="extensibility.html">Extensibility</a>
+  <a href="roadmap.html">Roadmap</a>
+  <div class="nav-group">
+    <button class="nav-group-toggle" data-label="Generator" onclick="toggleGroup('gen-group')">Generator ▸</button>
+    <div id="gen-group" class="nav-sub">
+      <div class="nav-group inner">
+        <button class="nav-group-toggle" data-label="Check & Refine" onclick="toggleGroup('check-refine-group')">Check & Refine ▸</button>
+        <div id="check-refine-group" class="nav-sub">
+          <a href="#" data-refine="index.html">Overview</a>
+          <a href="#" data-refine="schema.html">JSON Schema</a>
+          <a href="#" data-refine="timers.html">Timers</a>
+          <a href="#" data-refine="dma.html">DMA</a>
+          <a href="#" data-refine="examples.html">Examples</a>
+          <a href="#" data-refine="errors_warnings.html">Errors &amp; Warnings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<main>
+  <h1>Covert Channel Workflow</h1>
+  <p>Specialized flag <code>--covert_channel</code> triggers an augmented generation & measurement sequence for contention-based covert channel experiments.</p>
+
+  <h2 id="sequence">Sequence<a class="anchor-link" href="#sequence">¶</a></h2>
+  <ol>
+    <li><code>compile_fw</code> – build host helper(s)</li>
+    <li>Compile <code>dma_gen.c</code> with <code>COVERT_CHANNEL</code> macro</li>
+    <li>Run CC DMA generator on user config</li>
+    <li>Invoke Jinja script <code>cc_jinga_sh.py</code> to materialize attack templates</li>
+    <li><code>generator</code> (includes refine + standard peripheral generation + copy)</li>
+    <li>Copy covert channel extra .c/.h into assembled test tree</li>
+    <li><code>compile_test</code>, <code>flash</code></li>
+    <li>Serial capture & trimming (post-marker)</li>
+    <li>Capacity computation & heatmap generation</li>
+  </ol>
+
+  <h2 id="inputs">Inputs<a class="anchor-link" href="#inputs">¶</a></h2>
+  <ul>
+    <li>Board JSON (as usual)</li>
+    <li>Predefined covert channel JSON (auto-selected per board): <code>cc_&lt;board&gt;.json</code></li>
+  </ul>
+
+  <h2 id="outputs">Outputs<a class="anchor-link" href="#outputs">¶</a></h2>
+  <ul>
+    <li><code>Results/&lt;board&gt;_contention_samples.txt</code> – raw samples</li>
+    <li>Capacity metrics (stdout + stored summary)</li>
+    <li>Heatmap image (channel matrix)</li>
+  </ul>
+
+  <h2 id="post">Post Processing Tools<a class="anchor-link" href="#post">¶</a></h2>
+  <table>
+    <thead><tr><th>Tool</th><th>Role</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><code>capacity.sh</code></td><td>Shannon capacity estimation</td><td>Consumes samples file</td></tr>
+      <tr><td><code>heatmap.py</code></td><td>Visualize channel matrix</td><td>Generates image artifact</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="trimming">Log Trimming<a class="anchor-link" href="#trimming">¶</a></h2>
+  <p>A sed command removes everything before marker <em>"Measuring Covert Channel"</em> to produce clean sample file. Ensure firmware prints the marker before transmitting structured samples.</p>
+
+  <h2 id="ext">Extending Experiments<a class="anchor-link" href="#ext">¶</a></h2>
+  <ul>
+    <li>Add new generators guarded by dedicated macros (similar to <code>COVERT_CHANNEL</code>).</li>
+    <li>Drop additional analyzers into <code>tools/</code> and append to sequence in script.</li>
+  </ul>
+
+  <footer>Covert channel workflow reference.</footer>
+</main>
+<script src="nav.js"></script>
+</body>
+</html>

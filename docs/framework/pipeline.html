@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Pipeline – Framework</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav>
+  <h1>Framework</h1>
+  <div class="search-box"><input placeholder="Filter nav..." oninput="filterNav(this.value)" /></div>
+  <a href="index.html">Overview</a>
+  <a href="cli.html">CLI (mcu-fw.sh)</a>
+  <a class="active" href="pipeline.html">Pipeline</a>
+  <a href="config_layers.html">Config Layers</a>
+  <a href="outputs.html">Outputs</a>
+  <a href="covert_channel.html">Covert Channel</a>
+  <a href="extensibility.html">Extensibility</a>
+  <a href="roadmap.html">Roadmap</a>
+  <div class="nav-group">
+    <button class="nav-group-toggle" data-label="Generator" onclick="toggleGroup('gen-group')">Generator ▸</button>
+    <div id="gen-group" class="nav-sub">
+      <div class="nav-group inner">
+        <button class="nav-group-toggle" data-label="Check & Refine" onclick="toggleGroup('check-refine-group')">Check & Refine ▸</button>
+        <div id="check-refine-group" class="nav-sub">
+          <a href="#" data-refine="index.html">Overview</a>
+          <a href="#" data-refine="schema.html">JSON Schema</a>
+          <a href="#" data-refine="timers.html">Timers</a>
+          <a href="#" data-refine="dma.html">DMA</a>
+          <a href="#" data-refine="examples.html">Examples</a>
+          <a href="#" data-refine="errors_warnings.html">Errors &amp; Warnings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<main>
+  <h1>Pipeline Stages</h1>
+  <p>Each stage consumes well-defined artifacts and produces deterministic outputs. Later stages only proceed if prerequisites succeeded.</p>
+
+  <h2 id="refine">1. Refine<a class="anchor-link" href="#refine">¶</a></h2>
+  <p>Validates and canonicalizes user JSON. See <a href="../check_refine/index.html">Refine docs</a> for rule engine details.</p>
+  <ul>
+    <li>Input: raw user JSON (+ board base)</li>
+    <li>Output: refined JSON (sorted, sanitized)</li>
+    <li>Rejects: unsupported timers/dmas, conflicting channels, malformed fields</li>
+  </ul>
+
+  <h2 id="generate">2. Generate<a class="anchor-link" href="#generate">¶</a></h2>
+  <p>Python generators transform refined model into C sources:</p>
+  <ul>
+    <li><code>tim_gen_new.py</code> – timer init & ISR scaffolding</li>
+    <li><code>dma_gen.py</code> – dma streams/channels config</li>
+    <li><code>uart_gen.py</code> – UART peripheral & ring buffer (if any)</li>
+    <li><code>trace_gen.py</code> – instrumentation / trace collection helpers</li>
+    <li><code>main_gen.py</code> – consolidated <code>main.c</code></li>
+  </ul>
+  <p>Outputs mirror a stable naming scheme enabling re-generation without stale file leakage.</p>
+
+  <h2 id="assemble">3. Assemble Project<a class="anchor-link" href="#assemble">¶</a></h2>
+  <p>Copy phase builds a test directory containing:</p>
+  <ul>
+    <li>Generated sources & headers</li>
+    <li>Startup script + linker script (from board config)</li>
+    <li>Vendor driver includes (<code>Drivers/</code>) subset</li>
+    <li>Trace & gadget definitions</li>
+  </ul>
+  <p>TrustZone mode expands layout to secure/non-secure subtrees.</p>
+
+  <h2 id="build">4. Build<a class="anchor-link" href="#build">¶</a></h2>
+  <p>CMake config & compile using GNU Arm toolchain. Artifacts placed in build directory (ELF + map + intermediary objects). Build caching relies on file timestamps; deterministic generation keeps noise low.</p>
+
+  <h2 id="flash">5. Flash<a class="anchor-link" href="#flash">¶</a></h2>
+  <p>OpenOCD invocation derived from board JSON keys <code>ocd_interface</code> & <code>ocd_target</code>. TrustZone path issues two image loads. Errors abort pipeline early.</p>
+
+  <h2 id="capture">6. Capture / Measure<a class="anchor-link" href="#capture">¶</a></h2>
+  <p>Serial capture (<code>uart</code>) or covert channel sample acquisition (special flow) writes raw data to timestamped directories for reproducibility.</p>
+
+  <h2 id="post">7. Post-Processing<a class="anchor-link" href="#post">¶</a></h2>
+  <p>Covert workflows compute channel capacity & heatmaps from sampled traces. Standard runs may feed future analyzers (planned).</p>
+
+  <h2 id="graph">Visual Summary<a class="anchor-link" href="#graph">¶</a></h2>
+  <pre><code>[User JSON] -> Refine -> [Refined Model] -> Generate -> [Sources] -> Assemble -> [Proj Tree] -> Build -> [ELF] -> Flash -> [Running MCU]
+                                                                                                                |-> UART Capture
+                                                                                                                |-> Covert Samples -> Post</code></pre>
+
+  <footer>Pipeline reference.</footer>
+</main>
+<script src="nav.js"></script>
+</body>
+</html>

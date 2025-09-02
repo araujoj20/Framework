@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Configuration Layers</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav>
+  <h1>Framework</h1>
+  <div class="search-box"><input placeholder="Filter nav..." oninput="filterNav(this.value)" /></div>
+  <a href="index.html">Overview</a>
+  <a href="cli.html">CLI (mcu-fw.sh)</a>
+  <a href="pipeline.html">Pipeline</a>
+  <a class="active" href="config_layers.html">Config Layers</a>
+  <a href="outputs.html">Outputs</a>
+  <a href="covert_channel.html">Covert Channel</a>
+  <a href="extensibility.html">Extensibility</a>
+  <a href="roadmap.html">Roadmap</a>
+  <div class="nav-group">
+    <button class="nav-group-toggle" data-label="Generator" onclick="toggleGroup('gen-group')">Generator ▸</button>
+    <div id="gen-group" class="nav-sub">
+      <div class="nav-group inner">
+        <button class="nav-group-toggle" data-label="Check & Refine" onclick="toggleGroup('check-refine-group')">Check & Refine ▸</button>
+        <div id="check-refine-group" class="nav-sub">
+          <a href="#" data-refine="index.html">Overview</a>
+          <a href="#" data-refine="schema.html">JSON Schema</a>
+          <a href="#" data-refine="timers.html">Timers</a>
+          <a href="#" data-refine="dma.html">DMA</a>
+          <a href="#" data-refine="examples.html">Examples</a>
+          <a href="#" data-refine="errors_warnings.html">Errors &amp; Warnings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<main>
+  <h1>Configuration Layers</h1>
+  <p>Configuration is merged through ordered layers to form the refined canonical model. Each layer increases specificity while forbidding silent overrides that would cause conflicts.</p>
+
+  <h2 id="layers">Layer Stack<a class="anchor-link" href="#layers">¶</a></h2>
+  <table>
+    <thead><tr><th>Order</th><th>Layer</th><th>Scope</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Vendor/Base</td><td>MCU family capabilities</td><td>Timer counts, DMA channels</td></tr>
+      <tr><td>2</td><td>Board</td><td>Board-level selection</td><td>Oscillator freq, pin mappings</td></tr>
+      <tr><td>3</td><td>User Project</td><td>Desired peripherals</td><td>Active timers, DMA usage</td></tr>
+      <tr><td>4</td><td>Refined</td><td>Validated / normalized</td><td>Resolved conflicts, ordering</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="merging">Merging Rules<a class="anchor-link" href="#merging">¶</a></h2>
+  <ul>
+    <li>No implicit resource duplication.</li>
+    <li>Missing optional fields filled with defaults during refine.</li>
+    <li>Invalid references (e.g. nonexistent DMA stream) removed with warning.</li>
+    <li>Generated names follow stable pattern: <code>&lt;peripheral&gt;_cfg_X</code>.</li>
+  </ul>
+
+  <h2 id="json">Representative User JSON<a class="anchor-link" href="#json">¶</a></h2>
+  <pre><code>{
+  "board": "stm32f767",
+  "timers": [ { "name": "TIM2", "channels": ["CH1"], "mode": "toggle" } ],
+  "dmas": [ { "name": "DMA1_Stream1", "channel": 2, "dir": "mem2periph" } ],
+  "uart": { "name": "USART2", "baud": 115200 },
+  "trace": { "enable": true }
+}</code></pre>
+
+  <h2 id="trustzone">TrustZone Additions<a class="anchor-link" href="#trustzone">¶</a></h2>
+  <p>When <code>--tz</code> is active, refined model separates secure vs non-secure peripheral placement (future expansion). Current docs treat as a pass-through flag with structural impact only.</p>
+
+  <h2 id="validation">Validation Categories<a class="anchor-link" href="#validation">¶</a></h2>
+  <ul>
+    <li>Existence – peripheral must exist in base capability map.</li>
+    <li>Uniqueness – resource not claimed twice.</li>
+    <li>Compatibility – mode/settings align with hardware limits.</li>
+    <li>Completeness – mandatory fields present (after default fill).</li>
+  </ul>
+
+  <footer>Configuration layering reference.</footer>
+</main>
+<script src="nav.js"></script>
+</body>
+</html>

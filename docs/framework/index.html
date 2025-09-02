@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>MCU Side Channel Framework – Overview</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav>
+  <h1>Framework</h1>
+  <div class="search-box"><input id="q" placeholder="Filter nav..." oninput="filterNav(this.value)" /></div>
+  <a class="active" href="index.html">Overview</a>
+  <a href="cli.html">CLI (mcu-fw.sh)</a>
+  <a href="pipeline.html">Pipeline</a>
+  <a href="config_layers.html">Config Layers</a>
+  <a href="outputs.html">Outputs</a>
+  <a href="covert_channel.html">Covert Channel</a>
+  <a href="extensibility.html">Extensibility</a>
+  <a href="roadmap.html">Roadmap</a>
+  <div class="nav-group">
+    <button class="nav-group-toggle" data-label="Generator" onclick="toggleGroup('gen-group')">Generator ▸</button>
+    <div id="gen-group" class="nav-sub">
+      <div class="nav-group inner">
+        <button class="nav-group-toggle" data-label="Check & Refine" onclick="toggleGroup('check-refine-group')">Check & Refine ▸</button>
+        <div id="check-refine-group" class="nav-sub">
+          <a href="#" data-refine="index.html">Overview</a>
+          <a href="#" data-refine="schema.html">JSON Schema</a>
+          <a href="#" data-refine="timers.html">Timers</a>
+          <a href="#" data-refine="dma.html">DMA</a>
+          <a href="#" data-refine="examples.html">Examples</a>
+          <a href="#" data-refine="errors_warnings.html">Errors &amp; Warnings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<main>
+  <h1>MCU Side Channel Framework</h1>
+  <p>Primary orchestration & generation tool for deterministic MCU peripheral setups and side/covert channel experimentation. Built around a strict <strong>Refine → Generate → Build → Flash → Measure</strong> pipeline.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Goals</h3>
+      <ul>
+        <li>Deterministic builds</li>
+        <li>Board capability–driven logic</li>
+        <li>Strict diagnostics (fail fast)</li>
+        <li>Pluggable generation</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Main Script</h3>
+      <p><code>mcu-fw.sh</code> drives refinement, code generation, compilation, flashing & optional covert channel sequences via flags.</p>
+    </div>
+    <div class="card">
+  <h3>Check & Refine</h3>
+  <p>Transforms raw JSON (timers, dmas, trace) into canonical validated form. Access its topics inside Generator.</p>
+    </div>
+    <div class="card">
+      <h3>Attack Templates</h3>
+      <p>Early stage: covert channel generator + capacity / heatmap post-processing.</p>
+    </div>
+  </div>
+
+  <h2 id="flow">High-Level Flow<a class="anchor-link" href="#flow">¶</a></h2>
+  <ol>
+    <li>Load board + project JSON.</li>
+    <li>Refine (normalize & validate resources).</li>
+    <li>Generate peripheral sources (TIM, DMA, UART, TRACE, CC extras).</li>
+    <li>Assemble project tree (startup, linker, drivers).</li>
+    <li>Build (CMake + toolchain) & flash (OpenOCD).</li>
+    <li>Run serial capture / covert channel measurement & post-process.</li>
+  </ol>
+
+  <h2 id="principles">Principles<a class="anchor-link" href="#principles">¶</a></h2>
+  <ul>
+    <li><strong>No hidden magic:</strong> Each derived value documented or warned.</li>
+    <li><strong>Idempotence:</strong> Re-running with unchanged inputs yields identical output.</li>
+    <li><strong>Layered config:</strong> Base vendor → board → user project → refined.</li>
+    <li><strong>Fail fast:</strong> Invalid constructs removed before generation.</li>
+  </ul>
+
+  <h2 id="subsystems">Subsystem Overview<a class="anchor-link" href="#subsystems">¶</a></h2>
+  <table>
+    <thead><tr><th>Subsystem</th><th>Role</th><th>Key Outputs</th></tr></thead>
+    <tbody>
+      <tr><td>Refine</td><td>Validation & canonicalization</td><td>Refined JSON (stable ordering)</td></tr>
+      <tr><td>Generators</td><td>Render code from refined spec</td><td>.h/.c per peripheral</td></tr>
+      <tr><td>Runner</td><td>Project structure & build orchestration</td><td>CMake tree, binary</td></tr>
+      <tr><td>Covert Channel</td><td>Attack pattern gen & analysis</td><td>Samples, capacity, heatmap</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="next">Where Next?<a class="anchor-link" href="#next">¶</a></h2>
+  <ul>
+    <li><a href="cli.html">CLI flags reference</a></li>
+    <li><a href="pipeline.html">Detailed pipeline stages</a></li>
+    <li><a href="../check_refine/index.html">Refine rules</a></li>
+  </ul>
+
+  <footer>Framework docs – initial skeleton.</footer>
+</main>
+<script src="nav.js"></script>
+</body>
+</html>

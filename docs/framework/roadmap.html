@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Roadmap</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav>
+  <h1>Framework</h1>
+  <div class="search-box"><input placeholder="Filter nav..." oninput="filterNav(this.value)" /></div>
+  <a href="index.html">Overview</a>
+  <a href="cli.html">CLI (mcu-fw.sh)</a>
+  <a href="pipeline.html">Pipeline</a>
+  <a href="config_layers.html">Config Layers</a>
+  <a href="outputs.html">Outputs</a>
+  <a href="covert_channel.html">Covert Channel</a>
+  <a href="extensibility.html">Extensibility</a>
+  <a class="active" href="roadmap.html">Roadmap</a>
+  <div class="nav-group">
+    <button class="nav-group-toggle" data-label="Generator" onclick="toggleGroup('gen-group')">Generator ▸</button>
+    <div id="gen-group" class="nav-sub">
+      <div class="nav-group inner">
+        <button class="nav-group-toggle" data-label="Check & Refine" onclick="toggleGroup('check-refine-group')">Check & Refine ▸</button>
+        <div id="check-refine-group" class="nav-sub">
+          <a href="#" data-refine="index.html">Overview</a>
+          <a href="#" data-refine="schema.html">JSON Schema</a>
+          <a href="#" data-refine="timers.html">Timers</a>
+          <a href="#" data-refine="dma.html">DMA</a>
+          <a href="#" data-refine="examples.html">Examples</a>
+          <a href="#" data-refine="errors_warnings.html">Errors &amp; Warnings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<main>
+  <h1>Roadmap</h1>
+  <p>High-level planned improvements (subject to reprioritization).</p>
+
+  <h2 id="short">Short Term<a class="anchor-link" href="#short">¶</a></h2>
+  <ul>
+    <li>Fix refined JSON filename variable bug in <code>check()</code>.</li>
+    <li>Remove stale OpenOCD snippet & legacy <code>interface</code> call in <code>--all</code>.</li>
+    <li>Add hash-based change detection to skip unnecessary regeneration.</li>
+    <li>Introduce minimal test harness for generators (consistency checks).</li>
+  </ul>
+
+  <h2 id="mid">Mid Term<a class="anchor-link" href="#mid">¶</a></h2>
+  <ul>
+    <li>TrustZone-aware dual-domain generation.</li>
+    <li>Pluggable analyzer stage (metrics, tracing, timing).</li>
+    <li>YAML front-end translator (optional) → canonical JSON.</li>
+    <li>CMake presets & toolchain abstraction layer.</li>
+  </ul>
+
+  <h2 id="long">Long Term<a class="anchor-link" href="#long">¶</a></h2>
+  <ul>
+    <li>GUI / TUI configuration explorer.</li>
+    <li>Dependency graph visualization (peripheral interactions).</li>
+    <li>Formal spec for refine rules (machine-readable schema).</li>
+    <li>Additional MCU vendor families.</li>
+  </ul>
+
+  <h2 id="quality">Quality Gates<a class="anchor-link" href="#quality">¶</a></h2>
+  <ul>
+    <li>Deterministic build CI check (hash compare of generated set).</li>
+    <li>Lint scripts for JSON schema + naming conventions.</li>
+    <li>OpenOCD connectivity smoke test script.</li>
+  </ul>
+
+  <footer>Roadmap (living document).</footer>
+</main>
+<script src="nav.js"></script>
+</body>
+</html>

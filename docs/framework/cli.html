@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>CLI – mcu-fw.sh</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav>
+  <h1>Framework</h1>
+  <div class="search-box"><input id="q" placeholder="Filter nav..." oninput="filterNav(this.value)" /></div>
+  <a href="index.html">Overview</a>
+  <a class="active" href="cli.html">CLI (mcu-fw.sh)</a>
+  <a href="pipeline.html">Pipeline</a>
+  <a href="config_layers.html">Config Layers</a>
+  <a href="outputs.html">Outputs</a>
+  <a href="covert_channel.html">Covert Channel</a>
+  <a href="extensibility.html">Extensibility</a>
+  <a href="roadmap.html">Roadmap</a>
+  <div class="nav-group">
+    <button class="nav-group-toggle" data-label="Generator" onclick="toggleGroup('gen-group')">Generator ▸</button>
+    <div id="gen-group" class="nav-sub">
+      <div class="nav-group inner">
+        <button class="nav-group-toggle" data-label="Check & Refine" onclick="toggleGroup('check-refine-group')">Check & Refine ▸</button>
+        <div id="check-refine-group" class="nav-sub">
+          <a href="#" data-refine="index.html">Overview</a>
+          <a href="#" data-refine="schema.html">JSON Schema</a>
+          <a href="#" data-refine="timers.html">Timers</a>
+          <a href="#" data-refine="dma.html">DMA</a>
+          <a href="#" data-refine="examples.html">Examples</a>
+          <a href="#" data-refine="errors_warnings.html">Errors &amp; Warnings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<main>
+  <h1>CLI – mcu-fw.sh</h1>
+  <p>Main entrypoint. Uses positional arguments followed by <strong>ordered flags</strong>. Each flag triggers its action immediately; dependency stages are invoked explicitly in the script (e.g. <code>--generator</code> calls <code>--check</code> internally). Order therefore matters for partial runs.</p>
+
+  <h2 id="usage">Usage<a class="anchor-link" href="#usage">¶</a></h2>
+  <pre><code>./mcu-fw.sh &lt;test_name&gt; &lt;board_config_path&gt; &lt;test_path&gt; [FLAGS]
+
+Examples:
+  ./mcu-fw.sh demo1 Configs/stm32f767.json Test --user_file=project.json --compile_fw --generator --compile_test --flash
+  ./mcu-fw.sh demo1 Configs/stm32f767.json Test --generator --compile_test
+  ./mcu-fw.sh demo1 Configs/stm32f767.json Test --covert_channel
+</code></pre>
+
+  <p><strong>Positional args:</strong></p>
+  <ul>
+    <li><code>test_name</code> – name of the test directory created under <code>test_path</code>.</li>
+    <li><code>board_config_path</code> – path to board JSON (defines vendor, family, drivers, openocd cfg, etc.).</li>
+    <li><code>test_path</code> – parent directory where the project tree will be assembled.</li>
+  </ul>
+
+  <h2 id="flags">Flags<a class="anchor-link" href="#flags">¶</a></h2>
+  <table>
+    <thead><tr><th>Flag</th><th>Purpose</th><th>Details / Notes</th></tr></thead>
+    <tbody>
+      <tr><td><code>--user_file=PATH</code></td><td>Set user project JSON</td><td>Must use equals form. Path is resolved relative to framework root; refined copy stored in <code>Build/</code>.</td></tr>
+      <tr><td><code>--tz</code></td><td>TrustZone mode</td><td>Adjusts copy layout and flashing (dual ELF logic).</td></tr>
+      <tr><td><code>--compile_fw</code></td><td>Build host helpers</td><td>Currently only <code>interface.c</code> (legacy). Needed before covert channel (for compiling extra tools).</td></tr>
+      <tr><td><code>--check</code></td><td>Refine & validate</td><td>Writes refined JSON into build directory.</td></tr>
+      <tr><td><code>--generator</code></td><td>Generate code</td><td>Internally invokes <code>check</code> first, then runs all Python generators and copy phase.</td></tr>
+      <tr><td><code>--compile_test</code></td><td>Configure & compile firmware</td><td>CMake configure + build (conceptual “build” stage).</td></tr>
+      <tr><td><code>--flash</code></td><td>Flash device</td><td>OpenOCD using board JSON (<code>openocd.interface</code>, <code>.target</code>).</td></tr>
+      <tr><td><code>--uart</code></td><td>Serial capture</td><td>Runs <code>read_serial.py</code> to produce <code>uart_output.txt</code>.</td></tr>
+      <tr><td><code>--all</code></td><td>Full standard flow</td><td>Calls a sequence (contains a stale call to legacy <code>interface</code>).</td></tr>
+      <tr><td><code>--covert_channel</code></td><td>CC experiment flow</td><td>Runs specialized sequence ignoring other flags following it.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="verbs">Verbs (Actions)<a class="anchor-link" href="#verbs">¶</a></h2>
+  <p>The script exposes actions only as flags (no positional verbs). Conceptual mapping:</p>
+  <table>
+    <thead><tr><th>Concept</th><th>Flag</th><th>Depends</th><th>Output</th></tr></thead>
+    <tbody>
+      <tr><td>Compile host tools</td><td><code>--compile_fw</code></td><td>—</td><td>interface binary</td></tr>
+      <tr><td>Refine</td><td><code>--check</code></td><td>user JSON</td><td>refined JSON</td></tr>
+      <tr><td>Generate</td><td><code>--generator</code></td><td>check (auto)</td><td>generated sources</td></tr>
+      <tr><td>Build</td><td><code>--compile_test</code></td><td>generator (manual)</td><td>ELF(s)</td></tr>
+      <tr><td>Flash</td><td><code>--flash</code></td><td>compile_test</td><td>Programmed MCU</td></tr>
+      <tr><td>Capture UART</td><td><code>--uart</code></td><td>flash (practical)</td><td>uart_output.txt</td></tr>
+      <tr><td>All-in-one</td><td><code>--all</code></td><td>—</td><td>Build + flashed</td></tr>
+      <tr><td>Covert Channel Flow</td><td><code>--covert_channel</code></td><td>compile_fw</td><td>Samples & metrics</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="resolution">Dependency Resolution<a class="anchor-link" href="#resolution">¶</a></h2>
+  <p>Only <code>--generator</code> triggers <code>--check</code> implicitly. Other dependency chains (e.g. running <code>--flash</code> after editing JSON) are the user's responsibility unless <code>--all</code> is used.</p>
+
+  <h2 id="env">Environment & External Tools<a class="anchor-link" href="#env">¶</a></h2>
+  <ul>
+    <li><code>jq</code> for JSON extraction.</li>
+    <li><code>python3</code> for refinement & generators.</li>
+    <li>GNU Arm toolchain & <code>cmake</code>, <code>make</code> for firmware build.</li>
+    <li><code>openocd</code> chosen by board JSON fields (<code>ocd_interface</code>, <code>ocd_target</code>).</li>
+  </ul>
+
+  <h2 id="trustzone">TrustZone Mode<a class="anchor-link" href="#trustzone">¶</a></h2>
+  <p>When <code>--tz</code> is supplied the directory layout splits secure / non-secure trees and flashing issues two load operations. Current implementation extends copy phase; generators must emit partition-aware code or stubs.</p>
+
+  <h2 id="notes">Edge Cases & Caveats<a class="anchor-link" href="#notes">¶</a></h2>
+  <ul>
+    <li>Commented legacy <code>interface</code> function deliberately excluded from docs; still referenced inside <code>--all</code>.</li>
+    <li>Stale OpenOCD snippet (prefixed lines before real <code>openocd</code> command) left as artifact – safe to remove.</li>
+    <li>Refined JSON is written with a potential filename variable issue (<code>$build/user_cfg_filename</code> literal vs expanded); future fix planned.</li>
+    <li><code>--user_file</code> path is prefixed with framework root; absolute paths require minor script adjustment (future enhancement).</li>
+  </ul>
+
+  <footer>CLI reference.</footer>
+</main>
+<script src="nav.js"></script>
+</body>
+</html>

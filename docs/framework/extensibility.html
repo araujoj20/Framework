@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Extensibility</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav>
+  <h1>Framework</h1>
+  <div class="search-box"><input placeholder="Filter nav..." oninput="filterNav(this.value)" /></div>
+  <a href="index.html">Overview</a>
+  <a href="cli.html">CLI (mcu-fw.sh)</a>
+  <a href="pipeline.html">Pipeline</a>
+  <a href="config_layers.html">Config Layers</a>
+  <a href="outputs.html">Outputs</a>
+  <a href="covert_channel.html">Covert Channel</a>
+  <a class="active" href="extensibility.html">Extensibility</a>
+  <a href="roadmap.html">Roadmap</a>
+  <div class="nav-group">
+    <button class="nav-group-toggle" data-label="Generator" onclick="toggleGroup('gen-group')">Generator ▸</button>
+    <div id="gen-group" class="nav-sub">
+      <div class="nav-group inner">
+        <button class="nav-group-toggle" data-label="Check & Refine" onclick="toggleGroup('check-refine-group')">Check & Refine ▸</button>
+        <div id="check-refine-group" class="nav-sub">
+          <a href="#" data-refine="index.html">Overview</a>
+          <a href="#" data-refine="schema.html">JSON Schema</a>
+          <a href="#" data-refine="timers.html">Timers</a>
+          <a href="#" data-refine="dma.html">DMA</a>
+          <a href="#" data-refine="examples.html">Examples</a>
+          <a href="#" data-refine="errors_warnings.html">Errors &amp; Warnings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<main>
+  <h1>Extensibility</h1>
+  <p>Guidelines for adding new peripherals, generators, analysis passes, or board definitions while preserving determinism.</p>
+
+  <h2 id="principles">Design Principles<a class="anchor-link" href="#principles">¶</a></h2>
+  <ul>
+    <li>Refine first – all validation lives outside generation templates.</li>
+    <li>Stability – same inputs produce identical output byte-for-byte.</li>
+    <li>Isolation – new modules avoid side effects on existing outputs.</li>
+  </ul>
+
+  <h2 id="peripheral">Add a Peripheral Generator<a class="anchor-link" href="#peripheral">¶</a></h2>
+  <ol>
+    <li>Extend refined model schema (document rules in refine docs).</li>
+    <li>Create <code>Generator/&lt;vendor&gt;/templates/&lt;name&gt;/&lt;name&gt;_gen.py</code>.</li>
+    <li>Emit sources into <code>Build/Src</code> & headers into <code>Build/Inc</code>.</li>
+    <li>Update orchestrator: invoke script inside <code>generator()</code> after dependencies.</li>
+    <li>Adjust copy phase if special assets required.</li>
+  </ol>
+
+  <h2 id="board">Add a Board<a class="anchor-link" href="#board">¶</a></h2>
+  <ol>
+    <li>Create board JSON in <code>Configs/</code>.</li>
+    <li>Populate <code>inherits</code>, <code>vendor</code>, <code>family</code>, <code>board</code>, build section, openocd section.</li>
+    <li>Add any new driver include trees under vendor directory.</li>
+    <li>Test minimal flow: <code>--generator --compile_test</code>.</li>
+  </ol>
+
+  <h2 id="post">Add Post-Processor<a class="anchor-link" href="#post">¶</a></h2>
+  <ol>
+    <li>Place script/binary inside <code>Covert_channel/tools</code> or new tools dir.</li>
+    <li>Have it consume stable text / binary output (avoid parsing fragile stderr).</li>
+    <li>Integrate call inside relevant function (<code>covert_channel()</code> or future analyzer).</li>
+  </ol>
+
+  <h2 id="trustzone">TrustZone Enhancements<a class="anchor-link" href="#trustzone">¶</a></h2>
+  <p>To fully realize TrustZone distinctions: duplicate generation passes with security domain filtering and adapt copy logic to segregate secure vs non-secure initialization code.</p>
+
+  <h2 id="naming">Naming Conventions<a class="anchor-link" href="#naming">¶</a></h2>
+  <ul>
+    <li>Generator scripts: <code>&lt;domain&gt;_gen.py</code></li>
+    <li>Generated C: <code>&lt;domain&gt;_&lt;descriptor&gt;.c</code></li>
+    <li>Headers: mirrored <code>.h</code> names in <code>Inc/</code>.</li>
+    <li>Refined keys: lowercase snake_case for new fields.</li>
+  </ul>
+
+  <footer>Extensibility guidelines.</footer>
+</main>
+<script src="nav.js"></script>
+</body>
+</html>

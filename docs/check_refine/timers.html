@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Timers – Check &amp; Refine</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <h1>Check &amp; Refine</h1>
+      <div class="search-box">
+        <input id="q" placeholder="Filter nav..." oninput="filterNav(this.value)" />
+      </div>
+      <a href="index.html">Overview</a>
+      <a href="schema.html">JSON Schema</a>
+      <a class="active" href="timers.html">Timers</a>
+      <a href="dma.html">DMA</a>
+      <a href="errors_warnings.html">Errors &amp; Warnings</a>
+      <a href="examples.html">Examples</a>
+    </nav>
+    <main>
+      <h1>Timer Refinement Rules</h1>
+      <p>This page details per-field logic applied during refinement.</p>
+      <h2>Base Name &amp; Overwrites</h2>
+      <ul>
+        <li>User may define variants using suffix pattern <code>_OW_n</code> (e.g. <code>TIM2_OW_1</code>, <code>TIM2_OW_2</code>).</li>
+        <li>Ordering enforced: indices must be contiguous from 1; gaps cause removal.</li>
+        <li>All variants share base capabilities of the underlying timer (<code>TIM2</code> here).</li>
+      </ul>
+      <h2>Request Parsing</h2>
+      <ul>
+        <li>Pattern examples: <code>TIM3_CH2</code>, <code>TIM4_UP</code>, <code>TIM1_TRIG</code>.</li>
+        <li><code>CHy</code> extracts <code>channel=y</code>; validated against board channel count.</li>
+        <li>Mismatch (e.g. <code>TIM3_CH5</code> when only 4 channels) =&gt; timer removed (error).</li>
+        <li>Non-channel requests clear any stale <code>channel</code> field.</li>
+      </ul>
+      <h2>Channel</h2>
+      <p>
+        Derived only for channel requests; cannot be user-specified inconsistently. If present but conflicting, error
+        and removal to avoid silent misconfiguration.
+      </p>
+      <h2>Numeric Fields</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Bounds Source</th>
+            <th>Coercion</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>period</code></td>
+            <td>board <code>period_bits</code></td>
+            <td>Clamped; warn</td>
+            <td>Out-of-range logs warning with original &amp; new value.</td>
+          </tr>
+          <tr>
+            <td><code>prescaler</code></td>
+            <td>static (0..65535)</td>
+            <td>Clamped; warn</td>
+            <td>Negative =&gt; 0; &gt;65535 =&gt; 65535.</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Counter Mode</h2>
+      <p>
+        Allowed: <code>UP</code>, <code>DOWN</code>, <code>CENTERALIGNED1/2/3</code>. Unrecognized =&gt; error removal.
+        Lower/mixed case normalized silently (or with warning, depending on implementation flag).
+      </p>
+      <h2>Auto Reload Preload</h2>
+      <p>
+        Enum: <code>ENABLE</code>/<code>DISABLE</code>. If timer type BASIC &amp; hardware lacks ARR preload capability,
+        field removed (info note).
+      </p>
+      <h2>Master Output Trigger</h2>
+      <ul>
+        <li>Only if <code>trigger_output=true</code> for timer.</li>
+        <li>Whitelist enforced (subset may vary by family).</li>
+        <li>Absent =&gt; default to <code>RESET</code>.</li>
+        <li>Unsupported value =&gt; error removal of timer (strict).</li>
+      </ul>
+      <h2>Master Slave Mode</h2>
+      <ul>
+        <li>Removed for BASIC timers (they cannot be master/slave).</li>
+        <li>Otherwise normalized to <code>ENABLE</code>/<code>DISABLE</code>; missing =&gt; <code>DISABLE</code>.</li>
+      </ul>
+      <h2>Slave Mode &amp; Trigger Source</h2>
+      <ul>
+        <li><code>slave_mode</code> requires valid <code>trigger_source</code> and that timer type supports slave operation.</li>
+        <li>If <code>slave_mode != DISABLE</code> but trigger_source missing or invalid -&gt; timer removed.</li>
+        <li>
+          <code>trigger_source</code> must exist in board list for that timer; mapping to ITR index occurs internally;
+          invalid =&gt; error.
+        </li>
+        <li>When <code>slave_mode == DISABLE</code>, a provided <code>trigger_source</code> may be dropped (warning) to avoid confusion.</li>
+      </ul>
+      <h2>Interrupt &amp; IRQ Handler</h2>
+      <ul>
+        <li>
+          If <code>interrupt=true</code> and <code>irq_handler</code> missing, attempt auto-derive
+          <code>TIMx_IRQHandler</code> (warning).
+        </li>
+        <li>
+          If <code>irq_handler</code> provided but <code>interrupt</code> false: policy either enable interrupt
+          (warning) or drop handler (warning) based on version; current policy documented in Errors &amp; Warnings.
+        </li>
+        <li>Invalid C identifier for handler =&gt; removal of handler (warning) or timer (error) per strictness level.</li>
+      </ul>
+      <h2>Pruning Logic</h2>
+      <p>
+        Any fundamental inconsistency (invalid request format, channel overflow, unsupported slave config, bad master
+        trigger) removes the timer completely; dependent DMAs referencing it subsequently considered unused and pruned.
+      </p>
+      <h2>Deterministic Field Ordering</h2>
+      <p>
+        Fields reordered to canonical sequence defined by internal <code>FIELD_SPECS</code> grouping (requests,
+        structural, numeric, modes, interrupt). This stabilizes diff noise in version control.
+      </p>
+      <h2>Advanced vs General vs Basic</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Slave Allowed</th>
+            <th>Master Output Trigger</th>
+            <th>Typical Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BASIC</td>
+            <td>No</td>
+            <td>No</td>
+            <td>TIM6/TIM7 (depending on family)</td>
+          </tr>
+          <tr>
+            <td>GENERAL</td>
+            <td>Yes</td>
+            <td>Yes (if flag)</td>
+            <td>TIM2-TIM5</td>
+          </tr>
+          <tr>
+            <td>ADVANCED</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>TIM1, TIM8</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Examples</h2>
+      <pre>// Raw
+"TIM3": {"request":"tim3_ch2","period":70000,"prescaler":-5,"slave_mode":"gated","trigger_source":"TIM1"}
+// Refined
+"TIM3": {
+  "request": "TIM3_CH2",
+  "channel": 2,
+  "period": 65535,   // clamped
+  "prescaler": 0,    // clamped
+  "slave_mode": "GATED",
+  "trigger_source": "TIM1",
+  "master_output_trigger": "RESET",
+  "master_slave_mode": "DISABLE",
+  "counter_mode": "UP",
+  "auto_reload_preload": "DISABLE"
+}</pre>
+      <footer>Timer rules scaffold.</footer>
+    </main>
+    <script>
+      function filterNav(v) {
+        v = v.toLowerCase();
+        for (const a of document.querySelectorAll('nav a')) {
+          if (a.textContent.toLowerCase().includes(v) || a.getAttribute('href').includes(v)) {
+            a.style.display = 'block';
+          } else {
+            a.style.display = 'none';
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -20,6 +20,17 @@ VALID_CLOCK_SOURCES = [
     "INTERNAL_CLOCK",
     "DISABLE"
 ]
+VALID_COUNTER_MODES = [
+    "UP",
+    "DOWN",
+    "CENTERALIGNED1"
+    "CENTERALIGNED2",
+    "CENTERALIGNED3"
+]
+VALID_ARR_PRELOAD_MODES = [
+    "DISABLE",
+    "ENABLE"
+]
 VALID_MASTER_SLAVE_MODES = [
     "DISABLE",
     "ENABLE"
@@ -47,15 +58,38 @@ VALID_IRQHANDLER_MODES = [
     "ENABLE"
 ]
 
-# Remove irq_handler from generic groups (custom dependency logic below)
+# Generic groups to normalization
 timer_params_str_groups = [
     (["trigger_event", "MasterOutputTrigger"], VALID_MASTER_TRIGGERS),
     (["clock_source", "ClockSource"], VALID_CLOCK_SOURCES),
+    (["counter_mode", "CounterMode"],VALID_COUNTER_MODES),
+    (["auto_reload_preload", "AutoReloadPreload"],VALID_ARR_PRELOAD_MODES),
     (["master_slave_mode", "MasterSlaveMode"], VALID_MASTER_SLAVE_MODES),
     (["slave_mode", "SlaveMode"], VALID_SLAVE_MODES),
     (["interrupt", "isr"], VALID_INTERRUPT_MODES),
 ]
 
+timers_order = [
+            ["slave_mode", "SlaveMode"],
+            ["trigger_source", "InputTrigger"],
+            ["clock_source", "ClockSource"],
+            ["Prescaler", "prescaler"],
+            ["counter_mode", "CounterMode"],
+            ["Period", "period"],
+            ["auto_reload_preload","AutoReloadPreload"],
+            ["master_slave_mode", "MasterSlaveMode"],
+            ["trigger_event", "MasterOutputTrigger"],
+            ["interrupt", "isr"],
+            ["irq_handler", "IRQHandler"],
+        ]
+
+dma_order = [
+    "name", 
+    "channel", 
+    "stream", 
+    "direction", 
+    "request"
+    ]
 
 # ---------- ANSI colors for prints ----------
 _YELLOW = "\033[33m"
@@ -115,16 +149,35 @@ def format_channel(ch):
     # Keep original 'ChannelX' style; generation script can format further if needed
     return ch
 
-def reorder_fields(cfg: dict, order):
+def reorder_fields(cfg: dict, order_spec):
     """
-    Generic reordering helper.
-    - Keys listed in 'order' (and present in cfg) are placed first in that sequence.
-    - Remaining keys keep their original relative order.
+    Generic reordering.
+    - single key names (str) -> include if present.
+    - list of names -> first existing name in the list is included (only one).
+    Remaining keys keep original relative order.
     """
-    out = {k: cfg[k] for k in order if k in cfg}
-    for k, v in cfg.items():
-        if k not in out:
-            out[k] = v
+    original_order = list(cfg.keys())
+    out = {}
+    used = set()
+
+    for entry in order_spec:
+        if isinstance(entry, (list, tuple)):
+            chosen = None
+            for alias in entry:
+                if alias in cfg:
+                    chosen = alias
+                    break
+            if chosen and chosen not in used:
+                out[chosen] = cfg[chosen]
+                used.add(chosen)
+        else:
+            if entry in cfg and entry not in used:
+                out[entry] = cfg[entry]
+                used.add(entry)
+
+    for k in original_order:
+        if k not in used:
+            out[k] = cfg[k]
     return out
 
 def choose_dma_variant(user_dma, request, candidates):
@@ -158,7 +211,7 @@ def choose_dma_variant(user_dma, request, candidates):
     dma, ch, st = best
     return {"name": dma, "channel": ch, "stream": st}
 
-def validate_and_expand_dmas(project_dmas, board_dma_mapping, board_family, used_dma_names):
+def validate_and_expand_dmas(project_dmas, board_dma_mapping, board_family, used_dma_names, board_channels_map):
     """
     Expand and validate DMA definitions.
     - For stm32f4xx: resolve mapping for request-based DMAs.
@@ -175,6 +228,17 @@ def validate_and_expand_dmas(project_dmas, board_dma_mapping, board_family, used
     for key, cfg in project_dmas.items():
         cfg = deepcopy(cfg)
         request = cfg.get("request")
+        # --- Channel count validation against board caps (TIMx_CHy) ---
+        if request:
+            mch = re.match(r"(TIM\d+)_CH(\d+)", request.upper())
+            if mch:
+                base = mch.group(1)
+                ch_num = int(mch.group(2))
+                allowed = board_channels_map.get(base)
+                if allowed is not None and allowed != 0 and ch_num > allowed:
+                    error(f"DMA '{key}': request '{request}' exceeds channel count ({ch_num}>{allowed}) of {base}. Removed.")
+                    continue
+        # --- Mapping resolution (request-based) ---
         if request and board_family == "stm32f4xx" and not all(k in cfg for k in ("name","channel","stream")):
             candidates = find_dma_mappings(request, board_dma_mapping)
             user_partial = {k: cfg[k] for k in ("name","channel","stream") if k in cfg}
@@ -219,8 +283,7 @@ def validate_and_expand_dmas(project_dmas, board_dma_mapping, board_family, used
                     continue
                 mm_channel_keys.add(dup_key)
 
-        order = ["name", "channel", "stream", "direction", "request"]
-        cfg = reorder_fields(cfg, order)
+        cfg = reorder_fields(cfg, dma_order)
         refined_temp[key] = cfg
 
     refined = {}
@@ -448,7 +511,7 @@ def normalize_trigger_source(timer_key, cfg, base_name, board_trigger_map, user_
     )
     return False
 
-def process_timers(project_cfg, board_timer_specs, board_trigger_map):
+def process_timers(project_cfg, board_timer_specs, board_trigger_map, board_caps):
 
     project_timers = project_cfg.get("timers", {})
     to_delete = []
@@ -476,16 +539,64 @@ def process_timers(project_cfg, board_timer_specs, board_trigger_map):
             to_delete.append(key)
             continue
 
-        # Determine slave_mode value (after normalization)
-        slave_key = "slave_mode" if "slave_mode" in t_cfg else ("SlaveMode" if "SlaveMode" in t_cfg else "slave_mode")
-        slave_mode_val = t_cfg.get(slave_key, "DISABLE").upper()
+        # Normalize early for consistent values
+        normalize_timer_str_groups(t_cfg, timer_params_str_groups, timer_key=key)
 
-        # Interrupt already normalized (group above). Determine its key & value.
-        interrupt_key = "interrupt" if "interrupt" in t_cfg else ("isr" if "isr" in t_cfg else None)
-        interrupt_val = t_cfg.get(interrupt_key, "DISABLE").upper()
+        caps = board_caps.get(base, {})
+        t_type = caps.get("type","")
+        allow_slave = caps.get("allow_slave", False)
+        allow_master = caps.get("allow_master", False)
+        has_trig_src = caps.get("has_trigger_source", False)
+        trig_output = caps.get("trigger_output", None)
+        trig_output_explicit = "trigger_output" in board_caps.get(base, {})
+
+        # Constraints: no trigger_source list in board => forbid trigger_source & slave_mode
+        if not has_trig_src:
+            if "trigger_source" in t_cfg or "InputTrigger" in t_cfg:
+                warn(f"Timer '{key}': trigger_source removed (no trigger_source support).")
+            t_cfg.pop("trigger_source", None)
+            t_cfg.pop("InputTrigger", None)
+            if "slave_mode" in t_cfg and t_cfg.get("slave_mode") != "DISABLE":
+                warn(f"Timer '{key}': slave_mode removed (no trigger_source support).")
+            # Remove instead of forcing DISABLE
+            t_cfg.pop("slave_mode", None)
+
+        # Basic type: remove master/slave
+        if t_type == "BASIC":
+            if t_cfg.get("master_slave_mode") not in (None, "DISABLE"):
+                warn(f"Timer '{key}': master_slave_mode not supported for BASIC type (removed).")
+            if t_cfg.get("slave_mode") not in (None, "DISABLE"):
+                warn(f"Timer '{key}': slave_mode not supported for BASIC type (removed).")
+            t_cfg.pop("master_slave_mode", None)
+            t_cfg.pop("slave_mode", None)
+            basic_timer = True
+        else:
+            basic_timer = False
+
+        # trigger_output none: forbid trigger_event & master_slave_mode
+        if trig_output_explicit and isinstance(trig_output, str) and trig_output.lower() == "none":
+            if "trigger_event" in t_cfg and t_cfg.get("trigger_event") != VALID_MASTER_TRIGGERS[0]:
+                warn(f"Timer '{key}': trigger_event not allowed (trigger_output=none). Forcing {VALID_MASTER_TRIGGERS[0]}.")
+            t_cfg["trigger_event"] = VALID_MASTER_TRIGGERS[0]
+            if "master_slave_mode" in t_cfg and t_cfg.get("master_slave_mode") != "DISABLE":
+                warn(f"Timer '{key}': master_slave_mode not allowed (trigger_output=none). Forcing DISABLE.")
+            if "master_slave_mode" in t_cfg:
+                t_cfg["master_slave_mode"] = "DISABLE"
+
+        # Slave unsupported (only if key still exists and not BASIC already handled)
+        if not basic_timer and not allow_slave and "slave_mode" in t_cfg and t_cfg.get("slave_mode") != "DISABLE":
+            warn(f"Timer '{key}': slave_mode not supported (forcing DISABLE).")
+            t_cfg["slave_mode"] = "DISABLE"
+
+        # Master unsupported (only if key still exists and not BASIC already handled)
+        if not basic_timer and not allow_master and "master_slave_mode" in t_cfg and t_cfg.get("master_slave_mode") != "DISABLE":
+            warn(f"Timer '{key}': master_slave_mode not supported (forcing DISABLE).")
+            t_cfg["master_slave_mode"] = "DISABLE"
+
+        # Interrupt / IRQ
+        interrupt_key = "interrupt" if "interrupt" in t_cfg else ("isr" if "isr" in t_cfg else "interrupt")
+        interrupt_val = t_cfg.get(interrupt_key, "DISABLE")
         irq_key = "irq_handler" if "irq_handler" in t_cfg else ("IRQHandler" if "IRQHandler" in t_cfg else None)
-        irq_val = t_cfg.get(irq_key, "DISABLE").upper()
-
         if interrupt_val == "ENABLE":
             if irq_key is None:
                 t_cfg["irq_handler"] = "ENABLE"
@@ -496,42 +607,35 @@ def process_timers(project_cfg, board_timer_specs, board_trigger_map):
                     irq_key,
                     key
                 )
-        elif interrupt_key is None and irq_val == "ENABLE":
-            warn(f"Timer '{key}': irq_handler 'ENABLE' requires interrupt ENABLE. Forcing interrupt ENABLE.")
-            t_cfg["interrupt"] = "ENABLE"
         else:
-            if irq_val != "DISABLE":
-                warn(f"Timer '{key}': irq_handler 'ENABLE' requires interrupt ENABLE. Forcing irq_handler DISABLE.")
-                t_cfg[irq_key] = "DISABLE"
+            if irq_key is not None:
+                irq_val_raw = str(t_cfg.get(irq_key)).upper().replace(" ", "")
+                if irq_val_raw == "ENABLE":
+                    error(f"Timer '{key}': irq_handler ENABLE invalid while interrupt DISABLE. Removing irq_handler.")
+                del t_cfg[irq_key]
 
-
-        # Detect if user provided trigger_source / InputTrigger
+        # Trigger source logic only if supported & user provided
         user_provided_trig = ("trigger_source" in t_cfg) or ("InputTrigger" in t_cfg)
-
-        # Enforce rule: slave_mode active requires explicit trigger_source
-        if slave_mode_val != "DISABLE" and not user_provided_trig:
-            error(f"Timer '{key}': slave_mode '{slave_mode_val}' requires explicit trigger_source. Timer removed.")
+        if t_cfg.get("slave_mode","DISABLE") != "DISABLE" and (not user_provided_trig or not has_trig_src):
+            error(f"Timer '{key}': slave_mode requires trigger_source and board support. Timer removed.")
             to_delete.append(key)
             continue
 
-        # Default trigger_source when absent and slave_mode disabled
-        if slave_mode_val == "DISABLE" and not user_provided_trig:
-            t_cfg["trigger_source"] = "DISABLE"
+        if t_cfg.get("slave_mode","DISABLE") == "DISABLE" and not user_provided_trig:
+            # Only set DISABLE if trigger capability exists; if not, already removed
+            if has_trig_src:
+                t_cfg["trigger_source"] = "DISABLE"
 
-        # Map/validate trigger_source if user provided (or already set)
-        if not normalize_trigger_source(key, t_cfg, base, board_trigger_map, user_provided_trig):
+        if has_trig_src and not normalize_trigger_source(key, t_cfg, base, board_trigger_map, user_provided_trig):
             to_delete.append(key)
             continue
 
-        # If slave_mode active but trigger_source resolved to DISABLE -> remove (invalid)
-        if slave_mode_val != "DISABLE" and t_cfg.get("trigger_source","DISABLE") == "DISABLE":
-            error(f"Timer '{key}': trigger_source DISABLE invalid with slave_mode '{slave_mode_val}'. Timer removed.")
+        if t_cfg.get("slave_mode","DISABLE") != "DISABLE" and t_cfg.get("trigger_source","DISABLE") == "DISABLE":
+            error(f"Timer '{key}': trigger_source DISABLE invalid with slave_mode active. Timer removed.")
             to_delete.append(key)
             continue
-        
-        normalize_timer_str_groups(t_cfg, timer_params_str_groups, timer_key=key)
 
-        # Period
+        # Period / Prescaler
         board_max = board_timer_specs[base]
         normalize_numeric_field(
             t_cfg,
@@ -540,7 +644,6 @@ def process_timers(project_cfg, board_timer_specs, board_trigger_map):
             max_value=board_max,
             timer_key=key
         )
-        # Prescaler
         normalize_numeric_field(
             t_cfg,
             ["Prescaler", "prescaler"],
@@ -548,7 +651,9 @@ def process_timers(project_cfg, board_timer_specs, board_trigger_map):
             max_value=65535,
             timer_key=key
         )
-    
+
+        project_timers[key] = reorder_fields(t_cfg, timers_order)
+
     for k in to_delete:
         del project_timers[k]
     new_timers, added = validate_and_order_ow_timers(project_timers, ow_pattern)
@@ -557,39 +662,65 @@ def process_timers(project_cfg, board_timer_specs, board_trigger_map):
             new_timers[key] = project_timers[key]
             added.add(key)
     project_cfg["timers"] = order_all_timers(new_timers)
-
+        
     used_dma_in_timers = {
         v.get("dma") for v in project_cfg["timers"].values()
         if isinstance(v.get("dma"), str)
     }
     return used_dma_in_timers
 
-def process_dmas(project_cfg, board_cfg, family, used_dma_names):
-    """
-    Refine DMA definitions and write them back into project_cfg.
-    """
+def process_dmas(project_cfg, board_cfg, family, used_dma_names, board_channels_map):
     dma_mapping = board_cfg.get("dma_mapping", {})
     project_dmas = project_cfg.get("dmas", {})
-    refined_dmas = validate_and_expand_dmas(project_dmas, dma_mapping, family, used_dma_names)
+    refined_dmas = validate_and_expand_dmas(project_dmas, dma_mapping, family, used_dma_names, board_channels_map)
     project_cfg["dmas"] = refined_dmas
+
+def build_board_caps(board_cfg):
+    """
+    Returns:
+      caps[ TIMER_NAME ] = {
+         'type': TYPE (upper),
+         'channels': int or 0,
+         'has_trigger_source': bool,
+         'trigger_output': (original or None),
+         'allow_slave': bool,          # needs trigger_source list AND type not BASIC
+         'allow_master': bool          # disallowed if trigger_output == 'none' or type BASIC
+      }
+    """
+    caps = {}
+    bt = board_cfg.get("timers", {})
+    for name, cfg in bt.items():
+        t_type = str(cfg.get("type","")).upper()
+        channels = int(cfg.get("channels", 0) or 0)
+        trig_list = cfg.get("trigger_source")
+        has_trig = isinstance(trig_list, list)
+        trig_out = cfg.get("trigger_output")
+        has_explicit_trig_out = "trigger_output" in cfg
+        allow_slave = has_trig and t_type not in ("BASIC", "")
+        # OLD (buggy): allow_master = (t_type not in ("BASIC", "")) and (str(trig_out).lower() != "none")
+        # NEW: only disable master if trigger_output key exists AND value == "none"
+        allow_master = (t_type not in ("BASIC", "")) and not (has_explicit_trig_out and isinstance(trig_out, str) and trig_out.lower() == "none")
+        caps[name.upper()] = {
+            "type": t_type,
+            "channels": channels,
+            "has_trigger_source": has_trig,
+            "trigger_output": trig_out,
+            "allow_slave": allow_slave,
+            "allow_master": allow_master
+        }
+    return caps
 
 def refine_project(board_cfg_path, project_cfg_path, output_path):
     board_cfg = load_json(board_cfg_path)
     project_cfg = load_json(project_cfg_path)
     family = project_cfg.get("family", board_cfg.get("family","")).lower()
-
-    # Board timer specs: extract all timers and their period values
     board_timer_specs = get_board_timer_specs(board_cfg)
     board_trigger_map = build_board_trigger_source_map(board_cfg)
+    board_caps = build_board_caps(board_cfg)
+    board_channels_map = {k: v["channels"] for k,v in board_caps.items()}
 
-    # 1. Timers
-    used_dma_in_timers = process_timers(project_cfg, board_timer_specs, board_trigger_map)
-
-    # 2. DMAs
-    process_dmas(project_cfg, board_cfg, family, used_dma_in_timers)
-
-    # 3. Future steps ...
-
+    used_dma_in_timers = process_timers(project_cfg, board_timer_specs, board_trigger_map, board_caps)
+    process_dmas(project_cfg, board_cfg, family, used_dma_in_timers, board_channels_map)
     save_json(output_path, project_cfg)
     print(f"[INFO]  Refined configuration written to: {output_path}")
 
