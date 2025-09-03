@@ -10,7 +10,6 @@ DMA_HandleTypeDef hdma_memtomem_{{ dma.name.lower() }}_{{ dma.stream.lower() }};
 void MX_DMA_Init(void)
 {   
     /* DMA controller clock enable */
-    
     {%- if board == "STM32L552" %}
     __HAL_RCC_DMAMUX1_CLK_ENABLE();
     {%- endif %}

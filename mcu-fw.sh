@@ -78,9 +78,9 @@ check(){
 
     user_cfg_filename=$(basename "$user_config")
 
-    python3 "$generator/$vendor/templates/check_and_refine.py"  "$board_config_path" "$user_config"  "$build/user_cfg_filename"
+    python3 "$generator/$vendor/templates/check_and_refine.py"  "$board_config_path" "$user_config"  "$build/$user_cfg_filename"
 
-
+    user_config="$build/$user_cfg_filename"
 }
 
 
@@ -100,7 +100,7 @@ generator(){
     python3 "$generator/$vendor/templates/trace/trace_gen.py"   "$user_config"  "$build"
 
 
-    cp_files
+    #cp_files
 
 }
 

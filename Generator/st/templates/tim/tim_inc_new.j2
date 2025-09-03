@@ -8,26 +8,18 @@ extern "C" {
 #include "main.h"
 
 /* --- TIM handle declarations --- */
-{%- set ns = namespace(seen=[]) %}
-{%- for t in timers %}
-  {%- if t.name not in ns.seen %}
-extern TIM_HandleTypeDef h{{ t.name.lower() }};
-    {%- set _ = ns.seen.append(t.name) %}
-  {%- endif %}
+{% for t in timers | map(attribute='name') | unique %}
+TIM_HandleTypeDef h{{ t.lower() }};
 {%- endfor %}
 
-/* --- DMA handle declarations --- */
-{%- set ns = namespace(seen=[]) %}
-{%- for t in timers if t.has_dma %}
-  {%- if t.name not in ns.seen %}
-extern DMA_HandleTypeDef hdma_{{ t.name.lower() }}_up;
-    {%- set _ = ns.seen.append(t.name) %}
-  {%- endif %}
+/* --- DMA Handle declarations --- */
+{%- for t in timers | selectattr('has_dma') | map(attribute='request') | unique %}
+DMA_HandleTypeDef hdma_{{ t.lower() }};
 {%- endfor %}
 
 /* --- MX_TIMx_Init prototypes --- */
 {%- for t in timers %}
-void MX_{{ t.name }}_Init{% if t.ow_id > 0 %}_OW_{{ t.ow_id }}{% endif %}(void);
+void MX_{{ t.name }}{% if t.ow_id > 0 %}_OW_{{ t.ow_id }}{% endif %}_Init(void);
 {%- endfor %}
 
 #ifdef __cplusplus

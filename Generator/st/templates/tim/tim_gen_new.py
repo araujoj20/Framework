@@ -12,21 +12,46 @@ def get_board(cfg):
 def parse_channel_from_request(req):
     if not req:
         return None
-    m = re.match(r"TIM\d+_CH(\d+)", req)
+    m = re.match(r"TIM\d+_CH(\d+)", req.upper())
     return int(m.group(1)) if m else None
+
+def safe_upper(v, default=None):
+    if v is None:
+        return default
+    return str(v).upper()
+
+# --- New: declarative field normalization spec ---
+FIELD_SPECS = [
+    # key,                  aliases,                                        default
+    ("trigger_event",       ["trigger_event", "MasterOutputTrigger"],       "RESET"),
+    ("clock_source",        ["clock_source", "ClockSource"],                "INTERNAL"),
+    ("counter_mode",        ["counter_mode", "CounterMode"],                "UP"),
+    ("auto_reload_preload", ["auto_reload_preload", "AutoReloadPreload"],   "DISABLE"),
+    ("master_slave_mode",   ["master_slave_mode", "MasterSlaveMode"],       "DISABLE"),
+    ("slave_mode",          ["slave_mode", "SlaveMode"],                    "DISABLE"),
+]
+
+def resolve_field(t: dict, aliases, default):
+    for a in aliases:
+        if a in t:
+            return t[a]
+    return default
 
 def load_timers(cfg):
     timers_raw = cfg.get("timers", {})
     timers = []
-    # First pass: build entries
+    dmas_section = cfg.get("dmas", {})
+
     for raw_name, t in timers_raw.items():
         name = raw_name.upper()
-        ow_id = 0
         base = name
+        ow_id = 0
         if "_OW_" in name:
             base, _, tail = name.partition("_OW_")
             if tail.isdigit():
                 ow_id = int(tail)
+
+        # Resolve DMA
         dma_ref = t.get("dma")
         dma_obj = None
         request = None
@@ -34,28 +59,48 @@ def load_timers(cfg):
             dma_obj = dma_ref
             request = dma_obj.get("request")
         elif isinstance(dma_ref, str):
-            # Expect lookup in dmas section already complete
-            dma_obj = cfg.get("dmas", {}).get(dma_ref)
+            dma_obj = dmas_section.get(dma_ref)
             if dma_obj:
                 request = dma_obj.get("request")
+
         ch_num = parse_channel_from_request(request)
+
+        # --- Unified normalization loop ---
+        norm = {}
+        for key, aliases, default in FIELD_SPECS:
+            val = resolve_field(t, aliases, default)
+            val_up = safe_upper(val, default)
+            norm[key] = val_up
+
+        # input_trigger derived from trigger_source / InputTrigger (only if not DISABLE)
+        trig_src = t.get("trigger_source") or t.get("InputTrigger")
+        trig_src_up = safe_upper(trig_src)
+        input_trigger = trig_src_up if trig_src_up and trig_src_up != "DISABLE" else None
+
+        # Numeric fields (period / prescaler)
+        period = t.get("Period") or t.get("period") or 0
+        prescaler = t.get("Prescaler") or t.get("prescaler") or 0
+
         timers.append({
             "name": base,
             "ow_id": ow_id,
-            "has_ow": False,  # set later
-            "period": t.get("Period", t.get("period", 0)),
-            "dma": dma_obj,
+            "period": period,
+            "prescaler": prescaler,
             "has_dma": dma_obj is not None,
+            "dma": dma_obj,
             "request": request,
             "has_ch_request": ch_num is not None,
             "ch_request_num": ch_num,
-            "trigger_event": (t.get("trigger_event")).upper(),
-            "clock_source": (t.get("clock_source")).upper().replace("INTERNAL_CLOCK","INTERNAL"),
-            "master_slave_mode": (t.get("master_slave_mode")).upper(),
-            "slave_mode": (t.get("slave_mode")).upper(),
-            "input_trigger": (t.get("input_trigger") or None),
+            "trigger_event": norm["trigger_event"],
+            "clock_source": norm["clock_source"],
+            "master_slave_mode": norm["master_slave_mode"],
+            "slave_mode": norm["slave_mode"],
+            "input_trigger": input_trigger,
+            "counter_mode": norm["counter_mode"],
+            "auto_reload_preload": norm["auto_reload_preload"],
+            "has_ow": False
         })
-    # Mark has_ow
+
     bases_with_ow = {t["name"] for t in timers if t["ow_id"] > 0}
     for t in timers:
         if t["name"] in bases_with_ow:
@@ -66,13 +111,9 @@ def render(cfg, timers, out_dir):
     env = Environment(loader=FileSystemLoader(script_dir))
     template_src = env.get_template("tim_src_new.j2")
     template_inc = env.get_template("tim_inc_new.j2")
-    #template_gadgets = env.get_template("gadgets_inc.j2")
     os.makedirs(os.path.join(out_dir, "Src"), exist_ok=True)
     os.makedirs(os.path.join(out_dir, "Inc"), exist_ok=True)
     board = get_board(cfg)
-    #gadgets = cfg.get("gadgets", {})
-    #with open(os.path.join(out_dir,"Inc","gadgets_def.h"),"w") as f:
-    #    f.write(template_gadgets.render(gadgets=gadgets, board=board))
     with open(os.path.join(out_dir,"Src","tim.c"),"w") as f:
         f.write(template_src.render(timers=timers, board=board))
     with open(os.path.join(out_dir,"Inc","tim.h"),"w") as f:
@@ -91,38 +132,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-#         for priority in priorities:
-#             for m_dma, m_channel, m_stream in matches:
-#                 if priority(dma, (m_dma, m_channel, m_stream)):
-#                     best_match = {
-#                         "name": m_dma,
-#                         "channel": format_channel(m_channel),
-#                         "stream": m_stream,
-#                         "direction": dma.get("direction"),
-#                         "request": request
-#                     }
-#                     return best_match
-   
-#     # If no match found, return the first one
-#     m_dma, m_channel, m_stream = matches[0]
-#     return {
-#         "name": m_dma,
-#         "channel": format_channel(m_channel),
-#         "stream": m_stream,
-#         "direction": dma.get("direction") if dma else None,
-#         "request": request
-#     }
-
-# def resolve_dma_for_l5(dma, request):
-#     # Only needs channel, doesnt have streams and restrictions
-#     if not dma or "channel" not in dma:
-#         print(f"ERRO: Para STM32L552, o DMA precisa de 'channel' definido para request '{request}'")
-#         return None
-#     return {
-#         "name": dma.get("name"),
-#         "channel": format_channel(dma.get("channel")),
-#         "direction": dma.get("direction"),
-#         "request": request
 #     }
 
 # def parse_dmas(config):

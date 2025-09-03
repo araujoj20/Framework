@@ -17,7 +17,7 @@ DMA_HandleTypeDef hdma_{{ t.lower() }};
 
 /* --- MX_TIMERS Init functions --- */
 {% for t in timers %}
-void MX_{{ t.name }}_Init{% if t.ow_id > 0 %}_OW_{{ t.ow_id }}{% endif %}(void)
+void MX_{{ t.name }}{% if t.ow_id > 0 %}_OW_{{ t.ow_id }}{% endif %}_Init(void)
 {
   {%- if t.has_ow %}
   {{ t.name }}_OW = {{ t.ow_id }};
@@ -27,32 +27,37 @@ void MX_{{ t.name }}_Init{% if t.ow_id > 0 %}_OW_{{ t.ow_id }}{% endif %}(void)
   }
   {%- endif %}
 
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_ClockConfigTypeDef  sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
+  {%- if t.input_trigger %}
+  TIM_SlaveConfigTypeDef  sSlaveConfig = {0};
+  {%- endif %}
 
   h{{ t.name.lower() }}.Instance = {{ t.name }};
-  h{{ t.name.lower() }}.Init.Prescaler = 0;
-  h{{ t.name.lower() }}.Init.CounterMode = TIM_COUNTERMODE_UP;
+  h{{ t.name.lower() }}.Init.Prescaler = {{ t.prescaler }};
+  h{{ t.name.lower() }}.Init.CounterMode = TIM_COUNTERMODE_{{ t.counter_mode }};
   h{{ t.name.lower() }}.Init.Period = {{ t.period }};
   h{{ t.name.lower() }}.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  h{{ t.name.lower() }}.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  h{{ t.name.lower() }}.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_{{ t.auto_reload_preload }};
   if (HAL_TIM_Base_Init(&h{{ t.name.lower() }}) != HAL_OK)
   {
     Error_Handler();
   }
-  {% if t.clock_source != "DISABLE" %}
+  {%- if t.clock_source != "DISABLE" %}
   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_{{ t.clock_source }};
   if (HAL_TIM_ConfigClockSource(&h{{ t.name.lower() }}, &sClockSourceConfig) != HAL_OK)
   {
     Error_Handler();
   }
-  {% endif %}
+  {%- endif %}
+  {%- if t.input_trigger %}
   sSlaveConfig.SlaveMode = TIM_SLAVEMODE_{{ t.slave_mode }};
   sSlaveConfig.InputTrigger = TIM_TS_{{ t.input_trigger }};
   if (HAL_TIM_SlaveConfigSynchro(&h{{ t.name.lower() }}, &sSlaveConfig) != HAL_OK)
   {
     Error_Handler();
   }
+  {%- endif %}
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_{{ t.trigger_event }};
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_{{ t.master_slave_mode }};
   if (HAL_TIMEx_MasterConfigSynchronization(&h{{ t.name.lower() }}, &sMasterConfig) != HAL_OK)

@@ -28,7 +28,7 @@
             "slave_mode": "DISABLE",
             "trigger_source": "ITR1",
             "clock_source": "INTERNAL_CLOCK",
-            "Prescaler": 0,
+            "Prescaler": 6777,
             "counter_mode": "UP",
             "Period": 65535,
             "auto_reload_preload": "DISABLE",

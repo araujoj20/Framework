@@ -13,9 +13,8 @@ extern "C" {
 
 #include "stdio.h"
 
-#include "stm32l5xx_hal.h"
-#include "stm32l5xx_clock.h"
-#include "icache.h"
+#include "stm32f4xx_hal.h"
+#include "stm32f4xx_clock.h"
 
 
 #include "uart.h"

@@ -7,9 +7,9 @@ extern "C" {
 
 #include "main.h"
 
-extern UART_HandleTypeDef hlpuart1;
+extern UART_HandleTypeDef husart2;
 
-void MX_LPUART1_UART_Init(void);
+void MX_USART2_UART_Init(void);
 
 #ifdef __cplusplus
 }

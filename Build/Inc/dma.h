@@ -4,8 +4,8 @@
 #include "main.h"
 
 /* DMA memory to memory handles*/
-extern DMA_HandleTypeDef hdma_memtomem_dma1_channel1;
-extern DMA_HandleTypeDef hdma_memtomem_dma2_channel3;
+extern DMA_HandleTypeDef hdma_memtomem_dma1_Stream1;
+extern DMA_HandleTypeDef hdma_memtomem_dma2_Stream5;
 
 /* DMA Init*/
 void MX_DMA_Init(void);
