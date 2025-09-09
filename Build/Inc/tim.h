@@ -17,7 +17,7 @@ TIM_HandleTypeDef htim13;
 
 /* --- DMA Handle declarations --- */
 DMA_HandleTypeDef hdma_tim2_up;
-DMA_HandleTypeDef hdma_tim1_ch3;
+DMA_HandleTypeDef hdma_tim2_ch3;
 DMA_HandleTypeDef hdma_tim2_ch4;
 DMA_HandleTypeDef hdma_tim8_ch1;
 
@@ -29,7 +29,6 @@ void MX_TIM1_OW_3_Init(void);
 void MX_TIM2_Init(void);
 void MX_TIM2_OW_1_Init(void);
 void MX_TIM2_OW_2_Init(void);
-void MX_TIM2_OW_3_Init(void);
 void MX_TIM2_OW_4_Init(void);
 void MX_TIM3_Init(void);
 void MX_TIM3_OW_1_Init(void);

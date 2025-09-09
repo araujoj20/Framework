@@ -1,16 +1,24 @@
-#ifndef __GADGETS_DEF_H__
-#define __GADGETS_DEF_H__
+#ifndef GADGETS_H
+#define GADGETS_H
 
-{%- for gtype, entries in gadgets.items() %}
-  /* --- {{ gtype | capitalize }} Gadget --- */
-  {%- for g in entries %}
+/* Auto-generated gadget helper macros */
 
-#define {{ gtype }}_gadget_{{ g.name | lower }}  h{{ g.name | lower }}
-    {%- if g.with_dma %}
-#define {{ gtype }}_gadget_hdma_{{ g.name | lower }}_up  hdma_{{ g.name | lower }}_up
-    {%- endif %}
-
-  {%- endfor %}
+{% for g in groups %}
+/* === Gadget Group: {{ g.name }} === */
+{%- for e in g.entries %}
+{%- if e.is_timer %}
+/* Timer {{ e.ident }} */
+#define GDG_{{ g.upper }}_{{ e.macro_timer }}_Init              {{ e.fn_call }}
+#define GDG_{{ g.upper }}_{{ e.macro_timer }}_HandleTypeDef     {{ e.tim_handle }}
+{%- if e.dma_handle %}
+#define GDG_{{ g.upper }}_{{ e.macro_timer }}_DMA_HandleTypeDef {{ e.dma_handle }}
+{%- endif %}
+{%- elif e.is_dma and e.dma_handle %}
+/* DMA {{ e.raw }} */
+#define GDG_{{ g.upper }}_{{ e.dma_name }}_HandleTypeDef     {{ e.dma_handle }}
+{%- endif %}
 {%- endfor %}
 
-#endif /* __GADGETS_DEF_H__ */
+{% endfor %}
+
+#endif /* GADGETS_H */

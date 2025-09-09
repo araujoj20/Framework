@@ -110,20 +110,7 @@
             "master_slave_mode": "DISABLE",
             "trigger_event": "RESET",
             "interrupt": "DISABLE",
-            "dma": "dma_tim1_ch3"
-        },
-        "TIM2_OW_3": {
-            "slave_mode": "DISABLE",
-            "trigger_source": "DISABLE",
-            "clock_source": "INTERNAL",
-            "Prescaler": 0,
-            "counter_mode": "UP",
-            "Period": 2233,
-            "auto_reload_preload": "DISABLE",
-            "master_slave_mode": "DISABLE",
-            "trigger_event": "RESET",
-            "interrupt": "DISABLE",
-            "dma": "dma_tim1_ch3"
+            "dma": "dma_tim2_ch3"
         },
         "TIM2_OW_4": {
             "slave_mode": "DISABLE",
@@ -148,7 +135,8 @@
             "auto_reload_preload": "DISABLE",
             "master_slave_mode": "DISABLE",
             "trigger_event": "RESET",
-            "interrupt": "DISABLE"
+            "interrupt": "ENABLE",
+            "irq_handler": "ENABLE"
         },
         "TIM3_OW_1": {
             "slave_mode": "DISABLE",
@@ -172,7 +160,8 @@
             "auto_reload_preload": "DISABLE",
             "master_slave_mode": "DISABLE",
             "trigger_event": "RESET",
-            "interrupt": "DISABLE",
+            "interrupt": "ENABLE",
+            "irq_handler": "ENABLE",
             "dma": "dma_tim8_ch1"
         },
         "TIM13": {
@@ -197,10 +186,10 @@
         }
     },
     "dmas": {
-        "dma1_stream1": {
+        "DMA1_Stream4": {
             "name": "DMA1",
             "channel": "Channel0",
-            "stream": "Stream1",
+            "stream": "Stream4",
             "direction": "MEMORY_TO_MEMORY"
         },
         "dma2_stream5": {
@@ -216,12 +205,12 @@
             "direction": "PERIPH_TO_MEMORY",
             "request": "TIM2_UP"
         },
-        "dma_tim1_ch3": {
-            "name": "DMA2",
-            "channel": "Channel6",
-            "stream": "Stream6",
+        "dma_tim2_ch3": {
+            "name": "DMA1",
+            "channel": "Channel3",
+            "stream": "Stream1",
             "direction": "PERIPH_TO_MEMORY",
-            "request": "TIM1_CH3"
+            "request": "TIM2_CH3"
         },
         "dma_tim2_ch4": {
             "name": "DMA1",
@@ -241,15 +230,15 @@
     "gadgets": {
         "counter": [
             "TIM1",
-            "TIM2"
+            "TIM2_OW_1"
         ],
         "trigger": [
-            "TIM2",
-            "TIM3_OW_1"
+            "TIM2_OW_2",
+            "TIM3"
         ],
         "detect": [
-            "TIM1",
-            "TIM2_OW_4"
+            "TIM2_OW_4",
+            "DMA1_Stream1"
         ]
     },
     "trace": {

@@ -72,18 +72,15 @@
         },
         "TIM2_OW_2": {
             "Period": 222,
-            "dma": "dma_tim1_ch3",
+            "dma": "dma_tim2_ch3",
             "trigger_source": "TIM1"
-        },
-        "TIM2_OW_3": {
-            "Period": 2233,
-            "dma": "dma_tim1_ch3"
         },
         "TIM2_OW_4": {
             "Period": 2233,
             "dma": "dma_tim2_ch4"
         },
         "TIM3": {
+            "interrupt": "ENABLE",
             "Period": 65535
 	    },
         "TIM3_OW_1": {
@@ -91,6 +88,7 @@
 	    },
 
         "TIM8": {
+            "interrupt": "ENABLE",
             "Period": 222,
             "dma": "dma_tim8_ch1",
             "trigger_source": "TIM1"
@@ -99,9 +97,9 @@
     },
 
     "dmas": {
-        "dma1_stream1": {
+        "DMA1_Stream4": {
             "name": "DMA1",
-            "stream": "Stream1",
+            "stream": "Stream4",
             "direction": "MEMORY_TO_MEMORY"
         },
         "dma2_stream5": {
@@ -125,9 +123,8 @@
             "stream": "Stream6",
             "direction": "PERIPH_TO_MEMORY"
         },
-        "dma_tim1_ch3": {
-            "request": "TIM1_CH3",
-            "channel":"Channel6", 
+        "dma_tim2_ch3": {
+            "request": "TIM2_CH3",
             "direction": "PERIPH_TO_MEMORY"
         },
         "dma_tim2_ch4": {
@@ -146,17 +143,17 @@
     "gadgets": {
         "counter": [
             "TIM1",
-            "TIM2"
+            "TIM2_OW_1"
         ],
 
         "trigger": [
-            "TIM2",
-            "TIM3_OW_1"
+            "TIM2_OW_2",
+            "TIM3"
         ],
 
         "detect": [
-            "TIM1",
-            "TIM2_OW_4"
+            "TIM2_OW_4",
+            "DMA1_Stream1"
         ]
     },
 

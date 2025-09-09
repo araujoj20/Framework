@@ -40,7 +40,8 @@ VALID_SLAVE_MODES = [
     "EXTERNAL1",
     "RESET",
     "GATED",
-    "TRIGGER"
+    "TRIGGER",
+    "COMBINED_RESETTRIGGER"
 ]
 VALID_TRIGGER_SOURCES = [
     "DISABLE",
@@ -538,6 +539,22 @@ def process_timers(project_cfg, board_timer_specs, board_trigger_map, board_caps
             error(f"Timer '{key}' not present in board configuration. Removed.")
             to_delete.append(key)
             continue
+
+        # DMA request prefix validation (must match timer base) ---
+        dma_field = t_cfg.get("dma")
+        if dma_field is not None:
+            if isinstance(dma_field, dict):
+                req = dma_field.get("request")
+                if isinstance(req, str) and req.strip() and not req.upper().startswith(base):
+                    error(f"Timer '{key}': dma.request '{req}' does not match timer base '{base}' (removed dma).")
+                    t_cfg.pop("dma", None)
+            elif isinstance(dma_field, str):
+                dma_obj = project_cfg.get("dmas", {}).get(dma_field)
+                if isinstance(dma_obj, dict):
+                    req = dma_obj.get("request")
+                    if isinstance(req, str) and req.strip() and not req.upper().startswith(base):
+                        error(f"Timer '{key}': referenced DMA '{dma_field}' request '{req}' does not match timer base '{base}' (dma reference removed).")
+                        t_cfg.pop("dma", None)
 
         # Normalize early for consistent values
         normalize_timer_str_groups(t_cfg, timer_params_str_groups, timer_key=key)

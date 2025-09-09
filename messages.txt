@@ -1,13 +1,17 @@
 
 ERRORS:
 
-
 [ERROR] DMA 'dma2_channel' MEMORY_TO_MEMORY missing 'stream'. Skipping this DMA.
 
 [ERROR] Timer 'TIM1_OW_4': invalid trigger_source 'TIM8'. Timer removed. 
         Allowed direct values:  ITR0, ITR1, ITR2, ITR3 (or DISABLE when slave_mode=DISABLE). 
         Mapped timers for TIM1: TIM5, TIM2, TIM3, TIM4.
 
+[ERROR] Timer 'TIM2_OW_2': referenced DMA 'dma_tim1_ch3' request 'TIM1_CH3' does not match timer base 'TIM2' (dma reference removed).
+
 WARNINGS:
 
 [WARN]  Removing DMA 'dma1_channel4' (PERIPH_TO_MEMORY) not referenced by any peripheral.
+
+[WARN]  Base 'TIM2': non-sequential OW indices [1, 2, 4] (expected [1, 2, 3, 4]).
+

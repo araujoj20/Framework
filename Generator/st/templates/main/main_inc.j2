@@ -17,9 +17,8 @@ extern "C" {
 #include "{{ family }}_clock.h"
 
 {%- if family == "stm32l5xx" %}
-#include "icache.h"
+#include "icache.h" 
 {%- endif %}
-
 {% if has_uart %}
 #include "uart.h"
 {%- endif %}
@@ -34,6 +33,10 @@ extern "C" {
 
 {%- if has_timers %}
 #include "trace.h"
+{%- endif %}
+
+{%- if has_gadgets %}
+#include "gadgets.h"
 {%- endif %}
 
 /* MACROS ---------------------------------------------*/

@@ -93,13 +93,16 @@ generator(){
 
     check
 
-    python3 "$generator/$vendor/templates/main/main_gen.py"     "$user_config"  "$build"
-    python3 "$generator/$vendor/templates/uart/uart_gen.py"     "$user_config"  "$build"
-    python3 "$generator/$vendor/templates/tim/tim_gen_new.py"   "$user_config"  "$build"
-    python3 "$generator/$vendor/templates/dma/dma_gen.py"       "$user_config"  "$build"
-    python3 "$generator/$vendor/templates/trace/trace_gen.py"   "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/main/main_gen.py"             "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/uart/uart_gen.py"             "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/tim/tim_gen_new.py"           "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/dma/dma_gen.py"               "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/trace/trace_gen.py"           "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/gadgets/gadgets_gen.py"       "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/main/main_gen.py"             "$user_config"  "$build"
+    python3 "$generator/$vendor/templates/interrupt/interrupt_gen.py"   "$user_config"  "$build"
 
-
+    # commented for test purposes
     #cp_files
 
 }

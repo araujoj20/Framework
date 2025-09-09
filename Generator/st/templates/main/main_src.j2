@@ -1,0 +1,25 @@
+/* Includes ------------------------------------------------------------------*/
+#include "main.h"
+
+int main(void)
+{
+    HAL_Init();
+    SystemClock_Config();
+    {% if has_dma %}
+    MX_DMA_Init();
+    {%- endif %}
+    {%- if has_timers and timers_all %}
+    /* Timers initialization */
+    {%- for t in timers_all %}
+    {%- if '_OW_' in t %}
+    // MX_{{ t }}_Init();
+    {%- else %}
+    MX_{{ t }}_Init();
+    {%- endif %}
+    {%- endfor %}
+    {%- endif %}
+
+    while (1)
+    {
+    }
+}

@@ -16,11 +16,11 @@ extern "C" {
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_clock.h"
 
-
 #include "uart.h"
 #include "dma.h"
 #include "tim.h"
 #include "trace.h"
+#include "gadgets.h"
 
 /* MACROS ---------------------------------------------*/
 #define TO_STRING(name) #name
