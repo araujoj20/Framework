@@ -20,16 +20,30 @@ jobs:
       - name: Test nix-shell environment
         run: |
           nix-shell shell.nix --run "echo 'Nix environment OK'; which gcc || echo 'no gcc'"
-
+    
+      - name: Run framework self-tests (Nix)
+        run: |
+            nix-shell shell.nix --run '
+            set -e
+            for test in src/analyser/git-test/*; do
+                if [ -f "$test/run.sh" ]; then
+                echo "Running $test"
+                chmod +x "$test/run.sh"
+                cd "$test"
+                ./run.sh
+                cd - > /dev/null
+                fi
+            done
+            '
       - name: Build Docker image
         run: |
           docker build -t myframework:latest .
 
       - name: Run container and test
         run: |
-          docker run --rm myframework:latest echo "Container ran successfully"
+            docker run --rm myframework:latest sh -c "echo 'Container ran successfully'"
 
-      - name: Run framework self-tests
+      - name: Run framework self-tests (docker)
         run: |
             for test in src/analyser/git-test/*; do
             if [ -f "$test/run.sh" ]; then
