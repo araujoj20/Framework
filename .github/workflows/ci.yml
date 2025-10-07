@@ -19,7 +19,7 @@ jobs:
 
       - name: Test nix-shell environment
         run: |
-          nix-shell nix.nix --run "echo 'Nix environment OK'; which gcc || echo 'no gcc'"
+          nix-shell shell.nix --run "echo 'Nix environment OK'; which gcc || echo 'no gcc'"
 
       - name: Build Docker image
         run: |
