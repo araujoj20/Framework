@@ -1,0 +1,42 @@
+name: CI - Nix + Docker
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v25
+        with:
+          nix_path: nixpkgs=channel:nixos-24.05
+
+      - name: Test nix-shell environment
+        run: |
+          nix-shell nix.nix --run "echo 'Nix environment OK'; which gcc || echo 'no gcc'"
+
+      - name: Build Docker image
+        run: |
+          docker build -t myframework:latest .
+
+      - name: Run container and test
+        run: |
+          docker run --rm myframework:latest echo "Container ran successfully"
+
+      - name: Run framework self-tests
+        run: |
+            for test in src/analyser/git-test/*; do
+            if [ -f "$test/run.sh" ]; then
+                echo "Running $test"
+                chmod +x "$test/run.sh"
+                cd "$test"
+                ./run.sh
+                cd - > /dev/null
+            fi
+            done

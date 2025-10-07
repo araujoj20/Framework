@@ -267,7 +267,7 @@ covert_channel(){
 
 
 fw_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$fw_dir"
+# cd "$fw_dir"
 
 # Required flag values
 prj_name=""
@@ -292,12 +292,12 @@ while [[ $# -gt 0 ]]; do
         -n|--name)
             shift; prj_name="$1" ;;
         -o|--out)
-            shift; out_dir="$1" ;;
+            shift; out_dir="$(realpath -m "$1")" ;;
         -C|--config)
-            shift; board_cfg_dir="$1" ;;
+            shift; board_cfg_dir="$(realpath -m "$1")" ;;
         -f|--user_file)
             shift; if [[ -z "$1" ]]; then echo "-f requires a path"; exit 1; fi; 
-            user_config="$1" ;;
+            user_config="$(realpath -m "$1")" ;;
         --tz)
             tz_flag=1 ;;
         -db|--debug)
@@ -326,11 +326,21 @@ while [[ $# -gt 0 ]]; do
     shift
 done
 
+if [ -n "$board_cfg_dir" ]; then
+    board_cfg_dir="$(realpath "$board_cfg_dir")"
+    # verifica se existe mesmo
+    if [ ! -f "$board_cfg_dir" ]; then
+        echo "❌ Board config JSON not found: $board_cfg_dir"
+    fi
+fi
+
+cd "$fw_dir"
+
 # Validate required flags
 missing=()
 [[ -z "$prj_name" ]] && missing+=("-n/--name")
 [[ -z "$out_dir" ]] && missing+=("-o/--out")
-[[ -z "$board_cfg_dir" ]] && missing+=("-C/--board")
+[[ -z "$board_cfg_dir" ]] && missing+=("-C/--config")
 if [[ ${#missing[@]} -gt 0 ]]; then
     echo -e "${RED}[ERROR] Missing required flag(s): ${missing[*]}${RESET}\n" >&2
     usage
