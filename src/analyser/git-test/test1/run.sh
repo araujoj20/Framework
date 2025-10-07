@@ -3,6 +3,13 @@ set -e
 
 test_n="test1"
 
+echo "[DEBUG] CWD: $(pwd)"
+echo "[DEBUG] Listing:"
+ls -la
+echo "[framework] $framework"
+echo "[out_dir] $out_dir"
+echo "[cfg_file] $cfg_file"
+
 framework="$(realpath ../../../../mcu-fw.sh)"
 out_dir="$(realpath ../../../../Test/st)"
 cfg_file="$(realpath ../../../../configs/stm32f407.json)"

@@ -20,7 +20,13 @@ jobs:
       - name: Test nix-shell environment
         run: |
           nix-shell shell.nix --run "echo 'Nix environment OK'; which gcc || echo 'no gcc'"
-    
+      - name: Debug paths
+        run: |
+            echo "Current directory:"
+            pwd
+            echo "Listing files:"
+            ls -R | head -n 200
+
       - name: Run framework self-tests (Nix)
         run: |
             nix-shell shell.nix --run '
@@ -54,3 +60,10 @@ jobs:
                 cd - > /dev/null
             fi
             done
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: Test/
