@@ -1,33 +1,33 @@
-[submodule "Src/Generator/st/drivers/CMSIS_5"]
-	path = Src/Generator/st/drivers/CMSIS_5
+[submodule "src/generator/st/drivers/CMSIS_5"]
+	path = src/generator/st/drivers/CMSIS_5
 	url = https://github.com/ARM-software/CMSIS_5.git
-[submodule "Src/Generator/st/drivers/cmsis-device-f4"]
-	path = Src/Generator/st/drivers/cmsis-device-f4
+[submodule "src/generator/st/drivers/cmsis-device-f4"]
+	path = src/generator/st/drivers/cmsis-device-f4
 	url = https://github.com/STMicroelectronics/cmsis_device_f4.git
-[submodule "Src/Generator/st/drivers/cmsis-device-f7"]
-	path = Src/Generator/st/drivers/cmsis-device-f7
+[submodule "src/generator/st/drivers/cmsis-device-f7"]
+	path = src/generator/st/drivers/cmsis-device-f7
 	url = https://github.com/STMicroelectronics/cmsis_device_f7.git
-[submodule "Src/Generator/st/drivers/cmsis-device-l5"]
-	path = Src/Generator/st/drivers/cmsis-device-l5
+[submodule "src/generator/st/drivers/cmsis-device-l5"]
+	path = src/generator/st/drivers/cmsis-device-l5
 	url = https://github.com/STMicroelectronics/cmsis_device_l5.git
-[submodule "Src/Generator/st/drivers/cmsis-device-u5"]
-	path = Src/Generator/st/drivers/cmsis-device-u5
+[submodule "src/generator/st/drivers/cmsis-device-u5"]
+	path = src/generator/st/drivers/cmsis-device-u5
 	url = https://github.com/STMicroelectronics/cmsis_device_u5.git
-[submodule "Src/Generator/st/alayer/stm32f4xx-hal-driver"]
-	path = Src/Generator/st/alayer/stm32f4xx-hal-driver
+[submodule "src/generator/st/alayer/stm32f4xx-hal-driver"]
+	path = src/generator/st/alayer/stm32f4xx-hal-driver
 	url = https://github.com/STMicroelectronics/stm32f4xx-hal-driver
-[submodule "Src/Generator/st/alayer/stm32f7xx-hal-driver"]
-	path = Src/Generator/st/alayer/stm32f7xx-hal-driver
+[submodule "src/generator/st/alayer/stm32f7xx-hal-driver"]
+	path = src/generator/st/alayer/stm32f7xx-hal-driver
 	url = https://github.com/STMicroelectronics/stm32f7xx-hal-driver
-[submodule "Src/Generator/st/alayer/stm32l5xx-hal-driver"]
-	path = Src/Generator/st/alayer/stm32l5xx-hal-driver
+[submodule "src/generator/st/alayer/stm32l5xx-hal-driver"]
+	path = src/generator/st/alayer/stm32l5xx-hal-driver
 	url = https://github.com/STMicroelectronics/stm32l5xx-hal-driver
-[submodule "Src/Generator/st/alayer/stm32u5xx-hal-driver"]
-	path = Src/Generator/st/alayer/stm32u5xx-hal-driver
+[submodule "src/generator/st/alayer/stm32u5xx-hal-driver"]
+	path = src/generator/st/alayer/stm32u5xx-hal-driver
 	url = https://github.com/STMicroelectronics/stm32u5xx-hal-driver
-[submodule "Src/Runner/openocd"]
-	path = Src/Runner/openocd
+[submodule "src/runner/openocd"]
+	path = src/runner/openocd
 	url = https://github.com/openocd-org/openocd.git
-[submodule "Src/Runner/cmsis-svd-data"]
-	path = Src/Runner/cmsis-svd-data
+[submodule "src/runner/cmsis-svd-data"]
+	path = src/runner/cmsis-svd-data
 	url = https://github.com/cmsis-svd/cmsis-svd-data.git
