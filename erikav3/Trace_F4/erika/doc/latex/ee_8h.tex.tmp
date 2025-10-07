@@ -1,0 +1,36 @@
+\doxysection{inc/ee.h File Reference}
+\hypertarget{ee_8h}{}\label{ee_8h}\index{inc/ee.h@{inc/ee.h}}
+
+
+Main Collector.  
+
+
+{\ttfamily \#include "{}ee\+\_\+cfg.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+arch\+\_\+override.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+utils.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+compiler.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+platform\+\_\+types.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+hal.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+api.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+cortex\+\_\+m\+\_\+irq.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+declcfg.\+h"{}}\newline
+Include dependency graph for ee.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+
+
+\doxysubsection{Detailed Description}
+This files is the main collector in Erika Enterprise.
+
+\begin{DoxyNote}{Note}
+TO BE DOCUMENTED!!!
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Errico Guidieri 
+
+Giuseppe Serano 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018 
+\end{DoxyDate}

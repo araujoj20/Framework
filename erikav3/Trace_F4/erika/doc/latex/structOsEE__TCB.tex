@@ -1,0 +1,67 @@
+\doxysection{Os\+EE\+\_\+\+TCB Struct Reference}
+\hypertarget{structOsEE__TCB}{}\label{structOsEE__TCB}\index{OsEE\_TCB@{OsEE\_TCB}}
+
+
+The Task Control Block.  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+\+TCB\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ee__api__types_8h_a2897bbe5eb94c947b95208f120a1529d}{Task\+Activation}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \mbox{\hyperlink{structOsEE__TCB_adf0cbbe39ea6be607caa384a4028c3e1}{current\+\_\+num\+\_\+of\+\_\+act}}
+\begin{DoxyCompactList}\small\item\em number of pending activations of the task. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \mbox{\hyperlink{structOsEE__TCB_a968b21b7bb023dff3ed66956969cbead}{current\+\_\+prio}}
+\begin{DoxyCompactList}\small\item\em current task priority. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TCB_ab7036d036673b4dce5b257c8d35e9e63}\label{structOsEE__TCB_ab7036d036673b4dce5b257c8d35e9e63} 
+\mbox{\hyperlink{group__primitives-task_ga144326ae7f7921d9ae76a57ed02019d8}{Task\+State\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries status}
+\begin{DoxyCompactList}\small\item\em Task status. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TCB_a94a32c2135392dab75aeee76e3a153dc}\label{structOsEE__TCB_a94a32c2135392dab75aeee76e3a153dc} 
+\mbox{\hyperlink{ee__kernel__types_8h_a321e2d8dbc073e68cb9cda8583d28b52}{Os\+EE\+\_\+\+MDB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+last\+\_\+m}
+\begin{DoxyCompactList}\small\item\em pointer to the last resource or spinlock taken \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TCB_aac787deb197e3a9e68821289f873eda7}\label{structOsEE__TCB_aac787deb197e3a9e68821289f873eda7} 
+\mbox{\hyperlink{group__primitives-event_ga5fb177d72d23ba4ccbd1821ca9e4498f}{Event\+Mask\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries wait\+\_\+mask}
+\begin{DoxyCompactList}\small\item\em wait mask, used only for extended tasks \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TCB_aa1528bd23eb791f8642fe1594c161892}\label{structOsEE__TCB_aa1528bd23eb791f8642fe1594c161892} 
+\mbox{\hyperlink{group__primitives-event_ga5fb177d72d23ba4ccbd1821ca9e4498f}{Event\+Mask\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries event\+\_\+mask}
+\begin{DoxyCompactList}\small\item\em event mask, used only for extended tasks \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} \mbox{\hyperlink{structOsEE__TCB_ab00ec7896b3b2d2102e18d4ed32aca97}{p\+\_\+own\+\_\+sn}}
+\begin{DoxyCompactList}\small\item\em Scheduler node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It stores all the information related to the task that can change at runtime such as\+: number of pending activation, current priority, status, wait and event mask, ... 
+
+\label{doc-variable-members}
+\Hypertarget{structOsEE__TCB_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structOsEE__TCB_adf0cbbe39ea6be607caa384a4028c3e1}\index{OsEE\_TCB@{OsEE\_TCB}!current\_num\_of\_act@{current\_num\_of\_act}}
+\index{current\_num\_of\_act@{current\_num\_of\_act}!OsEE\_TCB@{OsEE\_TCB}}
+\doxysubsubsection{\texorpdfstring{current\_num\_of\_act}{current\_num\_of\_act}}
+{\footnotesize\ttfamily \label{structOsEE__TCB_adf0cbbe39ea6be607caa384a4028c3e1} 
+\mbox{\hyperlink{ee__api__types_8h_a2897bbe5eb94c947b95208f120a1529d}{Task\+Activation}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} Os\+EE\+\_\+\+TCB\+::current\+\_\+num\+\_\+of\+\_\+act}
+
+When the task is suspended, the counter is 0. When activated, the counter is incremented. When the task terminates, the counter is decremented. \Hypertarget{structOsEE__TCB_a968b21b7bb023dff3ed66956969cbead}\index{OsEE\_TCB@{OsEE\_TCB}!current\_prio@{current\_prio}}
+\index{current\_prio@{current\_prio}!OsEE\_TCB@{OsEE\_TCB}}
+\doxysubsubsection{\texorpdfstring{current\_prio}{current\_prio}}
+{\footnotesize\ttfamily \label{structOsEE__TCB_a968b21b7bb023dff3ed66956969cbead} 
+\mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} Os\+EE\+\_\+\+TCB\+::current\+\_\+prio}
+
+The priority can be raised by the usage of resources or spin locks following the Immediate Priority Ceiling Protocol. The current\+\_\+prio is set to dispatch\+\_\+priority when a task is scheduled to implement the Internal resources / Preemption thresholds handling. \Hypertarget{structOsEE__TCB_ab00ec7896b3b2d2102e18d4ed32aca97}\index{OsEE\_TCB@{OsEE\_TCB}!p\_own\_sn@{p\_own\_sn}}
+\index{p\_own\_sn@{p\_own\_sn}!OsEE\_TCB@{OsEE\_TCB}}
+\doxysubsubsection{\texorpdfstring{p\_own\_sn}{p\_own\_sn}}
+{\footnotesize\ttfamily \label{structOsEE__TCB_ab00ec7896b3b2d2102e18d4ed32aca97} 
+\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} Os\+EE\+\_\+\+TCB\+::p\+\_\+own\+\_\+sn}
+
+When a task blocks we need a place to temporary save the associated scheduler node, to be used again when the task is reallocated again. This avoids a race condition on the free scheduler node list that happens in the Set\+Event when the task status changes on wakeup. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

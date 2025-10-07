@@ -1,0 +1,35 @@
+\doxysection{Os\+EE\+\_\+action\+\_\+param Struct Reference}
+\hypertarget{structOsEE__action__param}{}\label{structOsEE__action__param}\index{OsEE\_action\_param@{OsEE\_action\_param}}
+
+
+Parameters of an Alarm/\+Schedule Table expiration (function callback, task, event mask, and counter)  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+action\+\_\+param\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structOsEE__action__param_a42b8f86c278cbbeaa2b55b1eafdd4d9a}\label{structOsEE__action__param_a42b8f86c278cbbeaa2b55b1eafdd4d9a} 
+Os\+EE\+\_\+kernel\+\_\+cb \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries f}
+\begin{DoxyCompactList}\small\item\em alarm callback to be called \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__action__param_a4b50bf0751b557227916d84c72e7263e}\label{structOsEE__action__param_a4b50bf0751b557227916d84c72e7263e} 
+\mbox{\hyperlink{ee__kernel__types_8h_a09fa6316ce540908359bbc26e7571795}{Os\+EE\+\_\+\+TDB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+tdb}
+\begin{DoxyCompactList}\small\item\em task to be activated (or task whose event mask has to be set) \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__action__param_aeed2c1b01953461edf9edf8bc2d02ab5}\label{structOsEE__action__param_aeed2c1b01953461edf9edf8bc2d02ab5} 
+\mbox{\hyperlink{structOsEE__CounterDB}{Os\+EE\+\_\+\+Counter\+DB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+counter\+\_\+db}
+\begin{DoxyCompactList}\small\item\em counter to be incremented \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__action__param_ab7bff3a051f9a1180534a01bccf33c99}\label{structOsEE__action__param_ab7bff3a051f9a1180534a01bccf33c99} 
+\mbox{\hyperlink{group__primitives-event_ga5fb177d72d23ba4ccbd1821ca9e4498f}{Event\+Mask\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries mask}
+\begin{DoxyCompactList}\small\item\em event mask to be set on the task \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

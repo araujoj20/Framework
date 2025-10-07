@@ -1,0 +1,1252 @@
+warning: Tag 'TCL_SUBST' at line 281 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: Tag 'COLS_IN_ALPHA_INDEX' at line 1094 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: Tag 'HTML_TIMESTAMP' at line 1230 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: Tag 'FORMULA_TRANSPARENT' at line 1511 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: Tag 'LATEX_SOURCE_CODE' at line 1799 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: Tag 'LATEX_TIMESTAMP' at line 1815 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: Tag 'RTF_SOURCE_CODE' at line 1881 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: Tag 'DOCBOOK_PROGRAMLISTING' at line 1979 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: Tag 'PERL_PATH' at line 2160 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: Tag 'CLASS_DIAGRAMS' at line 2173 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: Tag 'MSCGEN_PATH' at line 2182 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: Tag 'DOT_FONTNAME' at line 2224 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: Tag 'DOT_FONTSIZE' at line 2231 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: Tag 'DOT_TRANSPARENT' at line 2450 of file 'Doxyfile' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+Doxygen version used: 1.14.0 (cbe58f6237b2238c9af7f51c6b7afb8bbf52c866)
+Searching for include files...
+Searching for example files...
+Searching for images...
+Searching for dot files...
+Searching for msc files...
+Searching for dia files...
+Searching for plantuml files...
+Searching for files to exclude
+Searching INPUT for files to process...
+Searching for files in directory /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/doc/manual
+Searching for files in directory /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc
+Reading and parsing tag files
+Parsing files
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/doc/manual/index.dox...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/doc/manual/index.dox...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_api.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_api.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_api_types.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_api_types.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_arch_compiler_gcc.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_arch_compiler_gcc.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_arch_override.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_arch_override.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_cfg.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_cfg.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_compiler.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_compiler.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_compiler_cfg.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_compiler_cfg.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_compiler_gcc.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_compiler_gcc.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_conf.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_conf.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_cortex_m_irq.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_cortex_m_irq.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_get_kernel_and_core.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_get_kernel_and_core.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_hal.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_hal.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_hal_internal_types.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_hal_internal_types.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_kernel_types.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_kernel_types.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_mcu_common_types.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_mcu_common_types.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_mcu_irq.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_mcu_irq.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_oo_api_dynamic.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_oo_api_dynamic.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_oo_api_extension.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_oo_api_extension.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_oo_api_osek.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_oo_api_osek.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_oscfg.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_oscfg.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_platform_types.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_platform_types.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_scheduler_types.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_scheduler_types.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_stm32f4_irq.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_stm32f4_irq.h...
+Preprocessing /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_utils.h...
+Parsing file /home/araujoj20/Documents/eclipse-rtd/Trace_F4/erika/inc/ee_utils.h...
+Building macro definition list...
+Building group list...
+Building directory list...
+Building namespace list...
+Building file list...
+Building class list...
+Building concept list...
+Computing nesting relations for classes...
+Associating documentation with classes...
+Associating documentation with concepts...
+Associating documentation with modules...
+Building example list...
+Searching for enumerations...
+Searching for documented typedefs...
+Searching for members imported via using declarations...
+Searching for included using directives...
+Searching for documented variables...
+Building interface member list...
+Building member list...
+Searching for friends...
+Searching for documented defines...
+Computing class inheritance relations...
+Computing class usage relations...
+Flushing cached template relations that have become invalid...
+Warn for undocumented namespaces...
+Computing class relations...
+Add enum values to enums...
+Searching for member function documentation...
+Creating members for template instances...
+Building page list...
+Search for main page...
+Computing page relations...
+Determining the scope of groups...
+Computing module relations...
+Sorting lists...
+Determining which enums are documented
+Computing member relations...
+Building full member lists recursively...
+Adding members to member groups.
+Computing member references...
+Inheriting documentation...
+Generating disk names...
+Adding source references...
+Adding xrefitems...
+Sorting member lists...
+Setting anonymous enum type...
+Computing dependencies between directories...
+Generating citations page...
+Counting members...
+Counting data structures...
+Resolving user defined references...
+Finding anchors and sections in the documentation...
+Transferring function references...
+Combining using relations...
+Adding members to index pages...
+Correcting members for VHDL...
+Computing tooltip texts...
+Generating style sheet...
+Generating search indices...
+Generating example documentation...
+Generating file sources...
+Parsing code for file doc/manual/index.dox...
+Parsing code for file inc/ee.h...
+Parsing code for file inc/ee_api.h...
+Parsing code for file inc/ee_api_types.h...
+Parsing code for file inc/ee_arch_compiler_gcc.h...
+Parsing code for file inc/ee_arch_override.h...
+Parsing code for file inc/ee_cfg.h...
+Parsing code for file inc/ee_compiler.h...
+Parsing code for file inc/ee_compiler_cfg.h...
+Parsing code for file inc/ee_compiler_gcc.h...
+Parsing code for file inc/ee_conf.h...
+Parsing code for file inc/ee_cortex_m_irq.h...
+Parsing code for file inc/ee_get_kernel_and_core.h...
+Parsing code for file inc/ee_hal.h...
+Parsing code for file inc/ee_hal_internal_types.h...
+Parsing code for file inc/ee_kernel_types.h...
+Parsing code for file inc/ee_mcu_common_types.h...
+Parsing code for file inc/ee_mcu_irq.h...
+Parsing code for file inc/ee_oo_api_dynamic.h...
+Parsing code for file inc/ee_oo_api_extension.h...
+Parsing code for file inc/ee_oo_api_osek.h...
+Parsing code for file inc/ee_oscfg.h...
+Parsing code for file inc/ee_platform_types.h...
+Parsing code for file inc/ee_scheduler_types.h...
+Parsing code for file inc/ee_stm32f4_irq.h...
+Parsing code for file inc/ee_utils.h...
+Generating file documentation...
+Generating docs for file inc/ee.h...
+Generating docs for file inc/ee_api.h...
+Generating docs for file inc/ee_api_types.h...
+Generating docs for file inc/ee_arch_compiler_gcc.h...
+Generating docs for file inc/ee_arch_override.h...
+Generating docs for file inc/ee_cfg.h...
+Generating docs for file inc/ee_compiler.h...
+Generating docs for file inc/ee_compiler_cfg.h...
+Generating docs for file inc/ee_compiler_gcc.h...
+Generating docs for file inc/ee_conf.h...
+Generating docs for file inc/ee_cortex_m_irq.h...
+Generating docs for file inc/ee_get_kernel_and_core.h...
+Generating caller graph for function osEE_get_curr_core
+Generating caller graph for function osEE_get_kernel
+Generating call graph for function osEE_lock_and_get_core
+Generating call graph for function osEE_lock_and_get_curr_core
+Generating call graph for function osEE_lock_and_get_kernel
+Generating caller graph for function osEE_lock_kernel
+Generating docs for file inc/ee_hal.h...
+Generating caller graph for function osEE_get_curr_core_id
+Generating docs for file inc/ee_hal_internal_types.h...
+Generating docs for file inc/ee_kernel_types.h...
+Generating call graph for function osEE_change_context_from_isr2_end
+Generating caller graph for function osEE_change_context_from_isr2_end
+Generating call graph for function osEE_change_context_from_task_end
+Generating caller graph for function osEE_change_context_from_task_end
+Generating call graph for function osEE_idle_hook_wrapper
+Generating caller graph for function osEE_idle_hook_wrapper
+Generating docs for file inc/ee_mcu_common_types.h...
+Generating docs for file inc/ee_mcu_irq.h...
+Generating docs for file inc/ee_oo_api_dynamic.h...
+Generating docs for file inc/ee_oo_api_extension.h...
+Generating docs for file inc/ee_oo_api_osek.h...
+Generating docs for file inc/ee_platform_types.h...
+Generating docs for file inc/ee_scheduler_types.h...
+Generating call graph for function osEE_sn_alloc
+Generating caller graph for function osEE_sn_alloc
+Generating call graph for function osEE_sn_priority_insert
+Generating caller graph for function osEE_sn_priority_insert
+Generating call graph for function osEE_sn_release
+Generating caller graph for function osEE_sn_release
+Generating docs for file inc/ee_stm32f4_irq.h...
+Generating page documentation...
+Generating docs for page intro...
+Generating docs for page implemented-standards...
+Generating docs for page scheduler...
+Generating docs for page system-init...
+Generating docs for page task-types...
+Generating docs for page stack-sharing...
+Generating docs for page irq...
+Generating docs for page resources...
+Generating docs for page multicore...
+Generating docs for page apireference...
+Generating docs for page orti...
+Generating group documentation...
+Generating call graph for function ActivateTask
+Generating caller graph for function ActivateTask
+Generating call graph for function ChainTask
+Generating caller graph for function ChainTask
+Generating call graph for function GetTaskID
+Generating caller graph for function GetTaskID
+Generating call graph for function GetTaskState
+Generating caller graph for function GetTaskState
+Generating call graph for function Schedule
+Generating caller graph for function Schedule
+Generating call graph for function TerminateTask
+Generating caller graph for function TerminateTask
+Generating call graph for function ClearEvent
+Generating caller graph for function ClearEvent
+Generating call graph for function GetEvent
+Generating caller graph for function GetEvent
+Generating call graph for function SetEvent
+Generating caller graph for function SetEvent
+Generating call graph for function WaitEvent
+Generating caller graph for function WaitEvent
+Generating call graph for function GetResource
+Generating caller graph for function GetResource
+Generating call graph for function ReleaseResource
+Generating caller graph for function ReleaseResource
+Generating call graph for function DisableAllInterrupts
+Generating caller graph for function DisableAllInterrupts
+Generating call graph for function EnableAllInterrupts
+Generating caller graph for function EnableAllInterrupts
+Generating call graph for function GetISRID
+Generating caller graph for function GetISRID
+Generating call graph for function ResumeAllInterrupts
+Generating caller graph for function ResumeAllInterrupts
+Generating call graph for function ResumeOSInterrupts
+Generating caller graph for function ResumeOSInterrupts
+Generating call graph for function SuspendAllInterrupts
+Generating caller graph for function SuspendAllInterrupts
+Generating call graph for function SuspendOSInterrupts
+Generating caller graph for function SuspendOSInterrupts
+Generating call graph for function CancelAlarm
+Generating caller graph for function CancelAlarm
+Generating call graph for function GetAlarm
+Generating caller graph for function GetAlarm
+Generating call graph for function GetAlarmBase
+Generating caller graph for function GetAlarmBase
+Generating call graph for function GetCounterValue
+Generating caller graph for function GetCounterValue
+Generating call graph for function GetElapsedValue
+Generating caller graph for function GetElapsedValue
+Generating call graph for function IncrementCounter
+Generating caller graph for function IncrementCounter
+Generating call graph for function SetAbsAlarm
+Generating caller graph for function SetAbsAlarm
+Generating call graph for function SetRelAlarm
+Generating caller graph for function SetRelAlarm
+Generating call graph for function GetActiveApplicationMode
+Generating caller graph for function GetActiveApplicationMode
+Generating call graph for function ShutdownOS
+Generating caller graph for function ShutdownOS
+Generating call graph for function StartOS
+Generating caller graph for function StartOS
+Generating call graph for function GetScheduleTableStatus
+Generating caller graph for function GetScheduleTableStatus
+Generating call graph for function NextScheduleTable
+Generating caller graph for function NextScheduleTable
+Generating call graph for function StartScheduleTableAbs
+Generating caller graph for function StartScheduleTableAbs
+Generating call graph for function StartScheduleTableRel
+Generating caller graph for function StartScheduleTableRel
+Generating call graph for function StopScheduleTable
+Generating caller graph for function StopScheduleTable
+Generating call graph for function SyncScheduleTable
+Generating caller graph for function SyncScheduleTable
+Generating call graph for function ErrorHook
+Generating caller graph for function ErrorHook
+Generating call graph for function osEE_get_api_param1
+Generating caller graph for function osEE_get_api_param1
+Generating call graph for function osEE_get_api_param2
+Generating caller graph for function osEE_get_api_param2
+Generating call graph for function osEE_get_api_param3
+Generating caller graph for function osEE_get_api_param3
+Generating call graph for function osEE_get_service_id
+Generating caller graph for function osEE_get_service_id
+Generating call graph for function PostTaskHook
+Generating caller graph for function PostTaskHook
+Generating call graph for function PreTaskHook
+Generating caller graph for function PreTaskHook
+Generating call graph for function ShutdownHook
+Generating caller graph for function ShutdownHook
+Generating call graph for function StartupHook
+Generating caller graph for function StartupHook
+Generating call graph for function PostSem
+Generating caller graph for function PostSem
+Generating call graph for function WaitSem
+Generating caller graph for function WaitSem
+Generating call graph for function GetCoreID
+Generating caller graph for function GetCoreID
+Generating call graph for function GetNumberOfActivatedCores
+Generating caller graph for function GetNumberOfActivatedCores
+Generating call graph for function GetSpinlock
+Generating caller graph for function GetSpinlock
+Generating call graph for function ReleaseSpinlock
+Generating caller graph for function ReleaseSpinlock
+Genesh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+rating call graph for function ShutdownAllCores
+Generating caller graph for function ShutdownAllCores
+Generating call graph for function StartCore
+Generating caller graph for function StartCore
+Generating call graph for function StartNonAutosarCore
+Generating caller graph for function StartNonAutosarCore
+Generating call graph for function TryToGetSpinlock
+Generating caller graph for function TryToGetSpinlock
+Generating class documentation...
+Generating docs for compound OsEE_action...
+Generating docs for compound OsEE_action_param...
+Generating docs for compound OsEE_AlarmCB_tag...
+Generating docs for compound OsEE_AlarmDB_tag...
+Generating docs for compound OsEE_api_param...
+Generating docs for compound OsEE_CCB...
+Generating docs for compound OsEE_CDB...
+Generating docs for compound OsEE_CounterCB...
+Generating docs for compound OsEE_CounterDB...
+Generating docs for compound OsEE_CTX_tag...
+Generating docs for compound OsEE_HDB_tag...
+Generating docs for compound OsEE_KCB...
+Generating docs for compound OsEE_KDB...
+Generating docs for compound OsEE_MCB...
+Generating docs for compound OsEE_MDB_tag...
+Generating docs for compound OsEE_SCB_tag...
+Generating docs for compound OsEE_SchedTabCB_tag...
+Generating docs for compound OsEE_SchedTabDB_tag...
+Generating docs for compound OsEE_SDB_tag...
+Generating docs for compound OsEE_sem_tag...
+Generating docs for compound OsEE_SN_tag...
+Generating docs for compound OsEE_st_exipiry_point_tag...
+Generating docs for compound OsEE_TCB...
+Generating docs for compound OsEE_TDB_tag...
+Generating docs for compound OsEE_TriggerCB...
+Generating docs for compound OsEE_TriggerDB_tag...
+Generating docs for compound OsEE_TW...
+Generating docs for compound TYPEDEF...
+Generating concept documentation...
+Generating module documentation...
+Generating namespace documentation...
+Generating graph info page...
+Generating directory documentation...
+Generating dependency graph for directory doc/manual
+Generating index page...
+Generating main page...
+Generating page index...
+Generating topic index...
+Generating module index...
+Generating module member index...
+Generating namespace index...
+Generating namespace member index...
+Generating concept index...
+Generating annotated compound index...
+Generating alphabetical compound index...
+Generating hierarchical class index...
+Generating graphical class hierarchy...
+Generating member index...
+Generating file index...
+Generating file member index...
+Generating example index...
+finalizing index lists...
+writing tag file...
+Running plantuml with JAVA...
+Running dot...
+Generating dot graphs using 21 parallel threads...
+Running dot for graph 1/392
+Running dot for graph 2/392
+Running dot for graph 3/392
+Running dot for graph 4/392
+Running dot for graph 5/392
+Running dot for graph 6/392
+Running dot for graph 7/392
+Running dot for graph 8/392
+Running dot for graph 9/392
+Running dot for graph 10/392
+Running dot for graph 11/392
+Running dot for graph 12/392
+Running dot for graph 13/392
+Running dot for graph 14/392
+Running dot for graph 15/392
+Running dot for graph 16/392
+Running dot for graph 17/392
+Running dot for graph 18/392
+Running dot for graph 19/392
+Running dot for graph 20/392
+Running dot for graph 21/392
+Running dot for graph 22/392
+Running dot for graph 23/392
+Running dot for graph 24/392
+Running dot for graph 25/392
+Running dot for graph 26/392
+Running dot for graph 27/392
+Running dot for graph 28/392
+Running dot for graph 29/392
+Running dot for graph 30/392
+Running dot for graph 31/392
+Running dot for graph 32/392
+Running dot for graph 33/392
+Running dot for graph 34/392
+Running dot for graph 35/392
+Running dot for graph 36/392
+Running dot for graph 37/392
+Running dot for graph 38/392
+Running dot for graph 39/392
+Running dot for graph 40/392
+Running dot for graph 41/392
+Running dot for graph 42/392
+Running dot for graph 43/392
+Running dot for graph 44/392
+Running dot for graph 45/392
+Running dot for graph 46/392
+Running dot for graph 47/392
+Running dot for graph 48/392
+Running dot for graph 49/392
+Running dot for graph 50/392
+Running dot for graph 51/392
+Rush: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: sh: 1: dot: not founddot: not found
+
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: sh: 1: dot: not founddot: not found
+
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: sh: 1: dot: not founddot: not found
+
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+nning dot for graph 52/392
+Running dot for graph 53/392
+Running dot for graph 54/392
+Running dot for graph 55/392
+Running dot for graph 56/392
+Running dot for graph 57/392
+Running dot for graph 58/392
+Running dot for graph 59/392
+Running dot for graph 60/392
+Running dot for graph 61/392
+Running dot for graph 62/392
+Running dot for graph 63/392
+Running dot for graph 64/392
+Running dot for graph 65/392
+Running dot for graph 66/392
+Running dot for graph 67/392
+Running dot for graph 68/392
+Running dot for graph 69/392
+Running dot for graph 70/392
+Running dot for graph 71/392
+Running dot for graph 72/392
+Running dot for graph 73/392
+Running dot for graph 74/392
+Running dot for graph 75/392
+Running dot for graph 76/392
+Running dot for graph 77/392
+Running dot for graph 78/392
+Running dot for graph 79/392
+Running dot for graph 80/392
+Running dot for graph 81/392
+Running dot for graph 82/392
+Running dot for graph 83/392
+Running dot for graph 84/392
+Running dot for graph 85/392
+Running dot for graph 86/392
+Running dot for graph 87/392
+Running dot for graph 88/392
+Running dot for graph 89/392
+Running dot for graph 90/392
+Running dot for graph 91/392
+Running dot for graph 92/392
+Running dot for graph 93/392
+Running dot for graph 94/392
+Running dot for graph 95/392
+Running dot for graph 96/392
+Running dot for graph 97/392
+Running dot for graph 98/392
+Running dot for graph 99/392
+Running dot for graph 100/392
+Running dot for graph 101/392
+Running dot for graph 102/392
+Running dot for graph 103/392
+Running dot for graph 104/392
+Running dot for graph 105/392
+Running dot for graph 106/392
+Running dot for graph 107/392
+Running dot for graph 108/392
+Running dot for graph 109/392
+Running dot for graph 110/392
+Running dot for graph 111/392
+Running dot for graph 112/392
+Running dot for graph 113/392
+Running dot for graph 114/392
+Running dot for graph 115/392
+Running dot for graph 116/392
+Running dot for graph 117/392
+Running dot for graph 118/392
+Running dot for graph 119/392
+Running dot for graph 120/392
+Running dot for graph 121/392
+Running dot for graph 122/392
+Running dot for graph 123/392
+Running dot for graph 124/392
+Running dot for graph 125/392
+Running dot for graph 126/392
+Running dot for graph 127/392
+Running dot for graph 128/392
+Running dot for graph 129/392
+Running dot for graph 130/392
+Running dot for graph 131/392
+Running dot for graph 132/392
+Running dot for graph 133/392
+Running dot for graph 134/392
+Running dot for graph 135/392
+Running dot for graph 136/392
+Running dot for graph 137/392
+Running dot for graph 138/392
+Running dot for graph 139/392
+Running dot for graph 140/392
+Running dot for graph 141/392
+Running dot for graph 142/392
+Running dot for graph 143/392
+Running dot for graph 144/392
+Running dot for graph 145/392
+Running dot for graph 146/392
+Running dot for graph 147/392
+Running dot for graph 148/392
+Running dot for graph 149/392
+Running dot for graph 150/392
+Running dot for graph 151/392
+Running dot for graph 152/392
+Running dot for graph 153/392
+Running dot for graph 154/392
+Running dot for graph 155/392
+Running dot for graph 156/392
+Running dot for graph 157/392
+Running dot for graph 158/392
+Running dot for graph 159/392
+Running dot for graph 160/392
+Running dot for graph 161/392
+Running dot for graph 162/392
+Running dot for graph 163/392
+Running dot for graph 164/392
+Running dot for graph 165/392
+Running dot for graph 166/392
+Running dot for graph 167/392
+Running dot for graph 168/392
+Running dot for graph 169/392
+Running dot for graph 170/392
+Running dot for graph 171/392
+Running dot for graph 172/392
+Running dot for graph 173/392
+Running dot for graph 174/392
+Running dot for graph 175/392
+Running dot for graph 176/392
+Running dot for graph 177/392
+Running dot for graph 178/392
+Running dot for graph 179/392
+Running dot for graph 180/392
+Running dot for graph 181/392
+Running dot for graph 182/392
+Running dot for graph 183/392
+Running dot for graph 184/392
+Running dot for graph 185/392
+Running dot for graph 186/392
+Running dot for graph 187/392
+Running dot for graph 188/392
+Running dot for graph 189/392
+Runninsh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: sh: 1: dot: not founddot: not found
+
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: sh: 1: dot: not founddot: not found
+
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+g dot for graph 190/392
+Running dot for graph 191/392
+Running dot for graph 192/392
+Running dot for graph 193/392
+Running dot for graph 194/392
+Running dot for graph 195/392
+Running dot for graph 196/392
+Running dot for graph 197/392
+Running dot for graph 198/392
+Running dot for graph 199/392
+Running dot for graph 200/392
+Running dot for graph 201/392
+Running dot for graph 202/392
+Running dot for graph 203/392
+Running dot for graph 204/392
+Running dot for graph 205/392
+Running dot for graph 206/392
+Running dot for graph 207/392
+Running dot for graph 208/392
+Running dot for graph 209/392
+Running dot for graph 210/392
+Running dot for graph 211/392
+Running dot for graph 212/392
+Running dot for graph 213/392
+Running dot for graph 214/392
+Running dot for graph 215/392
+Running dot for graph 216/392
+Running dot for graph 217/392
+Running dot for graph 218/392
+Running dot for graph 219/392
+Running dot for graph 220/392
+Running dot for graph 221/392
+Running dot for graph 222/392
+Running dot for graph 223/392
+Running dot for graph 224/392
+Running dot for graph 225/392
+Running dot for graph 226/392
+Running dot for graph 227/392
+Running dot for graph 228/392
+Running dot for graph 229/392
+Running dot for graph 230/392
+Running dot for graph 231/392
+Running dot for graph 232/392
+Running dot for graph 233/392
+Running dot for graph 234/392
+Running dot for graph 235/392
+Running dot for graph 236/392
+Running dot for graph 237/392
+Running dot for graph 238/392
+Running dot for graph 239/392
+Running dot for graph 240/392
+Running dot for graph 241/392
+Running dot for graph 242/392
+Running dot for graph 243/392
+Running dot for graph 244/392
+Running dot for graph 245/392
+Running dot for graph 246/392
+Running dot for graph 247/392
+Running dot for graph 248/392
+Running dot for graph 249/392
+Running dot for graph 250/392
+Running dot for graph 251/392
+Running dot for graph 252/392
+Running dot for graph 253/392
+Running dot for graph 254/392
+Running dot for graph 255/392
+Running dot for graph 256/392
+Running dot for graph 257/392
+Running dot for graph 258/392
+Running dot for graph 259/392
+Running dot for graph 260/392
+Running dot for graph 261/392
+Running dot for graph 262/392
+Running dot for graph 263/392
+Running dot for graph 264/392
+Running dot for graph 265/392
+Running dot for graph 266/392
+Running dot for graph 267/392
+Running dot for graph 268/392
+Running dot for graph 269/392
+Running dot for graph 270/392
+Running dot for graph 271/392
+Running dot for graph 272/392
+Running dot for graph 273/392
+Running dot for graph 274/392
+Running dot for graph 275/392
+Running dot for graph 276/392
+Running dot for graph 277/392
+Running dot for graph 278/392
+Running dot for graph 279/392
+Running dot for graph 280/392
+Running dot for graph 281/392
+Running dot for graph 282/392
+Running dot for graph 283/392
+Running dot for graph 284/392
+Running dot for graph 285/392
+Running dot for graph 286/392
+Running dot for graph 287/392
+Running dot for graph 288/392
+Running dot for graph 289/392
+Running dot for graph 290/392
+Running dot for graph 291/392
+Running dot for graph 292/392
+Running dot for graph 293/392
+Running dot for graph 294/392
+Running dot for graph 295/392
+Running dot for graph 296/392
+Running dot for graph 297/392
+Running dot for graph 298/392
+Running dot for graph 299/392
+Running dot for graph 300/392
+Running dot for graph 301/392
+Running dot for graph 302/392
+Running dot for graph 303/392
+Running dot for graph 304/392
+Running dot for graph 305/392
+Running dot for graph 306/392
+Running dot for graph 307/392
+Running dot for graph 308/392
+Running dot for graph 309/392
+Running dot for graph 310/392
+Running dot for graph 311/392
+Running dot for graph 312/392
+Running dot for graph 313/392
+Running dot for graph 314/392
+Running dot for graph 315/392
+Running dot for graph 316/392
+Running dot for graph 317/392
+Running dot for graph 318/392
+Running dot for graph 319/392
+Running dot for graph 320/392
+Running dot for graph 321/392
+Running dot for graph 322/392
+Running dot for graph 323/392
+Running dot for graph 324/392
+Running dot for graph 325/392
+Running dot for graph sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: sh: 1: dot: not founddot: not found
+
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: sh: 1: dot: not founddot: not found
+
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+sh: 1: dot: not found
+326/392
+Running dot for graph 327/392
+Running dot for graph 328/392
+Running dot for graph 329/392
+Running dot for graph 330/392
+Running dot for graph 331/392
+Running dot for graph 332/392
+Running dot for graph 333/392
+Running dot for graph 334/392
+Running dot for graph 335/392
+Running dot for graph 336/392
+Running dot for graph 337/392
+Running dot for graph 338/392
+Running dot for graph 339/392
+Running dot for graph 340/392
+Running dot for graph 341/392
+Running dot for graph 342/392
+Running dot for graph 343/392
+Running dot for graph 344/392
+Running dot for graph 345/392
+Running dot for graph 346/392
+Running dot for graph 347/392
+Running dot for graph 348/392
+Running dot for graph 349/392
+Running dot for graph 350/392
+Running dot for graph 351/392
+Running dot for graph 352/392
+Running dot for graph 353/392
+Running dot for graph 354/392
+Running dot for graph 355/392
+Running dot for graph 356/392
+Running dot for graph 357/392
+Running dot for graph 358/392
+Running dot for graph 359/392
+Running dot for graph 360/392
+Running dot for graph 361/392
+Running dot for graph 362/392
+Running dot for graph 363/392
+Running dot for graph 364/392
+Running dot for graph 365/392
+Running dot for graph 366/392
+Running dot for graph 367/392
+Running dot for graph 368/392
+Running dot for graph 369/392
+Running dot for graph 370/392
+Running dot for graph 371/392
+Running dot for graph 372/392
+Running dot for graph 373/392
+Running dot for graph 374/392
+Running dot for graph 375/392
+Running dot for graph 376/392
+Running dot for graph 377/392
+Running dot for graph 378/392
+Running dot for graph 379/392
+Running dot for graph 380/392
+Running dot for graph 381/392
+Running dot for graph 382/392
+Running dot for graph 383/392
+Running dot for graph 384/392
+Running dot for graph 385/392
+Running dot for graph 386/392
+Running dot for graph 387/392
+Running dot for graph 388/392
+Running dot for graph 389/392
+Running dot for graph 390/392
+Running dot for graph 391/392
+Running dot for graph 392/392
+Patching output file 1/119
+Patching output file 2/119
+Patching output file 3/119
+Patching output file 4/119
+Patching output file 5/119
+Patching output file 6/119
+Patching output file 7/119
+Patching output file 8/119
+Patching output file 9/119
+Patching output file 10/119
+Patching output file 11/119
+Patching output file 12/119
+Patching output file 13/119
+Patching output file 14/119
+Patching output file 15/119
+Patching output file 16/119
+Patching output file 17/119
+Patching output file 18/119
+Patching output file 19/119
+Patching output file 20/119
+Patching output file 21/119
+Patching output file 22/119
+Patching output file 23/119
+Patching output file 24/119
+Patching output file 25/119
+Patching output file 26/119
+Patching output file 27/119
+Patching output file 28/119
+Patching output file 29/119
+Patching output file 30/119
+Patching output file 31/119
+Patching output file 32/119
+Patching output file 33/119
+Patching output file 34/119
+Patching output file 35/119
+Patching output file 36/119
+Patching output file 37/119
+Patching output file 38/119
+Patching output file 39/119
+Patching output file 40/119
+Patching output file 41/119
+Patching output file 42/119
+Patching output file 43/119
+Patching output file 44/119
+Patching output file 45/119
+Patching output file 46/119
+Patching output file 47/119
+Patching output file 48/119
+Patching output file 49/119
+Patching output file 50/119
+Patching output file 51/119
+Patching output file 52/119
+Patching output file 53/119
+Patching output file 54/119
+Patching output file 55/119
+Patching output file 56/119
+Patching output file 57/119
+Patching output file 58/119
+Patching output file 59/119
+Patching output file 60/119
+Patching output file 61/119
+type lookup cache used 608/65536 hits=2232 misses=727
+symbol lookup cache used 1537/65536 hits=3335 misses=1537
+finished...

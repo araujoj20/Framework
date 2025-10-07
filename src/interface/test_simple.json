@@ -1,0 +1,104 @@
+{
+    "inherits": "stm32.json",
+
+    "vendor":   "st",
+    "board":    "STM32F407",
+    "family":   "stm32f4xx",
+    
+    "build":{
+
+        "startup_script":       "startup_stm32f407xx.s",
+        "linker_script":        "STM32F407VGTX_FLASH.ld",
+        "startup_script_path":  "cmsis-device-f4/Source/Templates/gcc",
+        "alayer":               "stm32f4xx-hal-driver",
+
+        "drivers":{
+            "cmsis_5":           "CMSIS_5/CMSIS/Core/Include/",
+            "cmsis-device":      "cmsis-device-f4/Include/"
+        }
+    },
+
+    "openocd":{
+        "interface": "stlink",
+        "target":    "stm32f4x"
+    },
+
+    "uart": {
+        "instance": "USART2",
+        "baudrate": 115200,
+        "tx_pin":   "PA2",
+        "rx_pin":   "PA3"
+    },
+
+    "timers": {
+
+        "TIM1": {
+            "slave_mode": "RESET",
+            "trigger_source": "TIM2",
+            "trigger_event": "UPDATE",
+            "master_slave_mode": "ENABLE"
+        },
+        "TIM1_OW_1": {
+            "interrupt": "CC",
+            "irq_handler": "ENABLE"
+        },
+        "TIM1_OW_2": {
+            "interrupt": "UP",
+            "irq_handler": "ENABLE"
+        },
+        "TIM1_OW_3": {
+            "interrupt": "BRK",
+            "irq_handler": "DISABLE"
+        },
+        "TIM1_OW_4": {
+            "interrupt": "ENABLE",
+            "irq_handler": "DISABLE"
+        },
+        "TIM1_OW_5": {
+            "interrupt": "ENABLE"
+        },
+        "TIM9": {
+            "interrupt": "ENABLE"
+        },
+
+        "TIM8": {
+            "slave_mode": "RESET",
+            "trigger_source": "TIM2",
+            "trigger_event": "UPDATE",
+            "master_slave_mode": "ENABLE"
+        },
+        "TIM8_OW_1": {
+            "interrupt": "BRK",
+            "irq_handler": "ENABLE"
+        },
+        "TIM8_OW_2": {
+            "interrupt": "CC",
+            "irq_handler": "ENABLE"
+        },
+        "TIM8_OW_3": {
+            "interrupt": "UP",
+            "irq_handler": "ENABLE"
+        },
+        "TIM8_OW_4": {
+            "interrupt": "ENABLE",
+            "irq_handler": "DISABLE"
+        },
+        "TIM8_OW_5": {
+            "interrupt": "DISABLE"
+        }
+    },
+
+    "dmas": {
+        "dma1_stream1": {
+            "name": "DMA1",
+            "stream": "Stream1",
+            "direction": "MEMORY_TO_MEMORY"
+        },
+        "dma2_stream5": {
+            "name": "DMA2",
+            "stream": "Stream5",
+            "direction": "MEMORY_TO_MEMORY"
+        }
+    }
+
+}

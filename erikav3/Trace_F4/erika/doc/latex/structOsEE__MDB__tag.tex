@@ -1,0 +1,56 @@
+\doxysection{Os\+EE\+\_\+\+MDB\+\_\+tag Struct Reference}
+\hypertarget{structOsEE__MDB__tag}{}\label{structOsEE__MDB__tag}\index{OsEE\_MDB\_tag@{OsEE\_MDB\_tag}}
+
+
+Mutual exclusion descriptor block.  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+\+MDB\+\_\+tag\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structOsEE__MDB__tag_a962f16cbb499a87dd30edf64954bd239}\label{structOsEE__MDB__tag_a962f16cbb499a87dd30edf64954bd239} 
+\mbox{\hyperlink{structOsEE__MCB}{Os\+EE\+\_\+\+MCB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+cb}
+\begin{DoxyCompactList}\small\item\em pointer to the flash descriptor (shortcut to optimize the system access \end{DoxyCompactList}\item 
+Os\+EE\+\_\+spin\+\_\+lock \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} \mbox{\hyperlink{structOsEE__MDB__tag_a65cc61df0a820c50838b13418f889aa8}{p\+\_\+spinlock\+\_\+arch}}
+\begin{DoxyCompactList}\small\item\em HAL part of the spinlock. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \mbox{\hyperlink{structOsEE__MDB__tag_ac52c26f2a16ae9ae9645e4dcb2997284}{prio}}
+\begin{DoxyCompactList}\small\item\em ceiling priority of the resource or of the spinlock (note that the spinlock may be configured to have its own ceiling. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__MDB__tag_afd560c85195647c1830944fc837c0fdc}\label{structOsEE__MDB__tag_afd560c85195647c1830944fc837c0fdc} 
+\mbox{\hyperlink{group__primitives-multicore_ga679c3963e5157e5ec5f771462ffe464c}{Core\+Mask\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries allowed\+\_\+core\+\_\+mask}
+\begin{DoxyCompactList}\small\item\em these are the cores that are allowed to use the resource/spinlock \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__MDB__tag_a71cd886f9674ee514327864dacac2ff3}\label{structOsEE__MDB__tag_a71cd886f9674ee514327864dacac2ff3} 
+\mbox{\hyperlink{ee__kernel__types_8h_aac88ce5982bf0bc00cd6af0cccb98910}{Os\+EE\+\_\+m\+\_\+type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries m\+\_\+type}
+\begin{DoxyCompactList}\small\item\em type that says whether this data structure is related to a resource or a spinlock \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The descriptor block tracks the specific mutual exclusion object, which can be either a Resource or a Spin Lock. They are handled together because they have to be released in LIFO order \mbox{[}SWS\+\_\+\+Os\+\_\+00801\mbox{]}. 
+
+\label{doc-variable-members}
+\Hypertarget{structOsEE__MDB__tag_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structOsEE__MDB__tag_a65cc61df0a820c50838b13418f889aa8}\index{OsEE\_MDB\_tag@{OsEE\_MDB\_tag}!p\_spinlock\_arch@{p\_spinlock\_arch}}
+\index{p\_spinlock\_arch@{p\_spinlock\_arch}!OsEE\_MDB\_tag@{OsEE\_MDB\_tag}}
+\doxysubsubsection{\texorpdfstring{p\_spinlock\_arch}{p\_spinlock\_arch}}
+{\footnotesize\ttfamily \label{structOsEE__MDB__tag_a65cc61df0a820c50838b13418f889aa8} 
+Os\+EE\+\_\+spin\+\_\+lock \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} Os\+EE\+\_\+\+MDB\+\_\+tag\+::p\+\_\+spinlock\+\_\+arch}
+
+a register if the spinlock is hardware, or a data structure if done in memory \Hypertarget{structOsEE__MDB__tag_ac52c26f2a16ae9ae9645e4dcb2997284}\index{OsEE\_MDB\_tag@{OsEE\_MDB\_tag}!prio@{prio}}
+\index{prio@{prio}!OsEE\_MDB\_tag@{OsEE\_MDB\_tag}}
+\doxysubsubsection{\texorpdfstring{prio}{prio}}
+{\footnotesize\ttfamily \label{structOsEE__MDB__tag_ac52c26f2a16ae9ae9645e4dcb2997284} 
+\mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} Os\+EE\+\_\+\+MDB\+\_\+tag\+::prio}
+
+The virtual priorities in ERIKA3 allows a simple way to obtain the various levels of priority raising for the spinlocks (e.\+g., OSEE\+\_\+\+ISR\+\_\+\+ALL\+\_\+\+PRIO means that all ISR are blocked) 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,1259 @@
+\doxysection{inc/ee\+\_\+stm32f4\+\_\+irq.h File Reference}
+\hypertarget{ee__stm32f4__irq_8h}{}\label{ee__stm32f4__irq_8h}\index{inc/ee\_stm32f4\_irq.h@{inc/ee\_stm32f4\_irq.h}}
+
+
+STM32\+F4 IRQs.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_afaef225baf6e49acccf5c72be9191c33}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+WWDG\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em Window Watchdog interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_aa1c438e2fd32198e5a2b3b1bea1aece0}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+PVD\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em PVD through EXTI line detection interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a21b209c6021afad0eeec2529c62c1b3c}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TAMP\+\_\+\+STAMP\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em Tamper and Time\+Stamp interrupts through the EXTI line. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a6fae2df316dead9d96c727fa73783bd6}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+RTC\+\_\+\+WKUP\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em RTC Wakeup interrupt through the EXTI line. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a1b92b3e6533e2fbdc0451963aac34bdf}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+FLASH\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em Flash global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ab29257a40a3ea0046b5fc8a2996ab410}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+RCC\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em RCC global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a8c0e899b3b19545b5b38ea283eb17316}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI0\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em EXTI Line0 interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_af5da6608193110f972543a9b895a3ac7}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI1\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em EXTI Line1 interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a674fccdf865f578b44d54c6610cb111c}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI2\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em EXTI Line2 interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a8638241ae392c8f8352631dfb1da607e}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI3\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em EXTI Line3 interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_aecb43aebed2372b8d3d898f6d43ba93d}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI4\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em EXTI Line4 interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ad8e12bc7fd1dba8398f9d4aee9368789}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S0\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA1 Stream0 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ac9fa3eb4501f25a31158f9fb1bf8c934}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S1\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA1 Stream1 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a7b5f471cf519bd0d0cdd13b56802fa8c}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S2\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA1 Stream2 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ac48308094c4318be102f08f4c1703672}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S3\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA1 Stream3 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a076c89f50f1c99a6dfe7a4f949491270}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S4\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA1 Stream4 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a28acb584c6de8c2a2b907f8af79c17b1}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S5\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA1 Stream5 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_af39f8571e416a859f4386fb9bd1aab61}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S6\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA1 Stream6 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_abe2dd1eb724ad34c9701f789fcf48ff3}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+ADC\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em ADC1, ADC2 and ADC3 global interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ad9ad18abab11de7d8f48450e05cbc153}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN1\+\_\+\+TX\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em CAN1 TX interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ad85ee014dbf04dfd02d6778546ce9f9f}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN1\+\_\+\+RX0\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em CAN1 RX0 interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ae9cb97ffb3d5b31bd9ca2c12aa205340}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN1\+\_\+\+RX1\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em CAN1 RX1 interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a78b0d22e67eb0cba0c738a1219ae7325}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN1\+\_\+\+SCE\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em CAN1 SCE interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ad829551d7efc8ca29b5c76c3fb9ca8db}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI9\+\_\+5\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em EXTI Line\mbox{[}9\+:5\mbox{]} interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_afcc43e9112b28cd4b231476b17021c32}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM1\+\_\+\+BRK\+\_\+\+TIM9\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM1 Break interrupt and TIM9 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a55004532dba80747e9b0d5c6ba2c2603}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM1\+\_\+\+UP\+\_\+\+TIM10\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM1 Update interrupt and TIM10 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ab91c8446e2fe4ff580970813ca9c6da9}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM1\+\_\+\+TRG\+\_\+\+COM\+\_\+\+TIM11\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM1 Trigger and Commutation interrupts and TIM11 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_af9e1ecc54a503cf2b5914a095af23186}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM1\+\_\+\+CC\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM1 Capture Compare interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a3b198a0ce77d422586128a941be944a6}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM2\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM2 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a535e5e162bfa9da354b45b5770a15351}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM3\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM3 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a49b0b8c2252dc79a9d0e89804796b55e}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM4\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM4 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_acf53c2344b8aa3f1adfa569c321c2742}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+I2\+C1\+\_\+\+EV\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em I2\+C1 event interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ab4f8fc7ae791c293a745b496a3f9e231}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+I2\+C1\+\_\+\+ER\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em I2\+C1 error interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a4eac63f477e4b95c2b01973655829b28}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+I2\+C2\+\_\+\+EV\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em I2\+C2 event interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a703123d83409c0c52f3e93d8b3092f14}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+I2\+C2\+\_\+\+ER\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em I2\+C2 error interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a45abbe4e81e5a8c794c4ce8edeabc2b9}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SPI1\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em SPI1 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ad5c3b8f1b4e795ae86df06174200f55d}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SPI2\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em SPI2 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a0459dabe62bd91d84fe03f3b50e3a810}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+USART1\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em USART1 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a2a739f111d73b0c5797799e92991efca}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+USART2\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em USART2 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ae57977518527041cf8a9be0e4a443972}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+USART3\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em USART3 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_aa8996a6beb1cdb6d5083701735ec050b}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI15\+\_\+10\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em EXTI Line\mbox{[}15\+:10\mbox{]} interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_aead19e81667a88f752f147d72d302883}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+RTC\+\_\+\+ALARM\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em RTC Alarms (A and B) through EXTI line interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ac6cfa7e6bcee2240aea78fc28f031ca0}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OTG\+\_\+\+FS\+\_\+\+WKUP\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em USB On-\/\+The-\/\+Go FS Wakeup through EXTI line interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_aef82a8bb8faa3037c4ffea2759c48381}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM8\+\_\+\+BRK\+\_\+\+TIM12\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM8 Break interrupt and TIM12 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a53c0d2d02781d370f36405413e95a7d2}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM8\+\_\+\+UP\+\_\+\+TIM13\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM8 Update interrupt and TIM13 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_afeab5ed0fced715e27ddfc8bd2d9e8f6}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM8\+\_\+\+TRG\+\_\+\+COM\+\_\+\+TIM14\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM8 Trigger and Commutation interrupts and TIM14 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_aa87222c7ebf47990cafdcf5058788e5b}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM8\+\_\+\+CC\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM8 Capture Compare interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a29be379f5cd4c1adb7f691e14aa702ce}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S7\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA1 Stream7 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_af5d00b85c56d254012b9e37d94a27314}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+FSMC\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em FSMC global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a9802acc88664b91a846f3c534fd92d32}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SDIO\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em SDIO global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_af81dc2ba8f20e49bb6d381f24971b950}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM5\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM5 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a34c2c304387018b3f54a7655925bae88}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SPI3\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em SPI3 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a5784a8dd3b02ebfc14900fdf06c69651}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+UART4\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em UART4 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a859c4fdfd19b8f8fcacfd161b7cb32a4}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+UART5\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em UART5 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a74983c88052ea863df91ae2488407b55}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM6\+\_\+\+DAC\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM6 global interrupt, DAC1 and DAC2 underrun error interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a5f8f5bc6589302bbe598deafce76ba1f}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM7\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em TIM7 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a61107edace52aa609250e92fe3ef08c1}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S0\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA2 Stream0 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_afe9090ed189893c47290ce508c5884ba}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S1\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA2 Stream1 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a7cd5330a0e5e5ffb106954f2bc2f9c5c}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S2\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA2 Stream2 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_af2c572a8b5eb13b093ade40e5417638d}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S3\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA2 Stream3 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a62ed68a23f78b3b87d5d05213d0d9404}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S4\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA2 Stream4 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ac50561bfc30f74c192570b95a1f8899b}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+ETH\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em Ethernet global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ae9739933aace93cfc19b0c079e826b68}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+ETH\+\_\+\+WKUP\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em Ethernet Wakeup through EXTI line interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a26e7905dfb53a5503a3f3218aaf59b30}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN2\+\_\+\+TX\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em CAN2 TX interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a558fc508fcd86cc3c5dba3e6ab00141a}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN2\+\_\+\+RX0\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em CAN2 RX0 interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a3699bdd50179c195405bfbd44950db74}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN2\+\_\+\+RX1\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em CAN2 RX1 interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_af312038cdc60279883216e33d8f191f6}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN2\+\_\+\+SCE\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em CAN2 SCE interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a8e223a7ebf7e0f8a6ac35f92cba2331f}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OTG\+\_\+\+FS\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em USB On The Go FS global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a9a7425d0acd9783b98ee39603ce136ef}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S5\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA2 Stream5 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a269fa6753be7d5e9dcb06e0ab7a5cb32}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S6\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA2 Stream6 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a9889d9472e2515427497bb1bea63fb1f}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S7\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DMA2 Stream7 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_aa5f34f415fe00007ef34773cf899d2d4}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+USART6\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em USART6 global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ad18ab876a0d38f252d3104b5b2bd382e}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+I2\+C3\+\_\+\+EV\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em I2\+C3 event interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a71243d10651fb2577eefa28992a321fd}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+I2\+C3\+\_\+\+ER\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em I2\+C3 error interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_ab02960ce4f37180dd9b037fe7b070c34}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OTG\+\_\+\+HS\+\_\+\+EP1\+\_\+\+OUT\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em USB On The Go HS End Point 1 Out global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a642963b32349acb35b6ea2dc6825e16c}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OTG\+\_\+\+HS\+\_\+\+EP1\+\_\+\+IN\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em USB On The Go HS End Point 1 In global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_accef072cd3541b9d5e835581b79e2fb2}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OTG\+\_\+\+HS\+\_\+\+WKUP\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em USB On The Go HS Wakeup through EXTI interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a85593616f3952fa619103145a6163266}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OTG\+\_\+\+HS\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em USB On The Go HS global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a8a8bcc395e24742567606237f26afb8e}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DCMI\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em DCMI global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a9846bf7b9604db745f12e7fc14165bb5}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CRYP\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em CRYP global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a0cc5fb78bf0962350cd876f4878d7c0f}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+HASH\+\_\+\+RNG\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em Hash and Rng global interrupt. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__stm32f4__irq_8h_a84359366c29f0ed3206f1fae7b99363a}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+FPU\+\_\+\+ISR\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em FPU global interrupt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This files contains the interfaces of the IRQs support for STMicroelectronics STM32\+F4 Architecture available in Erika Enterprise.
+
+\begin{DoxyNote}{Note}
+TO BE DOCUMENTED!!!
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Giuseppe Serano 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018 
+\end{DoxyDate}
+
+
+\label{doc-define-members}
+\Hypertarget{ee__stm32f4__irq_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{ee__stm32f4__irq_8h_abe2dd1eb724ad34c9701f789fcf48ff3}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_ADC\_ISR\_ID@{OSEE\_CORTEX\_M\_ADC\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_ADC\_ISR\_ID@{OSEE\_CORTEX\_M\_ADC\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_ADC\_ISR\_ID}{OSEE\_CORTEX\_M\_ADC\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_abe2dd1eb724ad34c9701f789fcf48ff3} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+ADC\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ae252161c56fa70e233952dd9cfa4dc7a}{OSEE\_CORTEX\_M\_INT\_12\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ad85ee014dbf04dfd02d6778546ce9f9f}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_CAN1\_RX0\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN1\_RX0\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_CAN1\_RX0\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN1\_RX0\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_CAN1\_RX0\_ISR\_ID}{OSEE\_CORTEX\_M\_CAN1\_RX0\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ad85ee014dbf04dfd02d6778546ce9f9f} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN1\+\_\+\+RX0\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a020d4a1239db121ff8a88a4a60f86438}{OSEE\_CORTEX\_M\_INT\_14\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ae9cb97ffb3d5b31bd9ca2c12aa205340}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_CAN1\_RX1\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN1\_RX1\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_CAN1\_RX1\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN1\_RX1\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_CAN1\_RX1\_ISR\_ID}{OSEE\_CORTEX\_M\_CAN1\_RX1\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ae9cb97ffb3d5b31bd9ca2c12aa205340} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN1\+\_\+\+RX1\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a0cf85fb93777e00ee2767ae6b29b0b10}{OSEE\_CORTEX\_M\_INT\_15\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a78b0d22e67eb0cba0c738a1219ae7325}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_CAN1\_SCE\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN1\_SCE\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_CAN1\_SCE\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN1\_SCE\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_CAN1\_SCE\_ISR\_ID}{OSEE\_CORTEX\_M\_CAN1\_SCE\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a78b0d22e67eb0cba0c738a1219ae7325} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN1\+\_\+\+SCE\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a72e5fb4ceb3b23fdff0f2641d8c0f90a}{OSEE\_CORTEX\_M\_INT\_16\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ad9ad18abab11de7d8f48450e05cbc153}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_CAN1\_TX\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN1\_TX\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_CAN1\_TX\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN1\_TX\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_CAN1\_TX\_ISR\_ID}{OSEE\_CORTEX\_M\_CAN1\_TX\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ad9ad18abab11de7d8f48450e05cbc153} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN1\+\_\+\+TX\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a511f175f6a7a3afc1af3a46062dbce40}{OSEE\_CORTEX\_M\_INT\_13\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a558fc508fcd86cc3c5dba3e6ab00141a}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_CAN2\_RX0\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN2\_RX0\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_CAN2\_RX0\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN2\_RX0\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_CAN2\_RX0\_ISR\_ID}{OSEE\_CORTEX\_M\_CAN2\_RX0\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a558fc508fcd86cc3c5dba3e6ab00141a} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN2\+\_\+\+RX0\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a9b734900ba38bc8a1d595954e9b0653d}{OSEE\_CORTEX\_M\_INT\_40\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a3699bdd50179c195405bfbd44950db74}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_CAN2\_RX1\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN2\_RX1\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_CAN2\_RX1\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN2\_RX1\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_CAN2\_RX1\_ISR\_ID}{OSEE\_CORTEX\_M\_CAN2\_RX1\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a3699bdd50179c195405bfbd44950db74} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN2\+\_\+\+RX1\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a8037c86a1854fa9ca199e73b64b50e01}{OSEE\_CORTEX\_M\_INT\_41\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_af312038cdc60279883216e33d8f191f6}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_CAN2\_SCE\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN2\_SCE\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_CAN2\_SCE\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN2\_SCE\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_CAN2\_SCE\_ISR\_ID}{OSEE\_CORTEX\_M\_CAN2\_SCE\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_af312038cdc60279883216e33d8f191f6} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN2\+\_\+\+SCE\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ac6428f1f3ce90d6033be2cabd7cbd80c}{OSEE\_CORTEX\_M\_INT\_42\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a26e7905dfb53a5503a3f3218aaf59b30}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_CAN2\_TX\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN2\_TX\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_CAN2\_TX\_ISR\_ID@{OSEE\_CORTEX\_M\_CAN2\_TX\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_CAN2\_TX\_ISR\_ID}{OSEE\_CORTEX\_M\_CAN2\_TX\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a26e7905dfb53a5503a3f3218aaf59b30} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CAN2\+\_\+\+TX\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_abf93858ddba2e27120f65f57fd6ab425}{OSEE\_CORTEX\_M\_INT\_3F\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a9846bf7b9604db745f12e7fc14165bb5}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_CRYP\_ISR\_ID@{OSEE\_CORTEX\_M\_CRYP\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_CRYP\_ISR\_ID@{OSEE\_CORTEX\_M\_CRYP\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_CRYP\_ISR\_ID}{OSEE\_CORTEX\_M\_CRYP\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a9846bf7b9604db745f12e7fc14165bb5} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+CRYP\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ad43ebb82c7b075fcd3f4fae4e57a1f5c}{OSEE\_CORTEX\_M\_INT\_4F\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a8a8bcc395e24742567606237f26afb8e}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DCMI\_ISR\_ID@{OSEE\_CORTEX\_M\_DCMI\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DCMI\_ISR\_ID@{OSEE\_CORTEX\_M\_DCMI\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DCMI\_ISR\_ID}{OSEE\_CORTEX\_M\_DCMI\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a8a8bcc395e24742567606237f26afb8e} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DCMI\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_aad2052f22979de986971b046c9402b3b}{OSEE\_CORTEX\_M\_INT\_4E\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ad8e12bc7fd1dba8398f9d4aee9368789}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA1\_S0\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S0\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA1\_S0\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S0\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA1\_S0\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA1\_S0\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ad8e12bc7fd1dba8398f9d4aee9368789} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S0\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_aa22db19b1257c5545a510d58b3e41357}{OSEE\_CORTEX\_M\_INT\_0B\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ac9fa3eb4501f25a31158f9fb1bf8c934}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA1\_S1\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S1\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA1\_S1\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S1\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA1\_S1\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA1\_S1\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ac9fa3eb4501f25a31158f9fb1bf8c934} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S1\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a7b659e92e757338aa57e80a7d629cd22}{OSEE\_CORTEX\_M\_INT\_0C\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a7b5f471cf519bd0d0cdd13b56802fa8c}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA1\_S2\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S2\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA1\_S2\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S2\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA1\_S2\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA1\_S2\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a7b5f471cf519bd0d0cdd13b56802fa8c} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S2\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a76c3617d62c852ae46a1d2c7f869947c}{OSEE\_CORTEX\_M\_INT\_0D\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ac48308094c4318be102f08f4c1703672}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA1\_S3\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S3\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA1\_S3\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S3\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA1\_S3\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA1\_S3\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ac48308094c4318be102f08f4c1703672} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S3\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a429690d1a01b46c83edce55f57745fb2}{OSEE\_CORTEX\_M\_INT\_0E\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a076c89f50f1c99a6dfe7a4f949491270}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA1\_S4\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S4\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA1\_S4\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S4\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA1\_S4\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA1\_S4\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a076c89f50f1c99a6dfe7a4f949491270} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S4\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a7eb411cc150446df9052aee8f74362f6}{OSEE\_CORTEX\_M\_INT\_0F\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a28acb584c6de8c2a2b907f8af79c17b1}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA1\_S5\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S5\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA1\_S5\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S5\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA1\_S5\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA1\_S5\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a28acb584c6de8c2a2b907f8af79c17b1} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S5\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a5e291bc8de3f0dc649798136935bf0cb}{OSEE\_CORTEX\_M\_INT\_10\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_af39f8571e416a859f4386fb9bd1aab61}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA1\_S6\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S6\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA1\_S6\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S6\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA1\_S6\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA1\_S6\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_af39f8571e416a859f4386fb9bd1aab61} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S6\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a9fb00f2d1e5395c4c64cd4d1469ff945}{OSEE\_CORTEX\_M\_INT\_11\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a29be379f5cd4c1adb7f691e14aa702ce}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA1\_S7\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S7\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA1\_S7\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA1\_S7\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA1\_S7\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA1\_S7\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a29be379f5cd4c1adb7f691e14aa702ce} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA1\+\_\+\+S7\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a859e6521c0883b8439b61cc8839394d7}{OSEE\_CORTEX\_M\_INT\_2F\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a61107edace52aa609250e92fe3ef08c1}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA2\_S0\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S0\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA2\_S0\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S0\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA2\_S0\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA2\_S0\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a61107edace52aa609250e92fe3ef08c1} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S0\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a6d249136ac0600fbc29b956ab263a16b}{OSEE\_CORTEX\_M\_INT\_38\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_afe9090ed189893c47290ce508c5884ba}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA2\_S1\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S1\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA2\_S1\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S1\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA2\_S1\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA2\_S1\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_afe9090ed189893c47290ce508c5884ba} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S1\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a016fbd2cc9586c3e6e9e6b82b8121193}{OSEE\_CORTEX\_M\_INT\_39\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a7cd5330a0e5e5ffb106954f2bc2f9c5c}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA2\_S2\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S2\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA2\_S2\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S2\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA2\_S2\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA2\_S2\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a7cd5330a0e5e5ffb106954f2bc2f9c5c} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S2\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a721be96657e36772459e33f99d0977d9}{OSEE\_CORTEX\_M\_INT\_3A\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_af2c572a8b5eb13b093ade40e5417638d}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA2\_S3\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S3\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA2\_S3\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S3\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA2\_S3\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA2\_S3\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_af2c572a8b5eb13b093ade40e5417638d} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S3\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ad6159434a4e32b45d77631f02608e3ad}{OSEE\_CORTEX\_M\_INT\_3B\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a62ed68a23f78b3b87d5d05213d0d9404}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA2\_S4\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S4\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA2\_S4\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S4\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA2\_S4\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA2\_S4\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a62ed68a23f78b3b87d5d05213d0d9404} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S4\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a2082855ea543cd8e5f856a32c39a8983}{OSEE\_CORTEX\_M\_INT\_3C\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a9a7425d0acd9783b98ee39603ce136ef}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA2\_S5\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S5\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA2\_S5\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S5\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA2\_S5\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA2\_S5\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a9a7425d0acd9783b98ee39603ce136ef} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S5\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a2ffd5499f86966a012f51dbdb8a43ce8}{OSEE\_CORTEX\_M\_INT\_44\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a269fa6753be7d5e9dcb06e0ab7a5cb32}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA2\_S6\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S6\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA2\_S6\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S6\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA2\_S6\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA2\_S6\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a269fa6753be7d5e9dcb06e0ab7a5cb32} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S6\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a740e987ce8a4c5aa4659e0095bd120c3}{OSEE\_CORTEX\_M\_INT\_45\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a9889d9472e2515427497bb1bea63fb1f}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_DMA2\_S7\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S7\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_DMA2\_S7\_ISR\_ID@{OSEE\_CORTEX\_M\_DMA2\_S7\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_DMA2\_S7\_ISR\_ID}{OSEE\_CORTEX\_M\_DMA2\_S7\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a9889d9472e2515427497bb1bea63fb1f} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DMA2\+\_\+\+S7\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a9132a025037476b1500dfa001323418c}{OSEE\_CORTEX\_M\_INT\_46\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ac50561bfc30f74c192570b95a1f8899b}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_ETH\_ISR\_ID@{OSEE\_CORTEX\_M\_ETH\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_ETH\_ISR\_ID@{OSEE\_CORTEX\_M\_ETH\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_ETH\_ISR\_ID}{OSEE\_CORTEX\_M\_ETH\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ac50561bfc30f74c192570b95a1f8899b} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+ETH\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a636ca66a262eff322f3a15ff64df52f2}{OSEE\_CORTEX\_M\_INT\_3D\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ae9739933aace93cfc19b0c079e826b68}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_ETH\_WKUP\_ISR\_ID@{OSEE\_CORTEX\_M\_ETH\_WKUP\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_ETH\_WKUP\_ISR\_ID@{OSEE\_CORTEX\_M\_ETH\_WKUP\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_ETH\_WKUP\_ISR\_ID}{OSEE\_CORTEX\_M\_ETH\_WKUP\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ae9739933aace93cfc19b0c079e826b68} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+ETH\+\_\+\+WKUP\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_aedb18133c959f0fbf57f3124ff255303}{OSEE\_CORTEX\_M\_INT\_3E\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a8c0e899b3b19545b5b38ea283eb17316}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_EXTI0\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI0\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_EXTI0\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI0\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_EXTI0\_ISR\_ID}{OSEE\_CORTEX\_M\_EXTI0\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a8c0e899b3b19545b5b38ea283eb17316} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI0\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_aa39d6bcc84dfcd115d8c58b2918ffb3b}{OSEE\_CORTEX\_M\_INT\_06\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_aa8996a6beb1cdb6d5083701735ec050b}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_EXTI15\_10\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI15\_10\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_EXTI15\_10\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI15\_10\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_EXTI15\_10\_ISR\_ID}{OSEE\_CORTEX\_M\_EXTI15\_10\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_aa8996a6beb1cdb6d5083701735ec050b} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI15\+\_\+10\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ad0063cc7ea410fbdddfba46b4f2a938d}{OSEE\_CORTEX\_M\_INT\_28\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_af5da6608193110f972543a9b895a3ac7}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_EXTI1\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI1\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_EXTI1\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI1\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_EXTI1\_ISR\_ID}{OSEE\_CORTEX\_M\_EXTI1\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_af5da6608193110f972543a9b895a3ac7} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI1\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a015791155b0b7a12ad78c64d88616997}{OSEE\_CORTEX\_M\_INT\_07\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a674fccdf865f578b44d54c6610cb111c}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_EXTI2\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI2\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_EXTI2\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI2\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_EXTI2\_ISR\_ID}{OSEE\_CORTEX\_M\_EXTI2\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a674fccdf865f578b44d54c6610cb111c} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI2\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_aa281a9fc468d42b70ea0c55b9a04e999}{OSEE\_CORTEX\_M\_INT\_08\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a8638241ae392c8f8352631dfb1da607e}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_EXTI3\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI3\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_EXTI3\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI3\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_EXTI3\_ISR\_ID}{OSEE\_CORTEX\_M\_EXTI3\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a8638241ae392c8f8352631dfb1da607e} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI3\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_aced4dbeee0642f70bb260c0c498eff15}{OSEE\_CORTEX\_M\_INT\_09\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_aecb43aebed2372b8d3d898f6d43ba93d}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_EXTI4\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI4\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_EXTI4\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI4\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_EXTI4\_ISR\_ID}{OSEE\_CORTEX\_M\_EXTI4\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_aecb43aebed2372b8d3d898f6d43ba93d} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI4\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab3812bf2a5b1ba96ee89bab42ff1b86c}{OSEE\_CORTEX\_M\_INT\_0A\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ad829551d7efc8ca29b5c76c3fb9ca8db}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_EXTI9\_5\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI9\_5\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_EXTI9\_5\_ISR\_ID@{OSEE\_CORTEX\_M\_EXTI9\_5\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_EXTI9\_5\_ISR\_ID}{OSEE\_CORTEX\_M\_EXTI9\_5\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ad829551d7efc8ca29b5c76c3fb9ca8db} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+EXTI9\+\_\+5\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ae1bf5c128198d0c4544eec9fc336c963}{OSEE\_CORTEX\_M\_INT\_17\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a1b92b3e6533e2fbdc0451963aac34bdf}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_FLASH\_ISR\_ID@{OSEE\_CORTEX\_M\_FLASH\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_FLASH\_ISR\_ID@{OSEE\_CORTEX\_M\_FLASH\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_FLASH\_ISR\_ID}{OSEE\_CORTEX\_M\_FLASH\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a1b92b3e6533e2fbdc0451963aac34bdf} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+FLASH\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a515a54ff449a0697ad27c6871de4a3a0}{OSEE\_CORTEX\_M\_INT\_04\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a84359366c29f0ed3206f1fae7b99363a}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_FPU\_ISR\_ID@{OSEE\_CORTEX\_M\_FPU\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_FPU\_ISR\_ID@{OSEE\_CORTEX\_M\_FPU\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_FPU\_ISR\_ID}{OSEE\_CORTEX\_M\_FPU\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a84359366c29f0ed3206f1fae7b99363a} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+FPU\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ad74710eaf3a0a811f4e9c5e231ab07e7}{OSEE\_CORTEX\_M\_INT\_51\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_af5d00b85c56d254012b9e37d94a27314}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_FSMC\_ISR\_ID@{OSEE\_CORTEX\_M\_FSMC\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_FSMC\_ISR\_ID@{OSEE\_CORTEX\_M\_FSMC\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_FSMC\_ISR\_ID}{OSEE\_CORTEX\_M\_FSMC\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_af5d00b85c56d254012b9e37d94a27314} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+FSMC\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a17af3acb673a054d69251a305a117509}{OSEE\_CORTEX\_M\_INT\_30\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a0cc5fb78bf0962350cd876f4878d7c0f}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_HASH\_RNG\_ISR\_ID@{OSEE\_CORTEX\_M\_HASH\_RNG\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_HASH\_RNG\_ISR\_ID@{OSEE\_CORTEX\_M\_HASH\_RNG\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_HASH\_RNG\_ISR\_ID}{OSEE\_CORTEX\_M\_HASH\_RNG\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a0cc5fb78bf0962350cd876f4878d7c0f} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+HASH\+\_\+\+RNG\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a5a5e46820ca99bfa9f7d232eac6c0338}{OSEE\_CORTEX\_M\_INT\_50\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ab4f8fc7ae791c293a745b496a3f9e231}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_I2C1\_ER\_ISR\_ID@{OSEE\_CORTEX\_M\_I2C1\_ER\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_I2C1\_ER\_ISR\_ID@{OSEE\_CORTEX\_M\_I2C1\_ER\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_I2C1\_ER\_ISR\_ID}{OSEE\_CORTEX\_M\_I2C1\_ER\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ab4f8fc7ae791c293a745b496a3f9e231} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+I2\+C1\+\_\+\+ER\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a23f79166e21bb23350f01b291b738ac0}{OSEE\_CORTEX\_M\_INT\_20\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_acf53c2344b8aa3f1adfa569c321c2742}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_I2C1\_EV\_ISR\_ID@{OSEE\_CORTEX\_M\_I2C1\_EV\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_I2C1\_EV\_ISR\_ID@{OSEE\_CORTEX\_M\_I2C1\_EV\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_I2C1\_EV\_ISR\_ID}{OSEE\_CORTEX\_M\_I2C1\_EV\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_acf53c2344b8aa3f1adfa569c321c2742} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+I2\+C1\+\_\+\+EV\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_afa28efe16a98296f49d1f9b096130ed0}{OSEE\_CORTEX\_M\_INT\_1F\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a703123d83409c0c52f3e93d8b3092f14}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_I2C2\_ER\_ISR\_ID@{OSEE\_CORTEX\_M\_I2C2\_ER\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_I2C2\_ER\_ISR\_ID@{OSEE\_CORTEX\_M\_I2C2\_ER\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_I2C2\_ER\_ISR\_ID}{OSEE\_CORTEX\_M\_I2C2\_ER\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a703123d83409c0c52f3e93d8b3092f14} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+I2\+C2\+\_\+\+ER\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a1ce03f23aec3d399a92f5d36326bfbe6}{OSEE\_CORTEX\_M\_INT\_22\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a4eac63f477e4b95c2b01973655829b28}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_I2C2\_EV\_ISR\_ID@{OSEE\_CORTEX\_M\_I2C2\_EV\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_I2C2\_EV\_ISR\_ID@{OSEE\_CORTEX\_M\_I2C2\_EV\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_I2C2\_EV\_ISR\_ID}{OSEE\_CORTEX\_M\_I2C2\_EV\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a4eac63f477e4b95c2b01973655829b28} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+I2\+C2\+\_\+\+EV\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a252b540b768ce152ca245c04cab4b664}{OSEE\_CORTEX\_M\_INT\_21\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a71243d10651fb2577eefa28992a321fd}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_I2C3\_ER\_ISR\_ID@{OSEE\_CORTEX\_M\_I2C3\_ER\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_I2C3\_ER\_ISR\_ID@{OSEE\_CORTEX\_M\_I2C3\_ER\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_I2C3\_ER\_ISR\_ID}{OSEE\_CORTEX\_M\_I2C3\_ER\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a71243d10651fb2577eefa28992a321fd} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+I2\+C3\+\_\+\+ER\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a32080a99d62c55a3c574c95b518796de}{OSEE\_CORTEX\_M\_INT\_49\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ad18ab876a0d38f252d3104b5b2bd382e}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_I2C3\_EV\_ISR\_ID@{OSEE\_CORTEX\_M\_I2C3\_EV\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_I2C3\_EV\_ISR\_ID@{OSEE\_CORTEX\_M\_I2C3\_EV\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_I2C3\_EV\_ISR\_ID}{OSEE\_CORTEX\_M\_I2C3\_EV\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ad18ab876a0d38f252d3104b5b2bd382e} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+I2\+C3\+\_\+\+EV\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a7f935377438d592dbb884bbe0c51e3a6}{OSEE\_CORTEX\_M\_INT\_48\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a8e223a7ebf7e0f8a6ac35f92cba2331f}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_OTG\_FS\_ISR\_ID@{OSEE\_CORTEX\_M\_OTG\_FS\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_OTG\_FS\_ISR\_ID@{OSEE\_CORTEX\_M\_OTG\_FS\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_OTG\_FS\_ISR\_ID}{OSEE\_CORTEX\_M\_OTG\_FS\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a8e223a7ebf7e0f8a6ac35f92cba2331f} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OTG\+\_\+\+FS\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a2b37f7226eb45c2d6e306e3d47827325}{OSEE\_CORTEX\_M\_INT\_43\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ac6cfa7e6bcee2240aea78fc28f031ca0}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_OTG\_FS\_WKUP\_ISR\_ID@{OSEE\_CORTEX\_M\_OTG\_FS\_WKUP\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_OTG\_FS\_WKUP\_ISR\_ID@{OSEE\_CORTEX\_M\_OTG\_FS\_WKUP\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_OTG\_FS\_WKUP\_ISR\_ID}{OSEE\_CORTEX\_M\_OTG\_FS\_WKUP\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ac6cfa7e6bcee2240aea78fc28f031ca0} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OTG\+\_\+\+FS\+\_\+\+WKUP\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a3ad960af1a30ea2800ab82d4f4fe6df4}{OSEE\_CORTEX\_M\_INT\_2A\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a642963b32349acb35b6ea2dc6825e16c}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_OTG\_HS\_EP1\_IN\_ISR\_ID@{OSEE\_CORTEX\_M\_OTG\_HS\_EP1\_IN\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_OTG\_HS\_EP1\_IN\_ISR\_ID@{OSEE\_CORTEX\_M\_OTG\_HS\_EP1\_IN\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_OTG\_HS\_EP1\_IN\_ISR\_ID}{OSEE\_CORTEX\_M\_OTG\_HS\_EP1\_IN\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a642963b32349acb35b6ea2dc6825e16c} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OTG\+\_\+\+HS\+\_\+\+EP1\+\_\+\+IN\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a1e40f3f922cfea42a5b48f3240d15cc2}{OSEE\_CORTEX\_M\_INT\_4B\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ab02960ce4f37180dd9b037fe7b070c34}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_OTG\_HS\_EP1\_OUT\_ISR\_ID@{OSEE\_CORTEX\_M\_OTG\_HS\_EP1\_OUT\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_OTG\_HS\_EP1\_OUT\_ISR\_ID@{OSEE\_CORTEX\_M\_OTG\_HS\_EP1\_OUT\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_OTG\_HS\_EP1\_OUT\_ISR\_ID}{OSEE\_CORTEX\_M\_OTG\_HS\_EP1\_OUT\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ab02960ce4f37180dd9b037fe7b070c34} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OTG\+\_\+\+HS\+\_\+\+EP1\+\_\+\+OUT\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ada1ddcfc9af62359b6158ec7584732a0}{OSEE\_CORTEX\_M\_INT\_4A\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a85593616f3952fa619103145a6163266}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_OTG\_HS\_ISR\_ID@{OSEE\_CORTEX\_M\_OTG\_HS\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_OTG\_HS\_ISR\_ID@{OSEE\_CORTEX\_M\_OTG\_HS\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_OTG\_HS\_ISR\_ID}{OSEE\_CORTEX\_M\_OTG\_HS\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a85593616f3952fa619103145a6163266} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OTG\+\_\+\+HS\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a657bb12168bf1f88c050cf54c6364f3f}{OSEE\_CORTEX\_M\_INT\_4D\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_accef072cd3541b9d5e835581b79e2fb2}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_OTG\_HS\_WKUP\_ISR\_ID@{OSEE\_CORTEX\_M\_OTG\_HS\_WKUP\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_OTG\_HS\_WKUP\_ISR\_ID@{OSEE\_CORTEX\_M\_OTG\_HS\_WKUP\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_OTG\_HS\_WKUP\_ISR\_ID}{OSEE\_CORTEX\_M\_OTG\_HS\_WKUP\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_accef072cd3541b9d5e835581b79e2fb2} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OTG\+\_\+\+HS\+\_\+\+WKUP\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ad9d7acd526dc0001607c633e1d869053}{OSEE\_CORTEX\_M\_INT\_4C\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_aa1c438e2fd32198e5a2b3b1bea1aece0}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_PVD\_ISR\_ID@{OSEE\_CORTEX\_M\_PVD\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_PVD\_ISR\_ID@{OSEE\_CORTEX\_M\_PVD\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_PVD\_ISR\_ID}{OSEE\_CORTEX\_M\_PVD\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_aa1c438e2fd32198e5a2b3b1bea1aece0} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+PVD\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ae1c539e1c73b73ff916565213b485159}{OSEE\_CORTEX\_M\_INT\_01\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ab29257a40a3ea0046b5fc8a2996ab410}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_RCC\_ISR\_ID@{OSEE\_CORTEX\_M\_RCC\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_RCC\_ISR\_ID@{OSEE\_CORTEX\_M\_RCC\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_RCC\_ISR\_ID}{OSEE\_CORTEX\_M\_RCC\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ab29257a40a3ea0046b5fc8a2996ab410} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+RCC\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_aa17c2583a8a8e331d50f874b753d3a07}{OSEE\_CORTEX\_M\_INT\_05\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_aead19e81667a88f752f147d72d302883}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_RTC\_ALARM\_ISR\_ID@{OSEE\_CORTEX\_M\_RTC\_ALARM\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_RTC\_ALARM\_ISR\_ID@{OSEE\_CORTEX\_M\_RTC\_ALARM\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_RTC\_ALARM\_ISR\_ID}{OSEE\_CORTEX\_M\_RTC\_ALARM\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_aead19e81667a88f752f147d72d302883} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+RTC\+\_\+\+ALARM\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a82d155789a2904623becb88ec25c02b0}{OSEE\_CORTEX\_M\_INT\_29\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a6fae2df316dead9d96c727fa73783bd6}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_RTC\_WKUP\_ISR\_ID@{OSEE\_CORTEX\_M\_RTC\_WKUP\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_RTC\_WKUP\_ISR\_ID@{OSEE\_CORTEX\_M\_RTC\_WKUP\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_RTC\_WKUP\_ISR\_ID}{OSEE\_CORTEX\_M\_RTC\_WKUP\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a6fae2df316dead9d96c727fa73783bd6} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+RTC\+\_\+\+WKUP\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a327a9d3f76975bc8fbec9746ce8fc8fe}{OSEE\_CORTEX\_M\_INT\_03\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a9802acc88664b91a846f3c534fd92d32}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_SDIO\_ISR\_ID@{OSEE\_CORTEX\_M\_SDIO\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_SDIO\_ISR\_ID@{OSEE\_CORTEX\_M\_SDIO\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_SDIO\_ISR\_ID}{OSEE\_CORTEX\_M\_SDIO\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a9802acc88664b91a846f3c534fd92d32} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SDIO\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_af3ae0ad2fb445ffa30744c7f0668cb85}{OSEE\_CORTEX\_M\_INT\_31\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a45abbe4e81e5a8c794c4ce8edeabc2b9}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_SPI1\_ISR\_ID@{OSEE\_CORTEX\_M\_SPI1\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_SPI1\_ISR\_ID@{OSEE\_CORTEX\_M\_SPI1\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_SPI1\_ISR\_ID}{OSEE\_CORTEX\_M\_SPI1\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a45abbe4e81e5a8c794c4ce8edeabc2b9} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SPI1\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a10e0484f98ec3bd0baccb6adaff5716e}{OSEE\_CORTEX\_M\_INT\_23\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ad5c3b8f1b4e795ae86df06174200f55d}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_SPI2\_ISR\_ID@{OSEE\_CORTEX\_M\_SPI2\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_SPI2\_ISR\_ID@{OSEE\_CORTEX\_M\_SPI2\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_SPI2\_ISR\_ID}{OSEE\_CORTEX\_M\_SPI2\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ad5c3b8f1b4e795ae86df06174200f55d} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SPI2\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ae0d80a39d3851abc59e918dd85ccb52b}{OSEE\_CORTEX\_M\_INT\_24\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a34c2c304387018b3f54a7655925bae88}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_SPI3\_ISR\_ID@{OSEE\_CORTEX\_M\_SPI3\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_SPI3\_ISR\_ID@{OSEE\_CORTEX\_M\_SPI3\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_SPI3\_ISR\_ID}{OSEE\_CORTEX\_M\_SPI3\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a34c2c304387018b3f54a7655925bae88} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SPI3\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a7534bfc73f0a481156d395c67e64b95d}{OSEE\_CORTEX\_M\_INT\_33\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a21b209c6021afad0eeec2529c62c1b3c}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TAMP\_STAMP\_ISR\_ID@{OSEE\_CORTEX\_M\_TAMP\_STAMP\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TAMP\_STAMP\_ISR\_ID@{OSEE\_CORTEX\_M\_TAMP\_STAMP\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TAMP\_STAMP\_ISR\_ID}{OSEE\_CORTEX\_M\_TAMP\_STAMP\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a21b209c6021afad0eeec2529c62c1b3c} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TAMP\+\_\+\+STAMP\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_abfde9b46abc0ec1516edd8bfe64e98a7}{OSEE\_CORTEX\_M\_INT\_02\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_afcc43e9112b28cd4b231476b17021c32}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM1\_BRK\_TIM9\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM1\_BRK\_TIM9\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM1\_BRK\_TIM9\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM1\_BRK\_TIM9\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM1\_BRK\_TIM9\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM1\_BRK\_TIM9\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_afcc43e9112b28cd4b231476b17021c32} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM1\+\_\+\+BRK\+\_\+\+TIM9\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a3f01489ae9f48cbc0dde1a38d1fad13d}{OSEE\_CORTEX\_M\_INT\_18\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_af9e1ecc54a503cf2b5914a095af23186}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM1\_CC\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM1\_CC\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM1\_CC\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM1\_CC\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM1\_CC\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM1\_CC\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_af9e1ecc54a503cf2b5914a095af23186} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM1\+\_\+\+CC\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_acb0d7bbf0e35e8adff3074c3afe31923}{OSEE\_CORTEX\_M\_INT\_1B\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ab91c8446e2fe4ff580970813ca9c6da9}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM1\_TRG\_COM\_TIM11\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM1\_TRG\_COM\_TIM11\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM1\_TRG\_COM\_TIM11\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM1\_TRG\_COM\_TIM11\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM1\_TRG\_COM\_TIM11\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM1\_TRG\_COM\_TIM11\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ab91c8446e2fe4ff580970813ca9c6da9} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM1\+\_\+\+TRG\+\_\+\+COM\+\_\+\+TIM11\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ada1a338d9b2b7f1147e6614f12f842f3}{OSEE\_CORTEX\_M\_INT\_1A\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a55004532dba80747e9b0d5c6ba2c2603}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM1\_UP\_TIM10\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM1\_UP\_TIM10\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM1\_UP\_TIM10\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM1\_UP\_TIM10\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM1\_UP\_TIM10\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM1\_UP\_TIM10\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a55004532dba80747e9b0d5c6ba2c2603} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM1\+\_\+\+UP\+\_\+\+TIM10\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_af2fb43eed5bf00b8e750582fd47daef1}{OSEE\_CORTEX\_M\_INT\_19\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a3b198a0ce77d422586128a941be944a6}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM2\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM2\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM2\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM2\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM2\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM2\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a3b198a0ce77d422586128a941be944a6} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM2\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a3a4796106c9a34c6b5a38d8d293a5dc7}{OSEE\_CORTEX\_M\_INT\_1C\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a535e5e162bfa9da354b45b5770a15351}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM3\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM3\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM3\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM3\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM3\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM3\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a535e5e162bfa9da354b45b5770a15351} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM3\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a10243f5ab9b01f609e99cb9b81993657}{OSEE\_CORTEX\_M\_INT\_1D\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a49b0b8c2252dc79a9d0e89804796b55e}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM4\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM4\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM4\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM4\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM4\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM4\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a49b0b8c2252dc79a9d0e89804796b55e} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM4\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_abd88230fe6dc4bd5e01ad07cbac0c1ec}{OSEE\_CORTEX\_M\_INT\_1E\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_af81dc2ba8f20e49bb6d381f24971b950}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM5\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM5\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM5\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM5\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM5\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM5\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_af81dc2ba8f20e49bb6d381f24971b950} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM5\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a2e4ac5012334ad4ad5e10c314ce1c464}{OSEE\_CORTEX\_M\_INT\_32\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a74983c88052ea863df91ae2488407b55}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM6\_DAC\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM6\_DAC\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM6\_DAC\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM6\_DAC\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM6\_DAC\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM6\_DAC\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a74983c88052ea863df91ae2488407b55} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM6\+\_\+\+DAC\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a5097ae37ba9d13d5e3cbc42836f98c5a}{OSEE\_CORTEX\_M\_INT\_36\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a5f8f5bc6589302bbe598deafce76ba1f}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM7\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM7\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM7\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM7\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM7\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM7\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a5f8f5bc6589302bbe598deafce76ba1f} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM7\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a15e991c4628e3dc08c0f86d75cf537ca}{OSEE\_CORTEX\_M\_INT\_37\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_aef82a8bb8faa3037c4ffea2759c48381}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM8\_BRK\_TIM12\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM8\_BRK\_TIM12\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM8\_BRK\_TIM12\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM8\_BRK\_TIM12\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM8\_BRK\_TIM12\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM8\_BRK\_TIM12\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_aef82a8bb8faa3037c4ffea2759c48381} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM8\+\_\+\+BRK\+\_\+\+TIM12\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a8291bd4311e9c8999f0e9f9281abb74e}{OSEE\_CORTEX\_M\_INT\_2B\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_aa87222c7ebf47990cafdcf5058788e5b}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM8\_CC\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM8\_CC\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM8\_CC\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM8\_CC\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM8\_CC\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM8\_CC\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_aa87222c7ebf47990cafdcf5058788e5b} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM8\+\_\+\+CC\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a8468fa2955bf77738a235d25cd5a5261}{OSEE\_CORTEX\_M\_INT\_2E\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_afeab5ed0fced715e27ddfc8bd2d9e8f6}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM8\_TRG\_COM\_TIM14\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM8\_TRG\_COM\_TIM14\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM8\_TRG\_COM\_TIM14\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM8\_TRG\_COM\_TIM14\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM8\_TRG\_COM\_TIM14\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM8\_TRG\_COM\_TIM14\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_afeab5ed0fced715e27ddfc8bd2d9e8f6} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM8\+\_\+\+TRG\+\_\+\+COM\+\_\+\+TIM14\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ae223d870e627d6b12b1cdb68869217a7}{OSEE\_CORTEX\_M\_INT\_2D\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a53c0d2d02781d370f36405413e95a7d2}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_TIM8\_UP\_TIM13\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM8\_UP\_TIM13\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_TIM8\_UP\_TIM13\_ISR\_ID@{OSEE\_CORTEX\_M\_TIM8\_UP\_TIM13\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_TIM8\_UP\_TIM13\_ISR\_ID}{OSEE\_CORTEX\_M\_TIM8\_UP\_TIM13\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a53c0d2d02781d370f36405413e95a7d2} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+TIM8\+\_\+\+UP\+\_\+\+TIM13\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a2d1e4f175026c208c12a8e4afeab45e6}{OSEE\_CORTEX\_M\_INT\_2C\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a5784a8dd3b02ebfc14900fdf06c69651}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_UART4\_ISR\_ID@{OSEE\_CORTEX\_M\_UART4\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_UART4\_ISR\_ID@{OSEE\_CORTEX\_M\_UART4\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_UART4\_ISR\_ID}{OSEE\_CORTEX\_M\_UART4\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a5784a8dd3b02ebfc14900fdf06c69651} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+UART4\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a9f7b9198c48d00d9c1e8df5614816142}{OSEE\_CORTEX\_M\_INT\_34\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a859c4fdfd19b8f8fcacfd161b7cb32a4}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_UART5\_ISR\_ID@{OSEE\_CORTEX\_M\_UART5\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_UART5\_ISR\_ID@{OSEE\_CORTEX\_M\_UART5\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_UART5\_ISR\_ID}{OSEE\_CORTEX\_M\_UART5\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a859c4fdfd19b8f8fcacfd161b7cb32a4} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+UART5\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ae5844ce5738b8b9ba36b6916a589cc7e}{OSEE\_CORTEX\_M\_INT\_35\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a0459dabe62bd91d84fe03f3b50e3a810}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_USART1\_ISR\_ID@{OSEE\_CORTEX\_M\_USART1\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_USART1\_ISR\_ID@{OSEE\_CORTEX\_M\_USART1\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_USART1\_ISR\_ID}{OSEE\_CORTEX\_M\_USART1\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a0459dabe62bd91d84fe03f3b50e3a810} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+USART1\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_ac350c3509305a5864af670076e35888d}{OSEE\_CORTEX\_M\_INT\_25\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_a2a739f111d73b0c5797799e92991efca}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_USART2\_ISR\_ID@{OSEE\_CORTEX\_M\_USART2\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_USART2\_ISR\_ID@{OSEE\_CORTEX\_M\_USART2\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_USART2\_ISR\_ID}{OSEE\_CORTEX\_M\_USART2\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_a2a739f111d73b0c5797799e92991efca} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+USART2\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a10b22b5f18ae341cb25223014deec452}{OSEE\_CORTEX\_M\_INT\_26\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_ae57977518527041cf8a9be0e4a443972}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_USART3\_ISR\_ID@{OSEE\_CORTEX\_M\_USART3\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_USART3\_ISR\_ID@{OSEE\_CORTEX\_M\_USART3\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_USART3\_ISR\_ID}{OSEE\_CORTEX\_M\_USART3\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_ae57977518527041cf8a9be0e4a443972} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+USART3\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a8224a4ca89ba5c5e7533e4cfd540cf83}{OSEE\_CORTEX\_M\_INT\_27\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_aa5f34f415fe00007ef34773cf899d2d4}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_USART6\_ISR\_ID@{OSEE\_CORTEX\_M\_USART6\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_USART6\_ISR\_ID@{OSEE\_CORTEX\_M\_USART6\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_USART6\_ISR\_ID}{OSEE\_CORTEX\_M\_USART6\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_aa5f34f415fe00007ef34773cf899d2d4} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+USART6\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a3c977f13c094c726d75b528e13b670b1}{OSEE\_CORTEX\_M\_INT\_47\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\Hypertarget{ee__stm32f4__irq_8h_afaef225baf6e49acccf5c72be9191c33}\index{ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}!OSEE\_CORTEX\_M\_WWDG\_ISR\_ID@{OSEE\_CORTEX\_M\_WWDG\_ISR\_ID}}
+\index{OSEE\_CORTEX\_M\_WWDG\_ISR\_ID@{OSEE\_CORTEX\_M\_WWDG\_ISR\_ID}!ee\_stm32f4\_irq.h@{ee\_stm32f4\_irq.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CORTEX\_M\_WWDG\_ISR\_ID}{OSEE\_CORTEX\_M\_WWDG\_ISR\_ID}}
+{\footnotesize\ttfamily \label{ee__stm32f4__irq_8h_afaef225baf6e49acccf5c72be9191c33} 
+\#define OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+WWDG\+\_\+\+ISR\+\_\+\+ID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__cortex__m__irq_8h_a793cdb42744c30256572a2521858098e}{OSEE\_CORTEX\_M\_INT\_00\_NUM}}\ +\ \mbox{\hyperlink{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}{OSEE\_CORTEX\_M\_OVERALL\_EXC\_NUM}}\ \ \ \(\backslash\)}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}

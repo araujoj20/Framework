@@ -1,0 +1,417 @@
+\doxysection{Task Primitives }
+\hypertarget{group__primitives-task}{}\label{group__primitives-task}\index{Task Primitives@{Task Primitives}}
+
+
+The Task Primitives are related to the start and stop of Tasks.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__primitives-task_ga4e7c7014b29fafc9f04982c4b97512c5}{INVALID\+\_\+\+TASK}}~((\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}})-\/1)
+\begin{DoxyCompactList}\small\item\em This is the invalid task value. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-task_ga6ec57cab346cf26d69aa233e351607ef}{OSEE\+\_\+\+ISR2\+\_\+\+PRIO\+\_\+\+BIT}}~  ( (\mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}})1U $<$$<$ ( (sizeof(\mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}})\texorpdfstring{$\ast$}{*}((size\+\_\+t)CHAR\+\_\+\+BIT)) -\/ ((size\+\_\+t)1U) ) )
+\begin{DoxyCompactList}\small\item\em Most significant bit of a priority. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-task_ga396a5877823a792dc34d5ab99a9d20a8}{OSEE\+\_\+\+ISR\+\_\+\+ALL\+\_\+\+PRIO}}~((\mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}})-\/1)
+\begin{DoxyCompactList}\small\item\em Bit mask for all priority bits. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-task_ga14ccd8f4ce95fa715c864835bce984ad}{Declare\+Task}}(Task\+To\+Be\+Declared)
+\begin{DoxyCompactList}\small\item\em Task Declaration. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-task_gab6f61d38161c8ec10230950d7476f77c}{TASK}}(Task\+To\+Be\+Defined)
+\begin{DoxyCompactList}\small\item\em Task Definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{ee__api__types_8h_a9e73ce321dc7375392297601f51e9c72}{OSEE\+\_\+\+TASK\+\_\+\+ID\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}}
+\begin{DoxyCompactList}\small\item\em Type used for Task IDs. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}} \mbox{\hyperlink{group__primitives-task_ga6ffbd016ea252d177a6fe9449205f641}{Task\+Ref\+Type}}
+\begin{DoxyCompactList}\small\item\em This is a pointer to a \doxylink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{ee__api__types_8h_aaaef40f9b276933d5afbfb578db8d124}{OSEE\+\_\+\+TASK\+\_\+\+PRIO\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}}
+\begin{DoxyCompactList}\small\item\em Type storing task priorities. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{ee__api__types_8h_a1abc43b358b88d0f5adcb1bc0b70f5df}{Os\+EE\+\_\+task\+\_\+status}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \mbox{\hyperlink{group__primitives-task_ga144326ae7f7921d9ae76a57ed02019d8}{Task\+State\+Type}}
+\begin{DoxyCompactList}\small\item\em Task state type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-task_gacd33f94ca57ea3776a0bf73b4ec6963c}{Activate\+Task}} (\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}} Task\+ID)
+\begin{DoxyCompactList}\small\item\em This primitive activates a task Task\+ID. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-task_gaa219f309dc9471326804fda45f2fe449}{Chain\+Task}} (\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}} Task\+ID)
+\begin{DoxyCompactList}\small\item\em Terminates the calling task, and atomically activates the Task\+ID passed as parameter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-task_gaa59687009cf4d45c57eccd0366920e39}{Terminate\+Task}} (void)
+\begin{DoxyCompactList}\small\item\em Terminates the calling task. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-task_gad10ed918ccfb72d1b9fabcb90757a8c7}{Get\+Task\+ID}} (\mbox{\hyperlink{group__primitives-task_ga6ffbd016ea252d177a6fe9449205f641}{Task\+Ref\+Type}} Task\+ID)
+\begin{DoxyCompactList}\small\item\em Returns the Task ID of the running task. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-task_gaa6238f0238d1cc28f6b09841026b31f5}{Get\+Task\+State}} (\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}} Task\+ID, \mbox{\hyperlink{ee__api__types_8h_a32f235aa85e668442086b80728d73ef5}{Task\+State\+Ref\+Type}} State)
+\begin{DoxyCompactList}\small\item\em This primitive returns the state of a given task. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-task_ga51ead35687ec6feef92e3724fe359215}{Schedule}} (void)
+\begin{DoxyCompactList}\small\item\em A rescheduling point typically used in non-\/preemptive tasks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Independently of the task type all kernel primitives that may cause rescheduling may be called in any Tasks\textquotesingle{} sub-\/functions.
+
+Tasks are activated using the primitives \doxylink{group__primitives-task_gacd33f94ca57ea3776a0bf73b4ec6963c}{Activate\+Task()} or \doxylink{group__primitives-task_gaa219f309dc9471326804fda45f2fe449}{Chain\+Task()}. Activating a task means that the activated task, may be selected for scheduling, and may execute one Task Instance. A task activation while a task is already waiting its execution or while being the running task has an effect that depends on how many pending activations the particular Conformance Class can store. BCC1 and ECC1 does not store pending activations, whereas BCC2 and ECC2 can store pending activations if the task has been properly configured in the OIL Configuration file.
+
+Tasks {\itshape must end} with a call either to \doxylink{group__primitives-task_gaa59687009cf4d45c57eccd0366920e39}{Terminate\+Task()} or \doxylink{group__primitives-task_gaa219f309dc9471326804fda45f2fe449}{Chain\+Task()}. Terminating a task without one of these two primitives leads to indefinite results. 
+
+\label{doc-define-members}
+\Hypertarget{group__primitives-task_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__primitives-task_ga14ccd8f4ce95fa715c864835bce984ad}\index{Task Primitives@{Task Primitives}!DeclareTask@{DeclareTask}}
+\index{DeclareTask@{DeclareTask}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{DeclareTask}{DeclareTask}}
+{\footnotesize\ttfamily \label{group__primitives-task_ga14ccd8f4ce95fa715c864835bce984ad} 
+\#define Declare\+Task(\begin{DoxyParamCaption}\item[{}]{Task\+To\+Be\+Declared}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{extern}\ \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}(\textcolor{keywordtype}{void},\ \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\_CODE}})\ Func\#\#TaskToBeDeclared\ (\ \textcolor{keywordtype}{void}\ )}
+
+\end{DoxyCode}
+Declares a task. It is equivalent of an externa declaration of a task function defined with the {\itshape \doxylink{group__primitives-task_gab6f61d38161c8ec10230950d7476f77c}{TASK()}} macro.
+
+This declaration is currently not mandatory because task identifiers are all declared within the code generated by RT-\/\+Druid.
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+3.\+2.\+1
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Task\+To\+Be\+Declared} & The task to be declared. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{group__primitives-task_ga4e7c7014b29fafc9f04982c4b97512c5}\index{Task Primitives@{Task Primitives}!INVALID\_TASK@{INVALID\_TASK}}
+\index{INVALID\_TASK@{INVALID\_TASK}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{INVALID\_TASK}{INVALID\_TASK}}
+{\footnotesize\ttfamily \label{group__primitives-task_ga4e7c7014b29fafc9f04982c4b97512c5} 
+\#define INVALID\+\_\+\+TASK~((\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}})-\/1)}
+
+This is the invalid task value. No task can have this task ID. \doxylink{group__primitives-task_gad10ed918ccfb72d1b9fabcb90757a8c7}{Get\+Task\+ID()} executed in the background task (or idle hook) always provides INVALID\+\_\+\+TASK. \Hypertarget{group__primitives-task_ga6ec57cab346cf26d69aa233e351607ef}\index{Task Primitives@{Task Primitives}!OSEE\_ISR2\_PRIO\_BIT@{OSEE\_ISR2\_PRIO\_BIT}}
+\index{OSEE\_ISR2\_PRIO\_BIT@{OSEE\_ISR2\_PRIO\_BIT}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{OSEE\_ISR2\_PRIO\_BIT}{OSEE\_ISR2\_PRIO\_BIT}}
+{\footnotesize\ttfamily \label{group__primitives-task_ga6ec57cab346cf26d69aa233e351607ef} 
+\#define OSEE\+\_\+\+ISR2\+\_\+\+PRIO\+\_\+\+BIT~  ( (\mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}})1U $<$$<$ ( (sizeof(\mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}})\texorpdfstring{$\ast$}{*}((size\+\_\+t)CHAR\+\_\+\+BIT)) -\/ ((size\+\_\+t)1U) ) )}
+
+This is the most significant bit of a priority Note that a priority that has this bit to 1 is a "{}virtual priority"{} of an ISR2. \Hypertarget{group__primitives-task_ga396a5877823a792dc34d5ab99a9d20a8}\index{Task Primitives@{Task Primitives}!OSEE\_ISR\_ALL\_PRIO@{OSEE\_ISR\_ALL\_PRIO}}
+\index{OSEE\_ISR\_ALL\_PRIO@{OSEE\_ISR\_ALL\_PRIO}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{OSEE\_ISR\_ALL\_PRIO}{OSEE\_ISR\_ALL\_PRIO}}
+{\footnotesize\ttfamily \label{group__primitives-task_ga396a5877823a792dc34d5ab99a9d20a8} 
+\#define OSEE\+\_\+\+ISR\+\_\+\+ALL\+\_\+\+PRIO~((\mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}})-\/1)}
+
+Bit mask for all priority bits. \Hypertarget{group__primitives-task_gab6f61d38161c8ec10230950d7476f77c}\index{Task Primitives@{Task Primitives}!TASK@{TASK}}
+\index{TASK@{TASK}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{TASK}{TASK}}
+{\footnotesize\ttfamily \label{group__primitives-task_gab6f61d38161c8ec10230950d7476f77c} 
+\#define TASK(\begin{DoxyParamCaption}\item[{}]{Task\+To\+Be\+Defined}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}(\textcolor{keywordtype}{void},\ \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\_CODE}})\ Func\#\#TaskToBeDefined\ (\ \textcolor{keywordtype}{void}\ )}
+
+\end{DoxyCode}
+This macro is used when defining the body of a task.
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+3.\+5
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Task\+To\+Be\+Defined} & This is the task keyword used also in the OIL file. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-typedef-members}
+\Hypertarget{group__primitives-task_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}\index{Task Primitives@{Task Primitives}!TaskPrio@{TaskPrio}}
+\index{TaskPrio@{TaskPrio}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{TaskPrio}{TaskPrio}}
+{\footnotesize\ttfamily \label{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008} 
+typedef \mbox{\hyperlink{ee__api__types_8h_aaaef40f9b276933d5afbfb578db8d124}{OSEE\+\_\+\+TASK\+\_\+\+PRIO\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}}}
+
+This type is used to store the priority of both Tasks and ISR2s (please remember that ISR2 are treated like tasks inside ERIKA3).
+
+\doxylink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio} is an integer number (usually n bits=8).
+
+Higher values for higher priorities.
+
+The same variable maps two types of priorities, in two different value ranges\+:
+\begin{DoxyItemize}
+\item The task priority
+\item The ISR2 \textquotesingle{}\textquotesingle{}virtual\textquotesingle{}\textquotesingle{} priority.
+\end{DoxyItemize}
+
+The ISR2 virtual priority maps the interrupt controller prioriries on top of the Task priorities. This is done by allocating the two kind of priorities into two non-\/overlapping ranges.
+
+Choosen the dimension \textquotesingle{}n\textquotesingle{} in bit of the type, the priority space is partitioned in the following way\+:
+
+
+\begin{DoxyItemize}
+\item 0 Idle (Task) Priority,
+\item 1 .. 2\texorpdfstring{$^\wedge$}{\string^}(n-\/1) -\/ 1 Tasks priorities. (value for n=8, 1..127)
+\item 2\texorpdfstring{$^\wedge$}{\string^}(n-\/1) .. 2\texorpdfstring{$^\wedge$}{\string^}n-\/2 ISR2 virtual priorities (typically the hardware priority range is smaller than the size of this range) (value for n=8, 128..254)
+\item 2\texorpdfstring{$^\wedge$}{\string^}n -\/ 1 Special value used to not reenable interrupts (used for internal interrupts when we want prevent preemption, like for system timer or for Scheduling Inter Core Interrupts). (value for n=8, 255)
+\end{DoxyItemize}
+
+ISR2 virtual priorities are mapped to hardware priorities by a HAL porting function in the following way\+:
+
+Virtual priority 2\texorpdfstring{$^\wedge$}{\string^}(n-\/1) == lowest\+\_\+hardware priority Virtual priority 2\texorpdfstring{$^\wedge$}{\string^}(n-\/1) + 1 == second\+\_\+lowest\+\_\+harware\+\_\+priority ... and so on. \Hypertarget{group__primitives-task_ga6ffbd016ea252d177a6fe9449205f641}\index{Task Primitives@{Task Primitives}!TaskRefType@{TaskRefType}}
+\index{TaskRefType@{TaskRefType}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{TaskRefType}{TaskRefType}}
+{\footnotesize\ttfamily \label{group__primitives-task_ga6ffbd016ea252d177a6fe9449205f641} 
+typedef \mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}} \mbox{\hyperlink{group__primitives-task_ga6ffbd016ea252d177a6fe9449205f641}{Task\+Ref\+Type}}}
+
+This type is a pointer to Task IDs, used as parameter of a primitive. \Hypertarget{group__primitives-task_ga144326ae7f7921d9ae76a57ed02019d8}\index{Task Primitives@{Task Primitives}!TaskStateType@{TaskStateType}}
+\index{TaskStateType@{TaskStateType}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{TaskStateType}{TaskStateType}}
+{\footnotesize\ttfamily \label{group__primitives-task_ga144326ae7f7921d9ae76a57ed02019d8} 
+typedef \mbox{\hyperlink{ee__api__types_8h_a1abc43b358b88d0f5adcb1bc0b70f5df}{Os\+EE\+\_\+task\+\_\+status}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \mbox{\hyperlink{group__primitives-task_ga144326ae7f7921d9ae76a57ed02019d8}{Task\+State\+Type}}}
+
+This is the Task\+State type, which is used to store the Task states. Task\+State is returned also by \doxylink{group__primitives-task_gaa6238f0238d1cc28f6b09841026b31f5}{Get\+Task\+State()}, with one of the following values\+: SUSPENDED, READY, RUNNING, WAITING. The complete list of states are defined in the values of \doxylink{ee__api__types_8h_a1abc43b358b88d0f5adcb1bc0b70f5df}{Os\+EE\+\_\+task\+\_\+status}. \Hypertarget{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}\index{Task Primitives@{Task Primitives}!TaskType@{TaskType}}
+\index{TaskType@{TaskType}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{TaskType}{TaskType}}
+{\footnotesize\ttfamily \label{group__primitives-task_ga9733da8629f4d0984967785419b15d4a} 
+typedef \mbox{\hyperlink{ee__api__types_8h_a9e73ce321dc7375392297601f51e9c72}{OSEE\+\_\+\+TASK\+\_\+\+ID\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}}}
+
+Type used for Task IDs. Typically the size of a word on the microcontroller. It is a positive number (except the invalid task which is -\/1). The Task IDs are consistent and do not change in case of multicore configurations. 
+
+\label{doc-func-members}
+\Hypertarget{group__primitives-task_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{group__primitives-task_gacd33f94ca57ea3776a0bf73b4ec6963c}\index{Task Primitives@{Task Primitives}!ActivateTask@{ActivateTask}}
+\index{ActivateTask@{ActivateTask}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{ActivateTask()}{ActivateTask()}}
+{\footnotesize\ttfamily \label{group__primitives-task_gacd33f94ca57ea3776a0bf73b4ec6963c} 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Activate\+Task (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}}}]{Task\+ID}{}\end{DoxyParamCaption})}
+
+This primitive activates a task Task\+ID, putting it in the READY state, or in the RUNNING state if the scheduler finds that the activated task should become the running task.
+
+Once activated, the task will run for an instance, starting from its first instruction. For the BCC2 and ECC2 Conformance classes, pending activations can be stored if the task has been configured with a number of activations greater than 1 within the OIL configuration file.
+
+The function can be called from the Background task (typically, the main() function).
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+3.\+3.\+1
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Task\+ID} & Task to be activated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function returns a \doxylink{ee__api__types_8h_a6def7470ef6da58026579b4be4ff5d68}{Status\+Type}
+\begin{DoxyItemize}
+\item E\+\_\+\+OK\+: No error.
+\item E\+\_\+\+OS\+\_\+\+LIMIT\+: Too many pending activations of Task\+ID.
+\item E\+\_\+\+OS\+\_\+\+ID\+: (Extended) Task\+ID is invalid. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{group__primitives-task_gacd33f94ca57ea3776a0bf73b4ec6963c}{Activate\+Task()}}, \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-task_gacd33f94ca57ea3776a0bf73b4ec6963c}{Activate\+Task()}}.
+
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{group__primitives-task_gaa219f309dc9471326804fda45f2fe449}\index{Task Primitives@{Task Primitives}!ChainTask@{ChainTask}}
+\index{ChainTask@{ChainTask}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{ChainTask()}{ChainTask()}}
+{\footnotesize\ttfamily \label{group__primitives-task_gaa219f309dc9471326804fda45f2fe449} 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Chain\+Task (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}}}]{Task\+ID}{}\end{DoxyParamCaption})}
+
+This primitive is similar to Terminate\+Task, with the differences listed below.
+
+After the calling task is terminated, Task\+ID is activated again.
+
+If Task\+ID is the calling task ID, then the calling task is terminated, the Internal Resource is unlocked, and then the calling task is put again in the ready queue to be scheduled. The Internal Resource will be locked again when the task will be again selected for scheduling.
+
+When called successfully, Chain\+Task does not return to the caller. In case of error the primitive returns, and the returned error value can be evaluated by the application.
+
+When an extended task is transferred from suspended state into ready state all its events are cleared.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+3.\+3.\+3
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Task\+ID} & The task to activate\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function returns a \doxylink{ee__api__types_8h_a6def7470ef6da58026579b4be4ff5d68}{Status\+Type}
+\begin{DoxyItemize}
+\item No return\+: If the call is successful.
+\item E\+\_\+\+OS\+\_\+\+LIMIT\+: Too many task activations of Task\+ID. The Task activation in this case is ignored.
+\item E\+\_\+\+OS\+\_\+\+ID\+: (Extended) Task Task\+ID is invalid.
+\item E\+\_\+\+OS\+\_\+\+RESOURCE\+: (Extended) Calling task still occupies resources.
+\item E\+\_\+\+OS\+\_\+\+CALLEVEL\+: (Extended) Call at interrupt level. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{group__primitives-task_gaa219f309dc9471326804fda45f2fe449}{Chain\+Task()}}, \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-task_gaa219f309dc9471326804fda45f2fe449}{Chain\+Task()}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{group__primitives-task_gad10ed918ccfb72d1b9fabcb90757a8c7}\index{Task Primitives@{Task Primitives}!GetTaskID@{GetTaskID}}
+\index{GetTaskID@{GetTaskID}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{GetTaskID()}{GetTaskID()}}
+{\footnotesize\ttfamily \label{group__primitives-task_gad10ed918ccfb72d1b9fabcb90757a8c7} 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Get\+Task\+ID (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__primitives-task_ga6ffbd016ea252d177a6fe9449205f641}{Task\+Ref\+Type}}}]{Task\+ID}{}\end{DoxyParamCaption})}
+
+The function returns the Task ID of the running task. If no task is running, INVALID\+\_\+\+TASK is returned.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+3.\+3.\+5
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{out}}  & {\em Task\+ID} & The Task ID of the running task\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function always returns a \doxylink{ee__api__types_8h_a6def7470ef6da58026579b4be4ff5d68}{Status\+Type} of value E\+\_\+\+OK. 
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{group__primitives-task_gad10ed918ccfb72d1b9fabcb90757a8c7}{Get\+Task\+ID()}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-task_gad10ed918ccfb72d1b9fabcb90757a8c7}{Get\+Task\+ID()}}.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{group__primitives-task_gaa6238f0238d1cc28f6b09841026b31f5}\index{Task Primitives@{Task Primitives}!GetTaskState@{GetTaskState}}
+\index{GetTaskState@{GetTaskState}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{GetTaskState()}{GetTaskState()}}
+{\footnotesize\ttfamily \label{group__primitives-task_gaa6238f0238d1cc28f6b09841026b31f5} 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Get\+Task\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}}}]{Task\+ID}{, }\item[{\mbox{\hyperlink{ee__api__types_8h_a32f235aa85e668442086b80728d73ef5}{Task\+State\+Ref\+Type}}}]{State}{}\end{DoxyParamCaption})}
+
+This primitive returns the state of a given task. Possible states are listed in the definition of the \doxylink{group__primitives-task_ga144326ae7f7921d9ae76a57ed02019d8}{Task\+State\+Type}.
+
+If the task Task\+ID supports pending activation, and the task has been activated more than once, the results refer to the state of its oldest activation.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+3.\+3.\+6
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Task\+ID} & The task for which we want to read the state. \\
+\hline
+\mbox{\texttt{out}}  & {\em State} & The task state of Task\+ID. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function returns a \doxylink{ee__api__types_8h_a6def7470ef6da58026579b4be4ff5d68}{Status\+Type}.
+\begin{DoxyItemize}
+\item E\+\_\+\+OK\+: (Extended) No error.
+\item E\+\_\+\+OS\+\_\+\+ID\+: (Extended) Task Task\+ID is invalid. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{group__primitives-task_gaa6238f0238d1cc28f6b09841026b31f5}{Get\+Task\+State()}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-task_gaa6238f0238d1cc28f6b09841026b31f5}{Get\+Task\+State()}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{group__primitives-task_ga51ead35687ec6feef92e3724fe359215}\index{Task Primitives@{Task Primitives}!Schedule@{Schedule}}
+\index{Schedule@{Schedule}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{Schedule()}{Schedule()}}
+{\footnotesize\ttfamily \label{group__primitives-task_ga51ead35687ec6feef92e3724fe359215} 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Schedule (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+This primitive can be used as a rescheduling point for tasks that have Internal Resources and for non preemptive tasks (Non preemptive tasks can be seen as tasks with an Internal Resource with the highest priority ceiling available assigned.).
+
+When this primitive is called, the task releases its Internal Resource, and checks if there are higher priority tasks that have to preempt (In that case, a preemption is implemented). When the primitive returns, the task will reacquire its internal resource.
+
+The primitive does nothing if the calling task has no internal resource assigned.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+3.\+3.\+4
+
+\begin{DoxyReturn}{Returns}
+The function returns a \doxylink{ee__api__types_8h_a6def7470ef6da58026579b4be4ff5d68}{Status\+Type}.
+\begin{DoxyItemize}
+\item E\+\_\+\+OK\+: No error.
+\begin{DoxyItemize}
+\item E\+\_\+\+OS\+\_\+\+CALLEVEL\+: (Extended) The primitive was called at interrupt level.
+\end{DoxyItemize}
+\item E\+\_\+\+OS\+\_\+\+RESOURCE\+: (Extended) The calling task occupies resources. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{group__primitives-task_ga51ead35687ec6feef92e3724fe359215}{Schedule()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-task_ga51ead35687ec6feef92e3724fe359215}{Schedule()}}.
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{group__primitives-task_gaa59687009cf4d45c57eccd0366920e39}\index{Task Primitives@{Task Primitives}!TerminateTask@{TerminateTask}}
+\index{TerminateTask@{TerminateTask}!Task Primitives@{Task Primitives}}
+\doxysubsubsection{\texorpdfstring{TerminateTask()}{TerminateTask()}}
+{\footnotesize\ttfamily \label{group__primitives-task_gaa59687009cf4d45c57eccd0366920e39} 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Terminate\+Task (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+This primitive terminates the calling task. The function can be called from any function nesting\+: the stack space used by the task is also freed. The calling task should not have any Resource locked when this primitive is called (apart an Internal Resource that is automatically released with this call).
+
+After the call, the calling task is set in the SUSPENDED state, and it can be reactivated again using Activate\+Task, Chain\+Task, or using Alarm notifications.
+
+All the tasks must terminate with a call to Terminate\+Task or Chain\+Task. If not present, Terminate\+Task will be called automatically.
+
+With Standard Status, the primitive never returns. With Extended Status, the primitive may return in case of errors.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+3.\+3.\+2
+
+\begin{DoxyReturn}{Returns}
+The function returns a \doxylink{ee__api__types_8h_a6def7470ef6da58026579b4be4ff5d68}{Status\+Type}
+\begin{DoxyItemize}
+\item No return\+: If the call is successful.
+\item E\+\_\+\+OS\+\_\+\+RESOURCE\+: (Extended) The task still occupies resources.
+\item E\+\_\+\+OS\+\_\+\+CALLEVEL\+: (Extended) The function was called at interrupt level. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{group__primitives-task_gaa59687009cf4d45c57eccd0366920e39}{Terminate\+Task()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-task_gaa59687009cf4d45c57eccd0366920e39}{Terminate\+Task()}}.
+
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11

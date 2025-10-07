@@ -1,0 +1,16 @@
+\doxysection{ERIKA3 and real-\/time scheduling }
+\hypertarget{scheduler}{}\label{scheduler}\index{ERIKA3 and real-\/time scheduling@{ERIKA3 and real-\/time scheduling}}
+The interface proposed is suited for small 8 to 32 bit architectures, and proposes an environment where tasks can execute concurrently exchanging data with a shared memory paradigm. Support for synchronization primitives is also provided.
+
+Tasks in ERIKA3 are scheduled according to fixed priorities, and share resources using the Immediate Priority Ceiling protocol.
+
+On top of task execution there are interrupts, that always preempt the running task to execute urgent operations required by peripherals, or, in case of a multicore system, by other CPUs.
+
+The scheduling policy of ERIKA3 is a Fixed Priority Scheduling with Immediate Priority Ceiling. As a result, the following case of tasks may be implemented\+:
+
+
+\begin{DoxyItemize}
+\item {\itshape Full Preemptive Task}\+: A Full Preemptive task is a task that can be preempted in each instant by higher priority tasks.
+\item {\itshape Non Preemptive Task}\+: A Non Preemptive task is like a Full Preemptive task that executes all the time locking a resource with its ceiling equal to the maximum priority in the system. As a result, a non preemptive task cannot be preempted by other tasks\+: only interrupts can preempt it.
+\item {\itshape Mixed Preemptive Task}\+: A Mixed Preemptive task is like a task that executes all the time locking a pseudo-\/resource (also called {\itshape Internal Resource}. As a result, only tasks with higher priority than the ceiling of the Internal Resource, and interrupts, can preempt it. 
+\end{DoxyItemize}

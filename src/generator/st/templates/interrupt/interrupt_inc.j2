@@ -1,0 +1,39 @@
+#ifndef __{{ family|upper }}_IT_H
+#define __{{ family|upper }}_IT_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* Exported functions prototypes ---------------------------------------------*/
+{% if family.startswith('stm32f4') %}
+void NMI_Handler(void);
+void HardFault_Handler(void);
+void BusFault_Handler(void);
+void DebugMon_Handler(void);
+void PendSV_Handler(void);
+{%- endif %}
+void MemManage_Handler(void);
+void UsageFault_Handler(void);
+void SVC_Handler(void);
+void SysTick_Handler(void);
+
+{%- for d in dma_irqs %}
+void {{ d.name }}_{{ d.stream }}_IRQHandler(void);
+{%- endfor %}
+
+{%- if generated_irqs %}
+{%- for irq in generated_irqs %}
+{%- if irq.emit %}
+void {{ irq.handler }}_IRQHandler(void);
+{%- else %}
+/* Handler for {{ irq.handler }} present but user disabled auto-generation (irq_handler=DISABLE). */
+{%- endif %}
+{%- endfor %}
+{%- endif %}
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __{{ family|upper }}_IT_H */

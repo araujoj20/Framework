@@ -1,0 +1,35 @@
+\doxysection{Os\+EE\+\_\+\+Counter\+DB Struct Reference}
+\hypertarget{structOsEE__CounterDB}{}\label{structOsEE__CounterDB}\index{OsEE\_CounterDB@{OsEE\_CounterDB}}
+
+
+Counter descriptor block.  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+\+Counter\+DB\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structOsEE__CounterDB_a309e8366ea0780fa265134dd48af9996}\label{structOsEE__CounterDB_a309e8366ea0780fa265134dd48af9996} 
+\mbox{\hyperlink{structOsEE__CounterCB}{Os\+EE\+\_\+\+Counter\+CB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+counter\+\_\+cb}
+\begin{DoxyCompactList}\small\item\em pointer to the counter descriptor block in RAM \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CounterDB_a42f4e6b5a36aa6546d037e2a21ef7e9e}\label{structOsEE__CounterDB_a42f4e6b5a36aa6546d037e2a21ef7e9e} 
+\mbox{\hyperlink{group__primitives-alarm_ga41c914f28bdabc4855dd46b6178b0c06}{Alarm\+Base\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries info}
+\begin{DoxyCompactList}\small\item\em Alarm\+Base of the counter. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CounterDB_a7bd1d6e805de9869ce027635a5024ccc}\label{structOsEE__CounterDB_a7bd1d6e805de9869ce027635a5024ccc} 
+\mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries core\+\_\+id}
+\begin{DoxyCompactList}\small\item\em core where the counter is allocated \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It stores all the data required to configure a counter\+: the counter information (software or hardware), alarm time base, core 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

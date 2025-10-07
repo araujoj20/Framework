@@ -1,0 +1,26 @@
+\doxysection{Basic and Extended tasks }
+\hypertarget{task-types}{}\label{task-types}\index{Basic and Extended tasks@{Basic and Extended tasks}}
+ERIKA3 supports two flavors of tasks\+:
+\begin{DoxyItemize}
+\item {\itshape Basic Tasks}. A basic task is the simplest task in ERIKA3, providing concurrency together with a one-\/shot task model. Basic Tasks can share their stack to reduce the overall RAM usage.
+\item {\itshape Extended Tasks}. An extended task is a task that can block on the synchronization primitive \doxylink{group__primitives-event_ga01ccee0d30cdc7288a518351244b16b7}{Wait\+Event()}.
+\end{DoxyItemize}
+
+Basic Tasks are typically implemented as normal C functions, that executes their code and then ends. One of these executions is called also {\itshape Task Instance}. After the end of a basic task, its stack is freed. Basic Tasks never block, and they are the ideal kind of tasks for implementing stack sharing techniques.
+
+Extended Tasks, on the converse, are typically implemented as a never ending task in which each instance ends with a synchronization implemented with a call to the \doxylink{group__primitives-event_ga01ccee0d30cdc7288a518351244b16b7}{Wait\+Event()} primitive. Extended tasks always have a private stack.
+
+RT-\/\+Druid identifies a task as Extended when its OIL definition contains the specification of {\itshape Events}. A task without any {\itshape Event} assigned is a Basic Task.
+
+About (periodic) execution of tasks in OSEK/\+VDX and AUTOSAR OS, we can say that\+:
+\begin{DoxyItemize}
+\item Basic tasks can execute when they are activated using \doxylink{group__primitives-task_gacd33f94ca57ea3776a0bf73b4ec6963c}{Activate\+Task()} or \doxylink{group__primitives-task_gaa219f309dc9471326804fda45f2fe449}{Chain\+Task()}. A basic task, in some configuration, can remember pending activations.
+\item Extended tasks are activated once (typically at system startup using the AUTOSTART feature), and typically wait for the arrival of one or more events (typically inside a forever loop).
+\item {\itshape Periodic execution} of a task can be obtained in various ways\+:
+\begin{DoxyItemize}
+\item using a periodic interrupt (which in turns either activates a basic task or sets an event on an extended task);
+\item using a periodic Alarm, whose notification is either the activation of a basic task or the setting of an event on an extended task;
+\item using a Schedule Table, to implement a similar pattern of an Alarm notification.
+\item Note that it is not forbidden to Activate a basic task or to set an event on an Extended task in addition to a periodic alarm / schedule table. To that respect, activation and periodicity are two orthogonal concepts in OSEK/\+VDX and AUTOSAR OS. 
+\end{DoxyItemize}
+\end{DoxyItemize}

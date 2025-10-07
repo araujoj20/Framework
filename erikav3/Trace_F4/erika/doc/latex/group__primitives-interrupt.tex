@@ -1,0 +1,269 @@
+\doxysection{Interrupt Primitives }
+\hypertarget{group__primitives-interrupt}{}\label{group__primitives-interrupt}\index{Interrupt Primitives@{Interrupt Primitives}}
+
+
+The Interrupt primitives are related to disabling/enabling interrupts.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__primitives-interrupt_ga0dca407e1218b5ca71722c61c429469d}{INVALID\+\_\+\+ISR}}~\mbox{\hyperlink{group__primitives-task_ga4e7c7014b29fafc9f04982c4b97512c5}{INVALID\+\_\+\+TASK}}
+\begin{DoxyCompactList}\small\item\em This is the invalid ISR2 value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{ee__api__types_8h_a9e73ce321dc7375392297601f51e9c72}{OSEE\+\_\+\+TASK\+\_\+\+ID\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-interrupt_ga426a99836bc9412bcfd66c351529f496}{ISRType}}
+\begin{DoxyCompactList}\small\item\em Type used for interrupts type 2. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{ee__platform__types_8h_adcf26712df8bfc01187167aa4a6c1217}{OSEE\+\_\+\+ISR\+\_\+\+SOURCE\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-interrupt_ga6f88d841d0dcc40ec9c2be6cd7acf761}{ISRSource}}
+\begin{DoxyCompactList}\small\item\em This type stores an interrupt source type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-interrupt_ga11f3ad730a6453e0679ae7942c200758}{Disable\+All\+Interrupts}} (void)
+\begin{DoxyCompactList}\small\item\em Disables all interrupts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-interrupt_gab297295738404ae35ffa0e95e04c2bd0}{Enable\+All\+Interrupts}} (void)
+\begin{DoxyCompactList}\small\item\em Enables all interrupts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts}} (void)
+\begin{DoxyCompactList}\small\item\em Disables interrupt, saving the current status. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840}{Resume\+All\+Interrupts}} (void)
+\begin{DoxyCompactList}\small\item\em Resumes the interrupt status saved with \doxylink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts}} (void)
+\begin{DoxyCompactList}\small\item\em Disables ISR2 interrupt, saving the current status. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054}{Resume\+OSInterrupts}} (void)
+\begin{DoxyCompactList}\small\item\em Resumes the interrupt status saved with \doxylink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__primitives-interrupt_ga426a99836bc9412bcfd66c351529f496}{ISRType}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-interrupt_ga3abe63a806fd59d3a73c39198c977a81}{Get\+ISRID}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the ID of the running ISR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+ERIKA3 provides support for interrupts. Interrupts are modeled considering typical microcontroller designs featuring interrupt controllers with a prioritized view of the interrupt sources.
+
+To map the requirements of fast OS-\/independent requests, ERIKA3 supports the definition of fast interrupts handlers, called {\itshape ISR Type 1}, that on one side can handle interrupts in the fastest way possible, but on the other side lack the possibility to call OS services.
+
+On the other end, lower priority interrupts, called {\itshape ISR Type 2} and used (for example) for hardware timers, can call selected OS primitives but are slower than ISR Type 1 due to the OS bookkeeping needed to implement preemption.
+
+Please also note that ISR Type 2 are implemented in ERIKA3 in a way similar to Tasks, to allow a simpler handling of the Memory protection specification of the AUTOSAR OS.
+
+The following restriction applies\+: all interrupts of Category 1 must have a higher or equal hardware priority compared with interrupts of Category 2. This limitation has been introduced to avoid various rescheduling problems appearing when a ISR2 interrupts a lower priority ISR1.
+
+ERIKA3 also offers a set of primitives to directly control interrupt disabling and enabling, with also a nested version of these primitives. 
+
+\label{doc-define-members}
+\Hypertarget{group__primitives-interrupt_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__primitives-interrupt_ga0dca407e1218b5ca71722c61c429469d}\index{Interrupt Primitives@{Interrupt Primitives}!INVALID\_ISR@{INVALID\_ISR}}
+\index{INVALID\_ISR@{INVALID\_ISR}!Interrupt Primitives@{Interrupt Primitives}}
+\doxysubsubsection{\texorpdfstring{INVALID\_ISR}{INVALID\_ISR}}
+{\footnotesize\ttfamily \label{group__primitives-interrupt_ga0dca407e1218b5ca71722c61c429469d} 
+\#define INVALID\+\_\+\+ISR~\mbox{\hyperlink{group__primitives-task_ga4e7c7014b29fafc9f04982c4b97512c5}{INVALID\+\_\+\+TASK}}}
+
+This is the invalid ISR2 value. No real ISR can have this value. 
+
+\label{doc-typedef-members}
+\Hypertarget{group__primitives-interrupt_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{group__primitives-interrupt_ga6f88d841d0dcc40ec9c2be6cd7acf761}\index{Interrupt Primitives@{Interrupt Primitives}!ISRSource@{ISRSource}}
+\index{ISRSource@{ISRSource}!Interrupt Primitives@{Interrupt Primitives}}
+\doxysubsubsection{\texorpdfstring{ISRSource}{ISRSource}}
+{\footnotesize\ttfamily \label{group__primitives-interrupt_ga6f88d841d0dcc40ec9c2be6cd7acf761} 
+typedef \mbox{\hyperlink{ee__platform__types_8h_adcf26712df8bfc01187167aa4a6c1217}{OSEE\+\_\+\+ISR\+\_\+\+SOURCE\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-interrupt_ga6f88d841d0dcc40ec9c2be6cd7acf761}{ISRSource}}}
+
+This type stores an interrupt source type. \Hypertarget{group__primitives-interrupt_ga426a99836bc9412bcfd66c351529f496}\index{Interrupt Primitives@{Interrupt Primitives}!ISRType@{ISRType}}
+\index{ISRType@{ISRType}!Interrupt Primitives@{Interrupt Primitives}}
+\doxysubsubsection{\texorpdfstring{ISRType}{ISRType}}
+{\footnotesize\ttfamily \label{group__primitives-interrupt_ga426a99836bc9412bcfd66c351529f496} 
+typedef \mbox{\hyperlink{ee__api__types_8h_a9e73ce321dc7375392297601f51e9c72}{OSEE\+\_\+\+TASK\+\_\+\+ID\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-interrupt_ga426a99836bc9412bcfd66c351529f496}{ISRType}}}
+
+Type used for interrupts type 2. It is a positive number. The ISR2 IDs are in the same value space as Task IDs (this because ISR2 in ERIKA3 are implemented in a way similar to tasks). 
+
+\label{doc-func-members}
+\Hypertarget{group__primitives-interrupt_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{group__primitives-interrupt_ga11f3ad730a6453e0679ae7942c200758}\index{Interrupt Primitives@{Interrupt Primitives}!DisableAllInterrupts@{DisableAllInterrupts}}
+\index{DisableAllInterrupts@{DisableAllInterrupts}!Interrupt Primitives@{Interrupt Primitives}}
+\doxysubsubsection{\texorpdfstring{DisableAllInterrupts()}{DisableAllInterrupts()}}
+{\footnotesize\ttfamily \label{group__primitives-interrupt_ga11f3ad730a6453e0679ae7942c200758} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Disable\+All\+Interrupts (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\doxylink{group__primitives-interrupt_ga11f3ad730a6453e0679ae7942c200758}{Disable\+All\+Interrupts()} and \doxylink{group__primitives-interrupt_gab297295738404ae35ffa0e95e04c2bd0}{Enable\+All\+Interrupts()} are used to implement critical sections with interrupt disabled.
+
+This primitive disables all the interrupts sources in the system, and saves the interrupt state that will be restored by a call to \doxylink{group__primitives-interrupt_gab297295738404ae35ffa0e95e04c2bd0}{Enable\+All\+Interrupts()}.
+
+The primitive may be called from an ISR category 1 and category 2 and from the task level, but not from hook routines. No primitives can be called within critical sections surrounded by \doxylink{group__primitives-interrupt_ga11f3ad730a6453e0679ae7942c200758}{Disable\+All\+Interrupts()} and \doxylink{group__primitives-interrupt_gab297295738404ae35ffa0e95e04c2bd0}{Enable\+All\+Interrupts()}.
+
+Critical sections using \doxylink{group__primitives-interrupt_ga11f3ad730a6453e0679ae7942c200758}{Disable\+All\+Interrupts()} and \doxylink{group__primitives-interrupt_gab297295738404ae35ffa0e95e04c2bd0}{Enable\+All\+Interrupts()} cannot be nested. If you need nested critical sections, please use \doxylink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()} / \doxylink{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054}{Resume\+OSInterrupts()} or \doxylink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()} / \doxylink{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840}{Resume\+All\+Interrupts()}.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+4.\+2.\+2 
+
+References \mbox{\hyperlink{group__primitives-interrupt_ga11f3ad730a6453e0679ae7942c200758}{Disable\+All\+Interrupts()}}, \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, and \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-interrupt_ga11f3ad730a6453e0679ae7942c200758}{Disable\+All\+Interrupts()}}.
+
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{group__primitives-interrupt_gab297295738404ae35ffa0e95e04c2bd0}\index{Interrupt Primitives@{Interrupt Primitives}!EnableAllInterrupts@{EnableAllInterrupts}}
+\index{EnableAllInterrupts@{EnableAllInterrupts}!Interrupt Primitives@{Interrupt Primitives}}
+\doxysubsubsection{\texorpdfstring{EnableAllInterrupts()}{EnableAllInterrupts()}}
+{\footnotesize\ttfamily \label{group__primitives-interrupt_gab297295738404ae35ffa0e95e04c2bd0} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Enable\+All\+Interrupts (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\doxylink{group__primitives-interrupt_ga11f3ad730a6453e0679ae7942c200758}{Disable\+All\+Interrupts()} and \doxylink{group__primitives-interrupt_gab297295738404ae35ffa0e95e04c2bd0}{Enable\+All\+Interrupts()} are used to implement critical sections with interrupt disabled.
+
+This primitive restores the state saved by \doxylink{group__primitives-interrupt_ga11f3ad730a6453e0679ae7942c200758}{Disable\+All\+Interrupts()}, enabling the recognition of interrupts.
+
+The primitive may be called from an ISR category 1 and category 2 and from the task level, but not from hook routines. No primitives can be called inside critical sections surrounded by \doxylink{group__primitives-interrupt_ga11f3ad730a6453e0679ae7942c200758}{Disable\+All\+Interrupts()} and \doxylink{group__primitives-interrupt_gab297295738404ae35ffa0e95e04c2bd0}{Enable\+All\+Interrupts()}.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+4.\+2.\+1 
+
+References \mbox{\hyperlink{group__primitives-interrupt_gab297295738404ae35ffa0e95e04c2bd0}{Enable\+All\+Interrupts()}}, \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, and \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-interrupt_gab297295738404ae35ffa0e95e04c2bd0}{Enable\+All\+Interrupts()}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{group__primitives-interrupt_ga3abe63a806fd59d3a73c39198c977a81}\index{Interrupt Primitives@{Interrupt Primitives}!GetISRID@{GetISRID}}
+\index{GetISRID@{GetISRID}!Interrupt Primitives@{Interrupt Primitives}}
+\doxysubsubsection{\texorpdfstring{GetISRID()}{GetISRID()}}
+{\footnotesize\ttfamily \label{group__primitives-interrupt_ga3abe63a806fd59d3a73c39198c977a81} 
+\mbox{\hyperlink{group__primitives-interrupt_ga426a99836bc9412bcfd66c351529f496}{ISRType}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Get\+ISRID (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+If called inside an ISR2, it returns the ID of the current executing ISR.
+
+Reference\+: AUTOSAR OS 8.\+4.\+3 Get\+ISRID \mbox{[}SWS\+\_\+\+Os\+\_\+00511\mbox{]}
+
+\begin{DoxyReturn}{Returns}
+This function returns a \doxylink{group__primitives-interrupt_ga426a99836bc9412bcfd66c351529f496}{ISRType} which is the current executing ISR or INVALID\+\_\+\+ISR if called outside an ISR Routine (or Hooks called inside an ISR2 routine). 
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{group__primitives-interrupt_ga3abe63a806fd59d3a73c39198c977a81}{Get\+ISRID()}}, \mbox{\hyperlink{ee__compiler_8h_a4c744b37ed25289d025c28df65653b24}{LOCAL\+\_\+\+INLINE}}, and \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-interrupt_ga3abe63a806fd59d3a73c39198c977a81}{Get\+ISRID()}}.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840}\index{Interrupt Primitives@{Interrupt Primitives}!ResumeAllInterrupts@{ResumeAllInterrupts}}
+\index{ResumeAllInterrupts@{ResumeAllInterrupts}!Interrupt Primitives@{Interrupt Primitives}}
+\doxysubsubsection{\texorpdfstring{ResumeAllInterrupts()}{ResumeAllInterrupts()}}
+{\footnotesize\ttfamily \label{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Resume\+All\+Interrupts (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\doxylink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()} and \doxylink{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840}{Resume\+All\+Interrupts()} are used to implement critical sections with interrupt disabled, with nesting support.
+
+This primitive restores the state saved by \doxylink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()}, enabling the recognition of interrupts if it is the last call in a series of nested calls of \doxylink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()} / \doxylink{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840}{Resume\+All\+Interrupts()} and \doxylink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()} / \doxylink{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054}{Resume\+OSInterrupts()} pairs.
+
+This primitive may be called from an ISR category 1 and category 2, from alarm-\/callbacks and from the task level, but not from all hook routines.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+4.\+2.\+3 
+
+References \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840}{Resume\+All\+Interrupts()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840}{Resume\+All\+Interrupts()}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054}\index{Interrupt Primitives@{Interrupt Primitives}!ResumeOSInterrupts@{ResumeOSInterrupts}}
+\index{ResumeOSInterrupts@{ResumeOSInterrupts}!Interrupt Primitives@{Interrupt Primitives}}
+\doxysubsubsection{\texorpdfstring{ResumeOSInterrupts()}{ResumeOSInterrupts()}}
+{\footnotesize\ttfamily \label{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Resume\+OSInterrupts (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\doxylink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()} and \doxylink{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054}{Resume\+OSInterrupts()} are used to implement critical sections with interrupt category 2 disabled, with nesting support.
+
+This primitive restores the state saved by \doxylink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()}, enabling the recognition of interrupts if it is the last call in a series of nested calls of \doxylink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()} / \doxylink{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840}{Resume\+All\+Interrupts()} and \doxylink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()} / \doxylink{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054}{Resume\+OSInterrupts()} pairs.
+
+The primitive may be called from an ISR category 1 and category 2 and from the task level, but not from hook routines.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+4.\+2.\+5 
+
+References \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054}{Resume\+OSInterrupts()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054}{Resume\+OSInterrupts()}}.
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}\index{Interrupt Primitives@{Interrupt Primitives}!SuspendAllInterrupts@{SuspendAllInterrupts}}
+\index{SuspendAllInterrupts@{SuspendAllInterrupts}!Interrupt Primitives@{Interrupt Primitives}}
+\doxysubsubsection{\texorpdfstring{SuspendAllInterrupts()}{SuspendAllInterrupts()}}
+{\footnotesize\ttfamily \label{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Suspend\+All\+Interrupts (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\doxylink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()} and \doxylink{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840}{Resume\+All\+Interrupts()} are used to implement critical sections with interrupt disabled, with nesting support.
+
+This primitive disables all the interrupts sources in the system, and saves the interrupt state that will be restored by a call to \doxylink{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840}{Resume\+All\+Interrupts()}.
+
+The service may be called from an ISR category 1 and category 2, from alarm-\/callbacks and from the task level, but not from all hook routines.
+
+No primitive calls beside \doxylink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()} / \doxylink{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840}{Resume\+All\+Interrupts()} pairs and \doxylink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()} / \doxylink{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054}{Resume\+OSInterrupts()} pairs are allowed within this critical section.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+4.\+2.\+4 
+
+References \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()}}.
+
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}\index{Interrupt Primitives@{Interrupt Primitives}!SuspendOSInterrupts@{SuspendOSInterrupts}}
+\index{SuspendOSInterrupts@{SuspendOSInterrupts}!Interrupt Primitives@{Interrupt Primitives}}
+\doxysubsubsection{\texorpdfstring{SuspendOSInterrupts()}{SuspendOSInterrupts()}}
+{\footnotesize\ttfamily \label{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Suspend\+OSInterrupts (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\doxylink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()} and \doxylink{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054}{Resume\+OSInterrupts()} are used to implement critical sections with interrupt category 2 disabled, with nesting support.
+
+This primitive disables all the interrupts sources of category 2 in the system, and saves the interrupt state that will be restored by a call to \doxylink{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054}{Resume\+OSInterrupts()}.
+
+The service may be called from an ISR category 1 and category 2, and from the task level.
+
+No primitive calls beside \doxylink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()} / \doxylink{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840}{Resume\+All\+Interrupts()} pairs and \doxylink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()} / \doxylink{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054}{Resume\+OSInterrupts()} pairs are allowed within this critical section.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+4.\+2.\+6 
+
+References \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()}}.
+
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13

@@ -1,0 +1,35 @@
+\doxysection{Os\+EE\+\_\+\+MCB Struct Reference}
+\hypertarget{structOsEE__MCB}{}\label{structOsEE__MCB}\index{OsEE\_MCB@{OsEE\_MCB}}
+
+
+Mutual exclusion control block.  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+\+MCB\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structOsEE__MCB_ae4cc8d68594e044dc0716504cde68d18}\label{structOsEE__MCB_ae4cc8d68594e044dc0716504cde68d18} 
+struct \mbox{\hyperlink{structOsEE__MDB__tag}{Os\+EE\+\_\+\+MDB\+\_\+tag}} const \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871}{OS\+\_\+\+APPL\+\_\+\+CONST}} {\bfseries p\+\_\+next}
+\begin{DoxyCompactList}\small\item\em pointer to the next \textquotesingle{}\textquotesingle{}mutex\textquotesingle{}\textquotesingle{} (the system needs to guarantee the LIFO order of the semaphore/spin lock allocation) \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__MCB_a34f9499072305be625ea50922fcbb308}\label{structOsEE__MCB_a34f9499072305be625ea50922fcbb308} 
+\mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries prev\+\_\+prio}
+\begin{DoxyCompactList}\small\item\em this is the previous task priority when the mutex was locked. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__MCB_a5d722d567affcb85b82586712e87dbb5}\label{structOsEE__MCB_a5d722d567affcb85b82586712e87dbb5} 
+struct \mbox{\hyperlink{structOsEE__TDB__tag}{Os\+EE\+\_\+\+TDB\+\_\+tag}} const \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+owner}
+\begin{DoxyCompactList}\small\item\em owner of the mutex/spinlock \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The system needs to track the order in which Resources and Spin-\/locks are taken in order to verify they are released in LIFO order \mbox{[}SWS\+\_\+\+Os\+\_\+00801\mbox{]}. Also the owner has to be tracked. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,18 @@
+\doxysection{Mutual Exclusion and Shared resources }
+\hypertarget{resources}{}\label{resources}\index{Mutual Exclusion and Shared resources@{Mutual Exclusion and Shared resources}}
+Mutual Exclusion in ERIKA3 can be obtained in various ways.
+
+
+\begin{DoxyItemize}
+\item by Interrupt Disabling. This can be obtained by using the six primitives \doxylink{group__primitives-interrupt_ga11f3ad730a6453e0679ae7942c200758}{Disable\+All\+Interrupts()}, \doxylink{group__primitives-interrupt_gab297295738404ae35ffa0e95e04c2bd0}{Enable\+All\+Interrupts()}, \doxylink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()}, \doxylink{group__primitives-interrupt_ga02482b1086521e0b72a799fdb1c88840}{Resume\+All\+Interrupts()}, \doxylink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()}, \doxylink{group__primitives-interrupt_ga1c1e35bddc81119cb8ea23276ffe9054}{Resume\+OSInterrupts()}.
+\item by non-\/preemptive execution. This can be obtained in the following ways\+:
+\begin{DoxyItemize}
+\item by declaring all tasks needing the access to the shared resource as non-\/preemptive.
+\item by using non-\/preemptive critical sections. This can be obtained by locking the special resource named RES\+\_\+\+SCHEDULER, which implicitly is used by all tasks (locking it raises the caller task priority to the highest priority of the tasks in the system). Please note that the usage of RES\+\_\+\+SCHEDULER has been deprecated by AUTOSAR.
+\end{DoxyItemize}
+\item by using Resources. Resources in OSEK/\+VDX are handled using the Immediate Priority Ceiling scheduling algorithm. Basically each time a resource is locked, the priority of the locking task is raised to the maximum priority of all tasks using the resource. This guarantees bounded blocking times, absence of deadlock, absence of chained blocking, and ultimately allows stack sharing among tasks.
+\end{DoxyItemize}
+
+ERIKA3 supports the OSEK/\+VDX optional feature related to the usage of Resources at Interrupt level (ISO17356-\/3 Section 8.\+7).
+
+All the techniques above work on single core applications. For multi-\/core applications, the application developer will need to use Spin Locks. 

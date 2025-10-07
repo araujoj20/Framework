@@ -1,0 +1,72 @@
+\doxysection{inc/ee\+\_\+platform\+\_\+types.h File Reference}
+\hypertarget{ee__platform__types_8h}{}\label{ee__platform__types_8h}\index{inc/ee\_platform\_types.h@{inc/ee\_platform\_types.h}}
+
+
+Platform Types.  
+
+
+{\ttfamily \#include "{}ee\+\_\+cfg.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+arch\+\_\+override.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+utils.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+compiler.\+h"{}}\newline
+{\ttfamily \#include $<$limits.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for ee\+\_\+platform\+\_\+types.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ee__platform__types_8h_ae253a1d2b9caed593d5d8b72f5b53bda}\label{ee__platform__types_8h_ae253a1d2b9caed593d5d8b72f5b53bda} 
+\#define {\bfseries OSEE\+\_\+\+BOOL\+\_\+\+TYPE}~\mbox{\hyperlink{ee__platform__types_8h_ae4ce8d6e1d6a72fece80207a7e8772dd}{Os\+EE\+\_\+bool}}
+\begin{DoxyCompactList}\small\item\em Boolean type override. \end{DoxyCompactList}\item 
+\Hypertarget{ee__platform__types_8h_adcf26712df8bfc01187167aa4a6c1217}\label{ee__platform__types_8h_adcf26712df8bfc01187167aa4a6c1217} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+SOURCE\+\_\+\+TYPE}~\mbox{\hyperlink{ee__platform__types_8h_a4d4ff48c81739189da7dfaeb12fba32c}{Os\+EE\+\_\+isr\+\_\+src\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em ISR Source ID override. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ee__platform__types_8h_a080118619d5c09ae9702133cfd2ed4e6}\label{ee__platform__types_8h_a080118619d5c09ae9702133cfd2ed4e6} 
+typedef void \texorpdfstring{$\ast$}{*} {\bfseries Os\+EE\+\_\+addr}
+\begin{DoxyCompactList}\small\item\em Memory address. \end{DoxyCompactList}\item 
+\Hypertarget{ee__platform__types_8h_af1e4799ec8702a3b9f88f5453e6297c1}\label{ee__platform__types_8h_af1e4799ec8702a3b9f88f5453e6297c1} 
+typedef uint32\+\_\+t {\bfseries Os\+EE\+\_\+reg}
+\begin{DoxyCompactList}\small\item\em Register size, unsigned. \end{DoxyCompactList}\item 
+\Hypertarget{ee__platform__types_8h_a34eccfd6ca7644e2008f609ae50da9bb}\label{ee__platform__types_8h_a34eccfd6ca7644e2008f609ae50da9bb} 
+typedef int32\+\_\+t {\bfseries Os\+EE\+\_\+sreg}
+\begin{DoxyCompactList}\small\item\em Register size, signed. \end{DoxyCompactList}\item 
+\Hypertarget{ee__platform__types_8h_a69944d92d67c960d9d799edb8b6a89cf}\label{ee__platform__types_8h_a69944d92d67c960d9d799edb8b6a89cf} 
+typedef uint32\+\_\+t {\bfseries Os\+EE\+\_\+stack}
+\begin{DoxyCompactList}\small\item\em Stack word, unsigned. \end{DoxyCompactList}\item 
+\Hypertarget{ee__platform__types_8h_a4d4ff48c81739189da7dfaeb12fba32c}\label{ee__platform__types_8h_a4d4ff48c81739189da7dfaeb12fba32c} 
+typedef uint8\+\_\+t {\bfseries Os\+EE\+\_\+isr\+\_\+src\+\_\+id}
+\begin{DoxyCompactList}\small\item\em ISR Source ID Type. \end{DoxyCompactList}\item 
+\Hypertarget{ee__platform__types_8h_abb37fdb2cd3e59e5d27a0c68dcc6705d}\label{ee__platform__types_8h_abb37fdb2cd3e59e5d27a0c68dcc6705d} 
+typedef void(\texorpdfstring{$\ast$}{*} {\bfseries Os\+EE\+\_\+void\+\_\+cb}) (void)
+\begin{DoxyCompactList}\small\item\em Callback type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ee__platform__types_8h_ae4ce8d6e1d6a72fece80207a7e8772dd}\label{ee__platform__types_8h_ae4ce8d6e1d6a72fece80207a7e8772dd} 
+enum \mbox{\hyperlink{ee__platform__types_8h_ae4ce8d6e1d6a72fece80207a7e8772dd}{Os\+EE\+\_\+bool}} \{ {\bfseries OSEE\+\_\+\+FALSE} = OSEE\+\_\+\+M\+\_\+\+FALSE
+, {\bfseries OSEE\+\_\+\+TRUE} = OSEE\+\_\+\+M\+\_\+\+TRUE
+ \}
+\begin{DoxyCompactList}\small\item\em Boolean Type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This files contains all types and symbols for a specific Architecture in Erika Enterprise.
+
+\begin{DoxyNote}{Note}
+COULD BE raplaced by AUTOSAR Type definition paradigm or being the implementation.
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Errico Guidieri 
+
+Giuseppe Serano 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018 
+\end{DoxyDate}

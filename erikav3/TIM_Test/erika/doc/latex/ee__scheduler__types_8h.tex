@@ -1,0 +1,169 @@
+\doxysection{inc/ee\+\_\+scheduler\+\_\+types.h File Reference}
+\hypertarget{ee__scheduler__types_8h}{}\label{ee__scheduler__types_8h}\index{inc/ee\_scheduler\_types.h@{inc/ee\_scheduler\_types.h}}
+
+
+Contains the types for different scheduler data structures.  
+
+
+{\ttfamily \#include "{}ee\+\_\+cfg.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+utils.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+compiler.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+platform\+\_\+types.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+api\+\_\+types.\+h"{}}\newline
+Include dependency graph for ee\+\_\+scheduler\+\_\+types.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structOsEE__SN__tag}{Os\+EE\+\_\+\+SN\+\_\+tag}}
+\begin{DoxyCompactList}\small\item\em Scheduler node data structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structOsEE__sem__tag}{Os\+EE\+\_\+sem\+\_\+tag}}
+\begin{DoxyCompactList}\small\item\em Semaphore Data structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ee__scheduler__types_8h_aaf1cd8adb397f760df321e7e1e171de6}\label{ee__scheduler__types_8h_aaf1cd8adb397f760df321e7e1e171de6} 
+\#define {\bfseries OSEE\+\_\+\+RQ\+\_\+\+LL}
+\begin{DoxyCompactList}\small\item\em in case it is not defined the OSEE\+\_\+\+RQ\+\_\+\+MULTIQUEUE, define the OSEE\+\_\+\+RQ\+\_\+\+LL, which is the linked list implementation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structOsEE__SN__tag}{Os\+EE\+\_\+\+SN\+\_\+tag}} \mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}}
+\begin{DoxyCompactList}\small\item\em Scheduler node data structure. \end{DoxyCompactList}\item 
+\Hypertarget{ee__scheduler__types_8h_a57c20fab09b2687167c2a5059c43e1b4}\label{ee__scheduler__types_8h_a57c20fab09b2687167c2a5059c43e1b4} 
+typedef \mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \texorpdfstring{$\ast$}{*} {\bfseries Os\+EE\+\_\+\+RQ}
+\begin{DoxyCompactList}\small\item\em When implemented with a linked list, a ready queue is a list of scheduler nodes. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structOsEE__sem__tag}{Os\+EE\+\_\+sem\+\_\+tag}} \mbox{\hyperlink{ee__scheduler__types_8h_ab913bb63e9e49d91e4d600b6e37e0971}{Os\+EE\+\_\+sem}}
+\begin{DoxyCompactList}\small\item\em Semaphore Data structure. \end{DoxyCompactList}\item 
+\Hypertarget{ee__scheduler__types_8h_af869ee88741091b96276198ef7f1956a}\label{ee__scheduler__types_8h_af869ee88741091b96276198ef7f1956a} 
+typedef struct \mbox{\hyperlink{structOsEE__sem__tag}{Os\+EE\+\_\+sem\+\_\+tag}} {\bfseries Sem\+Type}
+\begin{DoxyCompactList}\small\item\em A semaphore data structure with a OSEK/\+VDX naming convention flavour. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ee__compiler__gcc_8h_abb9563920c344956cef4718c142139da}{OSEE\+\_\+\+STATIC\+\_\+\+INLINE}} \mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{ee__scheduler__types_8h_ad47c7cbc96736053b0fd28ba83f75164}{os\+EE\+\_\+sn\+\_\+alloc}} (\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}} pp\+\_\+first)
+\begin{DoxyCompactList}\small\item\em Removes the first node from a node list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__compiler__gcc_8h_abb9563920c344956cef4718c142139da}{OSEE\+\_\+\+STATIC\+\_\+\+INLINE}} void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{ee__scheduler__types_8h_aea76d09e36c0e274593096c5a6c8c74a}{os\+EE\+\_\+sn\+\_\+release}} (\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}} pp\+\_\+first, \mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}} p\+\_\+to\+\_\+free)
+\begin{DoxyCompactList}\small\item\em Inserts a node as the first of a list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__platform__types_8h_ae4ce8d6e1d6a72fece80207a7e8772dd}{Os\+EE\+\_\+bool}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{ee__scheduler__types_8h_a12a7550ef10b58a70ac0c727dce79334}{os\+EE\+\_\+sn\+\_\+priority\+\_\+insert}} (\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}} pp\+\_\+first, \mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}} p\+\_\+sn\+\_\+new, \mbox{\hyperlink{ee__compiler_8h_a976d68445c3d7763a2d3c4ece1d0af05}{CONST}}(\mbox{\hyperlink{ee__platform__types_8h_ae4ce8d6e1d6a72fece80207a7e8772dd}{Os\+EE\+\_\+bool}},) as\+\_\+ready)
+\begin{DoxyCompactList}\small\item\em Ordered insertion in a queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Errico Guidieri 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2016 
+\end{DoxyDate}
+
+
+\label{doc-typedef-members}
+\Hypertarget{ee__scheduler__types_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{ee__scheduler__types_8h_ab913bb63e9e49d91e4d600b6e37e0971}\index{ee\_scheduler\_types.h@{ee\_scheduler\_types.h}!OsEE\_sem@{OsEE\_sem}}
+\index{OsEE\_sem@{OsEE\_sem}!ee\_scheduler\_types.h@{ee\_scheduler\_types.h}}
+\doxysubsubsection{\texorpdfstring{OsEE\_sem}{OsEE\_sem}}
+{\footnotesize\ttfamily \label{ee__scheduler__types_8h_ab913bb63e9e49d91e4d600b6e37e0971} 
+typedef struct \mbox{\hyperlink{structOsEE__sem__tag}{Os\+EE\+\_\+sem\+\_\+tag}} \mbox{\hyperlink{ee__scheduler__types_8h_ab913bb63e9e49d91e4d600b6e37e0971}{Os\+EE\+\_\+sem}}}
+
+A counter, a blocked queue, and a spinlock in case of multicores. \Hypertarget{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}\index{ee\_scheduler\_types.h@{ee\_scheduler\_types.h}!OsEE\_SN@{OsEE\_SN}}
+\index{OsEE\_SN@{OsEE\_SN}!ee\_scheduler\_types.h@{ee\_scheduler\_types.h}}
+\doxysubsubsection{\texorpdfstring{OsEE\_SN}{OsEE\_SN}}
+{\footnotesize\ttfamily \label{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0} 
+typedef struct \mbox{\hyperlink{structOsEE__SN__tag}{Os\+EE\+\_\+\+SN\+\_\+tag}} \mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}}}
+
+The Scheduler queues are composed by lists of nodes. 
+
+\label{doc-func-members}
+\Hypertarget{ee__scheduler__types_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ee__scheduler__types_8h_ad47c7cbc96736053b0fd28ba83f75164}\index{ee\_scheduler\_types.h@{ee\_scheduler\_types.h}!osEE\_sn\_alloc@{osEE\_sn\_alloc}}
+\index{osEE\_sn\_alloc@{osEE\_sn\_alloc}!ee\_scheduler\_types.h@{ee\_scheduler\_types.h}}
+\doxysubsubsection{\texorpdfstring{osEE\_sn\_alloc()}{osEE\_sn\_alloc()}}
+{\footnotesize\ttfamily \label{ee__scheduler__types_8h_ad47c7cbc96736053b0fd28ba83f75164} 
+\mbox{\hyperlink{ee__compiler__gcc_8h_abb9563920c344956cef4718c142139da}{OSEE\+\_\+\+STATIC\+\_\+\+INLINE}} \mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} os\+EE\+\_\+sn\+\_\+alloc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}}]{pp\+\_\+first}{}\end{DoxyParamCaption})}
+
+Removes the first node in a task list. Typically called on the free node list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em pp\+\_\+first} & Pointer to (the pointer to the first node of a queue) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a pointer to a node. 
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}, \mbox{\hyperlink{ee__scheduler__types_8h_ad47c7cbc96736053b0fd28ba83f75164}{os\+EE\+\_\+sn\+\_\+alloc()}}, and \mbox{\hyperlink{ee__compiler_8h_a5c6ccc28154ea2a7874ba567a352e009}{P2\+VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{ee__scheduler__types_8h_ad47c7cbc96736053b0fd28ba83f75164}{os\+EE\+\_\+sn\+\_\+alloc()}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{ee__scheduler__types_8h_a12a7550ef10b58a70ac0c727dce79334}\index{ee\_scheduler\_types.h@{ee\_scheduler\_types.h}!osEE\_sn\_priority\_insert@{osEE\_sn\_priority\_insert}}
+\index{osEE\_sn\_priority\_insert@{osEE\_sn\_priority\_insert}!ee\_scheduler\_types.h@{ee\_scheduler\_types.h}}
+\doxysubsubsection{\texorpdfstring{osEE\_sn\_priority\_insert()}{osEE\_sn\_priority\_insert()}}
+{\footnotesize\ttfamily \label{ee__scheduler__types_8h_a12a7550ef10b58a70ac0c727dce79334} 
+\mbox{\hyperlink{ee__platform__types_8h_ae4ce8d6e1d6a72fece80207a7e8772dd}{Os\+EE\+\_\+bool}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} os\+EE\+\_\+sn\+\_\+priority\+\_\+insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}}]{pp\+\_\+first}{, }\item[{\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}}]{p\+\_\+sn\+\_\+new}{, }\item[{\mbox{\hyperlink{ee__compiler_8h_a976d68445c3d7763a2d3c4ece1d0af05}{CONST}}(\mbox{\hyperlink{ee__platform__types_8h_ae4ce8d6e1d6a72fece80207a7e8772dd}{Os\+EE\+\_\+bool}},)}]{as\+\_\+ready}{}\end{DoxyParamCaption})}
+
+This functon inserts a task inside a task queue, following the order of the task.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em pp\+\_\+first} & Pointer to (the pointer to the first node of a queue) \\
+\hline
+\mbox{\texttt{in}}  & {\em p\+\_\+sn\+\_\+new} & Node to be inserted in the list following the priority of its task \\
+\hline
+\mbox{\texttt{in}}  & {\em as\+\_\+ready} & If OSEE\+\_\+\+TRUE, use the ready\+\_\+priority and not the current priority to queue the task. The usage of the ready priority is useful when doing global schedulng. In AUTOSAR conformance classes, onlt the current priority is used.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function returns OSEE\+\_\+\+TRUE if the head pp\+\_\+first changed. 
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler_8h_a976d68445c3d7763a2d3c4ece1d0af05}{CONST}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}, \mbox{\hyperlink{ee__scheduler__types_8h_a12a7550ef10b58a70ac0c727dce79334}{os\+EE\+\_\+sn\+\_\+priority\+\_\+insert()}}, \mbox{\hyperlink{ee__compiler_8h_a5c6ccc28154ea2a7874ba567a352e009}{P2\+VAR}}, and \mbox{\hyperlink{ee__compiler_8h_a11a4114a8973be51c022ce946b643033}{TYPEDEF}}.
+
+
+
+Referenced by \mbox{\hyperlink{ee__scheduler__types_8h_a12a7550ef10b58a70ac0c727dce79334}{os\+EE\+\_\+sn\+\_\+priority\+\_\+insert()}}.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{ee__scheduler__types_8h_aea76d09e36c0e274593096c5a6c8c74a}\index{ee\_scheduler\_types.h@{ee\_scheduler\_types.h}!osEE\_sn\_release@{osEE\_sn\_release}}
+\index{osEE\_sn\_release@{osEE\_sn\_release}!ee\_scheduler\_types.h@{ee\_scheduler\_types.h}}
+\doxysubsubsection{\texorpdfstring{osEE\_sn\_release()}{osEE\_sn\_release()}}
+{\footnotesize\ttfamily \label{ee__scheduler__types_8h_aea76d09e36c0e274593096c5a6c8c74a} 
+\mbox{\hyperlink{ee__compiler__gcc_8h_abb9563920c344956cef4718c142139da}{OSEE\+\_\+\+STATIC\+\_\+\+INLINE}} void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} os\+EE\+\_\+sn\+\_\+release (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}}]{pp\+\_\+first}{, }\item[{\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}}]{p\+\_\+to\+\_\+free}{}\end{DoxyParamCaption})}
+
+Inserts a node as the first of a list. Typically called on the free node list to "{}release"{} a scheduler node.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in,out}}  & {\em pp\+\_\+first} & Pointer to (the pointer to the first node of a queue) \\
+\hline
+\mbox{\texttt{in,out}}  & {\em p\+\_\+to\+\_\+free} & Node to be inserted in the list \\
+\hline
+\end{DoxyParams}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}, \mbox{\hyperlink{ee__scheduler__types_8h_aea76d09e36c0e274593096c5a6c8c74a}{os\+EE\+\_\+sn\+\_\+release()}}, and \mbox{\hyperlink{ee__compiler_8h_a5c6ccc28154ea2a7874ba567a352e009}{P2\+VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{ee__scheduler__types_8h_aea76d09e36c0e274593096c5a6c8c74a}{os\+EE\+\_\+sn\+\_\+release()}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7

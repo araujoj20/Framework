@@ -1,0 +1,54 @@
+\doxysection{Os\+EE\+\_\+\+KCB Struct Reference}
+\hypertarget{structOsEE__KCB}{}\label{structOsEE__KCB}\index{OsEE\_KCB@{OsEE\_KCB}}
+
+
+This is the Kernel Control Block.  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+\+KCB\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structOsEE__KCB_a9c8e115c75368d7318ae94d5d37982d5}\label{structOsEE__KCB_a9c8e115c75368d7318ae94d5d37982d5} 
+\mbox{\hyperlink{group__primitives-multicore_ga679c3963e5157e5ec5f771462ffe464c}{Core\+Mask\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries ar\+\_\+core\+\_\+mask}
+\begin{DoxyCompactList}\small\item\em This is the mask of the cores started with \doxylink{group__primitives-multicore_ga5772bace0fdb9dfd2084fec01b4af71c}{Start\+Core()} and which will be handled by ERIKA3. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KCB_a68cd739cfe96b6de0ea27526a805a14d}\label{structOsEE__KCB_a68cd739cfe96b6de0ea27526a805a14d} 
+\mbox{\hyperlink{group__primitives-multicore_ga679c3963e5157e5ec5f771462ffe464c}{Core\+Mask\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries not\+\_\+ar\+\_\+core\+\_\+mask}
+\begin{DoxyCompactList}\small\item\em This is the mask of the cores started with \doxylink{group__primitives-multicore_ga316a0a4bf5e7e0e8a690e2bacea2859e}{Start\+Non\+Autosar\+Core()} which are not under the control of ERIKA3. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KCB_ab64afe361053c77046c2b3af85de7900}\label{structOsEE__KCB_ab64afe361053c77046c2b3af85de7900} 
+\mbox{\hyperlink{group__primitives-multicore_ga679c3963e5157e5ec5f771462ffe464c}{Core\+Mask\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries ar\+\_\+shutdown\+\_\+mask}
+\begin{DoxyCompactList}\small\item\em This is the mask to coordinate the distributed shutdown initiated with \doxylink{group__primitives-multicore_gaca853e5b99ce7545b8c3741286b7ca38}{Shutdown\+All\+Cores()} \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KCB_a88d3cea06a3f41251ef0e9db9711df2b}\label{structOsEE__KCB_a88d3cea06a3f41251ef0e9db9711df2b} 
+\mbox{\hyperlink{group__primitives-multicore_gaf9e0425e029ca07b30f8b77b7ef5e76b}{Core\+Num\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries ar\+\_\+num\+\_\+core\+\_\+started}
+\begin{DoxyCompactList}\small\item\em This is the number of cores that have been started (both AUTOSAR and non AUTOSAR) \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KCB_a8049669250c7103eb45ec0976ddfa4b5}\label{structOsEE__KCB_a8049669250c7103eb45ec0976ddfa4b5} 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries ar\+\_\+shutdown\+\_\+all\+\_\+cores\+\_\+error}
+\begin{DoxyCompactList}\small\item\em This is the error parameter value passed to Shutdown\+All\+Cores that must be know to all cores shutting down. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__platform__types_8h_ae4ce8d6e1d6a72fece80207a7e8772dd}{Os\+EE\+\_\+bool}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \mbox{\hyperlink{structOsEE__KCB_a72f908bb996a96aff5fa54072fc3af9f}{ar\+\_\+shutdown\+\_\+all\+\_\+cores\+\_\+flag}}
+\begin{DoxyCompactList}\small\item\em This is a flag that says if the Shutdown procedure has been initiated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the main global data structure, which contains overall RAM information for the kernel 
+
+\label{doc-variable-members}
+\Hypertarget{structOsEE__KCB_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structOsEE__KCB_a72f908bb996a96aff5fa54072fc3af9f}\index{OsEE\_KCB@{OsEE\_KCB}!ar\_shutdown\_all\_cores\_flag@{ar\_shutdown\_all\_cores\_flag}}
+\index{ar\_shutdown\_all\_cores\_flag@{ar\_shutdown\_all\_cores\_flag}!OsEE\_KCB@{OsEE\_KCB}}
+\doxysubsubsection{\texorpdfstring{ar\_shutdown\_all\_cores\_flag}{ar\_shutdown\_all\_cores\_flag}}
+{\footnotesize\ttfamily \label{structOsEE__KCB_a72f908bb996a96aff5fa54072fc3af9f} 
+\mbox{\hyperlink{ee__platform__types_8h_ae4ce8d6e1d6a72fece80207a7e8772dd}{Os\+EE\+\_\+bool}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} Os\+EE\+\_\+\+KCB\+::ar\+\_\+shutdown\+\_\+all\+\_\+cores\+\_\+flag}
+
+Checked inside the intercore interrupt. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,48 @@
+\doxysection{Os\+EE\+\_\+\+Sched\+Tab\+CB\+\_\+tag Struct Reference}
+\hypertarget{structOsEE__SchedTabCB__tag}{}\label{structOsEE__SchedTabCB__tag}\index{OsEE\_SchedTabCB\_tag@{OsEE\_SchedTabCB\_tag}}
+
+
+Data structure to store RAM informations needed by schedule tables.  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+\+Sched\+Tab\+CB\+\_\+tag\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structOsEE__SchedTabCB__tag_a488a768975e1069d4dadf601840b3fec}\label{structOsEE__SchedTabCB__tag_a488a768975e1069d4dadf601840b3fec} 
+struct \mbox{\hyperlink{structOsEE__SchedTabDB__tag}{Os\+EE\+\_\+\+Sched\+Tab\+DB\+\_\+tag}} const \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871}{OS\+\_\+\+APPL\+\_\+\+CONST}} {\bfseries p\+\_\+next\+\_\+table}
+\begin{DoxyCompactList}\small\item\em ID of next schedule table to be started. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__SchedTabCB__tag_a8f6a17d8895928a372ba23a6bcb4aaf2}\label{structOsEE__SchedTabCB__tag_a8f6a17d8895928a372ba23a6bcb4aaf2} 
+\mbox{\hyperlink{group__primitives-alarm_ga169b940dbe47167e06113454538d3484}{Tick\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries start}
+\begin{DoxyCompactList}\small\item\em Schedule Table underlying counter Start value. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__SchedTabCB__tag_a685bb7a285c3212f662b260225011bac}\label{structOsEE__SchedTabCB__tag_a685bb7a285c3212f662b260225011bac} 
+\mbox{\hyperlink{ee__api__types_8h_af8828c2bc134c8748a22d24f7a2e9185}{Schedule\+Table\+Status\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries st\+\_\+status}
+\begin{DoxyCompactList}\small\item\em Schedule Table current status. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__api__types_8h_a6056fabe5f89ca108e1074b3432ef410}{Mem\+Size}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \mbox{\hyperlink{structOsEE__SchedTabCB__tag_a19a42c51c8b63dd3ad344ec24041c00e}{position}}
+\begin{DoxyCompactList}\small\item\em Expiry point to be processed in the schedule table. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__SchedTabCB__tag_a817240703080fcd6e00edaf745c574cc}\label{structOsEE__SchedTabCB__tag_a817240703080fcd6e00edaf745c574cc} 
+\mbox{\hyperlink{ee__api__types_8h_a440f077c08275033af26b205870d87ed}{Tick\+Delta\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries deviation}
+\begin{DoxyCompactList}\small\item\em Deviation of the schedule table from synchronization. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-variable-members}
+\Hypertarget{structOsEE__SchedTabCB__tag_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structOsEE__SchedTabCB__tag_a19a42c51c8b63dd3ad344ec24041c00e}\index{OsEE\_SchedTabCB\_tag@{OsEE\_SchedTabCB\_tag}!position@{position}}
+\index{position@{position}!OsEE\_SchedTabCB\_tag@{OsEE\_SchedTabCB\_tag}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \label{structOsEE__SchedTabCB__tag_a19a42c51c8b63dd3ad344ec24041c00e} 
+\mbox{\hyperlink{ee__api__types_8h_a6056fabe5f89ca108e1074b3432ef410}{Mem\+Size}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} Os\+EE\+\_\+\+Sched\+Tab\+CB\+\_\+tag\+::position}
+
+I use an index instead a pointer to not rely in pointer arithmetic that is no compliant with MISRA 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

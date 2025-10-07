@@ -1,0 +1,86 @@
+var ee__kernel__types_8h =
+[
+    [ "OsEE_MCB", "structOsEE__MCB.html", "structOsEE__MCB" ],
+    [ "OsEE_MDB_tag", "structOsEE__MDB__tag.html", "structOsEE__MDB__tag" ],
+    [ "OsEE_TCB", "structOsEE__TCB.html", "structOsEE__TCB" ],
+    [ "OsEE_TDB_tag", "structOsEE__TDB__tag.html", "structOsEE__TDB__tag" ],
+    [ "OsEE_TW", "structOsEE__TW.html", "structOsEE__TW" ],
+    [ "OsEE_CounterCB", "structOsEE__CounterCB.html", "structOsEE__CounterCB" ],
+    [ "OsEE_CounterDB", "structOsEE__CounterDB.html", "structOsEE__CounterDB" ],
+    [ "OsEE_action_param", "structOsEE__action__param.html", "structOsEE__action__param" ],
+    [ "OsEE_action", "structOsEE__action.html", "structOsEE__action" ],
+    [ "OsEE_st_exipiry_point_tag", "structOsEE__st__exipiry__point__tag.html", "structOsEE__st__exipiry__point__tag" ],
+    [ "OsEE_AlarmCB_tag", "structOsEE__AlarmCB__tag.html", "structOsEE__AlarmCB__tag" ],
+    [ "OsEE_AlarmDB_tag", "structOsEE__AlarmDB__tag.html", "structOsEE__AlarmDB__tag" ],
+    [ "OsEE_SchedTabCB_tag", "structOsEE__SchedTabCB__tag.html", "structOsEE__SchedTabCB__tag" ],
+    [ "OsEE_SchedTabDB_tag", "structOsEE__SchedTabDB__tag.html", "structOsEE__SchedTabDB__tag" ],
+    [ "OsEE_TriggerCB", "structOsEE__TriggerCB.html", "structOsEE__TriggerCB" ],
+    [ "OsEE_TriggerDB_tag", "structOsEE__TriggerDB__tag.html", "structOsEE__TriggerDB__tag" ],
+    [ "OsEE_CCB", "structOsEE__CCB.html", "structOsEE__CCB" ],
+    [ "OsEE_CDB", "structOsEE__CDB.html", "structOsEE__CDB" ],
+    [ "OsEE_KCB", "structOsEE__KCB.html", "structOsEE__KCB" ],
+    [ "OsEE_KDB", "structOsEE__KDB.html", "structOsEE__KDB" ],
+    [ "OSEE_COUNTER_TRIGGER_TYPES", "ee__kernel__types_8h.html#a0b3e32196ea3fdc62c076873eb0c070e", null ],
+    [ "OSEE_HAS_CONTEXT", "ee__kernel__types_8h.html#a90a10d011784e6aad45f8fb68e42fa5e", null ],
+    [ "OSEE_MAX_BYTE", "ee__kernel__types_8h.html#adbd069cc0873979538014485ab882b98", null ],
+    [ "OS_APPL_DATA", "ee__kernel__types_8h.html#a3fa4e5f55c2eb11bd76e70372f121eb5", null ],
+    [ "OsEE_AlarmCB", "ee__kernel__types_8h.html#a67a3b1015e569eeedc463b307d7eb24c", null ],
+    [ "OsEE_AlarmDB", "ee__kernel__types_8h.html#a6be9e7c8f0cc0117a849a81703b1843f", null ],
+    [ "OsEE_byte", "ee__kernel__types_8h.html#ad6726f57713736f83c415cbebe1af994", null ],
+    [ "OsEE_MDB", "ee__kernel__types_8h.html#a321e2d8dbc073e68cb9cda8583d28b52", null ],
+    [ "OsEE_ResourceCB", "ee__kernel__types_8h.html#a4184155a702490e0e17bc1e11522d62b", null ],
+    [ "OsEE_ResourceDB", "ee__kernel__types_8h.html#a2704166d69bff287ac8985ac2fb6dffe", null ],
+    [ "OsEE_SchedTabCB", "ee__kernel__types_8h.html#a6e1e9b0256b349b1795f1ff4b2e3f16e", null ],
+    [ "OsEE_SchedTabDB", "ee__kernel__types_8h.html#ad1dab5a737ce30e71471bcfa8f2aeb8f", null ],
+    [ "OsEE_SpinlockCB", "ee__kernel__types_8h.html#ac86c38f6c591d3130a1215974f57b33a", null ],
+    [ "OsEE_SpinlockDB", "ee__kernel__types_8h.html#ae3fb67399e5ea88a12887839910ebb2f", null ],
+    [ "OsEE_st_exipiry_point", "ee__kernel__types_8h.html#a53b671df0a76ae4bf0d1bd5bba91a9cf", null ],
+    [ "OsEE_TDB", "ee__kernel__types_8h.html#a09fa6316ce540908359bbc26e7571795", null ],
+    [ "OsEE_TriggerDB", "ee__kernel__types_8h.html#afc1f17d5c14b865b4294b2b1b1c6a683", null ],
+    [ "OsEE_TriggerQ", "ee__kernel__types_8h.html#a32e5ef4439cb0b7fea1835bc7a494b14", null ],
+    [ "SynchStrategyType", "ee__kernel__types_8h.html#af76d81cc40c06f96ac3585baf13140b0", null ],
+    [ "OsEE_action_type", "ee__kernel__types_8h.html#a2b36a8d97d4448b1d109012c6bd87a79", [
+      [ "OSEE_ACTION_TASK", "ee__kernel__types_8h.html#a2b36a8d97d4448b1d109012c6bd87a79a4adcbcc7f8583294c914666ab2f642ca", null ],
+      [ "OSEE_ACTION_EVENT", "ee__kernel__types_8h.html#a2b36a8d97d4448b1d109012c6bd87a79aad43a653ecdf118cfc1beb87a467907a", null ],
+      [ "OSEE_ACTION_COUNTER", "ee__kernel__types_8h.html#a2b36a8d97d4448b1d109012c6bd87a79a2fdfc3e090c86e8787710a4da83bd23a", null ],
+      [ "OSEE_ACTION_CALLBACK", "ee__kernel__types_8h.html#a2b36a8d97d4448b1d109012c6bd87a79aa435f2abb3600ff2b9e21930c4b3ca66", null ]
+    ] ],
+    [ "OsEE_kernel_status", "ee__kernel__types_8h.html#a94f0722a0bf2577ff937847aaa4d8b80", [
+      [ "OSEE_KERNEL_INITIALIZED", "ee__kernel__types_8h.html#a94f0722a0bf2577ff937847aaa4d8b80a587bc2af1e02a42c57be36382e34f1ff", null ],
+      [ "OSEE_KERNEL_STARTING", "ee__kernel__types_8h.html#a94f0722a0bf2577ff937847aaa4d8b80a854a1b760a4d83d002dd4ee1f9682e93", null ],
+      [ "OSEE_KERNEL_STARTED", "ee__kernel__types_8h.html#a94f0722a0bf2577ff937847aaa4d8b80ab99d099ebf69e8ebf7e4716357b2ab91", null ],
+      [ "OSEE_KERNEL_SHUTDOWN", "ee__kernel__types_8h.html#a94f0722a0bf2577ff937847aaa4d8b80a48c011aed28eed91df39f4ebdcdd7e2c", null ]
+    ] ],
+    [ "OsEE_m_type", "ee__kernel__types_8h.html#aac88ce5982bf0bc00cd6af0cccb98910", [
+      [ "OSEE_M_RESOURCE", "ee__kernel__types_8h.html#aac88ce5982bf0bc00cd6af0cccb98910a8d43737bf19da92377db1ce18a2b5a2e", null ],
+      [ "OSEE_M_SPINLOCK", "ee__kernel__types_8h.html#aac88ce5982bf0bc00cd6af0cccb98910a0205e9e0e352aea184d222f8c39a94c7", null ]
+    ] ],
+    [ "OsEE_os_context", "ee__kernel__types_8h.html#a8d1bb526049b7816cc00b41d69cca2db", [
+      [ "OSEE_KERNEL_CTX", "ee__kernel__types_8h.html#a8d1bb526049b7816cc00b41d69cca2dbac0f5e9b2379e83d8638e7c0b2bfd6ece", null ],
+      [ "OSEE_IDLE_CTX", "ee__kernel__types_8h.html#a8d1bb526049b7816cc00b41d69cca2dba5c4930d38b6e9f8ce80129d2197eb8cd", null ],
+      [ "OSEE_TASK_CTX", "ee__kernel__types_8h.html#a8d1bb526049b7816cc00b41d69cca2dbaf11062bc64357aa670201dbc6f0268d0", null ],
+      [ "OSEE_TASK_ISR2_CTX", "ee__kernel__types_8h.html#a8d1bb526049b7816cc00b41d69cca2dba0ca883d43ea4284f705a72c3af60dbcb", null ],
+      [ "OSEE_ERRORHOOK_CTX", "ee__kernel__types_8h.html#a8d1bb526049b7816cc00b41d69cca2dba9b59358e784c0001ee9c397f40ca205a", null ],
+      [ "OSEE_PROTECTIONHOOK_CTX", "ee__kernel__types_8h.html#a8d1bb526049b7816cc00b41d69cca2dba557ef2ccd9e01f7b6480abdce0ec1dff", null ],
+      [ "OSEE_PRETASKHOOK_CTX", "ee__kernel__types_8h.html#a8d1bb526049b7816cc00b41d69cca2dbaa382c33da8a6bf761896ff3ac4ce4439", null ],
+      [ "OSEE_POSTTASKHOOK_CTX", "ee__kernel__types_8h.html#a8d1bb526049b7816cc00b41d69cca2dbad0b153c859d2e4dcc3227b1e9779fc9c", null ],
+      [ "OSEE_STARTUPHOOK_CTX", "ee__kernel__types_8h.html#a8d1bb526049b7816cc00b41d69cca2dba43b4d2024e0490b6925e09e41f50137b", null ],
+      [ "OSEE_SHUTDOWNHOOK_CTX", "ee__kernel__types_8h.html#a8d1bb526049b7816cc00b41d69cca2dba7d2ac08836d6f8b5706a343b256957a6", null ],
+      [ "OSEE_ALARMCALLBACK_CTX", "ee__kernel__types_8h.html#a8d1bb526049b7816cc00b41d69cca2dba501382bfb3c3fbbd2656bc7b84e49443", null ]
+    ] ],
+    [ "OsEE_st_synch_strategy", "ee__kernel__types_8h.html#ac063e723cbbae500e624f46a0f30fee8", [
+      [ "OSEE_SCHEDTABLE_SYNC_NONE", "ee__kernel__types_8h.html#ac063e723cbbae500e624f46a0f30fee8ac3fc787e6728b828f8f8ab1c6d0e692b", null ],
+      [ "OSEE_SCHEDTABLE_SYNC_IMPLICIT", "ee__kernel__types_8h.html#ac063e723cbbae500e624f46a0f30fee8a056e9382c9994d67db12a003aa1dfc52", null ],
+      [ "OSEE_SCHEDTABLE_SYNC_EXPLICIT", "ee__kernel__types_8h.html#ac063e723cbbae500e624f46a0f30fee8a34dd9c148065eb8c05204497d6fc41c0", null ]
+    ] ],
+    [ "OsEE_trigger_status", "ee__kernel__types_8h.html#a01bbbafc04ff95345be928e1e39c3c68", [
+      [ "OSEE_TRIGGER_INACTIVE", "ee__kernel__types_8h.html#a01bbbafc04ff95345be928e1e39c3c68a1c3ccb08659d475e050e16ec8640d033", null ],
+      [ "OSEE_TRIGGER_CANCELED", "ee__kernel__types_8h.html#a01bbbafc04ff95345be928e1e39c3c68a9393b7f5a265233a2799679c7a17f3ee", null ],
+      [ "OSEE_TRIGGER_ACTIVE", "ee__kernel__types_8h.html#a01bbbafc04ff95345be928e1e39c3c68a12be46ecd182f986f64135d7ea9c90e7", null ],
+      [ "OSEE_TRIGGER_EXPIRED", "ee__kernel__types_8h.html#a01bbbafc04ff95345be928e1e39c3c68a304641ec02452e5bb2d9bdb040e81b59", null ],
+      [ "OSEE_TRIGGER_REENABLED", "ee__kernel__types_8h.html#a01bbbafc04ff95345be928e1e39c3c68a617bb4880fae6f465bec615e6da0fc78", null ]
+    ] ],
+    [ "osEE_change_context_from_isr2_end", "ee__kernel__types_8h.html#a3cade2e1ce1e0f9a35dbe0b26267bce7", null ],
+    [ "osEE_change_context_from_task_end", "ee__kernel__types_8h.html#a21380b978f0e303ab08b1dbf6d07db9c", null ],
+    [ "osEE_idle_hook_wrapper", "ee__kernel__types_8h.html#a9dbe40e88c1c11f48abb0e7d3ed330a6", null ]
+];

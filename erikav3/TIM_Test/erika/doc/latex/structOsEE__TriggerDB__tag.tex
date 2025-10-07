@@ -1,0 +1,53 @@
+\doxysection{Os\+EE\+\_\+\+Trigger\+DB\+\_\+tag Struct Reference}
+\hypertarget{structOsEE__TriggerDB__tag}{}\label{structOsEE__TriggerDB__tag}\index{OsEE\_TriggerDB\_tag@{OsEE\_TriggerDB\_tag}}
+
+
+Trigger Descriptor Block is the elemnt containing the information of Alarms and Schedule Tables.  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+\+Trigger\+DB\+\_\+tag\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structOsEE__TriggerDB__tag_a5fe0e7df469a49d99123fd8799739e83}\label{structOsEE__TriggerDB__tag_a5fe0e7df469a49d99123fd8799739e83} 
+\mbox{\hyperlink{structOsEE__TriggerCB}{Os\+EE\+\_\+\+Trigger\+CB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+trigger\+\_\+cb}
+\begin{DoxyCompactList}\small\item\em pointer to the trigger descriptor block \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TriggerDB__tag_a5e53494f160e72f18e1d2e3e7a83561d}\label{structOsEE__TriggerDB__tag_a5e53494f160e72f18e1d2e3e7a83561d} 
+\mbox{\hyperlink{structOsEE__CounterDB}{Os\+EE\+\_\+\+Counter\+DB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+counter\+\_\+db}
+\begin{DoxyCompactList}\small\item\em pointer to the counter descriptor block (in ram) \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structOsEE__AlarmDB__tag}{Os\+EE\+\_\+\+Alarm\+DB\+\_\+tag}} const \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871}{OS\+\_\+\+APPL\+\_\+\+CONST}} \mbox{\hyperlink{structOsEE__TriggerDB__tag_a4b2ee0e7f7fbfabad4d40ac18532a8e7}{p\+\_\+alarm\+\_\+db}}
+\begin{DoxyCompactList}\small\item\em pointer to the alarm descriptor block. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structOsEE__SchedTabDB__tag}{Os\+EE\+\_\+\+Sched\+Tab\+DB\+\_\+tag}} const \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871}{OS\+\_\+\+APPL\+\_\+\+CONST}} \mbox{\hyperlink{structOsEE__TriggerDB__tag_abf583816df7922869f12683c2a84964c}{p\+\_\+st\+\_\+db}}
+\begin{DoxyCompactList}\small\item\em pointer to the schedule table descriptor block. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+If both Alarms and Schedule Tables are present in the Application, the struct has two pointers to the Alarm and to the Schedule Table Descriptor blocks. Only one of them is different from NULL (this is implicitly the type of the trigger). If only Alarms or only Schedule Tables are present, the struct contains the fields of the descriptor block, saving one indirection. 
+
+\label{doc-variable-members}
+\Hypertarget{structOsEE__TriggerDB__tag_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structOsEE__TriggerDB__tag_a4b2ee0e7f7fbfabad4d40ac18532a8e7}\index{OsEE\_TriggerDB\_tag@{OsEE\_TriggerDB\_tag}!p\_alarm\_db@{p\_alarm\_db}}
+\index{p\_alarm\_db@{p\_alarm\_db}!OsEE\_TriggerDB\_tag@{OsEE\_TriggerDB\_tag}}
+\doxysubsubsection{\texorpdfstring{p\_alarm\_db}{p\_alarm\_db}}
+{\footnotesize\ttfamily \label{structOsEE__TriggerDB__tag_a4b2ee0e7f7fbfabad4d40ac18532a8e7} 
+struct \mbox{\hyperlink{structOsEE__AlarmDB__tag}{Os\+EE\+\_\+\+Alarm\+DB\+\_\+tag}} const \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871}{OS\+\_\+\+APPL\+\_\+\+CONST}} Os\+EE\+\_\+\+Trigger\+DB\+\_\+tag\+::p\+\_\+alarm\+\_\+db}
+
+present if both alarms and schedule table are there. !=0 if the trigger is related to an alarm. \Hypertarget{structOsEE__TriggerDB__tag_abf583816df7922869f12683c2a84964c}\index{OsEE\_TriggerDB\_tag@{OsEE\_TriggerDB\_tag}!p\_st\_db@{p\_st\_db}}
+\index{p\_st\_db@{p\_st\_db}!OsEE\_TriggerDB\_tag@{OsEE\_TriggerDB\_tag}}
+\doxysubsubsection{\texorpdfstring{p\_st\_db}{p\_st\_db}}
+{\footnotesize\ttfamily \label{structOsEE__TriggerDB__tag_abf583816df7922869f12683c2a84964c} 
+struct \mbox{\hyperlink{structOsEE__SchedTabDB__tag}{Os\+EE\+\_\+\+Sched\+Tab\+DB\+\_\+tag}} const \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871}{OS\+\_\+\+APPL\+\_\+\+CONST}} Os\+EE\+\_\+\+Trigger\+DB\+\_\+tag\+::p\+\_\+st\+\_\+db}
+
+present if both alarms and schedule tables are there. !=0 if the trigger is related to a schedule table. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,126 @@
+\doxysection{Os\+EE\+\_\+\+CCB Struct Reference}
+\hypertarget{structOsEE__CCB}{}\label{structOsEE__CCB}\index{OsEE\_CCB@{OsEE\_CCB}}
+
+
+This is the Core Control Block.  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+\+CCB\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ee__kernel__types_8h_a09fa6316ce540908359bbc26e7571795}{Os\+EE\+\_\+\+TDB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871}{OS\+\_\+\+APPL\+\_\+\+CONST}} \mbox{\hyperlink{structOsEE__CCB_aae95d469acb18543a5f4f107a619a7d0}{p\+\_\+curr}}
+\begin{DoxyCompactList}\small\item\em current running task or ISR2 on the specific core. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CCB_a285a00d7166a5fea78aac7820e2f5ba4}\label{structOsEE__CCB_a285a00d7166a5fea78aac7820e2f5ba4} 
+\mbox{\hyperlink{ee__scheduler__types_8h_a57c20fab09b2687167c2a5059c43e1b4}{Os\+EE\+\_\+\+RQ}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries rq}
+\begin{DoxyCompactList}\small\item\em core ready queue (valid only with partitioned scheduling) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} \mbox{\hyperlink{structOsEE__CCB_a7bbdc6048aa8fc321332cf50bd044eda}{p\+\_\+free\+\_\+sn}}
+\begin{DoxyCompactList}\small\item\em scheduler node free list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} \mbox{\hyperlink{structOsEE__CCB_a3d3bc52da2ee419e836cb5082d2c8248}{p\+\_\+stk\+\_\+sn}}
+\begin{DoxyCompactList}\small\item\em Stack of scheduler nodes. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CCB_a0d9699b2f486d4efdcaf5e0d4bddf612}\label{structOsEE__CCB_a0d9699b2f486d4efdcaf5e0d4bddf612} 
+\mbox{\hyperlink{ee__kernel__types_8h_a94f0722a0bf2577ff937847aaa4d8b80}{Os\+EE\+\_\+kernel\+\_\+status}} volatile \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries os\+\_\+status}
+\begin{DoxyCompactList}\small\item\em kernel status \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \mbox{\hyperlink{structOsEE__CCB_ab5bdb6c18451c54f07c75a53d700d8ed}{app\+\_\+mode}}
+\begin{DoxyCompactList}\small\item\em application mode for the core. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CCB_aada628d5c82d19d950409206434c245e}\label{structOsEE__CCB_aada628d5c82d19d950409206434c245e} 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries last\+\_\+error}
+\begin{DoxyCompactList}\small\item\em Last error raised by a primitive. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CCB_a44a0370b485f72741d78ac8942677a50}\label{structOsEE__CCB_a44a0370b485f72741d78ac8942677a50} 
+\mbox{\hyperlink{ee__api__types_8h_a2d19e4dc23703453ff28c03f3be56d74}{OSService\+Id\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries service\+\_\+id}
+\begin{DoxyCompactList}\small\item\em Last kernel primitive executed on the core. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CCB_a52c915a992df538694ad27c8a01a9567}\label{structOsEE__CCB_a52c915a992df538694ad27c8a01a9567} 
+\mbox{\hyperlink{unionOsEE__api__param}{Os\+EE\+\_\+api\+\_\+param}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries api\+\_\+param1}
+\begin{DoxyCompactList}\small\item\em Error\+Hook macros -\/ first parameter. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CCB_a998789317241d7f1f951769253606b7c}\label{structOsEE__CCB_a998789317241d7f1f951769253606b7c} 
+\mbox{\hyperlink{unionOsEE__api__param}{Os\+EE\+\_\+api\+\_\+param}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries api\+\_\+param2}
+\begin{DoxyCompactList}\small\item\em Error\+Hook macros -\/ second parameter. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CCB_a6ce05664cc31d56b2dafb95a98e0a5bb}\label{structOsEE__CCB_a6ce05664cc31d56b2dafb95a98e0a5bb} 
+\mbox{\hyperlink{unionOsEE__api__param}{Os\+EE\+\_\+api\+\_\+param}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries api\+\_\+param3}
+\begin{DoxyCompactList}\small\item\em Error\+Hook macros -\/ third parameter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__kernel__types_8h_a8d1bb526049b7816cc00b41d69cca2db}{Os\+EE\+\_\+os\+\_\+context}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \mbox{\hyperlink{structOsEE__CCB_a4a0925db2833f6d0e36a370c8905aa0d}{os\+\_\+context}}
+\begin{DoxyCompactList}\small\item\em The running "{}item"{} (task, isr2, hook, ...) context. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CCB_abf654493764cdd80dbc17d04ead817f7}\label{structOsEE__CCB_abf654493764cdd80dbc17d04ead817f7} 
+\mbox{\hyperlink{ee__kernel__types_8h_a09fa6316ce540908359bbc26e7571795}{Os\+EE\+\_\+\+TDB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871}{OS\+\_\+\+APPL\+\_\+\+CONST}} {\bfseries p\+\_\+last\+\_\+tdb\+\_\+hook}
+\begin{DoxyCompactList}\small\item\em Needed to distinguish that Pre\+Task\+Hook HAVE NOT to be called after an ISR2 that terminates without a TASK rescheduling. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__kernel__types_8h_ae3fb67399e5ea88a12887839910ebb2f}{Os\+EE\+\_\+\+Spinlock\+DB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871}{OS\+\_\+\+APPL\+\_\+\+CONST}} \mbox{\hyperlink{structOsEE__CCB_a8fd8ed743e4af95d36df8e32cb3c0e17}{p\+\_\+last\+\_\+spinlock}}
+\begin{DoxyCompactList}\small\item\em last spinlock acquired. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CCB_a6f530e97009d879faed8206951aa2d30}\label{structOsEE__CCB_a6f530e97009d879faed8206951aa2d30} 
+\mbox{\hyperlink{ee__platform__types_8h_af1e4799ec8702a3b9f88f5453e6297c1}{Os\+EE\+\_\+reg}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries prev\+\_\+s\+\_\+isr\+\_\+all\+\_\+status}
+\begin{DoxyCompactList}\small\item\em Interrupt status saved by \doxylink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()} \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CCB_a80d9ad822d88b4f7c18e7547ee4e9b77}\label{structOsEE__CCB_a80d9ad822d88b4f7c18e7547ee4e9b77} 
+\mbox{\hyperlink{ee__platform__types_8h_af1e4799ec8702a3b9f88f5453e6297c1}{Os\+EE\+\_\+reg}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries prev\+\_\+s\+\_\+isr\+\_\+os\+\_\+status}
+\begin{DoxyCompactList}\small\item\em Interrupt status saved by \doxylink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()} \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CCB_ac562329020af24c7de7b657e0b636254}\label{structOsEE__CCB_ac562329020af24c7de7b657e0b636254} 
+\mbox{\hyperlink{ee__kernel__types_8h_ad6726f57713736f83c415cbebe1af994}{Os\+EE\+\_\+byte}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries s\+\_\+isr\+\_\+all\+\_\+cnt}
+\begin{DoxyCompactList}\small\item\em Counter of nested \doxylink{group__primitives-interrupt_ga813ff2800ad6ce0d75ba1aa9c80c4528}{Suspend\+All\+Interrupts()} \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CCB_a83e49fbae465e1468f8c7f518fef98a2}\label{structOsEE__CCB_a83e49fbae465e1468f8c7f518fef98a2} 
+\mbox{\hyperlink{ee__kernel__types_8h_ad6726f57713736f83c415cbebe1af994}{Os\+EE\+\_\+byte}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries s\+\_\+isr\+\_\+os\+\_\+cnt}
+\begin{DoxyCompactList}\small\item\em Counter of nested \doxylink{group__primitives-interrupt_gad5809f893806277ec01033d78a9e0479}{Suspend\+OSInterrupts()} \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CCB_a772360c298fa03b48885d0de4cac8d0a}\label{structOsEE__CCB_a772360c298fa03b48885d0de4cac8d0a} 
+\mbox{\hyperlink{ee__kernel__types_8h_ad6726f57713736f83c415cbebe1af994}{Os\+EE\+\_\+byte}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries d\+\_\+isr\+\_\+all\+\_\+cnt}
+\begin{DoxyCompactList}\small\item\em This flag marks whether, at the end of a task, a \doxylink{group__primitives-interrupt_ga11f3ad730a6453e0679ae7942c200758}{Disable\+All\+Interrupts()} was called without a matching call to \doxylink{group__primitives-interrupt_gab297295738404ae35ffa0e95e04c2bd0}{Enable\+All\+Interrupts()} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The struct stores all the information related to the handling of a core in RAM, such as\+:
+\begin{DoxyItemize}
+\item core running priority
+\item ready queue
+\item stacks
+\item application mode
+\item interrupt nesting
+\item ORTI core informations 
+\end{DoxyItemize}
+
+\label{doc-variable-members}
+\Hypertarget{structOsEE__CCB_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structOsEE__CCB_ab5bdb6c18451c54f07c75a53d700d8ed}\index{OsEE\_CCB@{OsEE\_CCB}!app\_mode@{app\_mode}}
+\index{app\_mode@{app\_mode}!OsEE\_CCB@{OsEE\_CCB}}
+\doxysubsubsection{\texorpdfstring{app\_mode}{app\_mode}}
+{\footnotesize\ttfamily \label{structOsEE__CCB_ab5bdb6c18451c54f07c75a53d700d8ed} 
+\mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} Os\+EE\+\_\+\+CCB\+::app\+\_\+mode}
+
+it is local to the core because in multicore systems you can initialize the system with different parameters on the \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()}. \Hypertarget{structOsEE__CCB_a4a0925db2833f6d0e36a370c8905aa0d}\index{OsEE\_CCB@{OsEE\_CCB}!os\_context@{os\_context}}
+\index{os\_context@{os\_context}!OsEE\_CCB@{OsEE\_CCB}}
+\doxysubsubsection{\texorpdfstring{os\_context}{os\_context}}
+{\footnotesize\ttfamily \label{structOsEE__CCB_a4a0925db2833f6d0e36a370c8905aa0d} 
+\mbox{\hyperlink{ee__kernel__types_8h_a8d1bb526049b7816cc00b41d69cca2db}{Os\+EE\+\_\+os\+\_\+context}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} Os\+EE\+\_\+\+CCB\+::os\+\_\+context}
+
+Nededed to discriminate what subset of primitives are legal to be executed at a given time. The list of permission is noted in the table in section \doxysectlink{apireference_api-primitives}{Available primitives}{1} . This feature is part of the service protection \Hypertarget{structOsEE__CCB_aae95d469acb18543a5f4f107a619a7d0}\index{OsEE\_CCB@{OsEE\_CCB}!p\_curr@{p\_curr}}
+\index{p\_curr@{p\_curr}!OsEE\_CCB@{OsEE\_CCB}}
+\doxysubsubsection{\texorpdfstring{p\_curr}{p\_curr}}
+{\footnotesize\ttfamily \label{structOsEE__CCB_aae95d469acb18543a5f4f107a619a7d0} 
+\mbox{\hyperlink{ee__kernel__types_8h_a09fa6316ce540908359bbc26e7571795}{Os\+EE\+\_\+\+TDB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871}{OS\+\_\+\+APPL\+\_\+\+CONST}} Os\+EE\+\_\+\+CCB\+::p\+\_\+curr}
+
+note that this is a shortcut for the task pointed by the first sn of the p\+\_\+stk\+\_\+sn \Hypertarget{structOsEE__CCB_a7bbdc6048aa8fc321332cf50bd044eda}\index{OsEE\_CCB@{OsEE\_CCB}!p\_free\_sn@{p\_free\_sn}}
+\index{p\_free\_sn@{p\_free\_sn}!OsEE\_CCB@{OsEE\_CCB}}
+\doxysubsubsection{\texorpdfstring{p\_free\_sn}{p\_free\_sn}}
+{\footnotesize\ttfamily \label{structOsEE__CCB_a7bbdc6048aa8fc321332cf50bd044eda} 
+\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} Os\+EE\+\_\+\+CCB\+::p\+\_\+free\+\_\+sn}
+
+Popped when activating a task \Hypertarget{structOsEE__CCB_a8fd8ed743e4af95d36df8e32cb3c0e17}\index{OsEE\_CCB@{OsEE\_CCB}!p\_last\_spinlock@{p\_last\_spinlock}}
+\index{p\_last\_spinlock@{p\_last\_spinlock}!OsEE\_CCB@{OsEE\_CCB}}
+\doxysubsubsection{\texorpdfstring{p\_last\_spinlock}{p\_last\_spinlock}}
+{\footnotesize\ttfamily \label{structOsEE__CCB_a8fd8ed743e4af95d36df8e32cb3c0e17} 
+\mbox{\hyperlink{ee__kernel__types_8h_ae3fb67399e5ea88a12887839910ebb2f}{Os\+EE\+\_\+\+Spinlock\+DB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871}{OS\+\_\+\+APPL\+\_\+\+CONST}} Os\+EE\+\_\+\+CCB\+::p\+\_\+last\+\_\+spinlock}
+
+needed to avoid the acquisition of spin locks which are not a successor in the spinlock list \mbox{[}SWS\+\_\+\+Os\+\_\+00661\mbox{]} \Hypertarget{structOsEE__CCB_a3d3bc52da2ee419e836cb5082d2c8248}\index{OsEE\_CCB@{OsEE\_CCB}!p\_stk\_sn@{p\_stk\_sn}}
+\index{p\_stk\_sn@{p\_stk\_sn}!OsEE\_CCB@{OsEE\_CCB}}
+\doxysubsubsection{\texorpdfstring{p\_stk\_sn}{p\_stk\_sn}}
+{\footnotesize\ttfamily \label{structOsEE__CCB_a3d3bc52da2ee419e836cb5082d2c8248} 
+\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} Os\+EE\+\_\+\+CCB\+::p\+\_\+stk\+\_\+sn}
+
+The idea is that when the scheduler implements a preemption, it keeps the preempted task in a stack, that therefore contains the list of tasks which are ready and on the stack. Note that ISR2 are also inserted in this stack. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

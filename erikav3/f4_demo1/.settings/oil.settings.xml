@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<com.eu.evidence.rtdruid3.oil.settings:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.eu.evidence.rtdruid3.oil.settings="http://com.eu.evidence.rtdruid3.oil.settings">
+  <applOilFiles>conf.oil</applOilFiles>
+  <autoInclude>/home/araujoj20/eclipse-SDK-4.8-linux-gtk-x86_64/gcc-arm-none-eabi-7-2018-q2-update/arm-none-eabi/include</autoInclude>
+  <autoInclude>/home/araujoj20/eclipse-SDK-4.8-linux-gtk-x86_64/gcc-arm-none-eabi-7-2018-q2-update/lib/gcc/arm-none-eabi/4.9.3/include</autoInclude>
+  <autoInclude>/home/araujoj20/eclipse-SDK-4.8-linux-gtk-x86_64/gcc-arm-none-eabi-7-2018-q2-update/lib/gcc/arm-none-eabi/4.9.3/include-fixed</autoInclude>
+  <autoInclude>/home/araujoj20/eclipse-SDK-4.8-linux-gtk-x86_64/stm32cubef4_v1-25-0/STM32Cube_FW_F4_V1.25.0/Drivers/BSP/STM32F4-Discovery</autoInclude>
+  <autoInclude>/home/araujoj20/eclipse-SDK-4.8-linux-gtk-x86_64/stm32cubef4_v1-25-0/STM32Cube_FW_F4_V1.25.0/Projects/STM32F4-Discovery/Templates/Inc</autoInclude>
+  <autoInclude>/home/araujoj20/eclipse-SDK-4.8-linux-gtk-x86_64/stm32cubef4_v1-25-0/STM32Cube_FW_F4_V1.25.0/Drivers/CMSIS/Include</autoInclude>
+  <autoInclude>/home/araujoj20/eclipse-SDK-4.8-linux-gtk-x86_64/stm32cubef4_v1-25-0/STM32Cube_FW_F4_V1.25.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include</autoInclude>
+  <autoInclude>/home/araujoj20/eclipse-SDK-4.8-linux-gtk-x86_64/stm32cubef4_v1-25-0/STM32Cube_FW_F4_V1.25.0/Drivers/STM32F4xx_HAL_Driver/Inc</autoInclude>
+</com.eu.evidence.rtdruid3.oil.settings:Project>

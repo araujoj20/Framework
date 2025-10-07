@@ -1,0 +1,68 @@
+\doxysection{Os\+EE\+\_\+\+TDB\+\_\+tag Struct Reference}
+\hypertarget{structOsEE__TDB__tag}{}\label{structOsEE__TDB__tag}\index{OsEE\_TDB\_tag@{OsEE\_TDB\_tag}}
+
+
+The Task Descriptor Block.  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+\+TDB\+\_\+tag\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structOsEE__TDB__tag_aa7dcef9650251b665be77e2fcb1884ca}\label{structOsEE__TDB__tag_aa7dcef9650251b665be77e2fcb1884ca} 
+\mbox{\hyperlink{ee__hal__internal__types_8h_a8d28fed5254f20457607e6f05a119539}{Os\+EE\+\_\+\+HDB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries hdb}
+\begin{DoxyCompactList}\small\item\em Hardware dependednt structure for the task (not a pointer!) \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TDB__tag_a98c7ca96d6050556f3cb3c8861d14527}\label{structOsEE__TDB__tag_a98c7ca96d6050556f3cb3c8861d14527} 
+\mbox{\hyperlink{structOsEE__TCB}{Os\+EE\+\_\+\+TCB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+tcb}
+\begin{DoxyCompactList}\small\item\em pointer to the task control block, containing the RAM information about a task \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \mbox{\hyperlink{structOsEE__TDB__tag_a53a4af82f1be58f4f31c7f6cae3b84b0}{tid}}
+\begin{DoxyCompactList}\small\item\em Task ID. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TDB__tag_a54215c7f8ffc596ac4344091e6cfb493}\label{structOsEE__TDB__tag_a54215c7f8ffc596ac4344091e6cfb493} 
+\mbox{\hyperlink{ee__api__types_8h_ad142f82a41c10113d17cc807623bf4f0}{Task\+Execution\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries task\+\_\+type}
+\begin{DoxyCompactList}\small\item\em Task Execution type (basic, extended, isr2, ...) \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TDB__tag_a943efb008028aed9219a82b6f752796e}\label{structOsEE__TDB__tag_a943efb008028aed9219a82b6f752796e} 
+Task\+Func \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries task\+\_\+func}
+\begin{DoxyCompactList}\small\item\em Task body function. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TDB__tag_a32f8a4698d65d1c1588ddcd4958d7c86}\label{structOsEE__TDB__tag_a32f8a4698d65d1c1588ddcd4958d7c86} 
+\mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries ready\+\_\+prio}
+\begin{DoxyCompactList}\small\item\em Task ready priority (which is a priority specified based on the PRIORITY OIL field) \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TDB__tag_a0abc57b1c1d746a417531acf4266c70f}\label{structOsEE__TDB__tag_a0abc57b1c1d746a417531acf4266c70f} 
+\mbox{\hyperlink{group__primitives-task_ga2fbf8607316afe2fe7d402a8f6e00008}{Task\+Prio}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries dispatch\+\_\+prio}
+\begin{DoxyCompactList}\small\item\em Task dispatch priority (which is computed based on the fact the task is non preemptive and based to the internal resources used. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TDB__tag_ae76340d7b803c66d35a601aea854fa06}\label{structOsEE__TDB__tag_ae76340d7b803c66d35a601aea854fa06} 
+\mbox{\hyperlink{ee__api__types_8h_a2897bbe5eb94c947b95208f120a1529d}{Task\+Activation}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries max\+\_\+num\+\_\+of\+\_\+act}
+\begin{DoxyCompactList}\small\item\em Maximum number of activations, as specified in the OIL file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \mbox{\hyperlink{structOsEE__TDB__tag_a9b720b3484d20a3894b3c44e61026ef6}{orig\+\_\+core\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em Core ID in which a task is allocated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It stores all the information related to the task that is configured statically, such as\+: priority, task type, task body pointer, maximum number of activations, core id, ... 
+
+\label{doc-variable-members}
+\Hypertarget{structOsEE__TDB__tag_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structOsEE__TDB__tag_a9b720b3484d20a3894b3c44e61026ef6}\index{OsEE\_TDB\_tag@{OsEE\_TDB\_tag}!orig\_core\_id@{orig\_core\_id}}
+\index{orig\_core\_id@{orig\_core\_id}!OsEE\_TDB\_tag@{OsEE\_TDB\_tag}}
+\doxysubsubsection{\texorpdfstring{orig\_core\_id}{orig\_core\_id}}
+{\footnotesize\ttfamily \label{structOsEE__TDB__tag_a9b720b3484d20a3894b3c44e61026ef6} 
+\mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} Os\+EE\+\_\+\+TDB\+\_\+tag\+::orig\+\_\+core\+\_\+id}
+
+If the scheduler has migration, then the core\+\_\+id in the TCB will change. \Hypertarget{structOsEE__TDB__tag_a53a4af82f1be58f4f31c7f6cae3b84b0}\index{OsEE\_TDB\_tag@{OsEE\_TDB\_tag}!tid@{tid}}
+\index{tid@{tid}!OsEE\_TDB\_tag@{OsEE\_TDB\_tag}}
+\doxysubsubsection{\texorpdfstring{tid}{tid}}
+{\footnotesize\ttfamily \label{structOsEE__TDB__tag_a53a4af82f1be58f4f31c7f6cae3b84b0} 
+\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{Task\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} Os\+EE\+\_\+\+TDB\+\_\+tag\+::tid}
+
+it is a number, allocated one per task by RT-\/\+Druid 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

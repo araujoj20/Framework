@@ -1,0 +1,15 @@
+\doxysection{Interruput handlers }
+\hypertarget{irq}{}\label{irq}\index{Interruput handlers@{Interruput handlers}}
+OSEK/\+VDX and AUTOSAR OS identify two kind of interrupt sources\+:
+
+
+\begin{DoxyItemize}
+\item ISR Type 1\+: they are interrupt handlers specified in a way independent from the OS. Most of the primitives of the OS cannot be called inside an ISR Type 1 handler. These interrupt handlers are typically specified using compiler dependent keywords. Section 7.\+7 of AUTOSAR OS gives restrictions on the usage of ISR Type 1 in case of Memory/\+Timing protection
+\item ISR Type 2\+: they are interrupt handlers handled by the OS. These handlers execute the OS scheduler at their end; it is possible to call various OS primitives inside a ISR Type 2.
+\end{DoxyItemize}
+
+In ERIKA3, ISR Type 2 are implemented in a way similar to tasks, and as well they appear inside the ORTI specification of the Running Task.
+
+ISR Type 2 needs to be declared in the ERIKA3 OIL File (in particular, the RT-\/\+Druid code generator needs the ISR Priority in order to resolve priority allocation and resource usage at interrupt level). ERIKA3 is in general responsible for the generation of the microcontroller Interrupt Vector.
+
+ISR Type 1 needs to have a priority greater than all the ISR Type 2 in the system. 

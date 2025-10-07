@@ -1,0 +1,32 @@
+\doxysection{Os\+EE\+\_\+\+TW Struct Reference}
+\hypertarget{structOsEE__TW}{}\label{structOsEE__TW}\index{OsEE\_TW@{OsEE\_TW}}
+
+
+This is the generic definition of a task wrapper.  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+\+TW\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structOsEE__TW_a3bdf33f1f182d8b1dd53c1e4d5e0ba31}\label{structOsEE__TW_a3bdf33f1f182d8b1dd53c1e4d5e0ba31} 
+\mbox{\hyperlink{ee__kernel__types_8h_a09fa6316ce540908359bbc26e7571795}{Os\+EE\+\_\+\+TDB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+tdb}
+\begin{DoxyCompactList}\small\item\em a pointer to the task descriptor block to which the wrapper relates to \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TW_a111a746d99ff02999fd014674c448fb8}\label{structOsEE__TW_a111a746d99ff02999fd014674c448fb8} 
+Task\+Func \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries real\+\_\+task\+\_\+func}
+\begin{DoxyCompactList}\small\item\em the real task body function that will be executed by the wrapper. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Task wrapper is useful every time some actions have to be performed before we need to execute the task. For example, it is useful on some architecture\textquotesingle{}s system timer to perform actions on the peripheral registers before calling the ISR2 (remember that ISR2 and Tasks in ERIKA3 are handled in a similar way) 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,105 @@
+\doxysection{inc/ee\+\_\+hal.h File Reference}
+\hypertarget{ee__hal_8h}{}\label{ee__hal_8h}\index{inc/ee\_hal.h@{inc/ee\_hal.h}}
+
+
+HAL support visible to the application.  
+
+
+{\ttfamily \#include "{}ee\+\_\+cfg.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+utils.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+compiler.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+platform\+\_\+types.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+api\+\_\+types.\+h"{}}\newline
+Include dependency graph for ee\+\_\+hal.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ee__hal_8h_ace5a29cee2f870bbf23ce38cc4dce210}\label{ee__hal_8h_ace5a29cee2f870bbf23ce38cc4dce210} 
+\#define {\bfseries OSEE\+\_\+\+FILL\+\_\+\+PATTERN}~(0x\+A5\+A5\+A5\+A5U)
+\begin{DoxyCompactList}\small\item\em Fill Pattern Used for Stack Monitoring. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__hal_8h_a0bb9a379cb363c1e2086eb2a1f9080b1}{OSEE\+\_\+\+FILL\+\_\+\+ARRAY}}(array)
+\begin{DoxyCompactList}\small\item\em Fill Pattern Used for Stack Monitoring. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ee__compiler__gcc_8h_abb9563920c344956cef4718c142139da}{OSEE\+\_\+\+STATIC\+\_\+\+INLINE}} \mbox{\hyperlink{ee__platform__types_8h_a080118619d5c09ae9702133cfd2ed4e6}{Os\+EE\+\_\+addr}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{ee__compiler__gcc_8h_a80f24d53bc3bf75cf959be5a33aabb8f}{OSEE\+\_\+\+ALWAYS\+\_\+\+INLINE}} \mbox{\hyperlink{ee__hal_8h_a2c94f91dcddef09705f589fbe95ee1e0}{os\+EE\+\_\+get\+\_\+\+SP}} (void)
+\begin{DoxyCompactList}\small\item\em Returns the current stack pointer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__compiler__gcc_8h_abb9563920c344956cef4718c142139da}{OSEE\+\_\+\+STATIC\+\_\+\+INLINE}} \mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{ee__compiler__gcc_8h_a80f24d53bc3bf75cf959be5a33aabb8f}{OSEE\+\_\+\+ALWAYS\+\_\+\+INLINE}} \mbox{\hyperlink{ee__hal_8h_a1346f8d9009684d8a6cc7c74ec0a2f90}{os\+EE\+\_\+get\+\_\+curr\+\_\+core\+\_\+id}} (void)
+\begin{DoxyCompactList}\small\item\em Returns the current core ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This files contains all HAL for a specific Architecture in Erika Enterprise.
+
+\begin{DoxyAuthor}{Author}
+Errico Guidieri 
+
+Giuseppe Serano 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018 
+\end{DoxyDate}
+
+
+\label{doc-define-members}
+\Hypertarget{ee__hal_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{ee__hal_8h_a0bb9a379cb363c1e2086eb2a1f9080b1}\index{ee\_hal.h@{ee\_hal.h}!OSEE\_FILL\_ARRAY@{OSEE\_FILL\_ARRAY}}
+\index{OSEE\_FILL\_ARRAY@{OSEE\_FILL\_ARRAY}!ee\_hal.h@{ee\_hal.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_FILL\_ARRAY}{OSEE\_FILL\_ARRAY}}
+{\footnotesize\ttfamily \label{ee__hal_8h_a0bb9a379cb363c1e2086eb2a1f9080b1} 
+\#define OSEE\+\_\+\+FILL\+\_\+\+ARRAY(\begin{DoxyParamCaption}\item[{}]{array}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ =\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ [0\ ...\ (\textcolor{keyword}{sizeof}(array)/\textcolor{keyword}{sizeof}((array)[0U])\ -\/\ 1U)]\ =\ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{ee__hal_8h_ace5a29cee2f870bbf23ce38cc4dce210}{OSEE\_FILL\_PATTERN}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+Uses Range Designated Initializers 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em array} & The array to be filled. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{ee__hal_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ee__hal_8h_a1346f8d9009684d8a6cc7c74ec0a2f90}\index{ee\_hal.h@{ee\_hal.h}!osEE\_get\_curr\_core\_id@{osEE\_get\_curr\_core\_id}}
+\index{osEE\_get\_curr\_core\_id@{osEE\_get\_curr\_core\_id}!ee\_hal.h@{ee\_hal.h}}
+\doxysubsubsection{\texorpdfstring{osEE\_get\_curr\_core\_id()}{osEE\_get\_curr\_core\_id()}}
+{\footnotesize\ttfamily \label{ee__hal_8h_a1346f8d9009684d8a6cc7c74ec0a2f90} 
+\mbox{\hyperlink{ee__compiler__gcc_8h_abb9563920c344956cef4718c142139da}{OSEE\+\_\+\+STATIC\+\_\+\+INLINE}} \mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{ee__compiler__gcc_8h_a80f24d53bc3bf75cf959be5a33aabb8f}{OSEE\+\_\+\+ALWAYS\+\_\+\+INLINE}} os\+EE\+\_\+get\+\_\+curr\+\_\+core\+\_\+id (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Returns the current core ID. Always 0 on single cores.
+
+\begin{DoxyReturn}{Returns}
+Returns the current core ID. 
+\end{DoxyReturn}
+
+
+Referenced by \mbox{\hyperlink{group__primitives-multicore_ga31b08f80ec09e8cb946b02a10c75d1db}{Get\+Core\+ID()}}.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{ee__hal_8h_a2c94f91dcddef09705f589fbe95ee1e0}\index{ee\_hal.h@{ee\_hal.h}!osEE\_get\_SP@{osEE\_get\_SP}}
+\index{osEE\_get\_SP@{osEE\_get\_SP}!ee\_hal.h@{ee\_hal.h}}
+\doxysubsubsection{\texorpdfstring{osEE\_get\_SP()}{osEE\_get\_SP()}}
+{\footnotesize\ttfamily \label{ee__hal_8h_a2c94f91dcddef09705f589fbe95ee1e0} 
+\mbox{\hyperlink{ee__compiler__gcc_8h_abb9563920c344956cef4718c142139da}{OSEE\+\_\+\+STATIC\+\_\+\+INLINE}} \mbox{\hyperlink{ee__platform__types_8h_a080118619d5c09ae9702133cfd2ed4e6}{Os\+EE\+\_\+addr}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{ee__compiler__gcc_8h_a80f24d53bc3bf75cf959be5a33aabb8f}{OSEE\+\_\+\+ALWAYS\+\_\+\+INLINE}} os\+EE\+\_\+get\+\_\+\+SP (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Returns the current stack pointer.
+
+\begin{DoxyReturn}{Returns}
+Returns an address which is the current value of the stack pointer. 
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__arch__compiler__gcc_8h_a630e54f89adaab1e884e5096d766a23f}{OSEE\+\_\+\+GET\+\_\+\+SP}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+

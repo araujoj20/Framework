@@ -1,0 +1,65 @@
+\doxysection{inc/ee\+\_\+compiler\+\_\+cfg.h File Reference}
+\hypertarget{ee__compiler__cfg_8h}{}\label{ee__compiler__cfg_8h}\index{inc/ee\_compiler\_cfg.h@{inc/ee\_compiler\_cfg.h}}
+
+
+Compilers Cfg Collector.  
+
+
+{\ttfamily \#include "{}ee\+\_\+cfg.\+h"{}}\newline
+Include dependency graph for ee\+\_\+compiler\+\_\+cfg.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ee__compiler__cfg_8h_a6aa3909883347151091b601e11f7260c}\label{ee__compiler__cfg_8h_a6aa3909883347151091b601e11f7260c} 
+\#define {\bfseries OSEE\+\_\+\+CONST}~const
+\begin{DoxyCompactList}\small\item\em Compiler Configuration\+: const. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}\label{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef} 
+\#define {\bfseries OS\+\_\+\+CODE}~\mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}
+\begin{DoxyCompactList}\small\item\em OS\+\_\+\+CODE\+: used for OS code. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__cfg_8h_ae1cd3c476aabf3d5b69560819c3fac34}\label{ee__compiler__cfg_8h_ae1cd3c476aabf3d5b69560819c3fac34} 
+\#define {\bfseries OS\+\_\+\+VAR\+\_\+\+NO\+\_\+\+INIT}~\mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}
+\begin{DoxyCompactList}\small\item\em NO\+\_\+\+INIT\+: Used for variables that are never cleared and never initialized. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__cfg_8h_a74f1a5975a23fe2998cb0a17e3a0feb7}\label{ee__compiler__cfg_8h_a74f1a5975a23fe2998cb0a17e3a0feb7} 
+\#define {\bfseries OS\+\_\+\+VAR\+\_\+\+CLEARED}~\mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}
+\begin{DoxyCompactList}\small\item\em CLEARED\+: Used for variables that are cleared to zero after every reset. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__cfg_8h_ae7b82a07a80508461afad44aeb72efbd}\label{ee__compiler__cfg_8h_ae7b82a07a80508461afad44aeb72efbd} 
+\#define {\bfseries OS\+\_\+\+VAR\+\_\+\+POWER\+\_\+\+ON\+\_\+\+CLEARED}~\mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}
+\begin{DoxyCompactList}\small\item\em POWER\+\_\+\+ON\+\_\+\+CLEARED\+: Used for variables that are cleared to zero only after power on reset. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__cfg_8h_aaaf1125260b59f329c39627bf7ede6a3}\label{ee__compiler__cfg_8h_aaaf1125260b59f329c39627bf7ede6a3} 
+\#define {\bfseries OS\+\_\+\+VAR\+\_\+\+INIT}~\mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}
+\begin{DoxyCompactList}\small\item\em OS\+\_\+\+VAR\+\_\+\+INIT\+: Used for variables that are initialized with values after every reset. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__cfg_8h_adcdf4ba4b780218bd9c3b874c8ff9576}\label{ee__compiler__cfg_8h_adcdf4ba4b780218bd9c3b874c8ff9576} 
+\#define {\bfseries OS\+\_\+\+CONST}~\mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}
+\begin{DoxyCompactList}\small\item\em OS\+\_\+\+CONST\+: Used for OS constants. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}\label{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f} 
+\#define {\bfseries OS\+\_\+\+APPL\+\_\+\+DATA}~\mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}
+\begin{DoxyCompactList}\small\item\em OS\+\_\+\+APPL\+\_\+\+DATA\+: Used for application data. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871}\label{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871} 
+\#define {\bfseries OS\+\_\+\+APPL\+\_\+\+CONST}~\mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}
+\begin{DoxyCompactList}\small\item\em OS\+\_\+\+APPL\+\_\+\+CONST\+: Used for application constants. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__cfg_8h_acbadf853d204845cee8e0d3e1b729295}\label{ee__compiler__cfg_8h_acbadf853d204845cee8e0d3e1b729295} 
+\#define {\bfseries REGSPACE}~\mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}
+\begin{DoxyCompactList}\small\item\em REGSPACE\+: Used for variables allocated in the register space. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__cfg_8h_abd398f56891d1305e3d637a0b5aaf665}\label{ee__compiler__cfg_8h_abd398f56891d1305e3d637a0b5aaf665} 
+\#define {\bfseries OS\+\_\+\+STACK}~\mbox{\hyperlink{ee__compiler__gcc_8h_ad5309ec2836cf6f4a3e930a67715a645}{OSEE\+\_\+\+COMPILER\+\_\+\+ALIGN}}(\mbox{\hyperlink{ee__arch__override_8h_aa852ad51c99be2f3f1a0eb1a710d4e88}{OSEE\+\_\+\+STACK\+\_\+\+ALIGN\+\_\+\+SIZE}})
+\begin{DoxyCompactList}\small\item\em OS\+\_\+\+STACK\+: Used for variables allocated in the stack. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__cfg_8h_af5f076369406a04039b0059d32afde03}\label{ee__compiler__cfg_8h_af5f076369406a04039b0059d32afde03} 
+\#define {\bfseries OS\+\_\+\+CODE\+\_\+\+NO\+\_\+\+RETURN}~\mbox{\hyperlink{ee__compiler__gcc_8h_ad26c44850182773c7eac7f2bcd9ec375}{OSEE\+\_\+\+NORETURN}}
+\begin{DoxyCompactList}\small\item\em OS\+\_\+\+CODE\+\_\+\+NO\+\_\+\+RETURN\+: Used for functions that do not return. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__cfg_8h_aa121315b61e3c2216dc359921dccad47}\label{ee__compiler__cfg_8h_aa121315b61e3c2216dc359921dccad47} 
+\#define {\bfseries OS\+\_\+\+CODE\+\_\+\+INIT}~\mbox{\hyperlink{ee__arch__compiler__gcc_8h_a3168bacc95ef7c45ea88597267317e8e}{OSEE\+\_\+\+INIT}}
+\begin{DoxyCompactList}\small\item\em OS\+\_\+\+CODE\+\_\+\+INIT\+: Used for initialization code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This files is a collector for the configuration for all supported compilers in Erika Enterprise.
+
+\begin{DoxyAuthor}{Author}
+Errico Guidieri 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2016 
+\end{DoxyDate}

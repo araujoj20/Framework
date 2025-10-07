@@ -1,0 +1,35 @@
+\doxysection{Os\+EE\+\_\+sem\+\_\+tag Struct Reference}
+\hypertarget{structOsEE__sem__tag}{}\label{structOsEE__sem__tag}\index{OsEE\_sem\_tag@{OsEE\_sem\_tag}}
+
+
+Semaphore Data structure.  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+scheduler\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+sem\+\_\+tag\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structOsEE__sem__tag_a70c2daf9c057882aabec7d1936e64d1a}\label{structOsEE__sem__tag_a70c2daf9c057882aabec7d1936e64d1a} 
+Os\+EE\+\_\+spin\+\_\+lock \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries lock}
+\begin{DoxyCompactList}\small\item\em the semaphore has a spinlock to be used in case of multicore systems \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__sem__tag_a75276777520392cde72c61117d0aeb7a}\label{structOsEE__sem__tag_a75276777520392cde72c61117d0aeb7a} 
+\mbox{\hyperlink{ee__scheduler__types_8h_accc3e60e5260f7655bc7f7ec055072a0}{Os\+EE\+\_\+\+SN}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries blocked\+\_\+queue}
+\begin{DoxyCompactList}\small\item\em This is the semaphore blocked queue. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__sem__tag_acb9c25d4e460b6e441a98d8c39b40616}\label{structOsEE__sem__tag_acb9c25d4e460b6e441a98d8c39b40616} 
+\mbox{\hyperlink{group__primitives-sem_ga9eb6a71d96d32f3abce772439cdb1553}{Count\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries count}
+\begin{DoxyCompactList}\small\item\em This is the semaphore counter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A counter, a blocked queue, and a spinlock in case of multicores. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__scheduler__types_8h}{ee\+\_\+scheduler\+\_\+types.\+h}}\end{DoxyCompactItemize}

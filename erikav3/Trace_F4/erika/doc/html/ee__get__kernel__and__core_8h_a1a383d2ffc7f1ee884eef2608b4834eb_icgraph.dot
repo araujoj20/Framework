@@ -1,0 +1,13 @@
+digraph "osEE_get_curr_core"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="osEE_get_curr_core",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Returns the pointer to CDB."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="osEE_lock_and_get_core",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ee__get__kernel__and__core_8h.html#a8b517960e73a275680346dbd7b80417b",tooltip="Locks a specific core and gets its data structure."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="osEE_lock_and_get_curr_core",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ee__get__kernel__and__core_8h.html#a106ab442cc4d57be6e3e45ca3dc33b4c",tooltip="Locks the current core and gets its data structure."];
+}

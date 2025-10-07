@@ -1,0 +1,72 @@
+\doxysection{inc/ee\+\_\+hal\+\_\+internal\+\_\+types.h File Reference}
+\hypertarget{ee__hal__internal__types_8h}{}\label{ee__hal__internal__types_8h}\index{inc/ee\_hal\_internal\_types.h@{inc/ee\_hal\_internal\_types.h}}
+
+
+HAL Internal Types.  
+
+
+{\ttfamily \#include "{}ee\+\_\+platform\+\_\+types.\+h"{}}\newline
+Include dependency graph for ee\+\_\+hal\+\_\+internal\+\_\+types.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structOsEE__CTX__tag}{Os\+EE\+\_\+\+CTX\+\_\+tag}}
+\begin{DoxyCompactList}\small\item\em Context block, storing register values. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structOsEE__SCB__tag}{Os\+EE\+\_\+\+SCB\+\_\+tag}}
+\begin{DoxyCompactList}\small\item\em Stack Control Block\+: contains runtime information about the stack. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structOsEE__SDB__tag}{Os\+EE\+\_\+\+SDB\+\_\+tag}}
+\begin{DoxyCompactList}\small\item\em Stack Descriptor Block. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structOsEE__HDB__tag}{Os\+EE\+\_\+\+HDB\+\_\+tag}}
+\begin{DoxyCompactList}\small\item\em HAL (Task) Descriptor block. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ee__hal__internal__types_8h_af0997607ba49f09284cf735ad12d8c26}\label{ee__hal__internal__types_8h_af0997607ba49f09284cf735ad12d8c26} 
+typedef struct \mbox{\hyperlink{structOsEE__CTX__tag}{Os\+EE\+\_\+\+CTX\+\_\+tag}} {\bfseries Os\+EE\+\_\+\+CTX}
+\begin{DoxyCompactList}\small\item\em Context block, storing register values. \end{DoxyCompactList}\item 
+\Hypertarget{ee__hal__internal__types_8h_aa647be61702d401b884c15507f408bf5}\label{ee__hal__internal__types_8h_aa647be61702d401b884c15507f408bf5} 
+typedef struct \mbox{\hyperlink{structOsEE__SCB__tag}{Os\+EE\+\_\+\+SCB\+\_\+tag}} {\bfseries Os\+EE\+\_\+\+SCB}
+\begin{DoxyCompactList}\small\item\em Stack Control Block\+: contains runtime information about the stack. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structOsEE__SDB__tag}{Os\+EE\+\_\+\+SDB\+\_\+tag}} \mbox{\hyperlink{ee__hal__internal__types_8h_ae45008685c4951605ebd78eff8c1fe61}{Os\+EE\+\_\+\+SDB}}
+\begin{DoxyCompactList}\small\item\em Stack Descriptor Block. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structOsEE__HDB__tag}{Os\+EE\+\_\+\+HDB\+\_\+tag}} \mbox{\hyperlink{ee__hal__internal__types_8h_a8d28fed5254f20457607e6f05a119539}{Os\+EE\+\_\+\+HDB}}
+\begin{DoxyCompactList}\small\item\em HAL (Task) Descriptor block. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This files contains all HAL internal types and symbols for specific Architecture in Erika Enterprise.
+
+\begin{DoxyNote}{Note}
+COULD BE raplaced by AUTOSAR Type definition paradigm or being the implementation
+
+TO BE DOCUMENTED!!!
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Errico Guidieri 
+
+Giuseppe Serano 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018 
+\end{DoxyDate}
+
+
+\label{doc-typedef-members}
+\Hypertarget{ee__hal__internal__types_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{ee__hal__internal__types_8h_a8d28fed5254f20457607e6f05a119539}\index{ee\_hal\_internal\_types.h@{ee\_hal\_internal\_types.h}!OsEE\_HDB@{OsEE\_HDB}}
+\index{OsEE\_HDB@{OsEE\_HDB}!ee\_hal\_internal\_types.h@{ee\_hal\_internal\_types.h}}
+\doxysubsubsection{\texorpdfstring{OsEE\_HDB}{OsEE\_HDB}}
+{\footnotesize\ttfamily \label{ee__hal__internal__types_8h_a8d28fed5254f20457607e6f05a119539} 
+typedef struct \mbox{\hyperlink{structOsEE__HDB__tag}{Os\+EE\+\_\+\+HDB\+\_\+tag}} \mbox{\hyperlink{ee__hal__internal__types_8h_a8d28fed5254f20457607e6f05a119539}{Os\+EE\+\_\+\+HDB}}}
+
+Contains static information about the configuration of a task in the HAL (in particular, information on the task stacks and on ISR2 IDs in case of the dynamic API \Hypertarget{ee__hal__internal__types_8h_ae45008685c4951605ebd78eff8c1fe61}\index{ee\_hal\_internal\_types.h@{ee\_hal\_internal\_types.h}!OsEE\_SDB@{OsEE\_SDB}}
+\index{OsEE\_SDB@{OsEE\_SDB}!ee\_hal\_internal\_types.h@{ee\_hal\_internal\_types.h}}
+\doxysubsubsection{\texorpdfstring{OsEE\_SDB}{OsEE\_SDB}}
+{\footnotesize\ttfamily \label{ee__hal__internal__types_8h_ae45008685c4951605ebd78eff8c1fe61} 
+typedef struct \mbox{\hyperlink{structOsEE__SDB__tag}{Os\+EE\+\_\+\+SDB\+\_\+tag}} \mbox{\hyperlink{ee__hal__internal__types_8h_ae45008685c4951605ebd78eff8c1fe61}{Os\+EE\+\_\+\+SDB}}}
+
+Contains static information about the stack 

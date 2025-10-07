@@ -1,0 +1,41 @@
+\doxysection{Os\+EE\+\_\+\+Trigger\+CB Struct Reference}
+\hypertarget{structOsEE__TriggerCB}{}\label{structOsEE__TriggerCB}\index{OsEE\_TriggerCB@{OsEE\_TriggerCB}}
+
+
+The Trigger Countrol Block is the element in the trigger queue that records when the next trigger is going to expire, and what is its status (see \doxylink{ee__kernel__types_8h_a01bbbafc04ff95345be928e1e39c3c68}{Os\+EE\+\_\+trigger\+\_\+status}).  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+\+Trigger\+CB\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structOsEE__TriggerCB_a4bc2ef255933eb76c21863bb52cc1580}\label{structOsEE__TriggerCB_a4bc2ef255933eb76c21863bb52cc1580} 
+struct \mbox{\hyperlink{structOsEE__TriggerDB__tag}{Os\+EE\+\_\+\+Trigger\+DB\+\_\+tag}} const \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+next}
+\begin{DoxyCompactList}\small\item\em a pointer to the next trigger, to make a list \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TriggerCB_a5735c1fa8546b455e61de3c94a3a20a4}\label{structOsEE__TriggerCB_a5735c1fa8546b455e61de3c94a3a20a4} 
+\mbox{\hyperlink{group__primitives-alarm_ga169b940dbe47167e06113454538d3484}{Tick\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries when}
+\begin{DoxyCompactList}\small\item\em the next expiry point of the trigger (this is the absolute counter value, not a delta) \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__TriggerCB_a88f7daaab729adf5c375fbca4b6b89e8}\label{structOsEE__TriggerCB_a88f7daaab729adf5c375fbca4b6b89e8} 
+\mbox{\hyperlink{ee__kernel__types_8h_a01bbbafc04ff95345be928e1e39c3c68}{Os\+EE\+\_\+trigger\+\_\+status}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries status}
+\begin{DoxyCompactList}\small\item\em status of the trigger \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The Trigger Control Block contains\+:
+\begin{DoxyItemize}
+\item the content of the Alarm Control Block if only Alarms are present in the current application.
+\item the content of the Schedule Table Control block if only Schedule Tables are present in the current application.
+\end{DoxyItemize}
+
+If both Alarms and Schedule Tables are present, the information above are linked through the Trigger Descriptor Block to the Alarm/\+Schedule Table Descriptor Block to the Alarm/\+Schedule Table control block. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

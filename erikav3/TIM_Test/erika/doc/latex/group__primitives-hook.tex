@@ -1,0 +1,871 @@
+\doxysection{Hooks and Error handling primitives }
+\hypertarget{group__primitives-hook}{}\label{group__primitives-hook}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+
+
+ERIKA3 supports five application callbacks that are called when specific situations happens during application execution.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gaaacd2429e582d3e58f45837b482a1936}{OSError\+Get\+Service\+Id}}()
+\begin{DoxyCompactList}\small\item\em Used to get the current service ID. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gac52e6f904066baeab1f7e257d7932956}{OSError\+\_\+\+Activate\+Task\+\_\+\+Task\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Task\+ID parameter passed to \doxylink{group__primitives-task_gacd33f94ca57ea3776a0bf73b4ec6963c}{Activate\+Task()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga42ae2ed21fdaeb45646ec0063f8709a0}{OSError\+\_\+\+Chain\+Task\+\_\+\+Task\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Task\+ID parameter passed to \doxylink{group__primitives-task_gaa219f309dc9471326804fda45f2fe449}{Chain\+Task()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gab44f6ff82858dd1bb3da51de2419fed4}{OSError\+\_\+\+Get\+Task\+ID\+\_\+\+Task\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Task\+ID parameter passed to \doxylink{group__primitives-task_gad10ed918ccfb72d1b9fabcb90757a8c7}{Get\+Task\+ID()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga2eeb4b8206cff9235e13babf9e334262}{OSError\+\_\+\+Get\+Task\+State\+\_\+\+Task\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Task\+ID parameter passed to \doxylink{group__primitives-task_gaa6238f0238d1cc28f6b09841026b31f5}{Get\+Task\+State()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga484b08fa1eea3244b2cddbcee390f9c2}{OSError\+\_\+\+Get\+Task\+State\+\_\+\+State}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the State parameter passed to \doxylink{group__primitives-task_gaa6238f0238d1cc28f6b09841026b31f5}{Get\+Task\+State()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gab82beae7f76ca2aee79642e6751cfcd4}{OSError\+\_\+\+Shutdown\+OS\+\_\+\+Error}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Error parameter passed to \doxylink{group__primitives-startup_gaa110c81c8e96f95f3d6780b967a03334}{Shutdown\+OS()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gacfee666bb3fea0200280c2f39db5a3a5}{OSError\+\_\+\+Get\+Resource\+\_\+\+Res\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Res\+ID parameter passed to \doxylink{group__primitives-resource_ga029c759ca879fd237a4a3cc7234c9203}{Get\+Resource()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga30f3e6e9fea1a19af6ddab9b356d36ff}{OSError\+\_\+\+Release\+Resource\+\_\+\+Res\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Res\+ID parameter passed to \doxylink{group__primitives-resource_ga17c54e2aa306b4d6a3f233c5cbc411c5}{Release\+Resource()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gabe811a7ddf50ee0e58b5914e48eb1a9a}{OSError\+\_\+\+Get\+Alarm\+\_\+\+Alarm\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Alarm\+ID parameter passed to \doxylink{group__primitives-alarm_gae1b7cd18088b6187b1c3ea95562fe097}{Get\+Alarm()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga418a306cc8d32ff4942a4279bcc62235}{OSError\+\_\+\+Cancel\+Alarm\+\_\+\+Alarm\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Alarm\+ID parameter passed to \doxylink{group__primitives-alarm_gae1b7cd18088b6187b1c3ea95562fe097}{Get\+Alarm()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga0f0edbce9f56efaf81aa1451d04342a7}{OSError\+\_\+\+Set\+Rel\+Alarm\+\_\+\+Alarm\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Alarm\+ID parameter passed to \doxylink{group__primitives-alarm_ga98867bff5998f291dd9923e68625f934}{Set\+Rel\+Alarm()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga843a4b2e9c2561e34e84662a80858df0}{OSError\+\_\+\+Set\+Rel\+Alarm\+\_\+increment}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the increment parameter passed to \doxylink{group__primitives-alarm_ga98867bff5998f291dd9923e68625f934}{Set\+Rel\+Alarm()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gaa6fd7c583498bccc536f4c9250ff5df0}{OSError\+\_\+\+Set\+Rel\+Alarm\+\_\+cycle}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the cycle parameter passed to \doxylink{group__primitives-alarm_ga98867bff5998f291dd9923e68625f934}{Set\+Rel\+Alarm()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gac077ed5acdbec4fcc48bea54214a74ec}{OSError\+\_\+\+Set\+Abs\+Alarm\+\_\+\+Alarm\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Alarm\+ID parameter passed to \doxylink{group__primitives-alarm_ga3c5237fdfbfcf546621b621657591d77}{Set\+Abs\+Alarm()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gac2ed8ae0dab8bf90742bbebcb91175d0}{OSError\+\_\+\+Set\+Abs\+Alarm\+\_\+start}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the start parameter passed to \doxylink{group__primitives-alarm_ga3c5237fdfbfcf546621b621657591d77}{Set\+Abs\+Alarm()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gac4267678347396b89bc6e23ea7d645a5}{OSError\+\_\+\+Set\+Abs\+Alarm\+\_\+cycle}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the cycle parameter passed to \doxylink{group__primitives-alarm_ga3c5237fdfbfcf546621b621657591d77}{Set\+Abs\+Alarm()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga82eaa8e48c04f23568b2c3bc2caa05a8}{OSError\+\_\+\+Get\+Alarm\+Base\+\_\+\+Alarm\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Alarm\+ID parameter passed to \doxylink{group__primitives-alarm_ga78857b9c7e1e33d9b1fb342eb1637e4d}{Get\+Alarm\+Base()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga5a90c2730c5c1e77ab1ed7b066b8c056}{OSError\+\_\+\+Get\+Alarm\+Base\+\_\+\+Info}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Info parameter passed to \doxylink{group__primitives-alarm_ga78857b9c7e1e33d9b1fb342eb1637e4d}{Get\+Alarm\+Base()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga161c68e1dee2b929b300f8929325130d}{OSError\+\_\+\+Wait\+Event\+\_\+\+Mask}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Mask parameter passed to \doxylink{group__primitives-event_ga01ccee0d30cdc7288a518351244b16b7}{Wait\+Event()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gaf0e955734dc5877445d740e65c3f3ddd}{OSError\+\_\+\+Set\+Event\+\_\+\+Task\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Task\+ID parameter passed to \doxylink{group__primitives-event_ga608b6cdb28c571851ba46f7eb43827f0}{Set\+Event()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gab2cdd36f0976563d189d53fe72e2c733}{OSError\+\_\+\+Set\+Event\+\_\+\+Mask}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Mask parameter passed to \doxylink{group__primitives-event_ga608b6cdb28c571851ba46f7eb43827f0}{Set\+Event()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga4ee9770039d19b628c321d48e73e95a3}{OSError\+\_\+\+Get\+Event\+\_\+\+Task\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Task\+ID parameter passed to \doxylink{group__primitives-event_gab23a2cca74859ca98752fbc5d4a3f8eb}{Get\+Event()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga275dc936d1abd4b312e1e3f323650c8d}{OSError\+\_\+\+Get\+Event\+\_\+\+Event}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Event parameter passed to \doxylink{group__primitives-event_gab23a2cca74859ca98752fbc5d4a3f8eb}{Get\+Event()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga853d93d17db471ab78252ae351031c6a}{OSError\+\_\+\+Clear\+Event\+\_\+\+Mask}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Mask parameter passed to \doxylink{group__primitives-event_ga755af02db1981deffb5c90e1a25e56f1}{Clear\+Event()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga2c4eed4b1318bf83adb57b8aa523bf88}{OSError\+\_\+\+Get\+Counter\+Value\+\_\+\+Counter\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Counter\+ID parameter passed to \doxylink{group__primitives-alarm_ga7d6fb62e946060c5a573e5b0c6f48d3f}{Get\+Counter\+Value()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga812f1a743dd8d17f02fd0b79dadcd6e1}{OSError\+\_\+\+Get\+Counter\+Value\+\_\+\+Value}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Value parameter passed to \doxylink{group__primitives-alarm_ga7d6fb62e946060c5a573e5b0c6f48d3f}{Get\+Counter\+Value()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga2d8aedd4f89d505c5c8bc184797f23fc}{OSError\+\_\+\+Get\+Elapsed\+Value\+\_\+\+Counter\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Counter\+ID parameter passed to \doxylink{group__primitives-alarm_ga18b00b13cba1a1fc83bb23c34227555e}{Get\+Elapsed\+Value()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga610c890a1acf2b028dc41e0bdec9c61f}{OSError\+\_\+\+Get\+Elapsed\+Value\+\_\+\+Value}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Value parameter passed to \doxylink{group__primitives-alarm_ga18b00b13cba1a1fc83bb23c34227555e}{Get\+Elapsed\+Value()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga8bf850e092495f34c8b569aa91c0c796}{OSError\+\_\+\+Get\+Elapsed\+Value\+\_\+\+Elapsed\+Value}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Elapsed\+Value parameter passed to \doxylink{group__primitives-alarm_ga18b00b13cba1a1fc83bb23c34227555e}{Get\+Elapsed\+Value()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gab3be22ca20d347274d25d0edf4144d1c}{OSError\+\_\+\+Increment\+Counter\+\_\+\+Counter\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Counter\+ID parameter passed to \doxylink{group__primitives-alarm_ga553e3a3d7851b14bc70932f9d7155e27}{Increment\+Counter()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga0a91210e118a5e88d328e07a64f9c050}{OSError\+\_\+\+Start\+Schedule\+Table\+Rel\+\_\+\+Schedule\+Table\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Schedule\+Table\+ID parameter passed to \doxylink{group__primitives-schtable_gaaf260a1ac822be6b292542d23e80fc19}{Start\+Schedule\+Table\+Rel()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gae451850557d2a25e4bcbf957540adfe3}{OSError\+\_\+\+Start\+Schedule\+Table\+Rel\+\_\+\+Offset}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Offset parameter passed to \doxylink{group__primitives-schtable_gaaf260a1ac822be6b292542d23e80fc19}{Start\+Schedule\+Table\+Rel()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gac99aabcdce73eeeda13b7e43f9fd56cd}{OSError\+\_\+\+Start\+Schedule\+Table\+Abs\+\_\+\+Schedule\+Table\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Schedule\+Table\+ID parameter passed to \doxylink{group__primitives-schtable_gaf0a5db951a09f28f6b0c7acfa85a27a3}{Start\+Schedule\+Table\+Abs()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gaf342625603d4dde5c1a8e2be2fca784a}{OSError\+\_\+\+Start\+Schedule\+Table\+Abs\+\_\+\+Start}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Start parameter passed to \doxylink{group__primitives-schtable_gaf0a5db951a09f28f6b0c7acfa85a27a3}{Start\+Schedule\+Table\+Abs()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga7e3ba07f6cdc0440bf27502afebb73d1}{OSError\+\_\+\+Stop\+Schedule\+Table\+\_\+\+Schedule\+Table\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Schedule\+Table\+ID parameter passed to \doxylink{group__primitives-schtable_ga71420a854f0ce52d6e4f6aeb28293f78}{Stop\+Schedule\+Table()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga1039a11638335ea8fc9880136391a0c4}{OSError\+\_\+\+Get\+Schedule\+Table\+Status\+\_\+\+Schedule\+Table\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Schedule\+Table\+ID parameter passed to \doxylink{group__primitives-schtable_ga778bc80a56bfe1dcdb70864d221cc74f}{Get\+Schedule\+Table\+Status()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga4d7bf6abddfc8f20dd259444721a4e9c}{OSError\+\_\+\+Get\+Schedule\+Table\+Status\+\_\+\+Schedule\+Status}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Schedule\+Status parameter passed to \doxylink{group__primitives-schtable_ga778bc80a56bfe1dcdb70864d221cc74f}{Get\+Schedule\+Table\+Status()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga46ac496d081f2424b672711e129e00cd}{OSError\+\_\+\+Next\+Schedule\+Table\+\_\+\+Schedule\+Table\+ID\+\_\+\+From}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the From parameter passed to \doxylink{group__primitives-schtable_ga9f184eaa57d8cdf3f6d335319922f973}{Next\+Schedule\+Table()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga98a62f7f33c1f22d5a1fc495ec624a5c}{OSError\+\_\+\+Next\+Schedule\+Table\+\_\+\+Schedule\+Table\+ID\+\_\+\+To}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the To parameter passed to \doxylink{group__primitives-schtable_ga9f184eaa57d8cdf3f6d335319922f973}{Next\+Schedule\+Table()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gaafda292b7274d1eb7ee244f0d580a76e}{OSError\+\_\+\+Sync\+Schedule\+Table\+\_\+\+Schedule\+Table\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Schedule\+Table\+ID parameter passed to \doxylink{group__primitives-schtable_ga04a278b422ddf9c5b7a069dfb11aae19}{Sync\+Schedule\+Table()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga73609c172787f3962a80c7229366712e}{OSError\+\_\+\+Sync\+Schedule\+Table\+\_\+\+Value}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Value parameter passed to \doxylink{group__primitives-schtable_ga04a278b422ddf9c5b7a069dfb11aae19}{Sync\+Schedule\+Table()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga80b6743dc16605e863c1e0f6a62bcf96}{OSError\+\_\+\+Get\+Spinlock\+\_\+\+Spinlock\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Spinlock\+ID parameter passed to \doxylink{group__primitives-multicore_ga65c0747729bc6c2cb591f3126887891f}{Get\+Spinlock()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga5f1e9ba92d3717a190faec292ebe8027}{OSError\+\_\+\+Release\+Spinlock\+\_\+\+Spinlock\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Spinlock\+ID parameter passed to \doxylink{group__primitives-multicore_gaad80e32ff1d2a3966e1fc6cd69c5e7be}{Release\+Spinlock()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_gaf845d5f6fa0a6471ce953b520a82cc9d}{OSError\+\_\+\+Try\+To\+Get\+Spinlock\+\_\+\+Spinlock\+ID}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Spinlock\+ID parameter passed to \doxylink{group__primitives-multicore_ga6b2eff61d97871f398fd280f9b681249}{Try\+To\+Get\+Spinlock()}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-hook_ga6a476e04147081afd307806a203d5775}{OSError\+\_\+\+Try\+To\+Get\+Spinlock\+\_\+\+Success}}()
+\begin{DoxyCompactList}\small\item\em This macro returns the Success parameter passed to \doxylink{group__primitives-multicore_ga6b2eff61d97871f398fd280f9b681249}{Try\+To\+Get\+Spinlock()}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-hook_ga29f4489d9b6de9008b51f8985046fc3a}{Error\+Hook}} (\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} Error)
+\begin{DoxyCompactList}\small\item\em Hook called when there is an error inside a primitive. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-hook_ga18397d2c939dd63649ec1f63213a51b4}{Startup\+Hook}} (void)
+\begin{DoxyCompactList}\small\item\em Called inside \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-hook_gad0a5498424a4bea39df83c99f947a31b}{Pre\+Task\+Hook}} (void)
+\begin{DoxyCompactList}\small\item\em Called everytime a task becomes running. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-hook_ga895e87b2ff6a37e5aeea8814462942f2}{Post\+Task\+Hook}} (void)
+\begin{DoxyCompactList}\small\item\em Called everytime a task is no more the running task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-hook_ga9ee2b37172604cbef78d414c503d6e43}{Shutdown\+Hook}} (\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} Error)
+\begin{DoxyCompactList}\small\item\em Hook called inside \doxylink{group__primitives-startup_gaa110c81c8e96f95f3d6780b967a03334}{Shutdown\+OS()}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__api__types_8h_a2d19e4dc23703453ff28c03f3be56d74}{OSService\+Id\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-hook_ga9656d2752f478abdd3e58fd199020dfd}{os\+EE\+\_\+get\+\_\+service\+\_\+id}} (void)
+\begin{DoxyCompactList}\small\item\em Used internally to get the current service ID. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{unionOsEE__api__param}{Os\+EE\+\_\+api\+\_\+param}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{os\+EE\+\_\+get\+\_\+api\+\_\+param1}} (void)
+\begin{DoxyCompactList}\small\item\em Used internally to implement the \doxylink{group__primitives-hook_ga29f4489d9b6de9008b51f8985046fc3a}{Error\+Hook()} macros. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{unionOsEE__api__param}{Os\+EE\+\_\+api\+\_\+param}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{os\+EE\+\_\+get\+\_\+api\+\_\+param2}} (void)
+\begin{DoxyCompactList}\small\item\em Used internally to implement the \doxylink{group__primitives-hook_ga29f4489d9b6de9008b51f8985046fc3a}{Error\+Hook()} macros. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{unionOsEE__api__param}{Os\+EE\+\_\+api\+\_\+param}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-hook_gabc749a0acfbfebc894e3f9f5b5936a27}{os\+EE\+\_\+get\+\_\+api\+\_\+param3}} (void)
+\begin{DoxyCompactList}\small\item\em Used internally to implement the \doxylink{group__primitives-hook_ga29f4489d9b6de9008b51f8985046fc3a}{Error\+Hook()} macros. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+On multicore systems, hooks are local callbacks to each core.
+
+The \doxylink{group__primitives-hook_ga29f4489d9b6de9008b51f8985046fc3a}{Error\+Hook()} callback is called every time an error is detected inside an ERIKA3 primitive. The callback can be used to implement centralized error handling. A set of macros are also available to better understand the source of the error. In particular, \doxylink{group__primitives-hook_ga29f4489d9b6de9008b51f8985046fc3a}{Error\+Hook()} receives as parameter the error that is raised by the primitive. Then, a call to \doxylink{group__primitives-hook_gaaacd2429e582d3e58f45837b482a1936}{OSError\+Get\+Service\+Id()} returns informations about which primitive caused the error. Finally, calls to the macros OSError\+\_\+\+XXX\+\_\+\+YYY() returns the values of the {\itshape YYY} parameter of the primitive {\itshape XXX}.
+
+The \doxylink{group__primitives-hook_ga18397d2c939dd63649ec1f63213a51b4}{Startup\+Hook()} callback is called inside the \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()} primitive to implement the application startup procedure.
+
+The \doxylink{group__primitives-hook_ga9ee2b37172604cbef78d414c503d6e43}{Shutdown\+Hook()} callback is called inside the \doxylink{group__primitives-startup_gaa110c81c8e96f95f3d6780b967a03334}{Shutdown\+OS()} primitive to implement the Application specific shutdown procedures.
+
+The \doxylink{group__primitives-hook_gad0a5498424a4bea39df83c99f947a31b}{Pre\+Task\+Hook()} and \doxylink{group__primitives-hook_ga895e87b2ff6a37e5aeea8814462942f2}{Post\+Task\+Hook()} callbacks are called respectively every time a task becomes the RUNNING Task, and every time a task stops to be the RUNNING Task.
+
+The application can only call a limited set of primitives inside Hook functions. 
+
+\label{doc-define-members}
+\Hypertarget{group__primitives-hook_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__primitives-hook_gac52e6f904066baeab1f7e257d7932956}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_ActivateTask\_TaskID@{OSError\_ActivateTask\_TaskID}}
+\index{OSError\_ActivateTask\_TaskID@{OSError\_ActivateTask\_TaskID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_ActivateTask\_TaskID}{OSError\_ActivateTask\_TaskID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gac52e6f904066baeab1f7e257d7932956} 
+\#define OSError\+\_\+\+Activate\+Task\+\_\+\+Task\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{TaskType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga418a306cc8d32ff4942a4279bcc62235}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_CancelAlarm\_AlarmID@{OSError\_CancelAlarm\_AlarmID}}
+\index{OSError\_CancelAlarm\_AlarmID@{OSError\_CancelAlarm\_AlarmID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_CancelAlarm\_AlarmID}{OSError\_CancelAlarm\_AlarmID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga418a306cc8d32ff4942a4279bcc62235} 
+\#define OSError\+\_\+\+Cancel\+Alarm\+\_\+\+Alarm\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_gac0db96397f5d9817124ffc05a9755b85}{AlarmType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga42ae2ed21fdaeb45646ec0063f8709a0}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_ChainTask\_TaskID@{OSError\_ChainTask\_TaskID}}
+\index{OSError\_ChainTask\_TaskID@{OSError\_ChainTask\_TaskID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_ChainTask\_TaskID}{OSError\_ChainTask\_TaskID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga42ae2ed21fdaeb45646ec0063f8709a0} 
+\#define OSError\+\_\+\+Chain\+Task\+\_\+\+Task\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{TaskType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga853d93d17db471ab78252ae351031c6a}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_ClearEvent\_Mask@{OSError\_ClearEvent\_Mask}}
+\index{OSError\_ClearEvent\_Mask@{OSError\_ClearEvent\_Mask}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_ClearEvent\_Mask}{OSError\_ClearEvent\_Mask}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga853d93d17db471ab78252ae351031c6a} 
+\#define OSError\+\_\+\+Clear\+Event\+\_\+\+Mask(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-event_ga5fb177d72d23ba4ccbd1821ca9e4498f}{EventMaskType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gabe811a7ddf50ee0e58b5914e48eb1a9a}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetAlarm\_AlarmID@{OSError\_GetAlarm\_AlarmID}}
+\index{OSError\_GetAlarm\_AlarmID@{OSError\_GetAlarm\_AlarmID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetAlarm\_AlarmID}{OSError\_GetAlarm\_AlarmID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gabe811a7ddf50ee0e58b5914e48eb1a9a} 
+\#define OSError\+\_\+\+Get\+Alarm\+\_\+\+Alarm\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_gac0db96397f5d9817124ffc05a9755b85}{AlarmType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga82eaa8e48c04f23568b2c3bc2caa05a8}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetAlarmBase\_AlarmID@{OSError\_GetAlarmBase\_AlarmID}}
+\index{OSError\_GetAlarmBase\_AlarmID@{OSError\_GetAlarmBase\_AlarmID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetAlarmBase\_AlarmID}{OSError\_GetAlarmBase\_AlarmID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga82eaa8e48c04f23568b2c3bc2caa05a8} 
+\#define OSError\+\_\+\+Get\+Alarm\+Base\+\_\+\+Alarm\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_gac0db96397f5d9817124ffc05a9755b85}{AlarmType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga5a90c2730c5c1e77ab1ed7b066b8c056}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetAlarmBase\_Info@{OSError\_GetAlarmBase\_Info}}
+\index{OSError\_GetAlarmBase\_Info@{OSError\_GetAlarmBase\_Info}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetAlarmBase\_Info}{OSError\_GetAlarmBase\_Info}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga5a90c2730c5c1e77ab1ed7b066b8c056} 
+\#define OSError\+\_\+\+Get\+Alarm\+Base\+\_\+\+Info(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{ee__api__types_8h_afeac36c97855ae96a2a637a4b05db192}{AlarmBaseRefType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_ab6ead4b143d59c551f6839533f8845d9}{p\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga2c4eed4b1318bf83adb57b8aa523bf88}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetCounterValue\_CounterID@{OSError\_GetCounterValue\_CounterID}}
+\index{OSError\_GetCounterValue\_CounterID@{OSError\_GetCounterValue\_CounterID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetCounterValue\_CounterID}{OSError\_GetCounterValue\_CounterID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga2c4eed4b1318bf83adb57b8aa523bf88} 
+\#define OSError\+\_\+\+Get\+Counter\+Value\+\_\+\+Counter\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_ga871c90fa43c4c8b68846b89d036a753c}{CounterType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga812f1a743dd8d17f02fd0b79dadcd6e1}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetCounterValue\_Value@{OSError\_GetCounterValue\_Value}}
+\index{OSError\_GetCounterValue\_Value@{OSError\_GetCounterValue\_Value}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetCounterValue\_Value}{OSError\_GetCounterValue\_Value}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga812f1a743dd8d17f02fd0b79dadcd6e1} 
+\#define OSError\+\_\+\+Get\+Counter\+Value\+\_\+\+Value(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_gad46421ff97f892a96da974219adb6e2e}{TickRefType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_ab6ead4b143d59c551f6839533f8845d9}{p\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga2d8aedd4f89d505c5c8bc184797f23fc}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetElapsedValue\_CounterID@{OSError\_GetElapsedValue\_CounterID}}
+\index{OSError\_GetElapsedValue\_CounterID@{OSError\_GetElapsedValue\_CounterID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetElapsedValue\_CounterID}{OSError\_GetElapsedValue\_CounterID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga2d8aedd4f89d505c5c8bc184797f23fc} 
+\#define OSError\+\_\+\+Get\+Elapsed\+Value\+\_\+\+Counter\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_ga871c90fa43c4c8b68846b89d036a753c}{CounterType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga8bf850e092495f34c8b569aa91c0c796}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetElapsedValue\_ElapsedValue@{OSError\_GetElapsedValue\_ElapsedValue}}
+\index{OSError\_GetElapsedValue\_ElapsedValue@{OSError\_GetElapsedValue\_ElapsedValue}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetElapsedValue\_ElapsedValue}{OSError\_GetElapsedValue\_ElapsedValue}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga8bf850e092495f34c8b569aa91c0c796} 
+\#define OSError\+\_\+\+Get\+Elapsed\+Value\+\_\+\+Elapsed\+Value(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_gad46421ff97f892a96da974219adb6e2e}{TickRefType}})\mbox{\hyperlink{group__primitives-hook_gabc749a0acfbfebc894e3f9f5b5936a27}{osEE\_get\_api\_param3}}().\mbox{\hyperlink{unionOsEE__api__param_ab6ead4b143d59c551f6839533f8845d9}{p\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga610c890a1acf2b028dc41e0bdec9c61f}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetElapsedValue\_Value@{OSError\_GetElapsedValue\_Value}}
+\index{OSError\_GetElapsedValue\_Value@{OSError\_GetElapsedValue\_Value}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetElapsedValue\_Value}{OSError\_GetElapsedValue\_Value}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga610c890a1acf2b028dc41e0bdec9c61f} 
+\#define OSError\+\_\+\+Get\+Elapsed\+Value\+\_\+\+Value(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_gad46421ff97f892a96da974219adb6e2e}{TickRefType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_ab6ead4b143d59c551f6839533f8845d9}{p\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga275dc936d1abd4b312e1e3f323650c8d}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetEvent\_Event@{OSError\_GetEvent\_Event}}
+\index{OSError\_GetEvent\_Event@{OSError\_GetEvent\_Event}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetEvent\_Event}{OSError\_GetEvent\_Event}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga275dc936d1abd4b312e1e3f323650c8d} 
+\#define OSError\+\_\+\+Get\+Event\+\_\+\+Event(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-event_ga71624473b6c4e49dce5fb19a05ccde4e}{EventMaskRefType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_ab6ead4b143d59c551f6839533f8845d9}{p\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga4ee9770039d19b628c321d48e73e95a3}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetEvent\_TaskID@{OSError\_GetEvent\_TaskID}}
+\index{OSError\_GetEvent\_TaskID@{OSError\_GetEvent\_TaskID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetEvent\_TaskID}{OSError\_GetEvent\_TaskID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga4ee9770039d19b628c321d48e73e95a3} 
+\#define OSError\+\_\+\+Get\+Event\+\_\+\+Task\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{TaskType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gacfee666bb3fea0200280c2f39db5a3a5}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetResource\_ResID@{OSError\_GetResource\_ResID}}
+\index{OSError\_GetResource\_ResID@{OSError\_GetResource\_ResID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetResource\_ResID}{OSError\_GetResource\_ResID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gacfee666bb3fea0200280c2f39db5a3a5} 
+\#define OSError\+\_\+\+Get\+Resource\+\_\+\+Res\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-resource_gaac3971a971a95d78051b389553842386}{ResourceType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga4d7bf6abddfc8f20dd259444721a4e9c}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetScheduleTableStatus\_ScheduleStatus@{OSError\_GetScheduleTableStatus\_ScheduleStatus}}
+\index{OSError\_GetScheduleTableStatus\_ScheduleStatus@{OSError\_GetScheduleTableStatus\_ScheduleStatus}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetScheduleTableStatus\_ScheduleStatus}{OSError\_GetScheduleTableStatus\_ScheduleStatus}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga4d7bf6abddfc8f20dd259444721a4e9c} 
+\#define OSError\+\_\+\+Get\+Schedule\+Table\+Status\+\_\+\+Schedule\+Status(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{ee__api__types_8h_a4d1bc9849f1dbc48fb8e259f106ebe52}{ScheduleTableStatusRefType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_ab6ead4b143d59c551f6839533f8845d9}{p\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga1039a11638335ea8fc9880136391a0c4}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetScheduleTableStatus\_ScheduleTableID@{OSError\_GetScheduleTableStatus\_ScheduleTableID}}
+\index{OSError\_GetScheduleTableStatus\_ScheduleTableID@{OSError\_GetScheduleTableStatus\_ScheduleTableID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetScheduleTableStatus\_ScheduleTableID}{OSError\_GetScheduleTableStatus\_ScheduleTableID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga1039a11638335ea8fc9880136391a0c4} 
+\#define OSError\+\_\+\+Get\+Schedule\+Table\+Status\+\_\+\+Schedule\+Table\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-resource_gaece92730f23a01b1dc858668f7d3b18b}{ScheduleTableType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga80b6743dc16605e863c1e0f6a62bcf96}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetSpinlock\_SpinlockID@{OSError\_GetSpinlock\_SpinlockID}}
+\index{OSError\_GetSpinlock\_SpinlockID@{OSError\_GetSpinlock\_SpinlockID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetSpinlock\_SpinlockID}{OSError\_GetSpinlock\_SpinlockID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga80b6743dc16605e863c1e0f6a62bcf96} 
+\#define OSError\+\_\+\+Get\+Spinlock\+\_\+\+Spinlock\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{ee__api__types_8h_a211e253ccb43528137c4d778204eba72}{SpinlockIdType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gab44f6ff82858dd1bb3da51de2419fed4}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetTaskID\_TaskID@{OSError\_GetTaskID\_TaskID}}
+\index{OSError\_GetTaskID\_TaskID@{OSError\_GetTaskID\_TaskID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetTaskID\_TaskID}{OSError\_GetTaskID\_TaskID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gab44f6ff82858dd1bb3da51de2419fed4} 
+\#define OSError\+\_\+\+Get\+Task\+ID\+\_\+\+Task\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-task_ga6ffbd016ea252d177a6fe9449205f641}{TaskRefType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_ab6ead4b143d59c551f6839533f8845d9}{p\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga484b08fa1eea3244b2cddbcee390f9c2}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetTaskState\_State@{OSError\_GetTaskState\_State}}
+\index{OSError\_GetTaskState\_State@{OSError\_GetTaskState\_State}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetTaskState\_State}{OSError\_GetTaskState\_State}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga484b08fa1eea3244b2cddbcee390f9c2} 
+\#define OSError\+\_\+\+Get\+Task\+State\+\_\+\+State(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-task_ga6ffbd016ea252d177a6fe9449205f641}{TaskRefType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_ab6ead4b143d59c551f6839533f8845d9}{p\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga2eeb4b8206cff9235e13babf9e334262}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_GetTaskState\_TaskID@{OSError\_GetTaskState\_TaskID}}
+\index{OSError\_GetTaskState\_TaskID@{OSError\_GetTaskState\_TaskID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_GetTaskState\_TaskID}{OSError\_GetTaskState\_TaskID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga2eeb4b8206cff9235e13babf9e334262} 
+\#define OSError\+\_\+\+Get\+Task\+State\+\_\+\+Task\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{TaskType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gab3be22ca20d347274d25d0edf4144d1c}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_IncrementCounter\_CounterID@{OSError\_IncrementCounter\_CounterID}}
+\index{OSError\_IncrementCounter\_CounterID@{OSError\_IncrementCounter\_CounterID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_IncrementCounter\_CounterID}{OSError\_IncrementCounter\_CounterID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gab3be22ca20d347274d25d0edf4144d1c} 
+\#define OSError\+\_\+\+Increment\+Counter\+\_\+\+Counter\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_ga871c90fa43c4c8b68846b89d036a753c}{CounterType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga46ac496d081f2424b672711e129e00cd}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_NextScheduleTable\_ScheduleTableID\_From@{OSError\_NextScheduleTable\_ScheduleTableID\_From}}
+\index{OSError\_NextScheduleTable\_ScheduleTableID\_From@{OSError\_NextScheduleTable\_ScheduleTableID\_From}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_NextScheduleTable\_ScheduleTableID\_From}{OSError\_NextScheduleTable\_ScheduleTableID\_From}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga46ac496d081f2424b672711e129e00cd} 
+\#define OSError\+\_\+\+Next\+Schedule\+Table\+\_\+\+Schedule\+Table\+ID\+\_\+\+From(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-resource_gaece92730f23a01b1dc858668f7d3b18b}{ScheduleTableType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga98a62f7f33c1f22d5a1fc495ec624a5c}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_NextScheduleTable\_ScheduleTableID\_To@{OSError\_NextScheduleTable\_ScheduleTableID\_To}}
+\index{OSError\_NextScheduleTable\_ScheduleTableID\_To@{OSError\_NextScheduleTable\_ScheduleTableID\_To}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_NextScheduleTable\_ScheduleTableID\_To}{OSError\_NextScheduleTable\_ScheduleTableID\_To}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga98a62f7f33c1f22d5a1fc495ec624a5c} 
+\#define OSError\+\_\+\+Next\+Schedule\+Table\+\_\+\+Schedule\+Table\+ID\+\_\+\+To(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-resource_gaece92730f23a01b1dc858668f7d3b18b}{ScheduleTableType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga30f3e6e9fea1a19af6ddab9b356d36ff}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_ReleaseResource\_ResID@{OSError\_ReleaseResource\_ResID}}
+\index{OSError\_ReleaseResource\_ResID@{OSError\_ReleaseResource\_ResID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_ReleaseResource\_ResID}{OSError\_ReleaseResource\_ResID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga30f3e6e9fea1a19af6ddab9b356d36ff} 
+\#define OSError\+\_\+\+Release\+Resource\+\_\+\+Res\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-resource_gaac3971a971a95d78051b389553842386}{ResourceType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga5f1e9ba92d3717a190faec292ebe8027}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_ReleaseSpinlock\_SpinlockID@{OSError\_ReleaseSpinlock\_SpinlockID}}
+\index{OSError\_ReleaseSpinlock\_SpinlockID@{OSError\_ReleaseSpinlock\_SpinlockID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_ReleaseSpinlock\_SpinlockID}{OSError\_ReleaseSpinlock\_SpinlockID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga5f1e9ba92d3717a190faec292ebe8027} 
+\#define OSError\+\_\+\+Release\+Spinlock\+\_\+\+Spinlock\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{ee__api__types_8h_a211e253ccb43528137c4d778204eba72}{SpinlockIdType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gac077ed5acdbec4fcc48bea54214a74ec}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_SetAbsAlarm\_AlarmID@{OSError\_SetAbsAlarm\_AlarmID}}
+\index{OSError\_SetAbsAlarm\_AlarmID@{OSError\_SetAbsAlarm\_AlarmID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_SetAbsAlarm\_AlarmID}{OSError\_SetAbsAlarm\_AlarmID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gac077ed5acdbec4fcc48bea54214a74ec} 
+\#define OSError\+\_\+\+Set\+Abs\+Alarm\+\_\+\+Alarm\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_gac0db96397f5d9817124ffc05a9755b85}{AlarmType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gac4267678347396b89bc6e23ea7d645a5}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_SetAbsAlarm\_cycle@{OSError\_SetAbsAlarm\_cycle}}
+\index{OSError\_SetAbsAlarm\_cycle@{OSError\_SetAbsAlarm\_cycle}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_SetAbsAlarm\_cycle}{OSError\_SetAbsAlarm\_cycle}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gac4267678347396b89bc6e23ea7d645a5} 
+\#define OSError\+\_\+\+Set\+Abs\+Alarm\+\_\+cycle(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_ga169b940dbe47167e06113454538d3484}{TickType}})\mbox{\hyperlink{group__primitives-hook_gabc749a0acfbfebc894e3f9f5b5936a27}{osEE\_get\_api\_param3}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gac2ed8ae0dab8bf90742bbebcb91175d0}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_SetAbsAlarm\_start@{OSError\_SetAbsAlarm\_start}}
+\index{OSError\_SetAbsAlarm\_start@{OSError\_SetAbsAlarm\_start}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_SetAbsAlarm\_start}{OSError\_SetAbsAlarm\_start}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gac2ed8ae0dab8bf90742bbebcb91175d0} 
+\#define OSError\+\_\+\+Set\+Abs\+Alarm\+\_\+start(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_ga169b940dbe47167e06113454538d3484}{TickType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gab2cdd36f0976563d189d53fe72e2c733}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_SetEvent\_Mask@{OSError\_SetEvent\_Mask}}
+\index{OSError\_SetEvent\_Mask@{OSError\_SetEvent\_Mask}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_SetEvent\_Mask}{OSError\_SetEvent\_Mask}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gab2cdd36f0976563d189d53fe72e2c733} 
+\#define OSError\+\_\+\+Set\+Event\+\_\+\+Mask(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-event_ga5fb177d72d23ba4ccbd1821ca9e4498f}{EventMaskType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gaf0e955734dc5877445d740e65c3f3ddd}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_SetEvent\_TaskID@{OSError\_SetEvent\_TaskID}}
+\index{OSError\_SetEvent\_TaskID@{OSError\_SetEvent\_TaskID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_SetEvent\_TaskID}{OSError\_SetEvent\_TaskID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gaf0e955734dc5877445d740e65c3f3ddd} 
+\#define OSError\+\_\+\+Set\+Event\+\_\+\+Task\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-task_ga9733da8629f4d0984967785419b15d4a}{TaskType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga0f0edbce9f56efaf81aa1451d04342a7}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_SetRelAlarm\_AlarmID@{OSError\_SetRelAlarm\_AlarmID}}
+\index{OSError\_SetRelAlarm\_AlarmID@{OSError\_SetRelAlarm\_AlarmID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_SetRelAlarm\_AlarmID}{OSError\_SetRelAlarm\_AlarmID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga0f0edbce9f56efaf81aa1451d04342a7} 
+\#define OSError\+\_\+\+Set\+Rel\+Alarm\+\_\+\+Alarm\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_gac0db96397f5d9817124ffc05a9755b85}{AlarmType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gaa6fd7c583498bccc536f4c9250ff5df0}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_SetRelAlarm\_cycle@{OSError\_SetRelAlarm\_cycle}}
+\index{OSError\_SetRelAlarm\_cycle@{OSError\_SetRelAlarm\_cycle}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_SetRelAlarm\_cycle}{OSError\_SetRelAlarm\_cycle}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gaa6fd7c583498bccc536f4c9250ff5df0} 
+\#define OSError\+\_\+\+Set\+Rel\+Alarm\+\_\+cycle(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_ga169b940dbe47167e06113454538d3484}{TickType}})\mbox{\hyperlink{group__primitives-hook_gabc749a0acfbfebc894e3f9f5b5936a27}{osEE\_get\_api\_param3}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga843a4b2e9c2561e34e84662a80858df0}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_SetRelAlarm\_increment@{OSError\_SetRelAlarm\_increment}}
+\index{OSError\_SetRelAlarm\_increment@{OSError\_SetRelAlarm\_increment}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_SetRelAlarm\_increment}{OSError\_SetRelAlarm\_increment}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga843a4b2e9c2561e34e84662a80858df0} 
+\#define OSError\+\_\+\+Set\+Rel\+Alarm\+\_\+increment(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_ga169b940dbe47167e06113454538d3484}{TickType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gab82beae7f76ca2aee79642e6751cfcd4}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_ShutdownOS\_Error@{OSError\_ShutdownOS\_Error}}
+\index{OSError\_ShutdownOS\_Error@{OSError\_ShutdownOS\_Error}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_ShutdownOS\_Error}{OSError\_ShutdownOS\_Error}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gab82beae7f76ca2aee79642e6751cfcd4} 
+\#define OSError\+\_\+\+Shutdown\+OS\+\_\+\+Error(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{ee__api__types_8h_a6def7470ef6da58026579b4be4ff5d68}{StatusType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gac99aabcdce73eeeda13b7e43f9fd56cd}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_StartScheduleTableAbs\_ScheduleTableID@{OSError\_StartScheduleTableAbs\_ScheduleTableID}}
+\index{OSError\_StartScheduleTableAbs\_ScheduleTableID@{OSError\_StartScheduleTableAbs\_ScheduleTableID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_StartScheduleTableAbs\_ScheduleTableID}{OSError\_StartScheduleTableAbs\_ScheduleTableID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gac99aabcdce73eeeda13b7e43f9fd56cd} 
+\#define OSError\+\_\+\+Start\+Schedule\+Table\+Abs\+\_\+\+Schedule\+Table\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-resource_gaece92730f23a01b1dc858668f7d3b18b}{ScheduleTableType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gaf342625603d4dde5c1a8e2be2fca784a}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_StartScheduleTableAbs\_Start@{OSError\_StartScheduleTableAbs\_Start}}
+\index{OSError\_StartScheduleTableAbs\_Start@{OSError\_StartScheduleTableAbs\_Start}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_StartScheduleTableAbs\_Start}{OSError\_StartScheduleTableAbs\_Start}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gaf342625603d4dde5c1a8e2be2fca784a} 
+\#define OSError\+\_\+\+Start\+Schedule\+Table\+Abs\+\_\+\+Start(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_ga169b940dbe47167e06113454538d3484}{TickType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gae451850557d2a25e4bcbf957540adfe3}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_StartScheduleTableRel\_Offset@{OSError\_StartScheduleTableRel\_Offset}}
+\index{OSError\_StartScheduleTableRel\_Offset@{OSError\_StartScheduleTableRel\_Offset}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_StartScheduleTableRel\_Offset}{OSError\_StartScheduleTableRel\_Offset}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gae451850557d2a25e4bcbf957540adfe3} 
+\#define OSError\+\_\+\+Start\+Schedule\+Table\+Rel\+\_\+\+Offset(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_ga169b940dbe47167e06113454538d3484}{TickType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga0a91210e118a5e88d328e07a64f9c050}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_StartScheduleTableRel\_ScheduleTableID@{OSError\_StartScheduleTableRel\_ScheduleTableID}}
+\index{OSError\_StartScheduleTableRel\_ScheduleTableID@{OSError\_StartScheduleTableRel\_ScheduleTableID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_StartScheduleTableRel\_ScheduleTableID}{OSError\_StartScheduleTableRel\_ScheduleTableID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga0a91210e118a5e88d328e07a64f9c050} 
+\#define OSError\+\_\+\+Start\+Schedule\+Table\+Rel\+\_\+\+Schedule\+Table\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-resource_gaece92730f23a01b1dc858668f7d3b18b}{ScheduleTableType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga7e3ba07f6cdc0440bf27502afebb73d1}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_StopScheduleTable\_ScheduleTableID@{OSError\_StopScheduleTable\_ScheduleTableID}}
+\index{OSError\_StopScheduleTable\_ScheduleTableID@{OSError\_StopScheduleTable\_ScheduleTableID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_StopScheduleTable\_ScheduleTableID}{OSError\_StopScheduleTable\_ScheduleTableID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga7e3ba07f6cdc0440bf27502afebb73d1} 
+\#define OSError\+\_\+\+Stop\+Schedule\+Table\+\_\+\+Schedule\+Table\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-resource_gaece92730f23a01b1dc858668f7d3b18b}{ScheduleTableType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gaafda292b7274d1eb7ee244f0d580a76e}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_SyncScheduleTable\_ScheduleTableID@{OSError\_SyncScheduleTable\_ScheduleTableID}}
+\index{OSError\_SyncScheduleTable\_ScheduleTableID@{OSError\_SyncScheduleTable\_ScheduleTableID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_SyncScheduleTable\_ScheduleTableID}{OSError\_SyncScheduleTable\_ScheduleTableID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gaafda292b7274d1eb7ee244f0d580a76e} 
+\#define OSError\+\_\+\+Sync\+Schedule\+Table\+\_\+\+Schedule\+Table\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-resource_gaece92730f23a01b1dc858668f7d3b18b}{ScheduleTableType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga73609c172787f3962a80c7229366712e}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_SyncScheduleTable\_Value@{OSError\_SyncScheduleTable\_Value}}
+\index{OSError\_SyncScheduleTable\_Value@{OSError\_SyncScheduleTable\_Value}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_SyncScheduleTable\_Value}{OSError\_SyncScheduleTable\_Value}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga73609c172787f3962a80c7229366712e} 
+\#define OSError\+\_\+\+Sync\+Schedule\+Table\+\_\+\+Value(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-alarm_ga169b940dbe47167e06113454538d3484}{TickType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gaf845d5f6fa0a6471ce953b520a82cc9d}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_TryToGetSpinlock\_SpinlockID@{OSError\_TryToGetSpinlock\_SpinlockID}}
+\index{OSError\_TryToGetSpinlock\_SpinlockID@{OSError\_TryToGetSpinlock\_SpinlockID}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_TryToGetSpinlock\_SpinlockID}{OSError\_TryToGetSpinlock\_SpinlockID}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gaf845d5f6fa0a6471ce953b520a82cc9d} 
+\#define OSError\+\_\+\+Try\+To\+Get\+Spinlock\+\_\+\+Spinlock\+ID(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{ee__api__types_8h_a211e253ccb43528137c4d778204eba72}{SpinlockIdType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga6a476e04147081afd307806a203d5775}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_TryToGetSpinlock\_Success@{OSError\_TryToGetSpinlock\_Success}}
+\index{OSError\_TryToGetSpinlock\_Success@{OSError\_TryToGetSpinlock\_Success}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_TryToGetSpinlock\_Success}{OSError\_TryToGetSpinlock\_Success}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga6a476e04147081afd307806a203d5775} 
+\#define OSError\+\_\+\+Try\+To\+Get\+Spinlock\+\_\+\+Success(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-multicore_gaa20221ee148806fb25f1408b57e518c2}{TryToGetSpinlockType}})\mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{osEE\_get\_api\_param2}}().\mbox{\hyperlink{unionOsEE__api__param_ab6ead4b143d59c551f6839533f8845d9}{p\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_ga161c68e1dee2b929b300f8929325130d}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSError\_WaitEvent\_Mask@{OSError\_WaitEvent\_Mask}}
+\index{OSError\_WaitEvent\_Mask@{OSError\_WaitEvent\_Mask}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSError\_WaitEvent\_Mask}{OSError\_WaitEvent\_Mask}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga161c68e1dee2b929b300f8929325130d} 
+\#define OSError\+\_\+\+Wait\+Event\+\_\+\+Mask(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{group__primitives-event_ga5fb177d72d23ba4ccbd1821ca9e4498f}{EventMaskType}})\mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{osEE\_get\_api\_param1}}().\mbox{\hyperlink{unionOsEE__api__param_a7ae28092061b4c0a9c9963ea26ca2519}{num\_param}})}
+
+\end{DoxyCode}
+\Hypertarget{group__primitives-hook_gaaacd2429e582d3e58f45837b482a1936}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!OSErrorGetServiceId@{OSErrorGetServiceId}}
+\index{OSErrorGetServiceId@{OSErrorGetServiceId}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{OSErrorGetServiceId}{OSErrorGetServiceId}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gaaacd2429e582d3e58f45837b482a1936} 
+\#define OSError\+Get\+Service\+Id(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{group__primitives-hook_ga9656d2752f478abdd3e58fd199020dfd}{osEE\_get\_service\_id}}()}
+
+\end{DoxyCode}
+\begin{DoxyReturn}{Returns}
+The function returns the last primitive called in the current core. 
+\end{DoxyReturn}
+
+
+\label{doc-func-members}
+\Hypertarget{group__primitives-hook_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{group__primitives-hook_ga29f4489d9b6de9008b51f8985046fc3a}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!ErrorHook@{ErrorHook}}
+\index{ErrorHook@{ErrorHook}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{ErrorHook()}{ErrorHook()}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga29f4489d9b6de9008b51f8985046fc3a} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Error\+Hook (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}}}]{Error}{}\end{DoxyParamCaption})}
+
+When configured in the OIL File, the system calls this callback every time the return value of a function is different from {\itshape E\+\_\+\+OK}. The application can then get additional informations using the \doxylink{group__primitives-hook_gaaacd2429e582d3e58f45837b482a1936}{OSError\+Get\+Service\+Id()} macro, that returns the function that is generating the Error. Once the function that generated the error is known, the application can also access the parameters that generated the error using the {\itshape OSError\+\_\+\+XXX\+\_\+\+YYY()} macros, where {\itshape XXX} is the name of the function, and {\itshape YYY} is the name of the parameter passed to the function.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+9.\+2.\+1
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Error} & The error which triggered the call. \\
+\hline
+\end{DoxyParams}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{group__primitives-hook_ga29f4489d9b6de9008b51f8985046fc3a}{Error\+Hook()}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-hook_ga29f4489d9b6de9008b51f8985046fc3a}{Error\+Hook()}}.
+
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!osEE\_get\_api\_param1@{osEE\_get\_api\_param1}}
+\index{osEE\_get\_api\_param1@{osEE\_get\_api\_param1}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{osEE\_get\_api\_param1()}{osEE\_get\_api\_param1()}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624} 
+\mbox{\hyperlink{unionOsEE__api__param}{Os\+EE\+\_\+api\+\_\+param}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} os\+EE\+\_\+get\+\_\+api\+\_\+param1 (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Not to be called directly in user code.
+
+\begin{DoxyReturn}{Returns}
+The function returns a \doxylink{unionOsEE__api__param}{Os\+EE\+\_\+api\+\_\+param}, which is a union containing the first parameter value. 
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{os\+EE\+\_\+get\+\_\+api\+\_\+param1()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-hook_gaa607f796886d48da6e71f605cddd0624}{os\+EE\+\_\+get\+\_\+api\+\_\+param1()}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!osEE\_get\_api\_param2@{osEE\_get\_api\_param2}}
+\index{osEE\_get\_api\_param2@{osEE\_get\_api\_param2}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{osEE\_get\_api\_param2()}{osEE\_get\_api\_param2()}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8} 
+\mbox{\hyperlink{unionOsEE__api__param}{Os\+EE\+\_\+api\+\_\+param}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} os\+EE\+\_\+get\+\_\+api\+\_\+param2 (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Not to be called directly in user code.
+
+\begin{DoxyReturn}{Returns}
+The function returns a \doxylink{unionOsEE__api__param}{Os\+EE\+\_\+api\+\_\+param}, which is a union containing the second parameter value. 
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{os\+EE\+\_\+get\+\_\+api\+\_\+param2()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-hook_gae0bf2d37c578c2a59271b11ebbefc0b8}{os\+EE\+\_\+get\+\_\+api\+\_\+param2()}}.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{group__primitives-hook_gabc749a0acfbfebc894e3f9f5b5936a27}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!osEE\_get\_api\_param3@{osEE\_get\_api\_param3}}
+\index{osEE\_get\_api\_param3@{osEE\_get\_api\_param3}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{osEE\_get\_api\_param3()}{osEE\_get\_api\_param3()}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gabc749a0acfbfebc894e3f9f5b5936a27} 
+\mbox{\hyperlink{unionOsEE__api__param}{Os\+EE\+\_\+api\+\_\+param}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} os\+EE\+\_\+get\+\_\+api\+\_\+param3 (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Not to be called directly in user code.
+
+\begin{DoxyReturn}{Returns}
+The function returns a \doxylink{unionOsEE__api__param}{Os\+EE\+\_\+api\+\_\+param}, which is a union containing the third parameter value. 
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{group__primitives-hook_gabc749a0acfbfebc894e3f9f5b5936a27}{os\+EE\+\_\+get\+\_\+api\+\_\+param3()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-hook_gabc749a0acfbfebc894e3f9f5b5936a27}{os\+EE\+\_\+get\+\_\+api\+\_\+param3()}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{group__primitives-hook_ga9656d2752f478abdd3e58fd199020dfd}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!osEE\_get\_service\_id@{osEE\_get\_service\_id}}
+\index{osEE\_get\_service\_id@{osEE\_get\_service\_id}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{osEE\_get\_service\_id()}{osEE\_get\_service\_id()}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga9656d2752f478abdd3e58fd199020dfd} 
+\mbox{\hyperlink{ee__api__types_8h_a2d19e4dc23703453ff28c03f3be56d74}{OSService\+Id\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} os\+EE\+\_\+get\+\_\+service\+\_\+id (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+Not to be called directly in user code.
+
+\begin{DoxyReturn}{Returns}
+The function returns the last primitive called in the current core. 
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{group__primitives-hook_ga9656d2752f478abdd3e58fd199020dfd}{os\+EE\+\_\+get\+\_\+service\+\_\+id()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-hook_ga9656d2752f478abdd3e58fd199020dfd}{os\+EE\+\_\+get\+\_\+service\+\_\+id()}}.
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{group__primitives-hook_ga895e87b2ff6a37e5aeea8814462942f2}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!PostTaskHook@{PostTaskHook}}
+\index{PostTaskHook@{PostTaskHook}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{PostTaskHook()}{PostTaskHook()}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga895e87b2ff6a37e5aeea8814462942f2} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Post\+Task\+Hook (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+When configured in the OIL File, this hook function is called every time a task is no more the RUNNING task due to the call of other functions, or due to the preemption done by interrupts. The ID of the task which has just finished to be the RUNNING task can be read using the \doxylink{group__primitives-task_gad10ed918ccfb72d1b9fabcb90757a8c7}{Get\+Task\+ID()} function.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+9.\+2.\+3 
+
+References \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{group__primitives-hook_ga895e87b2ff6a37e5aeea8814462942f2}{Post\+Task\+Hook()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-hook_ga895e87b2ff6a37e5aeea8814462942f2}{Post\+Task\+Hook()}}.
+
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{group__primitives-hook_gad0a5498424a4bea39df83c99f947a31b}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!PreTaskHook@{PreTaskHook}}
+\index{PreTaskHook@{PreTaskHook}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{PreTaskHook()}{PreTaskHook()}}
+{\footnotesize\ttfamily \label{group__primitives-hook_gad0a5498424a4bea39df83c99f947a31b} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Pre\+Task\+Hook (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+When configured in the OIL File, this hook function is called every time a task becomes the RUNNING task due to the call of other functions, or due to the preemption done by interrupts. The ID of the task which has just become the RUNNING task can be read using the \doxylink{group__primitives-task_gad10ed918ccfb72d1b9fabcb90757a8c7}{Get\+Task\+ID()} function.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+9.\+2.\+2 
+
+References \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{group__primitives-hook_gad0a5498424a4bea39df83c99f947a31b}{Pre\+Task\+Hook()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-hook_gad0a5498424a4bea39df83c99f947a31b}{Pre\+Task\+Hook()}}.
+
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\Hypertarget{group__primitives-hook_ga9ee2b37172604cbef78d414c503d6e43}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!ShutdownHook@{ShutdownHook}}
+\index{ShutdownHook@{ShutdownHook}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{ShutdownHook()}{ShutdownHook()}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga9ee2b37172604cbef78d414c503d6e43} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Shutdown\+Hook (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}}}]{Error}{}\end{DoxyParamCaption})}
+
+When configured in the OIL File, this hook function is called inside \doxylink{group__primitives-startup_gaa110c81c8e96f95f3d6780b967a03334}{Shutdown\+OS()}. Inside this callback, the Application can implement application dependent shutdown functions.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+9.\+2.\+5
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Error} & this is the Error condition originally passed to \doxylink{group__primitives-startup_gaa110c81c8e96f95f3d6780b967a03334}{Shutdown\+OS()}. \\
+\hline
+\end{DoxyParams}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, \mbox{\hyperlink{group__primitives-hook_ga9ee2b37172604cbef78d414c503d6e43}{Shutdown\+Hook()}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-hook_ga9ee2b37172604cbef78d414c503d6e43}{Shutdown\+Hook()}}.
+
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{group__primitives-hook_ga18397d2c939dd63649ec1f63213a51b4}\index{Hooks and Error handling primitives@{Hooks and Error handling primitives}!StartupHook@{StartupHook}}
+\index{StartupHook@{StartupHook}!Hooks and Error handling primitives@{Hooks and Error handling primitives}}
+\doxysubsubsection{\texorpdfstring{StartupHook()}{StartupHook()}}
+{\footnotesize\ttfamily \label{group__primitives-hook_ga18397d2c939dd63649ec1f63213a51b4} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Startup\+Hook (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+When configured in the OIL File, this hook function is called inside \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()}. Inside this callback, the Application can call the Operating System-\/related functions \doxylink{group__primitives-task_gacd33f94ca57ea3776a0bf73b4ec6963c}{Activate\+Task()}, \doxylink{group__primitives-alarm_ga98867bff5998f291dd9923e68625f934}{Set\+Rel\+Alarm()}, and \doxylink{group__primitives-alarm_ga3c5237fdfbfcf546621b621657591d77}{Set\+Abs\+Alarm()}. Please note that the simplest way to activate a task or set an alarm at startup is to specify their initial activation/setting inside the OIL File.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+9.\+2.\+4 
+
+References \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{group__primitives-hook_ga18397d2c939dd63649ec1f63213a51b4}{Startup\+Hook()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-hook_ga18397d2c939dd63649ec1f63213a51b4}{Startup\+Hook()}}.
+
+Here is the call graph for this function\+:
+% FIG 16
+Here is the caller graph for this function\+:
+% FIG 17

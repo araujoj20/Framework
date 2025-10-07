@@ -1,0 +1,91 @@
+\doxysection{Os\+EE\+\_\+\+KDB Struct Reference}
+\hypertarget{structOsEE__KDB}{}\label{structOsEE__KDB}\index{OsEE\_KDB@{OsEE\_KDB}}
+
+
+This is the Kernel descriptor Block.  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+\+KDB\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structOsEE__KDB_aeb410bb61570a98ec605847285920595}\label{structOsEE__KDB_aeb410bb61570a98ec605847285920595} 
+\mbox{\hyperlink{structOsEE__KCB}{Os\+EE\+\_\+\+KCB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+kcb}
+\begin{DoxyCompactList}\small\item\em pointer to the Kernel Control Block (storing RAM information) \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KDB_abbb5c264420bdbdf4e017cbd96cfa2c2}\label{structOsEE__KDB_abbb5c264420bdbdf4e017cbd96cfa2c2} 
+Os\+EE\+\_\+spin\+\_\+lock \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+lock}
+\begin{DoxyCompactList}\small\item\em This is the global kernel lock. \end{DoxyCompactList}\item 
+Os\+EE\+\_\+barrier \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} \mbox{\hyperlink{structOsEE__KDB_a9e10b20d601b761b431bedd6fd737095}{p\+\_\+barrier}}
+\begin{DoxyCompactList}\small\item\em This is the global kernel barrier used in startup and shutdown. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KDB_a5ad88be81554019dbd45e39eed1d7cc5}\label{structOsEE__KDB_a5ad88be81554019dbd45e39eed1d7cc5} 
+\mbox{\hyperlink{ee__kernel__types_8h_a09fa6316ce540908359bbc26e7571795}{Os\+EE\+\_\+\+TDB}} \texorpdfstring{$\ast$}{*}const (\texorpdfstring{$\ast$}{*} {\bfseries OS\+\_\+\+APPL\+\_\+\+CONST} )\mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em this is the global list of tasks, including the idle task (one per core), and all ISR2 \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KDB_a85b06c82593ae8466269a3715eaf26a5}\label{structOsEE__KDB_a85b06c82593ae8466269a3715eaf26a5} 
+\mbox{\hyperlink{ee__api__types_8h_a6056fabe5f89ca108e1074b3432ef410}{Mem\+Size}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries tdb\+\_\+array\+\_\+size}
+\begin{DoxyCompactList}\small\item\em size of the array pointed by p\+\_\+tdb\+\_\+ptr\+\_\+array \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KDB_aab79ce013fe8c3d6493873befc6f3765}\label{structOsEE__KDB_aab79ce013fe8c3d6493873befc6f3765} 
+\mbox{\hyperlink{ee__kernel__types_8h_a2704166d69bff287ac8985ac2fb6dffe}{Os\+EE\+\_\+\+Resource\+DB}} \texorpdfstring{$\ast$}{*}const (\texorpdfstring{$\ast$}{*} {\bfseries OS\+\_\+\+APPL\+\_\+\+CONST} )\mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em array of the resources \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KDB_a71730512a2b17e37dc43acf1175011ee}\label{structOsEE__KDB_a71730512a2b17e37dc43acf1175011ee} 
+\mbox{\hyperlink{ee__api__types_8h_a6056fabe5f89ca108e1074b3432ef410}{Mem\+Size}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries res\+\_\+array\+\_\+size}
+\begin{DoxyCompactList}\small\item\em size of the array pointed by p\+\_\+res\+\_\+ptr\+\_\+array \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KDB_a84f4453f7a81f399d5b1500fd7c899f2}\label{structOsEE__KDB_a84f4453f7a81f399d5b1500fd7c899f2} 
+\mbox{\hyperlink{structOsEE__CounterDB}{Os\+EE\+\_\+\+Counter\+DB}} \texorpdfstring{$\ast$}{*}const (\texorpdfstring{$\ast$}{*} {\bfseries OS\+\_\+\+APPL\+\_\+\+CONST} )\mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em array of counters \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KDB_a4c2de1ce3cc9eee8f04126563583b026}\label{structOsEE__KDB_a4c2de1ce3cc9eee8f04126563583b026} 
+\mbox{\hyperlink{ee__api__types_8h_a6056fabe5f89ca108e1074b3432ef410}{Mem\+Size}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries counter\+\_\+array\+\_\+size}
+\begin{DoxyCompactList}\small\item\em size of the array pointed by p\+\_\+counter\+\_\+ptr\+\_\+array \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KDB_a7ad3aa49ae78343724742bdf20903f2a}\label{structOsEE__KDB_a7ad3aa49ae78343724742bdf20903f2a} 
+\mbox{\hyperlink{ee__kernel__types_8h_a6be9e7c8f0cc0117a849a81703b1843f}{Os\+EE\+\_\+\+Alarm\+DB}} \texorpdfstring{$\ast$}{*}const (\texorpdfstring{$\ast$}{*} {\bfseries OS\+\_\+\+APPL\+\_\+\+CONST} )\mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em array of alarms \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KDB_af178f508ad2047f73a22750624e70423}\label{structOsEE__KDB_af178f508ad2047f73a22750624e70423} 
+\mbox{\hyperlink{ee__api__types_8h_a6056fabe5f89ca108e1074b3432ef410}{Mem\+Size}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries alarm\+\_\+array\+\_\+size}
+\begin{DoxyCompactList}\small\item\em size of the array pointed by p\+\_\+alarm\+\_\+ptr\+\_\+array \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KDB_ab2b9a8577881b0187fcb2ac638500eb6}\label{structOsEE__KDB_ab2b9a8577881b0187fcb2ac638500eb6} 
+\mbox{\hyperlink{ee__kernel__types_8h_ad1dab5a737ce30e71471bcfa8f2aeb8f}{Os\+EE\+\_\+\+Sched\+Tab\+DB}} \texorpdfstring{$\ast$}{*}const (\texorpdfstring{$\ast$}{*} {\bfseries OS\+\_\+\+APPL\+\_\+\+CONST} )\mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em array of schedule tables \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KDB_a42552417a716b73292b37acc804263fd}\label{structOsEE__KDB_a42552417a716b73292b37acc804263fd} 
+\mbox{\hyperlink{ee__api__types_8h_a6056fabe5f89ca108e1074b3432ef410}{Mem\+Size}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries st\+\_\+array\+\_\+size}
+\begin{DoxyCompactList}\small\item\em size of the array pointed by p\+\_\+st\+\_\+ptr\+\_\+array \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KDB_a38f8faf0f5f6c5512fb111230d4431a5}\label{structOsEE__KDB_a38f8faf0f5f6c5512fb111230d4431a5} 
+\mbox{\hyperlink{ee__kernel__types_8h_ae3fb67399e5ea88a12887839910ebb2f}{Os\+EE\+\_\+\+Spinlock\+DB}}(\texorpdfstring{$\ast$}{*} {\bfseries OS\+\_\+\+APPL\+\_\+\+CONST} )\mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em array of spinlocks \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__KDB_acef0f9f9793d6fa504e366f65ecad7ac}\label{structOsEE__KDB_acef0f9f9793d6fa504e366f65ecad7ac} 
+\mbox{\hyperlink{ee__api__types_8h_a6056fabe5f89ca108e1074b3432ef410}{Mem\+Size}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries spinlock\+\_\+array\+\_\+size}
+\begin{DoxyCompactList}\small\item\em size of the array pointed by p\+\_\+spinlock\+\_\+array \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This data structure is the "{}starting point"{} for navigating all the kernel data structures. It contains static flash information about all the global objects included in the system, such as\+:
+\begin{DoxyItemize}
+\item cores
+\item tasks
+\item resources
+\item counters
+\item alarms
+\item scheduling tables
+\item spin locks
+\item barriers 
+\end{DoxyItemize}
+
+\label{doc-variable-members}
+\Hypertarget{structOsEE__KDB_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structOsEE__KDB_a9e10b20d601b761b431bedd6fd737095}\index{OsEE\_KDB@{OsEE\_KDB}!p\_barrier@{p\_barrier}}
+\index{p\_barrier@{p\_barrier}!OsEE\_KDB@{OsEE\_KDB}}
+\doxysubsubsection{\texorpdfstring{p\_barrier}{p\_barrier}}
+{\footnotesize\ttfamily \label{structOsEE__KDB_a9e10b20d601b761b431bedd6fd737095} 
+Os\+EE\+\_\+barrier \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} Os\+EE\+\_\+\+KDB\+::p\+\_\+barrier}
+
+It must be a rearming barrier 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,995 @@
+\doxysection{inc/ee\+\_\+cortex\+\_\+m\+\_\+irq.h File Reference}
+\hypertarget{ee__cortex__m__irq_8h}{}\label{ee__cortex__m__irq_8h}\index{inc/ee\_cortex\_m\_irq.h@{inc/ee\_cortex\_m\_irq.h}}
+
+
+ARM Cortex-\/M IRQs.  
+
+
+{\ttfamily \#include "{}ee\+\_\+compiler.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+mcu\+\_\+irq.\+h"{}}\newline
+Include dependency graph for ee\+\_\+cortex\+\_\+m\+\_\+irq.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8823e5e98db46bd8e3652510d61a45e0}\label{ee__cortex__m__irq_8h_a8823e5e98db46bd8e3652510d61a45e0} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+UNMASKED}~(0x00U)
+\begin{DoxyCompactList}\small\item\em ISR priority level unmasked. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ad323312e043d28cf35aa623764331737}\label{ee__cortex__m__irq_8h_ad323312e043d28cf35aa623764331737} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+1}~(0x0\+FU)
+\begin{DoxyCompactList}\small\item\em ISR priority level 1. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae42f88c88d4c231d6121566461e7b972}\label{ee__cortex__m__irq_8h_ae42f88c88d4c231d6121566461e7b972} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+2}~(0x0\+EU)
+\begin{DoxyCompactList}\small\item\em ISR priority level 2. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae1aa2838f46ab491c2833a03e9ef337b}\label{ee__cortex__m__irq_8h_ae1aa2838f46ab491c2833a03e9ef337b} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+3}~(0x0\+DU)
+\begin{DoxyCompactList}\small\item\em ISR priority level 3. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a2f2a5b5d4100dc8492ac1af4672e364f}\label{ee__cortex__m__irq_8h_a2f2a5b5d4100dc8492ac1af4672e364f} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+4}~(0x0\+CU)
+\begin{DoxyCompactList}\small\item\em ISR priority level 4. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a6082ab3a4a4b4fd21cb31959a5d97a00}\label{ee__cortex__m__irq_8h_a6082ab3a4a4b4fd21cb31959a5d97a00} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+5}~(0x0\+BU)
+\begin{DoxyCompactList}\small\item\em ISR priority level 5. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ace15543ca31e12508d0865853d682844}\label{ee__cortex__m__irq_8h_ace15543ca31e12508d0865853d682844} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+6}~(0x0\+AU)
+\begin{DoxyCompactList}\small\item\em ISR priority level 6. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae245f300ac5e58be7af9588055a1366a}\label{ee__cortex__m__irq_8h_ae245f300ac5e58be7af9588055a1366a} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+7}~(0x09U)
+\begin{DoxyCompactList}\small\item\em ISR priority level 7. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aad6ab1a3468917fc741b9ebd49b8121c}\label{ee__cortex__m__irq_8h_aad6ab1a3468917fc741b9ebd49b8121c} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+8}~(0x08U)
+\begin{DoxyCompactList}\small\item\em ISR priority level 8. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8cf1fd574a9d8ae52adccfae8f329cb7}\label{ee__cortex__m__irq_8h_a8cf1fd574a9d8ae52adccfae8f329cb7} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+9}~(0x07U)
+\begin{DoxyCompactList}\small\item\em ISR priority level 9. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a7a0a6576aa411663ae7f2eacf5307c2f}\label{ee__cortex__m__irq_8h_a7a0a6576aa411663ae7f2eacf5307c2f} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+10}~(0x06U)
+\begin{DoxyCompactList}\small\item\em ISR priority level 10. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a270319ae1233651e1077df837449df5e}\label{ee__cortex__m__irq_8h_a270319ae1233651e1077df837449df5e} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+11}~(0x05U)
+\begin{DoxyCompactList}\small\item\em ISR priority level 11. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_af4e994c9ef587fede667d78041d8fe60}\label{ee__cortex__m__irq_8h_af4e994c9ef587fede667d78041d8fe60} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+12}~(0x04U)
+\begin{DoxyCompactList}\small\item\em ISR priority level 12. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_af570858da2b38c1b80bd88c0b044442f}\label{ee__cortex__m__irq_8h_af570858da2b38c1b80bd88c0b044442f} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+13}~(0x03U)
+\begin{DoxyCompactList}\small\item\em ISR priority level 13. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ad2b083eaff3587b3904ae151fb398038}\label{ee__cortex__m__irq_8h_ad2b083eaff3587b3904ae151fb398038} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+14}~(0x02U)
+\begin{DoxyCompactList}\small\item\em ISR priority level 14. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_af58cd2327e97de9687475c8f86f50ad4}\label{ee__cortex__m__irq_8h_af58cd2327e97de9687475c8f86f50ad4} 
+\#define {\bfseries OSEE\+\_\+\+ISR\+\_\+\+PRI\+\_\+15}~(0x01U)
+\begin{DoxyCompactList}\small\item\em ISR priority level 15. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__cortex__m__irq_8h_a6525ed5e386468dfe017ac1375b6d4ba}{Declare\+Isr1}}(f)
+\begin{DoxyCompactList}\small\item\em Macro to declare ISR1\+: always valid. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__cortex__m__irq_8h_aa138320dc1722a27eb36eda2cf10057a}{ISR1}}(f)
+\begin{DoxyCompactList}\small\item\em Macro to define ISR1\+: always valid. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__cortex__m__irq_8h_a6fea875ba2b69f1e90d10b4313ec48d3}{Declare\+Isr2}}(f)
+\begin{DoxyCompactList}\small\item\em Macro to declare ISR2\+: always valid. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__cortex__m__irq_8h_a47f13018cf8cb966034b519070db4b3b}{ISR2}}(f)
+\begin{DoxyCompactList}\small\item\em Macro to define ISR2\+: always valid. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__cortex__m__irq_8h_a4111b4261ae482e8714f640788837fa7}{Declare\+Isr}}(f)
+\begin{DoxyCompactList}\small\item\em Macro to declare ISR\+: always valid. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__cortex__m__irq_8h_af5541072748bea1895b1a36784a42661}{ISR}}(f)
+\begin{DoxyCompactList}\small\item\em Macro to define ISR\+: always valid. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a41622ec76427f3f23e5ce5240b915ee0}\label{ee__cortex__m__irq_8h_a41622ec76427f3f23e5ce5240b915ee0} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+RESET\+\_\+\+EXC\+\_\+\+NUM}~0x00000001U
+\begin{DoxyCompactList}\small\item\em Reset exception number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a96b5702b3c12ee2333b96edbec56f0b7}\label{ee__cortex__m__irq_8h_a96b5702b3c12ee2333b96edbec56f0b7} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+RESET\+\_\+\+ISR\+\_\+\+ID}~\mbox{\hyperlink{ee__cortex__m__irq_8h_a41622ec76427f3f23e5ce5240b915ee0}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+RESET\+\_\+\+EXC\+\_\+\+NUM}}
+\begin{DoxyCompactList}\small\item\em Reset ISR ID. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a0de5442264f5abca5e45158878baf871}\label{ee__cortex__m__irq_8h_a0de5442264f5abca5e45158878baf871} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+NMI\+\_\+\+EXC\+\_\+\+NUM}~0x00000002U
+\begin{DoxyCompactList}\small\item\em NMI exception number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ab0efda2ea39875a077af24ca13a0633c}\label{ee__cortex__m__irq_8h_ab0efda2ea39875a077af24ca13a0633c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+NMI\+\_\+\+ISR\+\_\+\+ID}~\mbox{\hyperlink{ee__cortex__m__irq_8h_a0de5442264f5abca5e45158878baf871}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+NMI\+\_\+\+EXC\+\_\+\+NUM}}
+\begin{DoxyCompactList}\small\item\em NMI ISR ID. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a5adbf00d5dc8102b6264c4d03896174f}\label{ee__cortex__m__irq_8h_a5adbf00d5dc8102b6264c4d03896174f} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+HARD\+\_\+\+FAULT\+\_\+\+EXC\+\_\+\+NUM}~0x00000003U
+\begin{DoxyCompactList}\small\item\em Hard Fault exception number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_afecde84cc11f1d8b1305a02e3081406c}\label{ee__cortex__m__irq_8h_afecde84cc11f1d8b1305a02e3081406c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+HARD\+\_\+\+FAULT\+\_\+\+ISR\+\_\+\+ID}~\mbox{\hyperlink{ee__cortex__m__irq_8h_a5adbf00d5dc8102b6264c4d03896174f}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+HARD\+\_\+\+FAULT\+\_\+\+EXC\+\_\+\+NUM}}
+\begin{DoxyCompactList}\small\item\em Hard Fault ISR ID. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a9988887f959d8317d77b33627f3e6b03}\label{ee__cortex__m__irq_8h_a9988887f959d8317d77b33627f3e6b03} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+MPU\+\_\+\+FAULT\+\_\+\+EXC\+\_\+\+NUM}~0x00000004U
+\begin{DoxyCompactList}\small\item\em MPU Fault exception number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a6b67570634f553a2ea0ee6d184caf8ae}\label{ee__cortex__m__irq_8h_a6b67570634f553a2ea0ee6d184caf8ae} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+MPU\+\_\+\+FAULT\+\_\+\+ISR\+\_\+\+ID}~\mbox{\hyperlink{ee__cortex__m__irq_8h_a9988887f959d8317d77b33627f3e6b03}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+MPU\+\_\+\+FAULT\+\_\+\+EXC\+\_\+\+NUM}}
+\begin{DoxyCompactList}\small\item\em MPU Fault ISR ID. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ada728de97dc91ba93b318bc25a796c51}\label{ee__cortex__m__irq_8h_ada728de97dc91ba93b318bc25a796c51} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+BUS\+\_\+\+FAULT\+\_\+\+EXC\+\_\+\+NUM}~0x00000005U
+\begin{DoxyCompactList}\small\item\em BUS Fault exception number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_acd1c79112bf5b87c1dd5f5a954e65c88}\label{ee__cortex__m__irq_8h_acd1c79112bf5b87c1dd5f5a954e65c88} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+BUS\+\_\+\+FAULT\+\_\+\+ISR\+\_\+\+ID}~\mbox{\hyperlink{ee__cortex__m__irq_8h_ada728de97dc91ba93b318bc25a796c51}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+BUS\+\_\+\+FAULT\+\_\+\+EXC\+\_\+\+NUM}}
+\begin{DoxyCompactList}\small\item\em BUS Fault ISR ID. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a62b45556c23a7f66b1a49ce70014c4c9}\label{ee__cortex__m__irq_8h_a62b45556c23a7f66b1a49ce70014c4c9} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+USAGE\+\_\+\+FAULT\+\_\+\+EXC\+\_\+\+NUM}~0x00000006U
+\begin{DoxyCompactList}\small\item\em Usage Fault exception number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a72a4744976c1d9745ddf1786c3c11f60}\label{ee__cortex__m__irq_8h_a72a4744976c1d9745ddf1786c3c11f60} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+USAGE\+\_\+\+FAULT\+\_\+\+ISR\+\_\+\+ID}~ \mbox{\hyperlink{ee__cortex__m__irq_8h_a62b45556c23a7f66b1a49ce70014c4c9}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+USAGE\+\_\+\+FAULT\+\_\+\+EXC\+\_\+\+NUM}}
+\begin{DoxyCompactList}\small\item\em Usage Fault ISR ID. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ad6a622d94d4f3d48570abaf3634c77cf}\label{ee__cortex__m__irq_8h_ad6a622d94d4f3d48570abaf3634c77cf} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SVCALL\+\_\+\+EXC\+\_\+\+NUM}~0x0000000\+BU
+\begin{DoxyCompactList}\small\item\em SVCall exception number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a225f23b622b0ebc6040ed956b5de6713}\label{ee__cortex__m__irq_8h_a225f23b622b0ebc6040ed956b5de6713} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SVCALL\+\_\+\+ISR\+\_\+\+ID}~\mbox{\hyperlink{ee__cortex__m__irq_8h_ad6a622d94d4f3d48570abaf3634c77cf}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SVCALL\+\_\+\+EXC\+\_\+\+NUM}}
+\begin{DoxyCompactList}\small\item\em SVCall ISR ID. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a0dd4af01d0d39fafae3d19733f1b8c22}\label{ee__cortex__m__irq_8h_a0dd4af01d0d39fafae3d19733f1b8c22} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DEBUG\+\_\+\+MONITOR\+\_\+\+EXC\+\_\+\+NUM}~0x0000000\+CU
+\begin{DoxyCompactList}\small\item\em Debug Monitor exception number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8913432cd69df1bc853c5bc07e1a7a32}\label{ee__cortex__m__irq_8h_a8913432cd69df1bc853c5bc07e1a7a32} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DEBUG\+\_\+\+MONITOR\+\_\+\+ISR\+\_\+\+ID}~ \mbox{\hyperlink{ee__cortex__m__irq_8h_a0dd4af01d0d39fafae3d19733f1b8c22}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+DEBUG\+\_\+\+MONITOR\+\_\+\+EXC\+\_\+\+NUM}}
+\begin{DoxyCompactList}\small\item\em Debug Monitor ISR ID. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_af4fd5502c514269e77c61efff3e7f077}\label{ee__cortex__m__irq_8h_af4fd5502c514269e77c61efff3e7f077} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+PENDSV\+\_\+\+EXC\+\_\+\+NUM}~0x0000000\+EU
+\begin{DoxyCompactList}\small\item\em PENDSV Exception number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a65e8b53f4529ebdcc4c837e484e8cd28}\label{ee__cortex__m__irq_8h_a65e8b53f4529ebdcc4c837e484e8cd28} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+PENDSV\+\_\+\+ISR\+\_\+\+ID}~\mbox{\hyperlink{ee__cortex__m__irq_8h_af4fd5502c514269e77c61efff3e7f077}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+PENDSV\+\_\+\+EXC\+\_\+\+NUM}}
+\begin{DoxyCompactList}\small\item\em PENDSV ISR ID. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a123e625f093bf147da9b237c5da728b9}\label{ee__cortex__m__irq_8h_a123e625f093bf147da9b237c5da728b9} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SYSTICK\+\_\+\+EXC\+\_\+\+NUM}~0x0000000\+FU
+\begin{DoxyCompactList}\small\item\em Systick Exception number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aee63f9a29626e8fb4fa6bb74988c9daf}\label{ee__cortex__m__irq_8h_aee63f9a29626e8fb4fa6bb74988c9daf} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SYSTICK\+\_\+\+ISR\+\_\+\+ID}~\mbox{\hyperlink{ee__cortex__m__irq_8h_a123e625f093bf147da9b237c5da728b9}{OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+SYSTICK\+\_\+\+EXC\+\_\+\+NUM}}
+\begin{DoxyCompactList}\small\item\em Systick ISR ID. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047}\label{ee__cortex__m__irq_8h_ab4d737cc8f1dd04fbe02fe39f448d047} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OVERALL\+\_\+\+EXC\+\_\+\+NUM}~0x00000010U
+\begin{DoxyCompactList}\small\item\em Overall Cortex-\/M exception number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a793cdb42744c30256572a2521858098e}\label{ee__cortex__m__irq_8h_a793cdb42744c30256572a2521858098e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+00\+\_\+\+NUM}~0x00000000U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae1c539e1c73b73ff916565213b485159}\label{ee__cortex__m__irq_8h_ae1c539e1c73b73ff916565213b485159} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+01\+\_\+\+NUM}~0x00000001U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_abfde9b46abc0ec1516edd8bfe64e98a7}\label{ee__cortex__m__irq_8h_abfde9b46abc0ec1516edd8bfe64e98a7} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+02\+\_\+\+NUM}~0x00000002U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a327a9d3f76975bc8fbec9746ce8fc8fe}\label{ee__cortex__m__irq_8h_a327a9d3f76975bc8fbec9746ce8fc8fe} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+03\+\_\+\+NUM}~0x00000003U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a515a54ff449a0697ad27c6871de4a3a0}\label{ee__cortex__m__irq_8h_a515a54ff449a0697ad27c6871de4a3a0} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+04\+\_\+\+NUM}~0x00000004U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aa17c2583a8a8e331d50f874b753d3a07}\label{ee__cortex__m__irq_8h_aa17c2583a8a8e331d50f874b753d3a07} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+05\+\_\+\+NUM}~0x00000005U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aa39d6bcc84dfcd115d8c58b2918ffb3b}\label{ee__cortex__m__irq_8h_aa39d6bcc84dfcd115d8c58b2918ffb3b} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+06\+\_\+\+NUM}~0x00000006U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a015791155b0b7a12ad78c64d88616997}\label{ee__cortex__m__irq_8h_a015791155b0b7a12ad78c64d88616997} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+07\+\_\+\+NUM}~0x00000007U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aa281a9fc468d42b70ea0c55b9a04e999}\label{ee__cortex__m__irq_8h_aa281a9fc468d42b70ea0c55b9a04e999} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+08\+\_\+\+NUM}~0x00000008U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aced4dbeee0642f70bb260c0c498eff15}\label{ee__cortex__m__irq_8h_aced4dbeee0642f70bb260c0c498eff15} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+09\+\_\+\+NUM}~0x00000009U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ab3812bf2a5b1ba96ee89bab42ff1b86c}\label{ee__cortex__m__irq_8h_ab3812bf2a5b1ba96ee89bab42ff1b86c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+0\+A\+\_\+\+NUM}~0x0000000\+AU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aa22db19b1257c5545a510d58b3e41357}\label{ee__cortex__m__irq_8h_aa22db19b1257c5545a510d58b3e41357} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+0\+B\+\_\+\+NUM}~0x0000000\+BU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a7b659e92e757338aa57e80a7d629cd22}\label{ee__cortex__m__irq_8h_a7b659e92e757338aa57e80a7d629cd22} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+0\+C\+\_\+\+NUM}~0x0000000\+CU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a76c3617d62c852ae46a1d2c7f869947c}\label{ee__cortex__m__irq_8h_a76c3617d62c852ae46a1d2c7f869947c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+0\+D\+\_\+\+NUM}~0x0000000\+DU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a429690d1a01b46c83edce55f57745fb2}\label{ee__cortex__m__irq_8h_a429690d1a01b46c83edce55f57745fb2} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+0\+E\+\_\+\+NUM}~0x0000000\+EU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a7eb411cc150446df9052aee8f74362f6}\label{ee__cortex__m__irq_8h_a7eb411cc150446df9052aee8f74362f6} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+0\+F\+\_\+\+NUM}~0x0000000\+FU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a5e291bc8de3f0dc649798136935bf0cb}\label{ee__cortex__m__irq_8h_a5e291bc8de3f0dc649798136935bf0cb} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+10\+\_\+\+NUM}~0x00000010U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a9fb00f2d1e5395c4c64cd4d1469ff945}\label{ee__cortex__m__irq_8h_a9fb00f2d1e5395c4c64cd4d1469ff945} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+11\+\_\+\+NUM}~0x00000011U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae252161c56fa70e233952dd9cfa4dc7a}\label{ee__cortex__m__irq_8h_ae252161c56fa70e233952dd9cfa4dc7a} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+12\+\_\+\+NUM}~0x00000012U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a511f175f6a7a3afc1af3a46062dbce40}\label{ee__cortex__m__irq_8h_a511f175f6a7a3afc1af3a46062dbce40} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+13\+\_\+\+NUM}~0x00000013U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a020d4a1239db121ff8a88a4a60f86438}\label{ee__cortex__m__irq_8h_a020d4a1239db121ff8a88a4a60f86438} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+14\+\_\+\+NUM}~0x00000014U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a0cf85fb93777e00ee2767ae6b29b0b10}\label{ee__cortex__m__irq_8h_a0cf85fb93777e00ee2767ae6b29b0b10} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+15\+\_\+\+NUM}~0x00000015U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a72e5fb4ceb3b23fdff0f2641d8c0f90a}\label{ee__cortex__m__irq_8h_a72e5fb4ceb3b23fdff0f2641d8c0f90a} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+16\+\_\+\+NUM}~0x00000016U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae1bf5c128198d0c4544eec9fc336c963}\label{ee__cortex__m__irq_8h_ae1bf5c128198d0c4544eec9fc336c963} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+17\+\_\+\+NUM}~0x00000017U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3f01489ae9f48cbc0dde1a38d1fad13d}\label{ee__cortex__m__irq_8h_a3f01489ae9f48cbc0dde1a38d1fad13d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+18\+\_\+\+NUM}~0x00000018U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_af2fb43eed5bf00b8e750582fd47daef1}\label{ee__cortex__m__irq_8h_af2fb43eed5bf00b8e750582fd47daef1} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+19\+\_\+\+NUM}~0x00000019U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ada1a338d9b2b7f1147e6614f12f842f3}\label{ee__cortex__m__irq_8h_ada1a338d9b2b7f1147e6614f12f842f3} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+1\+A\+\_\+\+NUM}~0x0000001\+AU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_acb0d7bbf0e35e8adff3074c3afe31923}\label{ee__cortex__m__irq_8h_acb0d7bbf0e35e8adff3074c3afe31923} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+1\+B\+\_\+\+NUM}~0x0000001\+BU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3a4796106c9a34c6b5a38d8d293a5dc7}\label{ee__cortex__m__irq_8h_a3a4796106c9a34c6b5a38d8d293a5dc7} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+1\+C\+\_\+\+NUM}~0x0000001\+CU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a10243f5ab9b01f609e99cb9b81993657}\label{ee__cortex__m__irq_8h_a10243f5ab9b01f609e99cb9b81993657} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+1\+D\+\_\+\+NUM}~0x0000001\+DU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_abd88230fe6dc4bd5e01ad07cbac0c1ec}\label{ee__cortex__m__irq_8h_abd88230fe6dc4bd5e01ad07cbac0c1ec} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+1\+E\+\_\+\+NUM}~0x0000001\+EU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_afa28efe16a98296f49d1f9b096130ed0}\label{ee__cortex__m__irq_8h_afa28efe16a98296f49d1f9b096130ed0} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+1\+F\+\_\+\+NUM}~0x0000001\+FU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a23f79166e21bb23350f01b291b738ac0}\label{ee__cortex__m__irq_8h_a23f79166e21bb23350f01b291b738ac0} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+20\+\_\+\+NUM}~0x00000020U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a252b540b768ce152ca245c04cab4b664}\label{ee__cortex__m__irq_8h_a252b540b768ce152ca245c04cab4b664} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+21\+\_\+\+NUM}~0x00000021U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a1ce03f23aec3d399a92f5d36326bfbe6}\label{ee__cortex__m__irq_8h_a1ce03f23aec3d399a92f5d36326bfbe6} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+22\+\_\+\+NUM}~0x00000022U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a10e0484f98ec3bd0baccb6adaff5716e}\label{ee__cortex__m__irq_8h_a10e0484f98ec3bd0baccb6adaff5716e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+23\+\_\+\+NUM}~0x00000023U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae0d80a39d3851abc59e918dd85ccb52b}\label{ee__cortex__m__irq_8h_ae0d80a39d3851abc59e918dd85ccb52b} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+24\+\_\+\+NUM}~0x00000024U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ac350c3509305a5864af670076e35888d}\label{ee__cortex__m__irq_8h_ac350c3509305a5864af670076e35888d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+25\+\_\+\+NUM}~0x00000025U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a10b22b5f18ae341cb25223014deec452}\label{ee__cortex__m__irq_8h_a10b22b5f18ae341cb25223014deec452} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+26\+\_\+\+NUM}~0x00000026U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8224a4ca89ba5c5e7533e4cfd540cf83}\label{ee__cortex__m__irq_8h_a8224a4ca89ba5c5e7533e4cfd540cf83} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+27\+\_\+\+NUM}~0x00000027U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ad0063cc7ea410fbdddfba46b4f2a938d}\label{ee__cortex__m__irq_8h_ad0063cc7ea410fbdddfba46b4f2a938d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+28\+\_\+\+NUM}~0x00000028U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a82d155789a2904623becb88ec25c02b0}\label{ee__cortex__m__irq_8h_a82d155789a2904623becb88ec25c02b0} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+29\+\_\+\+NUM}~0x00000029U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3ad960af1a30ea2800ab82d4f4fe6df4}\label{ee__cortex__m__irq_8h_a3ad960af1a30ea2800ab82d4f4fe6df4} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+2\+A\+\_\+\+NUM}~0x0000002\+AU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8291bd4311e9c8999f0e9f9281abb74e}\label{ee__cortex__m__irq_8h_a8291bd4311e9c8999f0e9f9281abb74e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+2\+B\+\_\+\+NUM}~0x0000002\+BU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a2d1e4f175026c208c12a8e4afeab45e6}\label{ee__cortex__m__irq_8h_a2d1e4f175026c208c12a8e4afeab45e6} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+2\+C\+\_\+\+NUM}~0x0000002\+CU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae223d870e627d6b12b1cdb68869217a7}\label{ee__cortex__m__irq_8h_ae223d870e627d6b12b1cdb68869217a7} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+2\+D\+\_\+\+NUM}~0x0000002\+DU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8468fa2955bf77738a235d25cd5a5261}\label{ee__cortex__m__irq_8h_a8468fa2955bf77738a235d25cd5a5261} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+2\+E\+\_\+\+NUM}~0x0000002\+EU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a859e6521c0883b8439b61cc8839394d7}\label{ee__cortex__m__irq_8h_a859e6521c0883b8439b61cc8839394d7} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+2\+F\+\_\+\+NUM}~0x0000002\+FU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a17af3acb673a054d69251a305a117509}\label{ee__cortex__m__irq_8h_a17af3acb673a054d69251a305a117509} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+30\+\_\+\+NUM}~0x00000030U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_af3ae0ad2fb445ffa30744c7f0668cb85}\label{ee__cortex__m__irq_8h_af3ae0ad2fb445ffa30744c7f0668cb85} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+31\+\_\+\+NUM}~0x00000031U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a2e4ac5012334ad4ad5e10c314ce1c464}\label{ee__cortex__m__irq_8h_a2e4ac5012334ad4ad5e10c314ce1c464} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+32\+\_\+\+NUM}~0x00000032U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a7534bfc73f0a481156d395c67e64b95d}\label{ee__cortex__m__irq_8h_a7534bfc73f0a481156d395c67e64b95d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+33\+\_\+\+NUM}~0x00000033U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a9f7b9198c48d00d9c1e8df5614816142}\label{ee__cortex__m__irq_8h_a9f7b9198c48d00d9c1e8df5614816142} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+34\+\_\+\+NUM}~0x00000034U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae5844ce5738b8b9ba36b6916a589cc7e}\label{ee__cortex__m__irq_8h_ae5844ce5738b8b9ba36b6916a589cc7e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+35\+\_\+\+NUM}~0x00000035U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a5097ae37ba9d13d5e3cbc42836f98c5a}\label{ee__cortex__m__irq_8h_a5097ae37ba9d13d5e3cbc42836f98c5a} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+36\+\_\+\+NUM}~0x00000036U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a15e991c4628e3dc08c0f86d75cf537ca}\label{ee__cortex__m__irq_8h_a15e991c4628e3dc08c0f86d75cf537ca} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+37\+\_\+\+NUM}~0x00000037U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a6d249136ac0600fbc29b956ab263a16b}\label{ee__cortex__m__irq_8h_a6d249136ac0600fbc29b956ab263a16b} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+38\+\_\+\+NUM}~0x00000038U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a016fbd2cc9586c3e6e9e6b82b8121193}\label{ee__cortex__m__irq_8h_a016fbd2cc9586c3e6e9e6b82b8121193} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+39\+\_\+\+NUM}~0x00000039U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a721be96657e36772459e33f99d0977d9}\label{ee__cortex__m__irq_8h_a721be96657e36772459e33f99d0977d9} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+3\+A\+\_\+\+NUM}~0x0000003\+AU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ad6159434a4e32b45d77631f02608e3ad}\label{ee__cortex__m__irq_8h_ad6159434a4e32b45d77631f02608e3ad} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+3\+B\+\_\+\+NUM}~0x0000003\+BU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a2082855ea543cd8e5f856a32c39a8983}\label{ee__cortex__m__irq_8h_a2082855ea543cd8e5f856a32c39a8983} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+3\+C\+\_\+\+NUM}~0x0000003\+CU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a636ca66a262eff322f3a15ff64df52f2}\label{ee__cortex__m__irq_8h_a636ca66a262eff322f3a15ff64df52f2} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+3\+D\+\_\+\+NUM}~0x0000003\+DU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aedb18133c959f0fbf57f3124ff255303}\label{ee__cortex__m__irq_8h_aedb18133c959f0fbf57f3124ff255303} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+3\+E\+\_\+\+NUM}~0x0000003\+EU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_abf93858ddba2e27120f65f57fd6ab425}\label{ee__cortex__m__irq_8h_abf93858ddba2e27120f65f57fd6ab425} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+3\+F\+\_\+\+NUM}~0x0000003\+FU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a9b734900ba38bc8a1d595954e9b0653d}\label{ee__cortex__m__irq_8h_a9b734900ba38bc8a1d595954e9b0653d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+40\+\_\+\+NUM}~0x00000040U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8037c86a1854fa9ca199e73b64b50e01}\label{ee__cortex__m__irq_8h_a8037c86a1854fa9ca199e73b64b50e01} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+41\+\_\+\+NUM}~0x00000041U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ac6428f1f3ce90d6033be2cabd7cbd80c}\label{ee__cortex__m__irq_8h_ac6428f1f3ce90d6033be2cabd7cbd80c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+42\+\_\+\+NUM}~0x00000042U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a2b37f7226eb45c2d6e306e3d47827325}\label{ee__cortex__m__irq_8h_a2b37f7226eb45c2d6e306e3d47827325} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+43\+\_\+\+NUM}~0x00000043U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a2ffd5499f86966a012f51dbdb8a43ce8}\label{ee__cortex__m__irq_8h_a2ffd5499f86966a012f51dbdb8a43ce8} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+44\+\_\+\+NUM}~0x00000044U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a740e987ce8a4c5aa4659e0095bd120c3}\label{ee__cortex__m__irq_8h_a740e987ce8a4c5aa4659e0095bd120c3} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+45\+\_\+\+NUM}~0x00000045U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a9132a025037476b1500dfa001323418c}\label{ee__cortex__m__irq_8h_a9132a025037476b1500dfa001323418c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+46\+\_\+\+NUM}~0x00000046U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3c977f13c094c726d75b528e13b670b1}\label{ee__cortex__m__irq_8h_a3c977f13c094c726d75b528e13b670b1} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+47\+\_\+\+NUM}~0x00000047U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a7f935377438d592dbb884bbe0c51e3a6}\label{ee__cortex__m__irq_8h_a7f935377438d592dbb884bbe0c51e3a6} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+48\+\_\+\+NUM}~0x00000048U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a32080a99d62c55a3c574c95b518796de}\label{ee__cortex__m__irq_8h_a32080a99d62c55a3c574c95b518796de} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+49\+\_\+\+NUM}~0x00000049U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ada1ddcfc9af62359b6158ec7584732a0}\label{ee__cortex__m__irq_8h_ada1ddcfc9af62359b6158ec7584732a0} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+4\+A\+\_\+\+NUM}~0x0000004\+AU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a1e40f3f922cfea42a5b48f3240d15cc2}\label{ee__cortex__m__irq_8h_a1e40f3f922cfea42a5b48f3240d15cc2} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+4\+B\+\_\+\+NUM}~0x0000004\+BU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ad9d7acd526dc0001607c633e1d869053}\label{ee__cortex__m__irq_8h_ad9d7acd526dc0001607c633e1d869053} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+4\+C\+\_\+\+NUM}~0x0000004\+CU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a657bb12168bf1f88c050cf54c6364f3f}\label{ee__cortex__m__irq_8h_a657bb12168bf1f88c050cf54c6364f3f} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+4\+D\+\_\+\+NUM}~0x0000004\+DU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aad2052f22979de986971b046c9402b3b}\label{ee__cortex__m__irq_8h_aad2052f22979de986971b046c9402b3b} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+4\+E\+\_\+\+NUM}~0x0000004\+EU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ad43ebb82c7b075fcd3f4fae4e57a1f5c}\label{ee__cortex__m__irq_8h_ad43ebb82c7b075fcd3f4fae4e57a1f5c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+4\+F\+\_\+\+NUM}~0x0000004\+FU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a5a5e46820ca99bfa9f7d232eac6c0338}\label{ee__cortex__m__irq_8h_a5a5e46820ca99bfa9f7d232eac6c0338} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+50\+\_\+\+NUM}~0x00000050U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ad74710eaf3a0a811f4e9c5e231ab07e7}\label{ee__cortex__m__irq_8h_ad74710eaf3a0a811f4e9c5e231ab07e7} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+51\+\_\+\+NUM}~0x00000051U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a5d3484e97da182b38e975eb598c2cb5d}\label{ee__cortex__m__irq_8h_a5d3484e97da182b38e975eb598c2cb5d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+52\+\_\+\+NUM}~0x00000052U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aece7ec7efe8c2a877c8e75d24b3828c0}\label{ee__cortex__m__irq_8h_aece7ec7efe8c2a877c8e75d24b3828c0} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+53\+\_\+\+NUM}~0x00000053U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_afa8112905e31b791113fedf94390f8c2}\label{ee__cortex__m__irq_8h_afa8112905e31b791113fedf94390f8c2} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+54\+\_\+\+NUM}~0x00000054U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aa622303c4023dc871af489358abb7dc9}\label{ee__cortex__m__irq_8h_aa622303c4023dc871af489358abb7dc9} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+55\+\_\+\+NUM}~0x00000055U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aaf7f882b60832d9fd40001b98ab4eafc}\label{ee__cortex__m__irq_8h_aaf7f882b60832d9fd40001b98ab4eafc} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+56\+\_\+\+NUM}~0x00000056U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a4b3ac8450129a5669ad105f9b4cccd99}\label{ee__cortex__m__irq_8h_a4b3ac8450129a5669ad105f9b4cccd99} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+57\+\_\+\+NUM}~0x00000057U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ac6cd0149e6173939bcdd477971b6be4e}\label{ee__cortex__m__irq_8h_ac6cd0149e6173939bcdd477971b6be4e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+58\+\_\+\+NUM}~0x00000058U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a6512f21ff058fd393e2bb428490b0fb8}\label{ee__cortex__m__irq_8h_a6512f21ff058fd393e2bb428490b0fb8} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+59\+\_\+\+NUM}~0x00000059U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_abc2e822f2b5473e803f3fdfe508c0c06}\label{ee__cortex__m__irq_8h_abc2e822f2b5473e803f3fdfe508c0c06} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+5\+A\+\_\+\+NUM}~0x0000005\+AU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a7d41b22f4d43b5da64aaa9a4a8221e9f}\label{ee__cortex__m__irq_8h_a7d41b22f4d43b5da64aaa9a4a8221e9f} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+5\+B\+\_\+\+NUM}~0x0000005\+BU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a6372faf744240bde095d5a1e0cd1c1ba}\label{ee__cortex__m__irq_8h_a6372faf744240bde095d5a1e0cd1c1ba} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+5\+C\+\_\+\+NUM}~0x0000005\+CU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a10179cad7dee09d83fcd799ea6b344c9}\label{ee__cortex__m__irq_8h_a10179cad7dee09d83fcd799ea6b344c9} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+5\+D\+\_\+\+NUM}~0x0000005\+DU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a642b74def12a447ecf6eebbb4efcbe09}\label{ee__cortex__m__irq_8h_a642b74def12a447ecf6eebbb4efcbe09} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+5\+E\+\_\+\+NUM}~0x0000005\+EU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a522d1f1d9cc21a31fbc71e515f42b1a6}\label{ee__cortex__m__irq_8h_a522d1f1d9cc21a31fbc71e515f42b1a6} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+5\+F\+\_\+\+NUM}~0x0000005\+FU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3f16556d35817e08e4aeaddaf72207db}\label{ee__cortex__m__irq_8h_a3f16556d35817e08e4aeaddaf72207db} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+60\+\_\+\+NUM}~0x00000060U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3f70879f089324a00e2269bf1e90a9e5}\label{ee__cortex__m__irq_8h_a3f70879f089324a00e2269bf1e90a9e5} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+61\+\_\+\+NUM}~0x00000061U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a05e718100be6c600c267f40dff25a097}\label{ee__cortex__m__irq_8h_a05e718100be6c600c267f40dff25a097} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+62\+\_\+\+NUM}~0x00000062U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a67ab30d78eebf451d9f71a94c5d3dbee}\label{ee__cortex__m__irq_8h_a67ab30d78eebf451d9f71a94c5d3dbee} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+63\+\_\+\+NUM}~0x00000063U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a7056eb4dfdc0e2ae6857e7099258437c}\label{ee__cortex__m__irq_8h_a7056eb4dfdc0e2ae6857e7099258437c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+64\+\_\+\+NUM}~0x00000064U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a7c249cb30ea023f145b64705c5556d81}\label{ee__cortex__m__irq_8h_a7c249cb30ea023f145b64705c5556d81} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+65\+\_\+\+NUM}~0x00000065U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae8dfcc72b7fd28906b4f63468b9a4913}\label{ee__cortex__m__irq_8h_ae8dfcc72b7fd28906b4f63468b9a4913} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+66\+\_\+\+NUM}~0x00000066U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a30640a3cd0d0f5a961e51d115ef944f1}\label{ee__cortex__m__irq_8h_a30640a3cd0d0f5a961e51d115ef944f1} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+67\+\_\+\+NUM}~0x00000067U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae12e7516d30dedccf731760665eadcc8}\label{ee__cortex__m__irq_8h_ae12e7516d30dedccf731760665eadcc8} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+68\+\_\+\+NUM}~0x00000068U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a496dc746c4464b78bc7914946a27bd5e}\label{ee__cortex__m__irq_8h_a496dc746c4464b78bc7914946a27bd5e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+69\+\_\+\+NUM}~0x00000069U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a0eff4579c6d42d6b11637a6dbf170cae}\label{ee__cortex__m__irq_8h_a0eff4579c6d42d6b11637a6dbf170cae} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+6\+A\+\_\+\+NUM}~0x0000006\+AU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a80231ab347ce5ba74fabe097651d21d8}\label{ee__cortex__m__irq_8h_a80231ab347ce5ba74fabe097651d21d8} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+6\+B\+\_\+\+NUM}~0x0000006\+BU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a0902e167acaf784c1e481be5c7520d69}\label{ee__cortex__m__irq_8h_a0902e167acaf784c1e481be5c7520d69} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+6\+C\+\_\+\+NUM}~0x0000006\+CU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a6eac0aa5529ad561403f049080bc2cd5}\label{ee__cortex__m__irq_8h_a6eac0aa5529ad561403f049080bc2cd5} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+6\+D\+\_\+\+NUM}~0x0000006\+DU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a0b1a134217b6c2d9b5aee4b0fa736153}\label{ee__cortex__m__irq_8h_a0b1a134217b6c2d9b5aee4b0fa736153} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+6\+E\+\_\+\+NUM}~0x0000006\+EU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a4e8be4505c0cc7e3d4b568b34453156c}\label{ee__cortex__m__irq_8h_a4e8be4505c0cc7e3d4b568b34453156c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+6\+F\+\_\+\+NUM}~0x0000006\+FU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a65542685940ce21344a7a520ab19f3c5}\label{ee__cortex__m__irq_8h_a65542685940ce21344a7a520ab19f3c5} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+70\+\_\+\+NUM}~0x00000070U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a7dcfb932dd253497e3b1b263ab40ba6f}\label{ee__cortex__m__irq_8h_a7dcfb932dd253497e3b1b263ab40ba6f} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+71\+\_\+\+NUM}~0x00000071U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ad854589fdcdb7857b375843636d7fb00}\label{ee__cortex__m__irq_8h_ad854589fdcdb7857b375843636d7fb00} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+72\+\_\+\+NUM}~0x00000072U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a700a3c7b5b2d95ef6cdbf1b65dfcd1eb}\label{ee__cortex__m__irq_8h_a700a3c7b5b2d95ef6cdbf1b65dfcd1eb} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+73\+\_\+\+NUM}~0x00000073U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a04c2ccca2b6a054e99a22529e3b0f39e}\label{ee__cortex__m__irq_8h_a04c2ccca2b6a054e99a22529e3b0f39e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+74\+\_\+\+NUM}~0x00000074U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a974f46256b220c052d2b0958517c9828}\label{ee__cortex__m__irq_8h_a974f46256b220c052d2b0958517c9828} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+75\+\_\+\+NUM}~0x00000075U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a74be6072bea6ee35b3a337bbc8fb8d02}\label{ee__cortex__m__irq_8h_a74be6072bea6ee35b3a337bbc8fb8d02} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+76\+\_\+\+NUM}~0x00000076U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a4ef39730d812724c97a551fe12556aa1}\label{ee__cortex__m__irq_8h_a4ef39730d812724c97a551fe12556aa1} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+77\+\_\+\+NUM}~0x00000077U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a6c78463c6d7786cd7ee9d721a3bd120f}\label{ee__cortex__m__irq_8h_a6c78463c6d7786cd7ee9d721a3bd120f} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+78\+\_\+\+NUM}~0x00000078U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8847a2cf24dcf4a02378493201e5b5dd}\label{ee__cortex__m__irq_8h_a8847a2cf24dcf4a02378493201e5b5dd} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+79\+\_\+\+NUM}~0x00000079U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a63717a5cee01fd09273a6bb165b22e69}\label{ee__cortex__m__irq_8h_a63717a5cee01fd09273a6bb165b22e69} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+7\+A\+\_\+\+NUM}~0x0000007\+AU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a41e0fbde05eb1fc84cc972430da94ef2}\label{ee__cortex__m__irq_8h_a41e0fbde05eb1fc84cc972430da94ef2} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+7\+B\+\_\+\+NUM}~0x0000007\+BU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a297365287006efaf72341303be3a666c}\label{ee__cortex__m__irq_8h_a297365287006efaf72341303be3a666c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+7\+C\+\_\+\+NUM}~0x0000007\+CU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ac5d2eeda4740009cd1164eb0d9a3eb9d}\label{ee__cortex__m__irq_8h_ac5d2eeda4740009cd1164eb0d9a3eb9d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+7\+D\+\_\+\+NUM}~0x0000007\+DU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ada881bf0177c991d74ca083a4b27453e}\label{ee__cortex__m__irq_8h_ada881bf0177c991d74ca083a4b27453e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+7\+E\+\_\+\+NUM}~0x0000007\+EU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3c80de28c8457b1b540796e19f4afbe9}\label{ee__cortex__m__irq_8h_a3c80de28c8457b1b540796e19f4afbe9} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+7\+F\+\_\+\+NUM}~0x0000007\+FU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a587942ef3d1e1ec19754935430a32fab}\label{ee__cortex__m__irq_8h_a587942ef3d1e1ec19754935430a32fab} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+80\+\_\+\+NUM}~0x00000080U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a16f502bca522104d67e2c95b43693531}\label{ee__cortex__m__irq_8h_a16f502bca522104d67e2c95b43693531} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+81\+\_\+\+NUM}~0x00000081U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8effaeebe24af63c9694594cbd1ae98a}\label{ee__cortex__m__irq_8h_a8effaeebe24af63c9694594cbd1ae98a} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+82\+\_\+\+NUM}~0x00000082U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae99ac2b5eb15eb98650c0ece60ee54e2}\label{ee__cortex__m__irq_8h_ae99ac2b5eb15eb98650c0ece60ee54e2} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+83\+\_\+\+NUM}~0x00000083U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a9b9cb114409957b6eb585b4fed820ee5}\label{ee__cortex__m__irq_8h_a9b9cb114409957b6eb585b4fed820ee5} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+84\+\_\+\+NUM}~0x00000084U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a2391386728298de4ddf389af5e65f7ca}\label{ee__cortex__m__irq_8h_a2391386728298de4ddf389af5e65f7ca} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+85\+\_\+\+NUM}~0x00000085U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_afe72559c103c26f04d20c95be2ed68de}\label{ee__cortex__m__irq_8h_afe72559c103c26f04d20c95be2ed68de} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+86\+\_\+\+NUM}~0x00000086U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8494bb5ee1696e9a46f6b91c339e506d}\label{ee__cortex__m__irq_8h_a8494bb5ee1696e9a46f6b91c339e506d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+87\+\_\+\+NUM}~0x00000087U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a88a03f1532b5b1758929cccf0b96c636}\label{ee__cortex__m__irq_8h_a88a03f1532b5b1758929cccf0b96c636} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+88\+\_\+\+NUM}~0x00000088U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a4c941e840d555de65b85a77ebcae305e}\label{ee__cortex__m__irq_8h_a4c941e840d555de65b85a77ebcae305e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+89\+\_\+\+NUM}~0x00000089U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a9c6e72172cc8503b70c1a9022e6153c3}\label{ee__cortex__m__irq_8h_a9c6e72172cc8503b70c1a9022e6153c3} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+8\+A\+\_\+\+NUM}~0x0000008\+AU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a2f2c9585d53beaf4b6d1b31d4b09bd66}\label{ee__cortex__m__irq_8h_a2f2c9585d53beaf4b6d1b31d4b09bd66} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+8\+B\+\_\+\+NUM}~0x0000008\+BU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aa558717c0aee815b99bf0c1ec011f835}\label{ee__cortex__m__irq_8h_aa558717c0aee815b99bf0c1ec011f835} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+8\+C\+\_\+\+NUM}~0x0000008\+CU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a6c89cd94330afb148d05e5f006fce78b}\label{ee__cortex__m__irq_8h_a6c89cd94330afb148d05e5f006fce78b} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+8\+D\+\_\+\+NUM}~0x0000008\+DU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ab4ffc1d6374af7f0209b0ae185198c0f}\label{ee__cortex__m__irq_8h_ab4ffc1d6374af7f0209b0ae185198c0f} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+8\+E\+\_\+\+NUM}~0x0000008\+EU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a0a86d97f5979c3c194235054db1a367f}\label{ee__cortex__m__irq_8h_a0a86d97f5979c3c194235054db1a367f} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+8\+F\+\_\+\+NUM}~0x0000008\+FU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a091e0e0d861f3acfb5e75a01b1699397}\label{ee__cortex__m__irq_8h_a091e0e0d861f3acfb5e75a01b1699397} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+90\+\_\+\+NUM}~0x00000090U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aa11996cd2a8a1d2d23a82646175d91a5}\label{ee__cortex__m__irq_8h_aa11996cd2a8a1d2d23a82646175d91a5} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+91\+\_\+\+NUM}~0x00000091U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a457d3ccefc4eafa216ab511a6f95e0e2}\label{ee__cortex__m__irq_8h_a457d3ccefc4eafa216ab511a6f95e0e2} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+92\+\_\+\+NUM}~0x00000092U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_acd5a55dffaca1fdc92c9a0ef77004192}\label{ee__cortex__m__irq_8h_acd5a55dffaca1fdc92c9a0ef77004192} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+93\+\_\+\+NUM}~0x00000093U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3aeafcc3fd4a57cfeef75bfa2ed68579}\label{ee__cortex__m__irq_8h_a3aeafcc3fd4a57cfeef75bfa2ed68579} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+94\+\_\+\+NUM}~0x00000094U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ac075481b34f7e8c60931979c224f22a3}\label{ee__cortex__m__irq_8h_ac075481b34f7e8c60931979c224f22a3} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+95\+\_\+\+NUM}~0x00000095U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8b68c36d356c0d64ddda7aa101d1f137}\label{ee__cortex__m__irq_8h_a8b68c36d356c0d64ddda7aa101d1f137} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+96\+\_\+\+NUM}~0x00000096U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae9c3f34d29d277bf4b0cfccf3b2557a9}\label{ee__cortex__m__irq_8h_ae9c3f34d29d277bf4b0cfccf3b2557a9} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+97\+\_\+\+NUM}~0x00000097U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a41aca4809b0934be8ae0dbc972d06035}\label{ee__cortex__m__irq_8h_a41aca4809b0934be8ae0dbc972d06035} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+98\+\_\+\+NUM}~0x00000098U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ae08b953be285899b52a4fbf38876aa14}\label{ee__cortex__m__irq_8h_ae08b953be285899b52a4fbf38876aa14} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+99\+\_\+\+NUM}~0x00000099U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_abfc482fcab1379040bd075288a29ac0f}\label{ee__cortex__m__irq_8h_abfc482fcab1379040bd075288a29ac0f} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+9\+A\+\_\+\+NUM}~0x0000009\+AU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a4dc8f4d9dfceea8f1e1e443e2abcf1ce}\label{ee__cortex__m__irq_8h_a4dc8f4d9dfceea8f1e1e443e2abcf1ce} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+9\+B\+\_\+\+NUM}~0x0000009\+BU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ac0c420faa8e0ab8d84d2ece615efac5e}\label{ee__cortex__m__irq_8h_ac0c420faa8e0ab8d84d2ece615efac5e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+9\+C\+\_\+\+NUM}~0x0000009\+CU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3e317484fe87f2f7bad140b406c023f5}\label{ee__cortex__m__irq_8h_a3e317484fe87f2f7bad140b406c023f5} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+9\+D\+\_\+\+NUM}~0x0000009\+DU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a6665f1eb56db1ede7d73afb5c26afac5}\label{ee__cortex__m__irq_8h_a6665f1eb56db1ede7d73afb5c26afac5} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+9\+E\+\_\+\+NUM}~0x0000009\+EU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ab7f5f57e20c20f297c35d5135af20378}\label{ee__cortex__m__irq_8h_ab7f5f57e20c20f297c35d5135af20378} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+9\+F\+\_\+\+NUM}~0x0000009\+FU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a44a3c30b80750947381fb5182f592899}\label{ee__cortex__m__irq_8h_a44a3c30b80750947381fb5182f592899} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+A0\+\_\+\+NUM}~0x000000\+A0U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a9207a48883ec9924faa446ecf583a277}\label{ee__cortex__m__irq_8h_a9207a48883ec9924faa446ecf583a277} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+A1\+\_\+\+NUM}~0x000000\+A1U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ad5c24e68ee89ce83e73c24e0a5456fc2}\label{ee__cortex__m__irq_8h_ad5c24e68ee89ce83e73c24e0a5456fc2} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+A2\+\_\+\+NUM}~0x000000\+A2U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aff4e8a7f62f2efa13d93f3a416dccfcb}\label{ee__cortex__m__irq_8h_aff4e8a7f62f2efa13d93f3a416dccfcb} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+A3\+\_\+\+NUM}~0x000000\+A3U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aea6ec90417ad42cb003a7ec6a9bd687d}\label{ee__cortex__m__irq_8h_aea6ec90417ad42cb003a7ec6a9bd687d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+A4\+\_\+\+NUM}~0x000000\+A4U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a63c78547b3548797ea9da865d5a2afff}\label{ee__cortex__m__irq_8h_a63c78547b3548797ea9da865d5a2afff} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+A5\+\_\+\+NUM}~0x000000\+A5U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a7d9945e7e2b07713da2b3b23d0c99659}\label{ee__cortex__m__irq_8h_a7d9945e7e2b07713da2b3b23d0c99659} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+A6\+\_\+\+NUM}~0x000000\+A6U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a275583a0c2dc47db7ef6f80daa5b3f90}\label{ee__cortex__m__irq_8h_a275583a0c2dc47db7ef6f80daa5b3f90} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+A7\+\_\+\+NUM}~0x000000\+A7U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_abc10e4b4bfaa9e12a7ab7db41c3b2db1}\label{ee__cortex__m__irq_8h_abc10e4b4bfaa9e12a7ab7db41c3b2db1} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+A8\+\_\+\+NUM}~0x000000\+A8U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aa8f21a217faea138aa973a3b6588af5a}\label{ee__cortex__m__irq_8h_aa8f21a217faea138aa973a3b6588af5a} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+A9\+\_\+\+NUM}~0x000000\+A9U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a31b2db95f62b016fc175159fa3e1a6d2}\label{ee__cortex__m__irq_8h_a31b2db95f62b016fc175159fa3e1a6d2} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+AA\+\_\+\+NUM}~0x000000\+AAU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a454dfae04114bce23696ec6b5dfeb3b3}\label{ee__cortex__m__irq_8h_a454dfae04114bce23696ec6b5dfeb3b3} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+AB\+\_\+\+NUM}~0x000000\+ABU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_acf1ea8c2972470b55dcb4ca20c1bc96c}\label{ee__cortex__m__irq_8h_acf1ea8c2972470b55dcb4ca20c1bc96c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+AC\+\_\+\+NUM}~0x000000\+ACU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a62ec3f65106d8ae8260427d3bb75c839}\label{ee__cortex__m__irq_8h_a62ec3f65106d8ae8260427d3bb75c839} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+AD\+\_\+\+NUM}~0x000000\+ADU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a4301bfc89cc69988cd4a49834a4758de}\label{ee__cortex__m__irq_8h_a4301bfc89cc69988cd4a49834a4758de} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+AE\+\_\+\+NUM}~0x000000\+AEU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a079c750cc099c0dfd4a62a8a382417cd}\label{ee__cortex__m__irq_8h_a079c750cc099c0dfd4a62a8a382417cd} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+AF\+\_\+\+NUM}~0x000000\+AFU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a5199356abb5184c9fafa1efeaa68038c}\label{ee__cortex__m__irq_8h_a5199356abb5184c9fafa1efeaa68038c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+B0\+\_\+\+NUM}~0x000000\+B0U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8d3510b10c434c4821e7b4a6a0c02fff}\label{ee__cortex__m__irq_8h_a8d3510b10c434c4821e7b4a6a0c02fff} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+B1\+\_\+\+NUM}~0x000000\+B1U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8b87d432e19183bba5059cf58499447d}\label{ee__cortex__m__irq_8h_a8b87d432e19183bba5059cf58499447d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+B2\+\_\+\+NUM}~0x000000\+B2U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3f8aec2e2e0af3b5b6bbbdb21346fe68}\label{ee__cortex__m__irq_8h_a3f8aec2e2e0af3b5b6bbbdb21346fe68} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+B3\+\_\+\+NUM}~0x000000\+B3U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_acfca39970caaf14e7853d7525591ce47}\label{ee__cortex__m__irq_8h_acfca39970caaf14e7853d7525591ce47} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+B4\+\_\+\+NUM}~0x000000\+B4U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_abcb192c601d9b1ba45dff17c0e57e804}\label{ee__cortex__m__irq_8h_abcb192c601d9b1ba45dff17c0e57e804} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+B5\+\_\+\+NUM}~0x000000\+B5U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a026043ef67519920e99ef0bf50dcbab2}\label{ee__cortex__m__irq_8h_a026043ef67519920e99ef0bf50dcbab2} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+B6\+\_\+\+NUM}~0x000000\+B6U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a1926d972b76c5875fd373f887d3a81c0}\label{ee__cortex__m__irq_8h_a1926d972b76c5875fd373f887d3a81c0} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+B7\+\_\+\+NUM}~0x000000\+B7U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aa5a1a32d65bebce4eb8b708775697c05}\label{ee__cortex__m__irq_8h_aa5a1a32d65bebce4eb8b708775697c05} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+B8\+\_\+\+NUM}~0x000000\+B8U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a0981148b769ed7fecd7787a4d939c9b1}\label{ee__cortex__m__irq_8h_a0981148b769ed7fecd7787a4d939c9b1} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+B9\+\_\+\+NUM}~0x000000\+B9U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a6926f484ec35b7461facef5bd8f7e1b0}\label{ee__cortex__m__irq_8h_a6926f484ec35b7461facef5bd8f7e1b0} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+BA\+\_\+\+NUM}~0x000000\+BAU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a12be9babe1ecdd6e832c3216d99cca8e}\label{ee__cortex__m__irq_8h_a12be9babe1ecdd6e832c3216d99cca8e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+BB\+\_\+\+NUM}~0x000000\+BBU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a004283444ad5d77caf23379aac866a0d}\label{ee__cortex__m__irq_8h_a004283444ad5d77caf23379aac866a0d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+BC\+\_\+\+NUM}~0x000000\+BCU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a408f489426eff19f1031cb9e3ccc00bb}\label{ee__cortex__m__irq_8h_a408f489426eff19f1031cb9e3ccc00bb} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+BD\+\_\+\+NUM}~0x000000\+BDU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ac328bb26955436f102416a13c7e00072}\label{ee__cortex__m__irq_8h_ac328bb26955436f102416a13c7e00072} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+BE\+\_\+\+NUM}~0x000000\+BEU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a04a5da5d63a3de701f510afae1f8db4e}\label{ee__cortex__m__irq_8h_a04a5da5d63a3de701f510afae1f8db4e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+BF\+\_\+\+NUM}~0x000000\+BFU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a9f1e2c4ec4ae7a88f61d7b6546dd51ae}\label{ee__cortex__m__irq_8h_a9f1e2c4ec4ae7a88f61d7b6546dd51ae} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+C0\+\_\+\+NUM}~0x000000\+C0U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aee1230f5acab03a75922284985c9af32}\label{ee__cortex__m__irq_8h_aee1230f5acab03a75922284985c9af32} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+C1\+\_\+\+NUM}~0x000000\+C1U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ac510fd36cef6286c0e7f6954de6b21bb}\label{ee__cortex__m__irq_8h_ac510fd36cef6286c0e7f6954de6b21bb} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+C2\+\_\+\+NUM}~0x000000\+C2U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a1ee833b8581223d73988bdb2ad0ed3fd}\label{ee__cortex__m__irq_8h_a1ee833b8581223d73988bdb2ad0ed3fd} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+C3\+\_\+\+NUM}~0x000000\+C3U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a80712364dcf398b2d5a3b5627e941112}\label{ee__cortex__m__irq_8h_a80712364dcf398b2d5a3b5627e941112} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+C4\+\_\+\+NUM}~0x000000\+C4U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a86d00fb2fc40bbf35dbcaa44125488f1}\label{ee__cortex__m__irq_8h_a86d00fb2fc40bbf35dbcaa44125488f1} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+C5\+\_\+\+NUM}~0x000000\+C5U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_acf8931d944dda018858923108ddf456d}\label{ee__cortex__m__irq_8h_acf8931d944dda018858923108ddf456d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+C6\+\_\+\+NUM}~0x000000\+C6U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a494100ac300bfab1e6f9fe058d1ba188}\label{ee__cortex__m__irq_8h_a494100ac300bfab1e6f9fe058d1ba188} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+C7\+\_\+\+NUM}~0x000000\+C7U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a063215cc2912853cbd7338746000c0b2}\label{ee__cortex__m__irq_8h_a063215cc2912853cbd7338746000c0b2} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+C8\+\_\+\+NUM}~0x000000\+C8U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ac34ed01dd5899e498f1109fdbbe2dc63}\label{ee__cortex__m__irq_8h_ac34ed01dd5899e498f1109fdbbe2dc63} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+C9\+\_\+\+NUM}~0x000000\+C9U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a6b90c44d2915c63c03e4f138a7dde29b}\label{ee__cortex__m__irq_8h_a6b90c44d2915c63c03e4f138a7dde29b} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+CA\+\_\+\+NUM}~0x000000\+CAU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ad5e94641711a61ed4855722a510b8c4b}\label{ee__cortex__m__irq_8h_ad5e94641711a61ed4855722a510b8c4b} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+CB\+\_\+\+NUM}~0x000000\+CBU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a25bddd5545fa4eeeed9107adfa42f210}\label{ee__cortex__m__irq_8h_a25bddd5545fa4eeeed9107adfa42f210} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+CC\+\_\+\+NUM}~0x000000\+CCU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a03f101841dfa36ac864f249753c9ac5e}\label{ee__cortex__m__irq_8h_a03f101841dfa36ac864f249753c9ac5e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+CD\+\_\+\+NUM}~0x000000\+CDU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a2f8f657be1b085fc099b6e9e92ca7b19}\label{ee__cortex__m__irq_8h_a2f8f657be1b085fc099b6e9e92ca7b19} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+CE\+\_\+\+NUM}~0x000000\+CEU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aa50bb5d94e78fff56ded84009038675a}\label{ee__cortex__m__irq_8h_aa50bb5d94e78fff56ded84009038675a} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+CF\+\_\+\+NUM}~0x000000\+CFU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a129877a389723824266efed978137de3}\label{ee__cortex__m__irq_8h_a129877a389723824266efed978137de3} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+D0\+\_\+\+NUM}~0x000000\+D0U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8fe2eea69294b61dd847d426d717ce83}\label{ee__cortex__m__irq_8h_a8fe2eea69294b61dd847d426d717ce83} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+D1\+\_\+\+NUM}~0x000000\+D1U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a1ba17e6e163e5b6f56c3d7d352dede40}\label{ee__cortex__m__irq_8h_a1ba17e6e163e5b6f56c3d7d352dede40} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+D2\+\_\+\+NUM}~0x000000\+D2U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a28e21d3f9382a30ef5803061ec55962f}\label{ee__cortex__m__irq_8h_a28e21d3f9382a30ef5803061ec55962f} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+D3\+\_\+\+NUM}~0x000000\+D3U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a0dae4f4b0cce73121844fdba279df11e}\label{ee__cortex__m__irq_8h_a0dae4f4b0cce73121844fdba279df11e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+D4\+\_\+\+NUM}~0x000000\+D4U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ab881b7f4872d7abd1136048dcf2ae125}\label{ee__cortex__m__irq_8h_ab881b7f4872d7abd1136048dcf2ae125} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+D5\+\_\+\+NUM}~0x000000\+D5U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a5efd7ad924f0a4bccc4eeeab5e551a8d}\label{ee__cortex__m__irq_8h_a5efd7ad924f0a4bccc4eeeab5e551a8d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+D6\+\_\+\+NUM}~0x000000\+D6U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a06c1a1cff8278a3fcb46d8aed376e1a6}\label{ee__cortex__m__irq_8h_a06c1a1cff8278a3fcb46d8aed376e1a6} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+D7\+\_\+\+NUM}~0x000000\+D7U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a95c48dc4951a8f0c9f553d34016c7ded}\label{ee__cortex__m__irq_8h_a95c48dc4951a8f0c9f553d34016c7ded} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+D8\+\_\+\+NUM}~0x000000\+D8U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a55b9dd3242f95070cc2d02f44a7bed4b}\label{ee__cortex__m__irq_8h_a55b9dd3242f95070cc2d02f44a7bed4b} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+D9\+\_\+\+NUM}~0x000000\+D9U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a5957840fb14af50dc6f0a3c133e2a381}\label{ee__cortex__m__irq_8h_a5957840fb14af50dc6f0a3c133e2a381} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+DA\+\_\+\+NUM}~0x000000\+DAU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aa2d24897c0d02ccb5aefe3114360cf62}\label{ee__cortex__m__irq_8h_aa2d24897c0d02ccb5aefe3114360cf62} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+DB\+\_\+\+NUM}~0x000000\+DBU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8afe4509e8bc5d3eb493879a182518f0}\label{ee__cortex__m__irq_8h_a8afe4509e8bc5d3eb493879a182518f0} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+DC\+\_\+\+NUM}~0x000000\+DCU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a22cadb3be2d108c8a824e75d53aa419f}\label{ee__cortex__m__irq_8h_a22cadb3be2d108c8a824e75d53aa419f} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+DD\+\_\+\+NUM}~0x000000\+DDU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aef431f06bb7ca628d6ff338332bf0455}\label{ee__cortex__m__irq_8h_aef431f06bb7ca628d6ff338332bf0455} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+DE\+\_\+\+NUM}~0x000000\+DEU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3dbb80d60967342fb170d36b22e56525}\label{ee__cortex__m__irq_8h_a3dbb80d60967342fb170d36b22e56525} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+DF\+\_\+\+NUM}~0x000000\+DFU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_acce2308046aeabfad5a3b4726804802c}\label{ee__cortex__m__irq_8h_acce2308046aeabfad5a3b4726804802c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+E0\+\_\+\+NUM}~0x000000\+E0U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3a8b76f5337ad2e999a77fd434628971}\label{ee__cortex__m__irq_8h_a3a8b76f5337ad2e999a77fd434628971} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+E1\+\_\+\+NUM}~0x000000\+E1U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a7f792c4911bc57034f1faaf30dc58a67}\label{ee__cortex__m__irq_8h_a7f792c4911bc57034f1faaf30dc58a67} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+E2\+\_\+\+NUM}~0x000000\+E2U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_adcb056c2484f07971a2ac429842b00d2}\label{ee__cortex__m__irq_8h_adcb056c2484f07971a2ac429842b00d2} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+E3\+\_\+\+NUM}~0x000000\+E3U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a7b056e91bf1657017cc2ba4c3584fc40}\label{ee__cortex__m__irq_8h_a7b056e91bf1657017cc2ba4c3584fc40} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+E4\+\_\+\+NUM}~0x000000\+E4U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a1bff0c6e15c50df034bdb107f9dd3f4d}\label{ee__cortex__m__irq_8h_a1bff0c6e15c50df034bdb107f9dd3f4d} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+E5\+\_\+\+NUM}~0x000000\+E5U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3118b895a74153fffe1e9de9fa88ab09}\label{ee__cortex__m__irq_8h_a3118b895a74153fffe1e9de9fa88ab09} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+E6\+\_\+\+NUM}~0x000000\+E6U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_abdf98bb6ba00027d7c8c424f2cfada67}\label{ee__cortex__m__irq_8h_abdf98bb6ba00027d7c8c424f2cfada67} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+E7\+\_\+\+NUM}~0x000000\+E7U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a89dc7bb189f479f3bf5a960a966a2968}\label{ee__cortex__m__irq_8h_a89dc7bb189f479f3bf5a960a966a2968} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+E8\+\_\+\+NUM}~0x000000\+E8U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_acbb47a91f70b91ac13cc4df711a6123a}\label{ee__cortex__m__irq_8h_acbb47a91f70b91ac13cc4df711a6123a} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+E9\+\_\+\+NUM}~0x000000\+E9U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ad993166a74309efdc05fbf016d4fcdac}\label{ee__cortex__m__irq_8h_ad993166a74309efdc05fbf016d4fcdac} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+EA\+\_\+\+NUM}~0x000000\+EAU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_acc1c2fa3fe281fb376842dcaa8b38d1b}\label{ee__cortex__m__irq_8h_acc1c2fa3fe281fb376842dcaa8b38d1b} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+EB\+\_\+\+NUM}~0x000000\+EBU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_adf2fc68f6ec16074cced09d7102978f6}\label{ee__cortex__m__irq_8h_adf2fc68f6ec16074cced09d7102978f6} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+EC\+\_\+\+NUM}~0x000000\+ECU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_afa231bcf8ede69cfad957724e21e0cf8}\label{ee__cortex__m__irq_8h_afa231bcf8ede69cfad957724e21e0cf8} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+ED\+\_\+\+NUM}~0x000000\+EDU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_af292256f76e471d6e614cc30b2727e79}\label{ee__cortex__m__irq_8h_af292256f76e471d6e614cc30b2727e79} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+EE\+\_\+\+NUM}~0x000000\+EEU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a1c81541aaf78de4e08bca0dbf28fe5d1}\label{ee__cortex__m__irq_8h_a1c81541aaf78de4e08bca0dbf28fe5d1} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+EF\+\_\+\+NUM}~0x000000\+EFU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_aa0d074b3db248a44c7d8e9a8594d5d92}\label{ee__cortex__m__irq_8h_aa0d074b3db248a44c7d8e9a8594d5d92} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+F0\+\_\+\+NUM}~0x000000\+F0U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a8dc64c68ef477f5e3e0a3418e448c141}\label{ee__cortex__m__irq_8h_a8dc64c68ef477f5e3e0a3418e448c141} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+F1\+\_\+\+NUM}~0x000000\+F1U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a685d4cb220f59a88bc8ae76280049a89}\label{ee__cortex__m__irq_8h_a685d4cb220f59a88bc8ae76280049a89} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+F2\+\_\+\+NUM}~0x000000\+F2U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_ac56743e735a9094ea8dc70cdb54b5f2f}\label{ee__cortex__m__irq_8h_ac56743e735a9094ea8dc70cdb54b5f2f} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+F3\+\_\+\+NUM}~0x000000\+F3U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_abf4a3607bd39c0b868a6c010625d8413}\label{ee__cortex__m__irq_8h_abf4a3607bd39c0b868a6c010625d8413} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+F4\+\_\+\+NUM}~0x000000\+F4U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a6eedcb39a3e52e88542e5fdffdaa7985}\label{ee__cortex__m__irq_8h_a6eedcb39a3e52e88542e5fdffdaa7985} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+F5\+\_\+\+NUM}~0x000000\+F5U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a69629800c69f929db43e1c10b284831a}\label{ee__cortex__m__irq_8h_a69629800c69f929db43e1c10b284831a} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+F6\+\_\+\+NUM}~0x000000\+F6U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a5129ae6d1cc34c0acac2a6060a98c457}\label{ee__cortex__m__irq_8h_a5129ae6d1cc34c0acac2a6060a98c457} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+F7\+\_\+\+NUM}~0x000000\+F7U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a3789322b1377980bb3adf8f28ca83c9b}\label{ee__cortex__m__irq_8h_a3789322b1377980bb3adf8f28ca83c9b} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+F8\+\_\+\+NUM}~0x000000\+F8U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a4f82cdf5bbeaa893401f675b18bec3d1}\label{ee__cortex__m__irq_8h_a4f82cdf5bbeaa893401f675b18bec3d1} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+F9\+\_\+\+NUM}~0x000000\+F9U
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a726c3fc9166fb833e32354c2b97e660a}\label{ee__cortex__m__irq_8h_a726c3fc9166fb833e32354c2b97e660a} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+FA\+\_\+\+NUM}~0x000000\+FAU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a91108550f4ff33703eeb282a29607d7b}\label{ee__cortex__m__irq_8h_a91108550f4ff33703eeb282a29607d7b} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+FB\+\_\+\+NUM}~0x000000\+FBU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a14b24cfa6711c0a19a264e8ef9c67b5e}\label{ee__cortex__m__irq_8h_a14b24cfa6711c0a19a264e8ef9c67b5e} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+FC\+\_\+\+NUM}~0x000000\+FCU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a5d71163082f77aecf2289d946590e3e7}\label{ee__cortex__m__irq_8h_a5d71163082f77aecf2289d946590e3e7} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+FD\+\_\+\+NUM}~0x000000\+FDU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a135c2ed274bcb41720c3a15058ce8582}\label{ee__cortex__m__irq_8h_a135c2ed274bcb41720c3a15058ce8582} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+FE\+\_\+\+NUM}~0x000000\+FEU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a42360c9ce85cd4ed9f307cbcd026a12c}\label{ee__cortex__m__irq_8h_a42360c9ce85cd4ed9f307cbcd026a12c} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+INT\+\_\+\+FF\+\_\+\+NUM}~0x000000\+FFU
+\begin{DoxyCompactList}\small\item\em Cortex-\/M IRQ number. \end{DoxyCompactList}\item 
+\Hypertarget{ee__cortex__m__irq_8h_a23018a743974d7da947244cbecd8dfc2}\label{ee__cortex__m__irq_8h_a23018a743974d7da947244cbecd8dfc2} 
+\#define {\bfseries OSEE\+\_\+\+CORTEX\+\_\+\+M\+\_\+\+OVERALL\+\_\+\+INT\+\_\+\+NUM}~0x00000100U
+\begin{DoxyCompactList}\small\item\em Overall Number of Exceprions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This files contains the interfaces of the IRQs support for ARM Cortex-\/M Architecture available in Erika Enterprise.
+
+\begin{DoxyNote}{Note}
+TO BE DOCUMENTED!!!
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Giuseppe Serano 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018 
+\end{DoxyDate}
+
+
+\label{doc-define-members}
+\Hypertarget{ee__cortex__m__irq_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{ee__cortex__m__irq_8h_a4111b4261ae482e8714f640788837fa7}\index{ee\_cortex\_m\_irq.h@{ee\_cortex\_m\_irq.h}!DeclareIsr@{DeclareIsr}}
+\index{DeclareIsr@{DeclareIsr}!ee\_cortex\_m\_irq.h@{ee\_cortex\_m\_irq.h}}
+\doxysubsubsection{\texorpdfstring{DeclareIsr}{DeclareIsr}}
+{\footnotesize\ttfamily \label{ee__cortex__m__irq_8h_a4111b4261ae482e8714f640788837fa7} 
+\#define Declare\+Isr(\begin{DoxyParamCaption}\item[{}]{f}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}(\textcolor{keywordtype}{void},\ \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\_CODE}})\ f\ (\ \textcolor{keywordtype}{void}\ )}
+
+\end{DoxyCode}
+\Hypertarget{ee__cortex__m__irq_8h_a6525ed5e386468dfe017ac1375b6d4ba}\index{ee\_cortex\_m\_irq.h@{ee\_cortex\_m\_irq.h}!DeclareIsr1@{DeclareIsr1}}
+\index{DeclareIsr1@{DeclareIsr1}!ee\_cortex\_m\_irq.h@{ee\_cortex\_m\_irq.h}}
+\doxysubsubsection{\texorpdfstring{DeclareIsr1}{DeclareIsr1}}
+{\footnotesize\ttfamily \label{ee__cortex__m__irq_8h_a6525ed5e386468dfe017ac1375b6d4ba} 
+\#define Declare\+Isr1(\begin{DoxyParamCaption}\item[{}]{f}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}(\textcolor{keywordtype}{void},\ \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\_CODE}})\ f\ (\ \textcolor{keywordtype}{void}\ )}
+
+\end{DoxyCode}
+\Hypertarget{ee__cortex__m__irq_8h_a6fea875ba2b69f1e90d10b4313ec48d3}\index{ee\_cortex\_m\_irq.h@{ee\_cortex\_m\_irq.h}!DeclareIsr2@{DeclareIsr2}}
+\index{DeclareIsr2@{DeclareIsr2}!ee\_cortex\_m\_irq.h@{ee\_cortex\_m\_irq.h}}
+\doxysubsubsection{\texorpdfstring{DeclareIsr2}{DeclareIsr2}}
+{\footnotesize\ttfamily \label{ee__cortex__m__irq_8h_a6fea875ba2b69f1e90d10b4313ec48d3} 
+\#define Declare\+Isr2(\begin{DoxyParamCaption}\item[{}]{f}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}(\textcolor{keywordtype}{void},\ \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\_CODE}})\ f\ (\ \textcolor{keywordtype}{void}\ )}
+
+\end{DoxyCode}
+\Hypertarget{ee__cortex__m__irq_8h_af5541072748bea1895b1a36784a42661}\index{ee\_cortex\_m\_irq.h@{ee\_cortex\_m\_irq.h}!ISR@{ISR}}
+\index{ISR@{ISR}!ee\_cortex\_m\_irq.h@{ee\_cortex\_m\_irq.h}}
+\doxysubsubsection{\texorpdfstring{ISR}{ISR}}
+{\footnotesize\ttfamily \label{ee__cortex__m__irq_8h_af5541072748bea1895b1a36784a42661} 
+\#define ISR(\begin{DoxyParamCaption}\item[{}]{f}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}(\textcolor{keywordtype}{void},\ \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\_CODE}})\ f\ (\ \textcolor{keywordtype}{void}\ )}
+
+\end{DoxyCode}
+\Hypertarget{ee__cortex__m__irq_8h_aa138320dc1722a27eb36eda2cf10057a}\index{ee\_cortex\_m\_irq.h@{ee\_cortex\_m\_irq.h}!ISR1@{ISR1}}
+\index{ISR1@{ISR1}!ee\_cortex\_m\_irq.h@{ee\_cortex\_m\_irq.h}}
+\doxysubsubsection{\texorpdfstring{ISR1}{ISR1}}
+{\footnotesize\ttfamily \label{ee__cortex__m__irq_8h_aa138320dc1722a27eb36eda2cf10057a} 
+\#define ISR1(\begin{DoxyParamCaption}\item[{}]{f}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}(\textcolor{keywordtype}{void},\ \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\_CODE}})\ f\ (\ \textcolor{keywordtype}{void}\ )}
+
+\end{DoxyCode}
+\Hypertarget{ee__cortex__m__irq_8h_a47f13018cf8cb966034b519070db4b3b}\index{ee\_cortex\_m\_irq.h@{ee\_cortex\_m\_irq.h}!ISR2@{ISR2}}
+\index{ISR2@{ISR2}!ee\_cortex\_m\_irq.h@{ee\_cortex\_m\_irq.h}}
+\doxysubsubsection{\texorpdfstring{ISR2}{ISR2}}
+{\footnotesize\ttfamily \label{ee__cortex__m__irq_8h_a47f13018cf8cb966034b519070db4b3b} 
+\#define ISR2(\begin{DoxyParamCaption}\item[{}]{f}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}(\textcolor{keywordtype}{void},\ \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\_CODE}})\ f\ (\ \textcolor{keywordtype}{void}\ )}
+
+\end{DoxyCode}

@@ -1,0 +1,184 @@
+\doxysection{inc/ee\+\_\+arch\+\_\+compiler\+\_\+gcc.h File Reference}
+\hypertarget{ee__arch__compiler__gcc_8h}{}\label{ee__arch__compiler__gcc_8h}\index{inc/ee\_arch\_compiler\_gcc.h@{inc/ee\_arch\_compiler\_gcc.h}}
+
+
+ARM GNU GCC Compilers Definitions.  
+
+
+{\ttfamily \#include "{}ee\+\_\+cfg.\+h"{}}\newline
+{\ttfamily \#include "{}ee\+\_\+utils.\+h"{}}\newline
+Include dependency graph for ee\+\_\+arch\+\_\+compiler\+\_\+gcc.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ee__arch__compiler__gcc_8h_a3168bacc95ef7c45ea88597267317e8e}{OSEE\+\_\+\+INIT}}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((constructor))
+\begin{DoxyCompactList}\small\item\em Function to be executed at startup. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__arch__compiler__gcc_8h_adaaf463909708a5aa38b67b126748a88}{OSEE\+\_\+\+RETURN}}()
+\begin{DoxyCompactList}\small\item\em Returns from a function. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__arch__compiler__gcc_8h_a8ffbd9f5122af609d93733d76d62356f}{OSEE\+\_\+\+NAKED}}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((naked))
+\begin{DoxyCompactList}\small\item\em Function is created with no prologue or epilogue. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__arch__compiler__gcc_8h_a630e54f89adaab1e884e5096d766a23f}{OSEE\+\_\+\+GET\+\_\+\+SP}}(SP)
+\begin{DoxyCompactList}\small\item\em Stack Pointer Register retrieval. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__arch__compiler__gcc_8h_a527e881271cf7f95b24222a3e1580e22}{OSEE\+\_\+\+CLI}}()
+\begin{DoxyCompactList}\small\item\em Clear Interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__arch__compiler__gcc_8h_a451cf6226e5683eda56109e5811cff85}{OSEE\+\_\+\+SEI}}()
+\begin{DoxyCompactList}\small\item\em Enable Interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__arch__compiler__gcc_8h_a6c86f7b901ab91604d248d9ab1bfc60e}{OSEE\+\_\+\+GET\+\_\+\+ISR}}(SR)
+\begin{DoxyCompactList}\small\item\em Read the interrupt status register. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__arch__compiler__gcc_8h_acf7a231425617b52f34dd260f8166101}{OSEE\+\_\+\+SET\+\_\+\+ISR}}(SR)
+\begin{DoxyCompactList}\small\item\em Set the interrupt status register. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__arch__compiler__gcc_8h_a3388829d3aafe2aaa5fa56d2d38507ad}{OSEE\+\_\+\+GET\+\_\+\+IPL}}(SR)
+\begin{DoxyCompactList}\small\item\em Read the Interrupt priority Level register. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__arch__compiler__gcc_8h_adf66ca321f058a4a22da9cef9f80ba36}{OSEE\+\_\+\+SET\+\_\+\+IPL}}(SR)
+\begin{DoxyCompactList}\small\item\em Set the Interrupt priority level register. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__arch__compiler__gcc_8h_a64fe8d049397effdff55eba65f9bddbc}{OSEE\+\_\+\+CLZ}}(MASK)
+\begin{DoxyCompactList}\small\item\em CLZ instruction, if available. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains all the common compiler-\/dependent architectural definitions for ARM GNU GCC Compiler.
+
+\begin{DoxyNote}{Note}
+This file {\bfseries{MUST}} contain only {\ttfamily defines}, because it is also included by the {\ttfamily }.S files. ~\newline
+ 
+
+TO BE DOCUMENTED!!!
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Errico Guidieri 
+
+Giuseppe Serano 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018 
+\end{DoxyDate}
+
+
+\label{doc-define-members}
+\Hypertarget{ee__arch__compiler__gcc_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{ee__arch__compiler__gcc_8h_a527e881271cf7f95b24222a3e1580e22}\index{ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}!OSEE\_CLI@{OSEE\_CLI}}
+\index{OSEE\_CLI@{OSEE\_CLI}!ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CLI}{OSEE\_CLI}}
+{\footnotesize\ttfamily \label{ee__arch__compiler__gcc_8h_a527e881271cf7f95b24222a3e1580e22} 
+\#define OSEE\+\_\+\+CLI(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}cpsid\ i"{}}\ ::)}
+
+\end{DoxyCode}
+Clear Interrupts. \Hypertarget{ee__arch__compiler__gcc_8h_a64fe8d049397effdff55eba65f9bddbc}\index{ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}!OSEE\_CLZ@{OSEE\_CLZ}}
+\index{OSEE\_CLZ@{OSEE\_CLZ}!ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_CLZ}{OSEE\_CLZ}}
+{\footnotesize\ttfamily \label{ee__arch__compiler__gcc_8h_a64fe8d049397effdff55eba65f9bddbc} 
+\#define OSEE\+\_\+\+CLZ(\begin{DoxyParamCaption}\item[{}]{MASK}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \_\_builtin\_clz(MASK)}
+
+\end{DoxyCode}
+CLZ Instruction. This returns the count leading zeroes of the input word. \Hypertarget{ee__arch__compiler__gcc_8h_a3388829d3aafe2aaa5fa56d2d38507ad}\index{ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}!OSEE\_GET\_IPL@{OSEE\_GET\_IPL}}
+\index{OSEE\_GET\_IPL@{OSEE\_GET\_IPL}!ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_GET\_IPL}{OSEE\_GET\_IPL}}
+{\footnotesize\ttfamily \label{ee__arch__compiler__gcc_8h_a3388829d3aafe2aaa5fa56d2d38507ad} 
+\#define OSEE\+\_\+\+GET\+\_\+\+IPL(\begin{DoxyParamCaption}\item[{}]{SR}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}mrs\ \%0,\ basepri"{}}\ :\ \textcolor{stringliteral}{"{}=r"{}}\ (SR))}
+
+\end{DoxyCode}
+Interrupts Priority Level retrieval. \Hypertarget{ee__arch__compiler__gcc_8h_a6c86f7b901ab91604d248d9ab1bfc60e}\index{ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}!OSEE\_GET\_ISR@{OSEE\_GET\_ISR}}
+\index{OSEE\_GET\_ISR@{OSEE\_GET\_ISR}!ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_GET\_ISR}{OSEE\_GET\_ISR}}
+{\footnotesize\ttfamily \label{ee__arch__compiler__gcc_8h_a6c86f7b901ab91604d248d9ab1bfc60e} 
+\#define OSEE\+\_\+\+GET\+\_\+\+ISR(\begin{DoxyParamCaption}\item[{}]{SR}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}mrs\ \%0,\ primask"{}}\ :\ \textcolor{stringliteral}{"{}=r"{}}\ (SR))}
+
+\end{DoxyCode}
+Interrupts Status Register retrieval. \Hypertarget{ee__arch__compiler__gcc_8h_a630e54f89adaab1e884e5096d766a23f}\index{ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}!OSEE\_GET\_SP@{OSEE\_GET\_SP}}
+\index{OSEE\_GET\_SP@{OSEE\_GET\_SP}!ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_GET\_SP}{OSEE\_GET\_SP}}
+{\footnotesize\ttfamily \label{ee__arch__compiler__gcc_8h_a630e54f89adaab1e884e5096d766a23f} 
+\#define OSEE\+\_\+\+GET\+\_\+\+SP(\begin{DoxyParamCaption}\item[{}]{SP}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}mov\ \%0,\ sp"{}}\ :\ \textcolor{stringliteral}{"{}=r"{}}\ (SP))}
+
+\end{DoxyCode}
+Stack Pointer Register retrieval. 
+
+Referenced by \mbox{\hyperlink{ee__hal_8h_a2c94f91dcddef09705f589fbe95ee1e0}{os\+EE\+\_\+get\+\_\+\+SP()}}.
+
+\Hypertarget{ee__arch__compiler__gcc_8h_a3168bacc95ef7c45ea88597267317e8e}\index{ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}!OSEE\_INIT@{OSEE\_INIT}}
+\index{OSEE\_INIT@{OSEE\_INIT}!ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_INIT}{OSEE\_INIT}}
+{\footnotesize\ttfamily \label{ee__arch__compiler__gcc_8h_a3168bacc95ef7c45ea88597267317e8e} 
+\#define OSEE\+\_\+\+INIT~\+\_\+\+\_\+attribute\+\_\+\+\_\+((constructor))}
+
+Function to be executed at startup. \Hypertarget{ee__arch__compiler__gcc_8h_a8ffbd9f5122af609d93733d76d62356f}\index{ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}!OSEE\_NAKED@{OSEE\_NAKED}}
+\index{OSEE\_NAKED@{OSEE\_NAKED}!ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_NAKED}{OSEE\_NAKED}}
+{\footnotesize\ttfamily \label{ee__arch__compiler__gcc_8h_a8ffbd9f5122af609d93733d76d62356f} 
+\#define OSEE\+\_\+\+NAKED~\+\_\+\+\_\+attribute\+\_\+\+\_\+((naked))}
+
+The function is created with no prologue or epilogue code.
+
+The user code is responsible for preservation of the machine state including the SREG register, as well as placing a EE\+\_\+return() at the end of the function.
+
+Use this attribute in the attributes parameter of the function. \Hypertarget{ee__arch__compiler__gcc_8h_adaaf463909708a5aa38b67b126748a88}\index{ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}!OSEE\_RETURN@{OSEE\_RETURN}}
+\index{OSEE\_RETURN@{OSEE\_RETURN}!ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_RETURN}{OSEE\_RETURN}}
+{\footnotesize\ttfamily \label{ee__arch__compiler__gcc_8h_adaaf463909708a5aa38b67b126748a88} 
+\#define OSEE\+\_\+\+RETURN(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}ret"{}}\ ::)}
+
+\end{DoxyCode}
+Returns from a function. This should be the last command executed before leaving a function defined with the EE\+\_\+\+NAKED attribute.
+
+This macro actually compiles into a single line of assembly, so there is no function call overhead. \Hypertarget{ee__arch__compiler__gcc_8h_a451cf6226e5683eda56109e5811cff85}\index{ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}!OSEE\_SEI@{OSEE\_SEI}}
+\index{OSEE\_SEI@{OSEE\_SEI}!ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_SEI}{OSEE\_SEI}}
+{\footnotesize\ttfamily \label{ee__arch__compiler__gcc_8h_a451cf6226e5683eda56109e5811cff85} 
+\#define OSEE\+\_\+\+SEI(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}cpsie\ i"{}}\ ::)}
+
+\end{DoxyCode}
+Enable Interrupts. \Hypertarget{ee__arch__compiler__gcc_8h_adf66ca321f058a4a22da9cef9f80ba36}\index{ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}!OSEE\_SET\_IPL@{OSEE\_SET\_IPL}}
+\index{OSEE\_SET\_IPL@{OSEE\_SET\_IPL}!ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_SET\_IPL}{OSEE\_SET\_IPL}}
+{\footnotesize\ttfamily \label{ee__arch__compiler__gcc_8h_adf66ca321f058a4a22da9cef9f80ba36} 
+\#define OSEE\+\_\+\+SET\+\_\+\+IPL(\begin{DoxyParamCaption}\item[{}]{SR}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}msr\ basepri,\ \%0"{}}\ ::\ \textcolor{stringliteral}{"{}r"{}}\ (SR))}
+
+\end{DoxyCode}
+Interrupts Priority Level set-\/up. \Hypertarget{ee__arch__compiler__gcc_8h_acf7a231425617b52f34dd260f8166101}\index{ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}!OSEE\_SET\_ISR@{OSEE\_SET\_ISR}}
+\index{OSEE\_SET\_ISR@{OSEE\_SET\_ISR}!ee\_arch\_compiler\_gcc.h@{ee\_arch\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_SET\_ISR}{OSEE\_SET\_ISR}}
+{\footnotesize\ttfamily \label{ee__arch__compiler__gcc_8h_acf7a231425617b52f34dd260f8166101} 
+\#define OSEE\+\_\+\+SET\+\_\+\+ISR(\begin{DoxyParamCaption}\item[{}]{SR}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}msr\ primask,\ \%0"{}}\ ::\ \textcolor{stringliteral}{"{}r"{}}\ (SR))}
+
+\end{DoxyCode}
+Interrupts Status Register set-\/up. 

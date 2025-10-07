@@ -1,0 +1,44 @@
+\doxysection{Os\+EE\+\_\+\+CDB Struct Reference}
+\hypertarget{structOsEE__CDB}{}\label{structOsEE__CDB}\index{OsEE\_CDB@{OsEE\_CDB}}
+
+
+This is the Core Descriptor Block.  
+
+
+
+
+{\ttfamily \#include $<$ee\+\_\+kernel\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Os\+EE\+\_\+\+CDB\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structOsEE__CDB_ac8aee2adfd0435e0411809e8d2b4eaa8}\label{structOsEE__CDB_ac8aee2adfd0435e0411809e8d2b4eaa8} 
+\mbox{\hyperlink{structOsEE__CCB}{Os\+EE\+\_\+\+CCB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+ccb}
+\begin{DoxyCompactList}\small\item\em pointer to the CCB (holds the RAM part of the information of the core) \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CDB_a9acfee55cd7da1ed545290a06eb64cfc}\label{structOsEE__CDB_a9acfee55cd7da1ed545290a06eb64cfc} 
+Os\+EE\+\_\+spin\+\_\+lock \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__kernel__types_8h_a3fa4e5f55c2eb11bd76e70372f121eb5}{OS\+\_\+\+APPL\+\_\+\+DATA}} {\bfseries p\+\_\+lock}
+\begin{DoxyCompactList}\small\item\em global lock for this core \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CDB_a65ae184127c7012118fe9760406c26b2}\label{structOsEE__CDB_a65ae184127c7012118fe9760406c26b2} 
+\mbox{\hyperlink{ee__kernel__types_8h_a09fa6316ce540908359bbc26e7571795}{Os\+EE\+\_\+\+TDB}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17efd2a69b1aaf9376a454ba999dd871}{OS\+\_\+\+APPL\+\_\+\+CONST}} {\bfseries p\+\_\+idle\+\_\+task}
+\begin{DoxyCompactList}\small\item\em Idle task TDB. \end{DoxyCompactList}\item 
+\Hypertarget{structOsEE__CDB_ab902b5518f5619ebac5e56bb5b1a21b2}\label{structOsEE__CDB_ab902b5518f5619ebac5e56bb5b1a21b2} 
+\mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}} \mbox{\hyperlink{structTYPEDEF}{TYPEDEF}} {\bfseries core\+\_\+id}
+\begin{DoxyCompactList}\small\item\em ID of the core. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The struct stores all the information related to the handling of a core in Flash, such as\+:
+\begin{DoxyItemize}
+\item core id
+\item pointer to the core control block
+\item autostart information
+\item idle hooks 
+\end{DoxyItemize}
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ee__kernel__types_8h}{ee\+\_\+kernel\+\_\+types.\+h}}\end{DoxyCompactItemize}

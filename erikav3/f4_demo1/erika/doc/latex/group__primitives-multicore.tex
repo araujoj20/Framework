@@ -1,0 +1,369 @@
+\doxysection{Multicore support }
+\hypertarget{group__primitives-multicore}{}\label{group__primitives-multicore}\index{Multicore support@{Multicore support}}
+
+
+ERIKA3 has been designed with native multicore support.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__primitives-multicore_gaee597e8fa1f316e1615791fd05f082fe}{INVALID\+\_\+\+CORE\+\_\+\+ID}}~((\mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}})-\/1)
+\begin{DoxyCompactList}\small\item\em Invalid core ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{ee__api__types_8h_a08d2156a0f2fd93d9530f0e3aa6a1c40}{OSEE\+\_\+\+CORE\+\_\+\+ID\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}}
+\begin{DoxyCompactList}\small\item\em Type representing a logical core ID. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{ee__api__types_8h_ae12d942209914b8c5d2f33357c2ea867}{OSEE\+\_\+\+CORE\+\_\+\+NUM\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-multicore_gaf9e0425e029ca07b30f8b77b7ef5e76b}{Core\+Num\+Type}}
+\begin{DoxyCompactList}\small\item\em Type used to store the total number of cores. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{ee__api__types_8h_a0459fb52b97f04dbd6db89b7fb7cb28e}{OSEE\+\_\+\+CORE\+\_\+\+MASK\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-multicore_ga679c3963e5157e5ec5f771462ffe464c}{Core\+Mask\+Type}}
+\begin{DoxyCompactList}\small\item\em Type representing a mask of cores. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__primitives-multicore_gaa20221ee148806fb25f1408b57e518c2}{Try\+To\+Get\+Spinlock\+Type}} \{ {\bfseries TRYTOGETSPINLOCK\+\_\+\+NOSUCCESS} = 0x0
+, {\bfseries TRYTOGETSPINLOCK\+\_\+\+SUCCESS}
+ \}
+\begin{DoxyCompactList}\small\item\em Type used to indicate if a spinlock has been occupied or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ee__compiler__gcc_8h_abb9563920c344956cef4718c142139da}{OSEE\+\_\+\+STATIC\+\_\+\+INLINE}} \mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-multicore_ga31b08f80ec09e8cb946b02a10c75d1db}{Get\+Core\+ID}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the ID of the running core. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__primitives-multicore_gaf9e0425e029ca07b30f8b77b7ef5e76b}{Core\+Num\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-multicore_ga921c92c1f49b8b1a38b5835974e9b5c8}{Get\+Number\+Of\+Activated\+Cores}} (void)
+\begin{DoxyCompactList}\small\item\em Returns the number of cores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-multicore_ga5772bace0fdb9dfd2084fec01b4af71c}{Start\+Core}} (\mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}} Core\+ID, \mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}} Status)
+\begin{DoxyCompactList}\small\item\em Starts the core specified as parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-multicore_ga316a0a4bf5e7e0e8a690e2bacea2859e}{Start\+Non\+Autosar\+Core}} (\mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}} Core\+ID, \mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}} Status)
+\begin{DoxyCompactList}\small\item\em Starts the core specified as parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-multicore_gaca853e5b99ce7545b8c3741286b7ca38}{Shutdown\+All\+Cores}} (\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} Error)
+\begin{DoxyCompactList}\small\item\em Shut down all cores. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-multicore_ga65c0747729bc6c2cb591f3126887891f}{Get\+Spinlock}} (\mbox{\hyperlink{ee__api__types_8h_a211e253ccb43528137c4d778204eba72}{Spinlock\+Id\+Type}} Spinlock\+ID)
+\begin{DoxyCompactList}\small\item\em Lock a spin-\/lock variable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-multicore_gaad80e32ff1d2a3966e1fc6cd69c5e7be}{Release\+Spinlock}} (\mbox{\hyperlink{ee__api__types_8h_a211e253ccb43528137c4d778204eba72}{Spinlock\+Id\+Type}} Spinlock\+ID)
+\begin{DoxyCompactList}\small\item\em Releases a spin-\/lock variable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-multicore_ga6b2eff61d97871f398fd280f9b681249}{Try\+To\+Get\+Spinlock}} (\mbox{\hyperlink{ee__api__types_8h_a211e253ccb43528137c4d778204eba72}{Spinlock\+Id\+Type}} Spinlock\+ID, \mbox{\hyperlink{group__primitives-multicore_gaa20221ee148806fb25f1408b57e518c2}{Try\+To\+Get\+Spinlock\+Type}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}} Success)
+\begin{DoxyCompactList}\small\item\em Lock a spin-\/lock variable, without active waiting. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+These functions are the set of functions which are available to control the execution on multiple cores.
+
+These functions follow closely the AUTOSAR OS Multicore specification. 
+
+\label{doc-define-members}
+\Hypertarget{group__primitives-multicore_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__primitives-multicore_gaee597e8fa1f316e1615791fd05f082fe}\index{Multicore support@{Multicore support}!INVALID\_CORE\_ID@{INVALID\_CORE\_ID}}
+\index{INVALID\_CORE\_ID@{INVALID\_CORE\_ID}!Multicore support@{Multicore support}}
+\doxysubsubsection{\texorpdfstring{INVALID\_CORE\_ID}{INVALID\_CORE\_ID}}
+{\footnotesize\ttfamily \label{group__primitives-multicore_gaee597e8fa1f316e1615791fd05f082fe} 
+\#define INVALID\+\_\+\+CORE\+\_\+\+ID~((\mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}})-\/1)}
+
+A constant representing an invalid logical core ID. 
+
+\label{doc-typedef-members}
+\Hypertarget{group__primitives-multicore_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{group__primitives-multicore_gacfda647135a29312579df1884363464c}\index{Multicore support@{Multicore support}!CoreIdType@{CoreIdType}}
+\index{CoreIdType@{CoreIdType}!Multicore support@{Multicore support}}
+\doxysubsubsection{\texorpdfstring{CoreIdType}{CoreIdType}}
+{\footnotesize\ttfamily \label{group__primitives-multicore_gacfda647135a29312579df1884363464c} 
+typedef \mbox{\hyperlink{ee__api__types_8h_a08d2156a0f2fd93d9530f0e3aa6a1c40}{OSEE\+\_\+\+CORE\+\_\+\+ID\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}}}
+
+This type represents a logical core ID. Depending on the architectures, this type can be implemented as an enum. \Hypertarget{group__primitives-multicore_ga679c3963e5157e5ec5f771462ffe464c}\index{Multicore support@{Multicore support}!CoreMaskType@{CoreMaskType}}
+\index{CoreMaskType@{CoreMaskType}!Multicore support@{Multicore support}}
+\doxysubsubsection{\texorpdfstring{CoreMaskType}{CoreMaskType}}
+{\footnotesize\ttfamily \label{group__primitives-multicore_ga679c3963e5157e5ec5f771462ffe464c} 
+typedef \mbox{\hyperlink{ee__api__types_8h_a0459fb52b97f04dbd6db89b7fb7cb28e}{OSEE\+\_\+\+CORE\+\_\+\+MASK\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-multicore_ga679c3963e5157e5ec5f771462ffe464c}{Core\+Mask\+Type}}}
+
+This type represents a mask of cores. Each core is represented with a bit on a bitmask. \Hypertarget{group__primitives-multicore_gaf9e0425e029ca07b30f8b77b7ef5e76b}\index{Multicore support@{Multicore support}!CoreNumType@{CoreNumType}}
+\index{CoreNumType@{CoreNumType}!Multicore support@{Multicore support}}
+\doxysubsubsection{\texorpdfstring{CoreNumType}{CoreNumType}}
+{\footnotesize\ttfamily \label{group__primitives-multicore_gaf9e0425e029ca07b30f8b77b7ef5e76b} 
+typedef \mbox{\hyperlink{ee__api__types_8h_ae12d942209914b8c5d2f33357c2ea867}{OSEE\+\_\+\+CORE\+\_\+\+NUM\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-multicore_gaf9e0425e029ca07b30f8b77b7ef5e76b}{Core\+Num\+Type}}}
+
+This type is used to store the total number of cores. 
+
+\label{doc-enum-members}
+\Hypertarget{group__primitives-multicore_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{group__primitives-multicore_gaa20221ee148806fb25f1408b57e518c2}\index{Multicore support@{Multicore support}!TryToGetSpinlockType@{TryToGetSpinlockType}}
+\index{TryToGetSpinlockType@{TryToGetSpinlockType}!Multicore support@{Multicore support}}
+\doxysubsubsection{\texorpdfstring{TryToGetSpinlockType}{TryToGetSpinlockType}}
+{\footnotesize\ttfamily \label{group__primitives-multicore_gaa20221ee148806fb25f1408b57e518c2} 
+enum \mbox{\hyperlink{group__primitives-multicore_gaa20221ee148806fb25f1408b57e518c2}{Try\+To\+Get\+Spinlock\+Type}}}
+
+The \doxylink{group__primitives-multicore_gaa20221ee148806fb25f1408b57e518c2}{Try\+To\+Get\+Spinlock\+Type} indicates if the spinlock has been occupied or not. 
+
+\label{doc-func-members}
+\Hypertarget{group__primitives-multicore_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{group__primitives-multicore_ga31b08f80ec09e8cb946b02a10c75d1db}\index{Multicore support@{Multicore support}!GetCoreID@{GetCoreID}}
+\index{GetCoreID@{GetCoreID}!Multicore support@{Multicore support}}
+\doxysubsubsection{\texorpdfstring{GetCoreID()}{GetCoreID()}}
+{\footnotesize\ttfamily \label{group__primitives-multicore_ga31b08f80ec09e8cb946b02a10c75d1db} 
+\mbox{\hyperlink{ee__compiler__gcc_8h_abb9563920c344956cef4718c142139da}{OSEE\+\_\+\+STATIC\+\_\+\+INLINE}} \mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Get\+Core\+ID (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+This function returns the logical core on which the function is being called
+
+Reference\+: AUTOSAR OS 8.\+4.\+24 Get\+Core\+ID \mbox{[}SWS\+\_\+\+Os\+\_\+00674\mbox{]}
+
+\begin{DoxyReturn}{Returns}
+This function returns a \doxylink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type} which is the current core where the function is being called. 
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{group__primitives-multicore_ga31b08f80ec09e8cb946b02a10c75d1db}{Get\+Core\+ID()}}, and \mbox{\hyperlink{ee__hal_8h_a1346f8d9009684d8a6cc7c74ec0a2f90}{os\+EE\+\_\+get\+\_\+curr\+\_\+core\+\_\+id()}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-multicore_ga31b08f80ec09e8cb946b02a10c75d1db}{Get\+Core\+ID()}}.
+
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{group__primitives-multicore_ga921c92c1f49b8b1a38b5835974e9b5c8}\index{Multicore support@{Multicore support}!GetNumberOfActivatedCores@{GetNumberOfActivatedCores}}
+\index{GetNumberOfActivatedCores@{GetNumberOfActivatedCores}!Multicore support@{Multicore support}}
+\doxysubsubsection{\texorpdfstring{GetNumberOfActivatedCores()}{GetNumberOfActivatedCores()}}
+{\footnotesize\ttfamily \label{group__primitives-multicore_ga921c92c1f49b8b1a38b5835974e9b5c8} 
+\mbox{\hyperlink{group__primitives-multicore_gaf9e0425e029ca07b30f8b77b7ef5e76b}{Core\+Num\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Get\+Number\+Of\+Activated\+Cores (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+This function returns the number of cores of the configuration.
+
+Please note that the returned type is \doxylink{group__primitives-multicore_gaf9e0425e029ca07b30f8b77b7ef5e76b}{Core\+Num\+Type} and not uint32 as in the AUTOSAR OS specification.
+
+Reference\+: AUTOSAR OS 8.\+4.\+23 Get\+Number\+Of\+Activated\+Cores \mbox{[}SWS\+\_\+\+Os\+\_\+00672\mbox{]}
+
+\begin{DoxyReturn}{Returns}
+This function returns a \doxylink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type} which is the current core where the function is being called. 
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{group__primitives-multicore_ga921c92c1f49b8b1a38b5835974e9b5c8}{Get\+Number\+Of\+Activated\+Cores()}}, and \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-multicore_ga921c92c1f49b8b1a38b5835974e9b5c8}{Get\+Number\+Of\+Activated\+Cores()}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{group__primitives-multicore_ga65c0747729bc6c2cb591f3126887891f}\index{Multicore support@{Multicore support}!GetSpinlock@{GetSpinlock}}
+\index{GetSpinlock@{GetSpinlock}!Multicore support@{Multicore support}}
+\doxysubsubsection{\texorpdfstring{GetSpinlock()}{GetSpinlock()}}
+{\footnotesize\ttfamily \label{group__primitives-multicore_ga65c0747729bc6c2cb591f3126887891f} 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Get\+Spinlock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ee__api__types_8h_a211e253ccb43528137c4d778204eba72}{Spinlock\+Id\+Type}}}]{Spinlock\+ID}{}\end{DoxyParamCaption})}
+
+This function locks a spin-\/lock (which is an active wait used to implement mutual exclusions on multicores). The primitive does not implementa a preemption.
+
+Reference\+: AUTOSAR OS 8.\+4.\+27 Start\+Non\+Autosar\+Core \mbox{[}SWS\+\_\+\+Os\+\_\+00686\mbox{]}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Spinlock\+ID} & The spin lock to be locked\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function returns a \doxylink{ee__api__types_8h_a6def7470ef6da58026579b4be4ff5d68}{Status\+Type}.
+\begin{DoxyItemize}
+\item E\+\_\+\+OK No Error
+\item E\+\_\+\+OS\+\_\+\+ID (Extended) The spin lock is invalid
+\item E\+\_\+\+OS\+\_\+\+INTERFERENCE\+\_\+\+DEADLOCK (Extended) Lock already taken on the same core.
+\item E\+\_\+\+OS\+\_\+\+NESTING\+\_\+\+DEADLOCK (Extended) another Task on the same core is taking another spinlock
+\item E\+\_\+\+OS\+\_\+\+ACCESS (Extended) The spin lock cannot be accessed 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{group__primitives-multicore_ga65c0747729bc6c2cb591f3126887891f}{Get\+Spinlock()}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-multicore_ga65c0747729bc6c2cb591f3126887891f}{Get\+Spinlock()}}.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{group__primitives-multicore_gaad80e32ff1d2a3966e1fc6cd69c5e7be}\index{Multicore support@{Multicore support}!ReleaseSpinlock@{ReleaseSpinlock}}
+\index{ReleaseSpinlock@{ReleaseSpinlock}!Multicore support@{Multicore support}}
+\doxysubsubsection{\texorpdfstring{ReleaseSpinlock()}{ReleaseSpinlock()}}
+{\footnotesize\ttfamily \label{group__primitives-multicore_gaad80e32ff1d2a3966e1fc6cd69c5e7be} 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Release\+Spinlock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ee__api__types_8h_a211e253ccb43528137c4d778204eba72}{Spinlock\+Id\+Type}}}]{Spinlock\+ID}{}\end{DoxyParamCaption})}
+
+This function releases a spin-\/lock which was previously locked.
+
+All spin locks must be released before terminating or before calling \doxylink{group__primitives-event_ga01ccee0d30cdc7288a518351244b16b7}{Wait\+Event()}.
+
+Reference\+: AUTOSAR OS 8.\+4.\+28 Release\+Spinlock \mbox{[}SWS\+\_\+\+Os\+\_\+00695\mbox{]}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Spinlock\+ID} & The spin lock to be locked\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function returns a \doxylink{ee__api__types_8h_a6def7470ef6da58026579b4be4ff5d68}{Status\+Type}.
+\begin{DoxyItemize}
+\item E\+\_\+\+OK No Error.
+\item E\+\_\+\+OS\+\_\+\+ID (Extended) The spin lock is invalid.
+\item E\+\_\+\+OS\+\_\+\+STATE (Extended) The spin lock is not occupied by the calling task.
+\item E\+\_\+\+OS\+\_\+\+ACCESS (Extended) The spin lock cannot be accessed.
+\item E\+\_\+\+OS\+\_\+\+NOFUNC (Extended) Another spinlock has to be released before. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, \mbox{\hyperlink{group__primitives-multicore_gaad80e32ff1d2a3966e1fc6cd69c5e7be}{Release\+Spinlock()}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-multicore_gaad80e32ff1d2a3966e1fc6cd69c5e7be}{Release\+Spinlock()}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{group__primitives-multicore_gaca853e5b99ce7545b8c3741286b7ca38}\index{Multicore support@{Multicore support}!ShutdownAllCores@{ShutdownAllCores}}
+\index{ShutdownAllCores@{ShutdownAllCores}!Multicore support@{Multicore support}}
+\doxysubsubsection{\texorpdfstring{ShutdownAllCores()}{ShutdownAllCores()}}
+{\footnotesize\ttfamily \label{group__primitives-multicore_gaca853e5b99ce7545b8c3741286b7ca38} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Shutdown\+All\+Cores (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}}}]{Error}{}\end{DoxyParamCaption})}
+
+This function shut down the calling core. it never returns. it also forces all other cores to shut down.
+
+Reference\+: AUTOSAR OS 8.\+4.\+30 Shutdown\+All\+Cores \mbox{[}SWS\+\_\+\+Os\+\_\+00713\mbox{]}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Error} & The error to be passed to the \doxylink{group__primitives-hook_ga9ee2b37172604cbef78d414c503d6e43}{Shutdown\+Hook()} \\
+\hline
+\end{DoxyParams}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, \mbox{\hyperlink{group__primitives-multicore_gaca853e5b99ce7545b8c3741286b7ca38}{Shutdown\+All\+Cores()}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-multicore_gaca853e5b99ce7545b8c3741286b7ca38}{Shutdown\+All\+Cores()}}.
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{group__primitives-multicore_ga5772bace0fdb9dfd2084fec01b4af71c}\index{Multicore support@{Multicore support}!StartCore@{StartCore}}
+\index{StartCore@{StartCore}!Multicore support@{Multicore support}}
+\doxysubsubsection{\texorpdfstring{StartCore()}{StartCore()}}
+{\footnotesize\ttfamily \label{group__primitives-multicore_ga5772bace0fdb9dfd2084fec01b4af71c} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Start\+Core (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}}}]{Core\+ID}{, }\item[{\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}}]{Status}{}\end{DoxyParamCaption})}
+
+This function starts the core specified as parameter.
+
+The function shall be called before Start\+OS. the activated core must call \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()} once activated.
+
+Reference\+: AUTOSAR OS 8.\+4.\+25 Start\+Core \mbox{[}SWS\+\_\+\+Os\+\_\+00676\mbox{]}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Core\+ID} & The core to be activated \\
+\hline
+\mbox{\texttt{out}}  & {\em Status} & The status returned by the function\+:
+\begin{DoxyItemize}
+\item E\+\_\+\+OK No Error
+\item E\+\_\+\+OS\+\_\+\+ID Core ID is invalid
+\item E\+\_\+\+OS\+\_\+\+ACCESS The function was called after starting the OS.
+\item E\+\_\+\+OS\+\_\+\+STATE The Core is already activated. 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, \mbox{\hyperlink{ee__compiler_8h_a5c6ccc28154ea2a7874ba567a352e009}{P2\+VAR}}, \mbox{\hyperlink{group__primitives-multicore_ga5772bace0fdb9dfd2084fec01b4af71c}{Start\+Core()}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-multicore_ga5772bace0fdb9dfd2084fec01b4af71c}{Start\+Core()}}.
+
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{group__primitives-multicore_ga316a0a4bf5e7e0e8a690e2bacea2859e}\index{Multicore support@{Multicore support}!StartNonAutosarCore@{StartNonAutosarCore}}
+\index{StartNonAutosarCore@{StartNonAutosarCore}!Multicore support@{Multicore support}}
+\doxysubsubsection{\texorpdfstring{StartNonAutosarCore()}{StartNonAutosarCore()}}
+{\footnotesize\ttfamily \label{group__primitives-multicore_ga316a0a4bf5e7e0e8a690e2bacea2859e} 
+void \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Start\+Non\+Autosar\+Core (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__primitives-multicore_gacfda647135a29312579df1884363464c}{Core\+Id\+Type}}}]{Core\+ID}{, }\item[{\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}}]{Status}{}\end{DoxyParamCaption})}
+
+This function starts the core specified as parameter.
+
+It is allowed to call the function after \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()}. the activated core must call \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()} once activated.
+
+Reference\+: AUTOSAR OS 8.\+4.\+26 Start\+Non\+Autosar\+Core \mbox{[}SWS\+\_\+\+Os\+\_\+00682\mbox{]}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Core\+ID} & The core to be activated \\
+\hline
+\mbox{\texttt{out}}  & {\em Status} & The status returned by the function\+:
+\begin{DoxyItemize}
+\item E\+\_\+\+OK No Error
+\item E\+\_\+\+OS\+\_\+\+ID Core ID is invalid
+\item E\+\_\+\+OS\+\_\+\+STATE The Core is already activated. 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, \mbox{\hyperlink{ee__compiler_8h_a5c6ccc28154ea2a7874ba567a352e009}{P2\+VAR}}, \mbox{\hyperlink{group__primitives-multicore_ga316a0a4bf5e7e0e8a690e2bacea2859e}{Start\+Non\+Autosar\+Core()}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-multicore_ga316a0a4bf5e7e0e8a690e2bacea2859e}{Start\+Non\+Autosar\+Core()}}.
+
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\Hypertarget{group__primitives-multicore_ga6b2eff61d97871f398fd280f9b681249}\index{Multicore support@{Multicore support}!TryToGetSpinlock@{TryToGetSpinlock}}
+\index{TryToGetSpinlock@{TryToGetSpinlock}!Multicore support@{Multicore support}}
+\doxysubsubsection{\texorpdfstring{TryToGetSpinlock()}{TryToGetSpinlock()}}
+{\footnotesize\ttfamily \label{group__primitives-multicore_ga6b2eff61d97871f398fd280f9b681249} 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Try\+To\+Get\+Spinlock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ee__api__types_8h_a211e253ccb43528137c4d778204eba72}{Spinlock\+Id\+Type}}}]{Spinlock\+ID}{, }\item[{\mbox{\hyperlink{group__primitives-multicore_gaa20221ee148806fb25f1408b57e518c2}{Try\+To\+Get\+Spinlock\+Type}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}}]{Success}{}\end{DoxyParamCaption})}
+
+This function locks a spin-\/lock in a similar way to \doxylink{group__primitives-multicore_ga65c0747729bc6c2cb591f3126887891f}{Get\+Spinlock()}, but it does it without an active loop. The result of the first check is returned in the Success parameter.
+
+Reference\+: AUTOSAR OS 8.\+4.\+29 Try\+To\+Get\+Spinlock \mbox{[}SWS\+\_\+\+Os\+\_\+00703\mbox{]}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Spinlock\+ID} & The spin lock to be locked \\
+\hline
+\mbox{\texttt{out}}  & {\em Success} & The result of the trylock operation\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function returns a \doxylink{ee__api__types_8h_a6def7470ef6da58026579b4be4ff5d68}{Status\+Type}.
+\begin{DoxyItemize}
+\item E\+\_\+\+OK No Error
+\item E\+\_\+\+OS\+\_\+\+ID (Extended) The spin lock is invalid
+\item E\+\_\+\+OS\+\_\+\+INTERFERENCE\+\_\+\+DEADLOCK (Extended) Lock already taken on the same core.
+\item E\+\_\+\+OS\+\_\+\+NESTING\+\_\+\+DEADLOCK (Extended) another Task on the same core is taking another spinlock
+\item E\+\_\+\+OS\+\_\+\+ACCESS (Extended) The spin lock cannot be accessed 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a17f96f65d9582f0cfcfd8ad2ab3b7e9f}{OS\+\_\+\+APPL\+\_\+\+DATA}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, \mbox{\hyperlink{ee__compiler_8h_a5c6ccc28154ea2a7874ba567a352e009}{P2\+VAR}}, \mbox{\hyperlink{group__primitives-multicore_ga6b2eff61d97871f398fd280f9b681249}{Try\+To\+Get\+Spinlock()}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-multicore_ga6b2eff61d97871f398fd280f9b681249}{Try\+To\+Get\+Spinlock()}}.
+
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15

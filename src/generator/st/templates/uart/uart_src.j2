@@ -1,0 +1,52 @@
+#include "uart.h"
+
+UART_HandleTypeDef h{{ uart.instance.lower() }};
+
+int __io_putchar(int ch)
+{
+    HAL_UART_Transmit(&h{{ uart.instance.lower() }}, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
+    return ch;
+}
+
+void MX_{{ uart.instance }}_Init(void)
+{
+    h{{ uart.instance.lower() }}.Instance         = {{ uart.instance }};
+    h{{ uart.instance.lower() }}.Init.BaudRate    = {{ uart.baudrate }};
+    h{{ uart.instance.lower() }}.Init.Mode        = UART_MODE_TX_RX;
+    h{{ uart.instance.lower() }}.Init.WordLength  = UART_WORDLENGTH_8B;
+    h{{ uart.instance.lower() }}.Init.StopBits    = UART_STOPBITS_1;
+    h{{ uart.instance.lower() }}.Init.Parity      = UART_PARITY_NONE;
+    h{{ uart.instance.lower() }}.Init.HwFlowCtl   = UART_HWCONTROL_NONE;
+    h{{ uart.instance.lower() }}.Init.OverSampling= UART_OVERSAMPLING_16;
+
+    if (HAL_UART_Init(&h{{ uart.instance.lower() }}) != HAL_OK)
+    {
+        Error_Handler();
+    }
+}
+
+void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+{
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+    if(uartHandle->Instance == {{ uart.instance }})
+    {
+        __HAL_RCC_{{ uart.instance }}_CLK_ENABLE();
+        __HAL_RCC_{{ uart.tx_gpio_port }}_CLK_ENABLE();
+
+        GPIO_InitStruct.Pin       = {{ uart.tx_gpio_pin }} | {{ uart.rx_gpio_pin }};
+        GPIO_InitStruct.Mode      = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_VERY_HIGH;
+        GPIO_InitStruct.Alternate = {{ uart.gpio_alternate }};
+        HAL_GPIO_Init({{ uart.tx_gpio_port }}, &GPIO_InitStruct);
+    }
+}
+
+void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
+{
+    if(uartHandle->Instance == {{ uart.instance }})
+    {
+        __HAL_RCC_{{ uart.instance }}_CLK_DISABLE();
+        HAL_GPIO_DeInit({{ uart.tx_gpio_port }}, {{ uart.tx_gpio_pin }} | {{ uart.rx_gpio_pin }});
+    }
+}

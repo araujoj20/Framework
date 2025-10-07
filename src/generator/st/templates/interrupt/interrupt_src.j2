@@ -1,0 +1,89 @@
+#include "main.h"
+#include "{{ family }}_it.h"
+
+/* Extern handles used by IRQs */
+{%- for d in dma_irqs %}
+extern DMA_HandleTypeDef {{ d.handle }};
+{%- endfor %}
+{%- if used_timer_bases %}
+{%- for t in used_timer_bases %}
+extern TIM_HandleTypeDef h{{ t.lower() }};
+{%- endfor %}
+{%- endif %}
+
+/******************************************************************************/
+/*             Cortex Processor Interruption and Exception Handlers           */
+/******************************************************************************/
+{% if family.startswith('stm32f4') %}
+void NMI_Handler(void)
+{
+    
+}
+void HardFault_Handler(void)
+{
+
+}
+void BusFault_Handler(void)
+{
+
+}
+void DebugMon_Handler(void)
+{
+
+}
+void PendSV_Handler(void)
+{
+
+}
+{% endif %}
+void MemManage_Handler(void)
+{
+
+}
+void UsageFault_Handler(void)
+{
+
+}
+void SVC_Handler(void)
+{
+
+}
+void SysTick_Handler(void)
+{
+  HAL_IncTick();
+}
+
+/******************************************************************************/
+/* {{ family.upper() }} Peripheral Interrupt Handlers                                    */
+/* Add here the Interrupt Handlers for the used peripherals.                  */
+/* For the available peripheral interrupt handler names,                      */
+/* please refer to the startup file (startup_{{ family }}.s).                    */
+/******************************************************************************/
+{%- for d in dma_irqs %}
+void {{ d.name }}_{{ d.stream }}_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(&{{ d.handle }});
+}
+
+{%- endfor %}
+
+{%- if generated_irqs %}
+/* Timer IRQ Handlers (composite-aware) */
+{%- for irq in generated_irqs %}
+{%- if irq.emit %}
+void {{ irq.handler }}_IRQHandler(void)
+{
+  // Handling: {{ irq.timers | map(attribute='base') | join(', ') }}
+  {%- for t in irq.timers %}
+  HAL_TIM_IRQHandler(&{{ t.handle }});
+  {%- endfor %}
+}
+
+{%- else %}
+/* {{ irq.handler }}_IRQHandler omitted (irq_handler=DISABLE). User must implement it manually if needed. */
+{%- endif %}
+{%- endfor %}
+{%- else %}
+/* No timer IRQs requested */
+{%- endif %}
+

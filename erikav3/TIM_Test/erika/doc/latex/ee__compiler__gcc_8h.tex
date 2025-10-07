@@ -1,0 +1,88 @@
+\doxysection{inc/ee\+\_\+compiler\+\_\+gcc.h File Reference}
+\hypertarget{ee__compiler__gcc_8h}{}\label{ee__compiler__gcc_8h}\index{inc/ee\_compiler\_gcc.h@{inc/ee\_compiler\_gcc.h}}
+
+
+Common GCC Compilers Definitions.  
+
+
+{\ttfamily \#include "{}ee\+\_\+arch\+\_\+compiler\+\_\+gcc.\+h"{}}\newline
+Include dependency graph for ee\+\_\+compiler\+\_\+gcc.\+h\+:
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ee__compiler__gcc_8h_a9a5fa0a3ded870083af075b0fa88f086}\label{ee__compiler__gcc_8h_a9a5fa0a3ded870083af075b0fa88f086} 
+\#define {\bfseries OSEE\+\_\+\+INLINE}~inline
+\begin{DoxyCompactList}\small\item\em Inline functions. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__gcc_8h_abb9563920c344956cef4718c142139da}\label{ee__compiler__gcc_8h_abb9563920c344956cef4718c142139da} 
+\#define {\bfseries OSEE\+\_\+\+STATIC\+\_\+\+INLINE}~static inline
+\begin{DoxyCompactList}\small\item\em Static Inline functions. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__gcc_8h_a80f24d53bc3bf75cf959be5a33aabb8f}\label{ee__compiler__gcc_8h_a80f24d53bc3bf75cf959be5a33aabb8f} 
+\#define {\bfseries OSEE\+\_\+\+ALWAYS\+\_\+\+INLINE}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((always\+\_\+inline))
+\begin{DoxyCompactList}\small\item\em Always Inline functions. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__gcc_8h_ae803a41e2119d5a11a30ca09d9a0d29c}\label{ee__compiler__gcc_8h_ae803a41e2119d5a11a30ca09d9a0d29c} 
+\#define {\bfseries OSEE\+\_\+\+NEVER\+\_\+\+INLINE}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((noinline))
+\begin{DoxyCompactList}\small\item\em Never Inline functions. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__gcc_8h_ad26c44850182773c7eac7f2bcd9ec375}\label{ee__compiler__gcc_8h_ad26c44850182773c7eac7f2bcd9ec375} 
+\#define {\bfseries OSEE\+\_\+\+NORETURN}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((noreturn))
+\begin{DoxyCompactList}\small\item\em Function does not return. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__compiler__gcc_8h_ad5309ec2836cf6f4a3e930a67715a645}{OSEE\+\_\+\+COMPILER\+\_\+\+ALIGN}}(a)
+\begin{DoxyCompactList}\small\item\em Minimum alignment for a variable. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__compiler__gcc_8h_a052e7cf4322037a5a63a3947f1b585f3}{OSEE\+\_\+\+COMPILER\+\_\+\+KEEP}}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((used))
+\begin{DoxyCompactList}\small\item\em Mark a function as used also if nevere referenced. \end{DoxyCompactList}\item 
+\Hypertarget{ee__compiler__gcc_8h_a7c75d6968ae4ed44a2a18d5960750f50}\label{ee__compiler__gcc_8h_a7c75d6968ae4ed44a2a18d5960750f50} 
+\#define {\bfseries OSEE\+\_\+\+COMPILER\+\_\+\+IRQ}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((interrupt(IRQ)))
+\begin{DoxyCompactList}\small\item\em IRQ Function. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__compiler__gcc_8h_a0682e918d1cbb18c08ac93ae9f308205}{OSEE\+\_\+\+BARRIER}}()
+\begin{DoxyCompactList}\small\item\em Software "{}memory barrier"{} (or "{}memory clobber"{}) to enforce NOT code reordering. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains all the common compiler-\/dependent definitions for GNU GCC Compiler.
+
+\begin{DoxyNote}{Note}
+This file {\bfseries{MUST}} contain only {\ttfamily defines}, because it is also included by the {\ttfamily }.S files. ~\newline
+ 
+
+TO BE DOCUMENTED!!!
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Errico Guidieri 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2016 
+\end{DoxyDate}
+
+
+\label{doc-define-members}
+\Hypertarget{ee__compiler__gcc_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{ee__compiler__gcc_8h_a0682e918d1cbb18c08ac93ae9f308205}\index{ee\_compiler\_gcc.h@{ee\_compiler\_gcc.h}!OSEE\_BARRIER@{OSEE\_BARRIER}}
+\index{OSEE\_BARRIER@{OSEE\_BARRIER}!ee\_compiler\_gcc.h@{ee\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_BARRIER}{OSEE\_BARRIER}}
+{\footnotesize\ttfamily \label{ee__compiler__gcc_8h_a0682e918d1cbb18c08ac93ae9f308205} 
+\#define OSEE\+\_\+\+BARRIER(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}"{}}\ :\ :\ :\ \textcolor{stringliteral}{"{}memory"{}})}
+
+\end{DoxyCode}
+At compile level. www.\+nongnu.\+org/avr-\/libc/user-\/manual/optimization.html \Hypertarget{ee__compiler__gcc_8h_ad5309ec2836cf6f4a3e930a67715a645}\index{ee\_compiler\_gcc.h@{ee\_compiler\_gcc.h}!OSEE\_COMPILER\_ALIGN@{OSEE\_COMPILER\_ALIGN}}
+\index{OSEE\_COMPILER\_ALIGN@{OSEE\_COMPILER\_ALIGN}!ee\_compiler\_gcc.h@{ee\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_COMPILER\_ALIGN}{OSEE\_COMPILER\_ALIGN}}
+{\footnotesize\ttfamily \label{ee__compiler__gcc_8h_ad5309ec2836cf6f4a3e930a67715a645} 
+\#define OSEE\+\_\+\+COMPILER\+\_\+\+ALIGN(\begin{DoxyParamCaption}\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_attribute\_\_((aligned(a)))}
+
+\end{DoxyCode}
+\Hypertarget{ee__compiler__gcc_8h_a052e7cf4322037a5a63a3947f1b585f3}\index{ee\_compiler\_gcc.h@{ee\_compiler\_gcc.h}!OSEE\_COMPILER\_KEEP@{OSEE\_COMPILER\_KEEP}}
+\index{OSEE\_COMPILER\_KEEP@{OSEE\_COMPILER\_KEEP}!ee\_compiler\_gcc.h@{ee\_compiler\_gcc.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_COMPILER\_KEEP}{OSEE\_COMPILER\_KEEP}}
+{\footnotesize\ttfamily \label{ee__compiler__gcc_8h_a052e7cf4322037a5a63a3947f1b585f3} 
+\#define OSEE\+\_\+\+COMPILER\+\_\+\+KEEP~\+\_\+\+\_\+attribute\+\_\+\+\_\+((used))}
+
+Useful for interrupt handlers that are nevere explicitly referenced in the code. 

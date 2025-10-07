@@ -1,0 +1,133 @@
+\doxysection{inc/ee\+\_\+mcu\+\_\+common\+\_\+types.h File Reference}
+\hypertarget{ee__mcu__common__types_8h}{}\label{ee__mcu__common__types_8h}\index{inc/ee\_mcu\_common\_types.h@{inc/ee\_mcu\_common\_types.h}}
+
+
+Common MCUs Types.  
+
+
+{\ttfamily \#include "{}ee\+\_\+utils.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ee__mcu__common__types_8h_a92af5d39fddc5e07194ca71817a0007b}{OSEE\+\_\+\+TYPERET}}~\mbox{\hyperlink{ee__platform__types_8h_af1e4799ec8702a3b9f88f5453e6297c1}{Os\+EE\+\_\+reg}}
+\begin{DoxyCompactList}\small\item\em Standard Return Type. \end{DoxyCompactList}\item 
+\Hypertarget{ee__mcu__common__types_8h_adc710bf088dd6e6e41b1643d3152bb2c}\label{ee__mcu__common__types_8h_adc710bf088dd6e6e41b1643d3152bb2c} 
+\#define {\bfseries STATUSTYPEDEFINED}
+\begin{DoxyCompactList}\small\item\em OSEK compliance. \end{DoxyCompactList}\item 
+\Hypertarget{ee__mcu__common__types_8h_a1e7cc741c56207a8872ea58373276925}\label{ee__mcu__common__types_8h_a1e7cc741c56207a8872ea58373276925} 
+\#define {\bfseries E\+\_\+\+OK}~OSEE\+\_\+\+S\+\_\+J(0x0,OSEE\+\_\+\+INTEGER\+\_\+\+DEFINES\+\_\+\+SUFFIX)
+\begin{DoxyCompactList}\small\item\em OK. \end{DoxyCompactList}\item 
+\Hypertarget{ee__mcu__common__types_8h_a1d155fa7a571f569a380bb42b1947eb4}\label{ee__mcu__common__types_8h_a1d155fa7a571f569a380bb42b1947eb4} 
+\#define {\bfseries E\+\_\+\+NOT\+\_\+\+OK}~OSEE\+\_\+\+S\+\_\+J(0x01,OSEE\+\_\+\+INTEGER\+\_\+\+DEFINES\+\_\+\+SUFFIX)
+\begin{DoxyCompactList}\small\item\em NOT OK. \end{DoxyCompactList}\item 
+\Hypertarget{ee__mcu__common__types_8h_ab3a4a213dfe533389a4a8dc05414b016}\label{ee__mcu__common__types_8h_ab3a4a213dfe533389a4a8dc05414b016} 
+\#define {\bfseries OSEE\+\_\+\+LOW}~OSEE\+\_\+\+ZERO
+\begin{DoxyCompactList}\small\item\em Physical state 0V. \end{DoxyCompactList}\item 
+\Hypertarget{ee__mcu__common__types_8h_a46286b043aa650ae0fac6f35cc4ba099}\label{ee__mcu__common__types_8h_a46286b043aa650ae0fac6f35cc4ba099} 
+\#define {\bfseries OSEE\+\_\+\+HIGH}~OSEE\+\_\+\+ONE
+\begin{DoxyCompactList}\small\item\em Physical state 5V or 3.\+3V. \end{DoxyCompactList}\item 
+\Hypertarget{ee__mcu__common__types_8h_a8690199430df56a6f48beda49ff1ce36}\label{ee__mcu__common__types_8h_a8690199430df56a6f48beda49ff1ce36} 
+\#define {\bfseries OSEE\+\_\+\+OFF}~OSEE\+\_\+\+ZERO
+\begin{DoxyCompactList}\small\item\em OFF. \end{DoxyCompactList}\item 
+\Hypertarget{ee__mcu__common__types_8h_a31778d709577fe1d652473a9fe839c62}\label{ee__mcu__common__types_8h_a31778d709577fe1d652473a9fe839c62} 
+\#define {\bfseries OSEE\+\_\+\+ON}~OSEE\+\_\+\+ONE
+\begin{DoxyCompactList}\small\item\em ON. \end{DoxyCompactList}\item 
+\Hypertarget{ee__mcu__common__types_8h_aec18db8239fb8f3564db5cb7dabb82f7}\label{ee__mcu__common__types_8h_aec18db8239fb8f3564db5cb7dabb82f7} 
+\#define {\bfseries OSEE\+\_\+\+IDLE}~OSEE\+\_\+\+ZERO
+\begin{DoxyCompactList}\small\item\em Logical state idle. \end{DoxyCompactList}\item 
+\Hypertarget{ee__mcu__common__types_8h_a25de15a4825f9d0cd19d9059c40acbde}\label{ee__mcu__common__types_8h_a25de15a4825f9d0cd19d9059c40acbde} 
+\#define {\bfseries OSEE\+\_\+\+ACTIVE}~OSEE\+\_\+\+ONE
+\begin{DoxyCompactList}\small\item\em Logical state active. \end{DoxyCompactList}\item 
+\Hypertarget{ee__mcu__common__types_8h_a06e4e4b4c9e0064fe6b8a24998ede9e2}\label{ee__mcu__common__types_8h_a06e4e4b4c9e0064fe6b8a24998ede9e2} 
+\#define {\bfseries OSEE\+\_\+\+HWREG\+\_\+\+PTR}~\mbox{\hyperlink{ee__platform__types_8h_af1e4799ec8702a3b9f88f5453e6297c1}{Os\+EE\+\_\+reg}}  volatile \texorpdfstring{$\ast$}{*}
+\begin{DoxyCompactList}\small\item\em Harware Register Pointer Type. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__mcu__common__types_8h_a8063d4301886d6a94d349b5a82f150d3}{OSEE\+\_\+\+HWREG\+\_\+\+ADDR}}(x)
+\begin{DoxyCompactList}\small\item\em Hardware Register L-\/\+Value. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{ee__mcu__common__types_8h_ac571400bddfbd18b7652cb6278b413ec}{OSEE\+\_\+\+HWREG}}(x)
+\begin{DoxyCompactList}\small\item\em Hardware Register R-\/\+Value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint8\+\_\+t \mbox{\hyperlink{ee__mcu__common__types_8h_ab99018a5ea27d4db2d53d01dd3be0f18}{Status\+Type}}
+\begin{DoxyCompactList}\small\item\em OSEK compliance. \end{DoxyCompactList}\item 
+typedef uint8\+\_\+t \mbox{\hyperlink{ee__mcu__common__types_8h_a7ba1ab0e3cce347ba1de27f426253160}{Std\+\_\+\+Return\+Type}}
+\begin{DoxyCompactList}\small\item\em \mbox{[}SWS\+\_\+\+Std\+\_\+00005\mbox{]} Name\+: \doxylink{ee__mcu__common__types_8h_a7ba1ab0e3cce347ba1de27f426253160}{Std\+\_\+\+Return\+Type} Type\+: uint8 Range\+: E\+\_\+\+OK -- see 8.\+2.\+1, SWS\+\_\+\+Std\+\_\+00006 E\+\_\+\+NOT\+\_\+\+OK -- see 8.\+2.\+1, SWS\+\_\+\+Std\+\_\+00006 0x02-\/0x3F -- Available to user specific errors \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This files contains all common types and symbols for all supported MCUs in Enterprise MCUs.
+
+\begin{DoxyNote}{Note}
+Those types must be abstracted in order to become platform and compiler independend. ~\newline
+ 
+
+TO BE DOCUMENTED!!!
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Giuseppe Serano 
+
+Errico Guidieri 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2016 
+\end{DoxyDate}
+
+
+\label{doc-define-members}
+\Hypertarget{ee__mcu__common__types_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{ee__mcu__common__types_8h_ac571400bddfbd18b7652cb6278b413ec}\index{ee\_mcu\_common\_types.h@{ee\_mcu\_common\_types.h}!OSEE\_HWREG@{OSEE\_HWREG}}
+\index{OSEE\_HWREG@{OSEE\_HWREG}!ee\_mcu\_common\_types.h@{ee\_mcu\_common\_types.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_HWREG}{OSEE\_HWREG}}
+{\footnotesize\ttfamily \label{ee__mcu__common__types_8h_ac571400bddfbd18b7652cb6278b413ec} 
+\#define OSEE\+\_\+\+HWREG(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(*\mbox{\hyperlink{ee__mcu__common__types_8h_a8063d4301886d6a94d349b5a82f150d3}{OSEE\_HWREG\_ADDR}}(x))}
+
+\end{DoxyCode}
+\Hypertarget{ee__mcu__common__types_8h_a8063d4301886d6a94d349b5a82f150d3}\index{ee\_mcu\_common\_types.h@{ee\_mcu\_common\_types.h}!OSEE\_HWREG\_ADDR@{OSEE\_HWREG\_ADDR}}
+\index{OSEE\_HWREG\_ADDR@{OSEE\_HWREG\_ADDR}!ee\_mcu\_common\_types.h@{ee\_mcu\_common\_types.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_HWREG\_ADDR}{OSEE\_HWREG\_ADDR}}
+{\footnotesize\ttfamily \label{ee__mcu__common__types_8h_a8063d4301886d6a94d349b5a82f150d3} 
+\#define OSEE\+\_\+\+HWREG\+\_\+\+ADDR(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((\mbox{\hyperlink{ee__mcu__common__types_8h_a06e4e4b4c9e0064fe6b8a24998ede9e2}{OSEE\_HWREG\_PTR}})(x))}
+
+\end{DoxyCode}
+\Hypertarget{ee__mcu__common__types_8h_a92af5d39fddc5e07194ca71817a0007b}\index{ee\_mcu\_common\_types.h@{ee\_mcu\_common\_types.h}!OSEE\_TYPERET@{OSEE\_TYPERET}}
+\index{OSEE\_TYPERET@{OSEE\_TYPERET}!ee\_mcu\_common\_types.h@{ee\_mcu\_common\_types.h}}
+\doxysubsubsection{\texorpdfstring{OSEE\_TYPERET}{OSEE\_TYPERET}}
+{\footnotesize\ttfamily \label{ee__mcu__common__types_8h_a92af5d39fddc5e07194ca71817a0007b} 
+\#define OSEE\+\_\+\+TYPERET~\mbox{\hyperlink{ee__platform__types_8h_af1e4799ec8702a3b9f88f5453e6297c1}{Os\+EE\+\_\+reg}}}
+
+This type can be used as standard API return type which is shared between the MCU modules.
+
+The {\ttfamily OSEE\+\_\+\+TYPERET} shall normally be used with value {\ttfamily E\+\_\+\+OK} or {\ttfamily E\+\_\+\+NOT\+\_\+\+OK}. If those return values are not sufficient, MCU modules specific values can be defined. 
+
+\label{doc-typedef-members}
+\Hypertarget{ee__mcu__common__types_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{ee__mcu__common__types_8h_ab99018a5ea27d4db2d53d01dd3be0f18}\index{ee\_mcu\_common\_types.h@{ee\_mcu\_common\_types.h}!StatusType@{StatusType}}
+\index{StatusType@{StatusType}!ee\_mcu\_common\_types.h@{ee\_mcu\_common\_types.h}}
+\doxysubsubsection{\texorpdfstring{StatusType}{StatusType}}
+{\footnotesize\ttfamily \label{ee__mcu__common__types_8h_ab99018a5ea27d4db2d53d01dd3be0f18} 
+typedef uint8\+\_\+t \mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}}}
+
+Because {\ttfamily E\+\_\+\+OK} is already defined within OSEK, the symbol {\ttfamily E\+\_\+\+OK} has to be shared. To avoid name clashes and redefinition problems, the symbols have to be defined in the following way (approved within implementation)\+:~\newline
+ {\ttfamily  \#ifndef STATUSTYPEDEFINED~\newline
+ \#define STATUSTYPEDEFINED~\newline
+ \#define E\+\_\+\+OK 0x00U~\newline
+ typedef unsigned char \doxylink{ee__mcu__common__types_8h_ab99018a5ea27d4db2d53d01dd3be0f18}{Status\+Type};~\newline
+ \#endif~\newline
+ \#define E\+\_\+\+NOT\+\_\+\+OK 0x01U~\newline
+ } \Hypertarget{ee__mcu__common__types_8h_a7ba1ab0e3cce347ba1de27f426253160}\index{ee\_mcu\_common\_types.h@{ee\_mcu\_common\_types.h}!Std\_ReturnType@{Std\_ReturnType}}
+\index{Std\_ReturnType@{Std\_ReturnType}!ee\_mcu\_common\_types.h@{ee\_mcu\_common\_types.h}}
+\doxysubsubsection{\texorpdfstring{Std\_ReturnType}{Std\_ReturnType}}
+{\footnotesize\ttfamily \label{ee__mcu__common__types_8h_a7ba1ab0e3cce347ba1de27f426253160} 
+typedef uint8\+\_\+t \mbox{\hyperlink{ee__mcu__common__types_8h_a7ba1ab0e3cce347ba1de27f426253160}{Std\+\_\+\+Return\+Type}}}
+
+This type can be used as standard API return type which is shared between the RTE and the BSW modules. It shall be defined as follows\+: typedef uint8 \doxylink{ee__mcu__common__types_8h_a7ba1ab0e3cce347ba1de27f426253160}{Std\+\_\+\+Return\+Type}; EG\+: Some DSP architectures have CHAR\+\_\+\+BIT equal to 16. So using unsigned char (the smallest unsigned integer usable) is less misleading. 

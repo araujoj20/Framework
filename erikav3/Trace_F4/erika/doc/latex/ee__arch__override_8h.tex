@@ -1,0 +1,41 @@
+\doxysection{inc/ee\+\_\+arch\+\_\+override.h File Reference}
+\hypertarget{ee__arch__override_8h}{}\label{ee__arch__override_8h}\index{inc/ee\_arch\_override.h@{inc/ee\_arch\_override.h}}
+
+
+Override default settings used in the architecture.  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ee__arch__override_8h_a1b07afb6c4692fe654c8a3fad392f738}\label{ee__arch__override_8h_a1b07afb6c4692fe654c8a3fad392f738} 
+\#define {\bfseries OSEE\+\_\+\+SHUTDOWN\+\_\+\+DO\+\_\+\+NOT\+\_\+\+RETURN\+\_\+\+ON\+\_\+\+MAIN}
+\begin{DoxyCompactList}\small\item\em On Microcontrollers, \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()} does not return. \end{DoxyCompactList}\item 
+\Hypertarget{ee__arch__override_8h_aa852ad51c99be2f3f1a0eb1a710d4e88}\label{ee__arch__override_8h_aa852ad51c99be2f3f1a0eb1a710d4e88} 
+\#define {\bfseries OSEE\+\_\+\+STACK\+\_\+\+ALIGN\+\_\+\+SIZE}~8U
+\begin{DoxyCompactList}\small\item\em CORTEX-\/M seems to not have any rquirement for stack alignment, in any case the following macro enables it. \end{DoxyCompactList}\item 
+\Hypertarget{ee__arch__override_8h_a7ea96fb72b3773d13d6ace63c4a6f23c}\label{ee__arch__override_8h_a7ea96fb72b3773d13d6ace63c4a6f23c} 
+\#define {\bfseries OSEE\+\_\+\+GET\+\_\+\+MSB\+\_\+\+INLINE}~\mbox{\hyperlink{ee__compiler__gcc_8h_abb9563920c344956cef4718c142139da}{OSEE\+\_\+\+STATIC\+\_\+\+INLINE}}
+\begin{DoxyCompactList}\small\item\em Used to override default definition of os\+EE\+\_\+hal\+\_\+get\+\_\+msb, in ee\+\_\+std\+\_\+change\+\_\+context.\+h that is not inlined. \end{DoxyCompactList}\item 
+\Hypertarget{ee__arch__override_8h_a30ad341660682a79808c0e7c1773c436}\label{ee__arch__override_8h_a30ad341660682a79808c0e7c1773c436} 
+\#define {\bfseries OSEE\+\_\+\+KERNEL\+\_\+\+TERMINATE\+\_\+\+ACTIVATION\+\_\+\+OVERRIDE}
+\begin{DoxyCompactList}\small\item\em Used to override default definition of os\+EE\+\_\+scheduler\+\_\+task\+\_\+end, in ee\+\_\+std\+\_\+change\+\_\+context.\+c. \end{DoxyCompactList}\item 
+\Hypertarget{ee__arch__override_8h_a7f8e3c217da7e1f36c1563ad35fa6a96}\label{ee__arch__override_8h_a7f8e3c217da7e1f36c1563ad35fa6a96} 
+\#define {\bfseries OSEE\+\_\+\+KERNEL\+\_\+\+TERMINATE\+\_\+\+ACTIVATION\+\_\+\+CB}~os\+EE\+\_\+cortex\+\_\+m\+\_\+scheduler\+\_\+task\+\_\+end
+\begin{DoxyCompactList}\small\item\em Override Terminate Activation Kernel Callback (CB). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This files is used to define a set of defines which somehow ovveride the default architecture behavior.
+
+\begin{DoxyNote}{Note}
+TO BE DOCUMENTED!!!
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Paolo Gai 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018 
+\end{DoxyDate}

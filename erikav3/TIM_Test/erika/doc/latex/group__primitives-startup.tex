@@ -1,0 +1,195 @@
+\doxysection{Application modes, Startup and Shutdown primitives }
+\hypertarget{group__primitives-startup}{}\label{group__primitives-startup}\index{Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}}
+
+
+ERIKA3 supports the specification of a set of {\itshape Application Modes}.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__primitives-startup_ga3868411e6ffc06ead1ed235231e3f349}{INVALID\+\_\+\+APPMODE}}~((\mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}})-\/1)
+\begin{DoxyCompactList}\small\item\em Value for invalid application modes. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-startup_gab74c84d2ad642900d7b9233a141137b0}{OSDEFAULTAPPMODE}}~((\mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}})0U)
+\begin{DoxyCompactList}\small\item\em Default Application Mode. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__primitives-startup_ga087544142e97a6460c6a189f2ffca569}{DONOTCARE}}~((\mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}})-\/1)
+\begin{DoxyCompactList}\small\item\em Do Not Care Application Mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{ee__api__types_8h_a9cfad4540e6c5c90f3957a4d989a0744}{OSEE\+\_\+\+APPMODE\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}}
+\begin{DoxyCompactList}\small\item\em Type used for application modes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS}} (\mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}} Mode)
+\begin{DoxyCompactList}\small\item\em Operating system startup routine. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-startup_gaa110c81c8e96f95f3d6780b967a03334}{Shutdown\+OS}} (\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} Error)
+\begin{DoxyCompactList}\small\item\em Abort the overall system. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} \mbox{\hyperlink{group__primitives-startup_ga2f51dced29e210f8284c66dc4d03d8b7}{Get\+Active\+Application\+Mode}} (void)
+\begin{DoxyCompactList}\small\item\em Reads the current application mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Application modes are startup configurations that are used to configure the running application for a certain mode of operation. Examples of Application Modes are for example {\itshape Normal execution}, {\itshape Flash Programming}, {\itshape Debug Mode}, and so on.
+
+The main idea is that the CPU startup code somehow discovers the current Application mode (Typical ways to discover Application Modes are for example the usage of dip switches on the device board). Once done that, the application mode is passed to \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()}, that sets the application mode for this run. Once the system is started, the application mode value can be read using a call to \doxylink{group__primitives-startup_ga2f51dced29e210f8284c66dc4d03d8b7}{Get\+Active\+Application\+Mode()}.
+
+Application modes are listed inside the OIL configuration file. There always exist at least one application mode called OSDEFAULTAPPMODE. Once set at startup into \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()}, the Application mode cannot be changed.
+
+Application modes are also useful to autostart tasks and alarms following a call to \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()}. Tasks and alarms autostart features must be specified inside the OIL configuration file.
+
+Application modes should not be used to map application states that may vary during the application execution.
+
+The primitive \doxylink{group__primitives-startup_gaa110c81c8e96f95f3d6780b967a03334}{Shutdown\+OS()} is used to prepare the system for system shutdown. The function simply calls \doxylink{group__primitives-hook_ga9ee2b37172604cbef78d414c503d6e43}{Shutdown\+Hook()} and then it starts a forever loop waiting for an hardware reset.
+
+On multicore systems, the \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()} and \doxylink{group__primitives-startup_gaa110c81c8e96f95f3d6780b967a03334}{Shutdown\+OS()} are implemented respecting the AUTOSAR specifications, in particular related to the usage of barriers to synchronize the cores startup/shutdown. 
+
+\label{doc-define-members}
+\Hypertarget{group__primitives-startup_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__primitives-startup_ga087544142e97a6460c6a189f2ffca569}\index{Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}!DONOTCARE@{DONOTCARE}}
+\index{DONOTCARE@{DONOTCARE}!Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}}
+\doxysubsubsection{\texorpdfstring{DONOTCARE}{DONOTCARE}}
+{\footnotesize\ttfamily \label{group__primitives-startup_ga087544142e97a6460c6a189f2ffca569} 
+\#define DONOTCARE~((\mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}})-\/1)}
+
+Do Not Care Application Mode. Inherits the startup mode from other cores.
+
+Reference\+: AUTOSAR OS -\/ \mbox{[}SWS\+\_\+\+Os\+\_\+91007\mbox{]} \Hypertarget{group__primitives-startup_ga3868411e6ffc06ead1ed235231e3f349}\index{Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}!INVALID\_APPMODE@{INVALID\_APPMODE}}
+\index{INVALID\_APPMODE@{INVALID\_APPMODE}!Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}}
+\doxysubsubsection{\texorpdfstring{INVALID\_APPMODE}{INVALID\_APPMODE}}
+{\footnotesize\ttfamily \label{group__primitives-startup_ga3868411e6ffc06ead1ed235231e3f349} 
+\#define INVALID\+\_\+\+APPMODE~((\mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}})-\/1)}
+
+Value for invalid application modes. No application mode will have this value. \Hypertarget{group__primitives-startup_gab74c84d2ad642900d7b9233a141137b0}\index{Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}!OSDEFAULTAPPMODE@{OSDEFAULTAPPMODE}}
+\index{OSDEFAULTAPPMODE@{OSDEFAULTAPPMODE}!Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}}
+\doxysubsubsection{\texorpdfstring{OSDEFAULTAPPMODE}{OSDEFAULTAPPMODE}}
+{\footnotesize\ttfamily \label{group__primitives-startup_gab74c84d2ad642900d7b9233a141137b0} 
+\#define OSDEFAULTAPPMODE~((\mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}})0U)}
+
+Default Application Mode. Always a valid parameter for \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()}
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+8.\+3 
+
+\label{doc-typedef-members}
+\Hypertarget{group__primitives-startup_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}\index{Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}!AppModeType@{AppModeType}}
+\index{AppModeType@{AppModeType}!Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}}
+\doxysubsubsection{\texorpdfstring{AppModeType}{AppModeType}}
+{\footnotesize\ttfamily \label{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693} 
+typedef \mbox{\hyperlink{ee__api__types_8h_a9cfad4540e6c5c90f3957a4d989a0744}{OSEE\+\_\+\+APPMODE\+\_\+\+TYPE}} \mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}}}
+
+This is the type that stores Application modes. It is an integer value. 
+
+\label{doc-func-members}
+\Hypertarget{group__primitives-startup_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{group__primitives-startup_ga2f51dced29e210f8284c66dc4d03d8b7}\index{Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}!GetActiveApplicationMode@{GetActiveApplicationMode}}
+\index{GetActiveApplicationMode@{GetActiveApplicationMode}!Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}}
+\doxysubsubsection{\texorpdfstring{GetActiveApplicationMode()}{GetActiveApplicationMode()}}
+{\footnotesize\ttfamily \label{group__primitives-startup_ga2f51dced29e210f8284c66dc4d03d8b7} 
+\mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Get\+Active\+Application\+Mode (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+The function returns the current Application Mode, that has been set up by \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()} at system startup.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+8.\+2.\+1
+
+\begin{DoxyReturn}{Returns}
+The function returns the current application mode. 
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{group__primitives-startup_ga2f51dced29e210f8284c66dc4d03d8b7}{Get\+Active\+Application\+Mode()}}, and \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-startup_ga2f51dced29e210f8284c66dc4d03d8b7}{Get\+Active\+Application\+Mode()}}.
+
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{group__primitives-startup_gaa110c81c8e96f95f3d6780b967a03334}\index{Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}!ShutdownOS@{ShutdownOS}}
+\index{ShutdownOS@{ShutdownOS}!Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}}
+\doxysubsubsection{\texorpdfstring{ShutdownOS()}{ShutdownOS()}}
+{\footnotesize\ttfamily \label{group__primitives-startup_gaa110c81c8e96f95f3d6780b967a03334} 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Shutdown\+OS (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}}}]{Error}{}\end{DoxyParamCaption})}
+
+The user can call this system service to abort the overall system (e.\+g. emergency off).
+
+If a \doxylink{group__primitives-hook_ga9ee2b37172604cbef78d414c503d6e43}{Shutdown\+Hook()} is configured the hook routine \doxylink{group__primitives-hook_ga9ee2b37172604cbef78d414c503d6e43}{Shutdown\+Hook()} is always called (with {\itshape Error} as argument) before shutting down the operating system.
+
+The Operating system shutdown is currently implemented as a forever loop with interrupt disabled.
+
+In case of multicore devices, the Shutdown\+Hook takes care of multicore synchronization and multicore shutdown as specified by the AUTOSAR OS standard.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+8.\+2.\+3
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Error} & The identifier of the error which occurred. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function does not return. 
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, \mbox{\hyperlink{group__primitives-startup_gaa110c81c8e96f95f3d6780b967a03334}{Shutdown\+OS()}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-startup_gaa110c81c8e96f95f3d6780b967a03334}{Shutdown\+OS()}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}\index{Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}!StartOS@{StartOS}}
+\index{StartOS@{StartOS}!Application modes, Startup and Shutdown primitives@{Application modes, Startup and Shutdown primitives}}
+\doxysubsubsection{\texorpdfstring{StartOS()}{StartOS()}}
+{\footnotesize\ttfamily \label{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af} 
+\mbox{\hyperlink{ee__api__types_8h_a79bf54a17078edb124b553c51129396a}{Status\+Type}} \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}} Start\+OS (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__primitives-startup_gae3e1ae7b5a088e40194d7b5dc48db693}{App\+Mode\+Type}}}]{Mode}{}\end{DoxyParamCaption})}
+
+The user can call this system service to start the operating system in a specific Application mode. Only allowed outside of the operating system, at startup. The function calls in order the \doxylink{group__primitives-hook_ga18397d2c939dd63649ec1f63213a51b4}{Startup\+Hook()}, then it activates the tasks and set the alarms {\itshape AUTOSTART} set as {\itshape TRUE} inside the OIL configuration file. After that, the system is rescheduled and the highest priority ready task is executed.
+
+The \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()} primitive by default never returns to the caller.
+
+If specified in the OIL file, the idle loop hook will be called inside the \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()}.
+
+On multicore systems, the \doxylink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()} have to be called by each core, as specified by the AUTOSAR OS standard.
+
+Conformance Classes\+: BCC1, BCC2, ECC1, ECC2
+
+Reference\+: OSEK OS -\/ ISO 17356-\/3 -\/ 13.\+8.\+2.\+2
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em Mode} & The startup application mode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The function returns a \doxylink{ee__api__types_8h_a6def7470ef6da58026579b4be4ff5d68}{Status\+Type}.
+\begin{DoxyItemize}
+\item E\+\_\+\+OK (Extended) No error.
+\item E\+\_\+\+OS\+\_\+\+SYS\+\_\+\+INIT (Extended) Error during initialization. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+References \mbox{\hyperlink{ee__compiler_8h_a3851a1a8ddec9eacd2e30a8a19bb8cc8}{AUTOMATIC}}, \mbox{\hyperlink{ee__compiler_8h_aa8f07207960a32e918e08a0faf697977}{FUNC}}, \mbox{\hyperlink{ee__compiler__cfg_8h_a919da7d9b61966c3af796ab42e618bef}{OS\+\_\+\+CODE}}, \mbox{\hyperlink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()}}, and \mbox{\hyperlink{ee__compiler_8h_a44fc42ed93abd1afe9c2268543bc8faf}{VAR}}.
+
+
+
+Referenced by \mbox{\hyperlink{group__primitives-startup_ga1c71c32e3d5e1d67037b86488e6410af}{Start\+OS()}}.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5

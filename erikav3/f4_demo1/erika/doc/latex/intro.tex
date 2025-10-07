@@ -1,0 +1,28 @@
+\doxysection{Introduction to ERIKA3 and RT-\/\+Druid }
+\hypertarget{intro}{}\label{intro}\index{Introduction to ERIKA3 and RT-\/Druid@{Introduction to ERIKA3 and RT-\/Druid}}
+ERIKA3 is an open-\/source RTOS implementation of the OSEK/\+VDX API, available for various microcontrollers on the \href{http://www.erika-enterprise.com}{\texttt{ERIKA3 web page}}.
+
+ERKA3 offers the availability of a real-\/time scheduler and resource managers allowing the full exploitation of the power of new generation micro-\/controllers and multicore platforms while guaranteeing predictable real-\/time performance.
+
+The advanced features provided by ERIKA3 are\+:
+
+
+\begin{DoxyItemize}
+\item Support for the OSEK/\+VDX and AUTOSAR conformance classes to match different application requirements;
+\item Support for preemptive and non-\/preemptive multitasking;
+\item Support for fixed priority scheduling;
+\item Support for stack sharing techniques, and one-\/shot task model to reduce the overall stack usage;
+\item Support for shared resources;
+\item Support for periodic activations using Alarms and Schedule Tables;
+\item Support for centralized Error Handling;
+\item Support for hook functions;
+\item Support for execution on automotive multicore platforms.
+\end{DoxyItemize}
+
+The ERIKA3 kernel is a complete OSEK/\+VDX environment, with the additional extensions required by the AUTOSAR OS specifictaion, which can be used to implement multithreading applications on single and multicores.
+
+ERIKA3 can be configured using the OIL language (through the RT-\/\+Druid3 plugins publicly available on the \href{http://www.erika-enterprise.com}{\texttt{ERIKA3 website}}) or using AUTOSAR XML (using the Evidence\textquotesingle{}s RTE generator).
+
+The OIL language has been standardized by the OSEK/\+VDX Consortium as a standard configuration language used for the static definition of the RTOS objects which are instantiated and used by the application. ERIKA3 fully supports the OIL language for the configuration of real-\/time applications, adding specific extensions to support complete application building, and to support the AUTOSAR OS feature configuration.
+
+The purpose of this document is to describe in detail the ERIKA3 API. Details about specific architecture can be found in dedicated \href{http://www.erika-enterprise.com/wiki/index.ph}{\texttt{architecture wiki pages}}. 
